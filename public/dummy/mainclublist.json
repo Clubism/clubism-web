@@ -1,0 +1,86 @@
+[
+    {
+        "id" : 1,
+        "category" : "봉사분과",
+        "name" : "서강챈스",
+        "description" : "서강 챈스 12기 모집",
+        "deadline" : "2021-09-10"
+    },
+    {        
+        "id" : 2,
+        "category" : "사회교양분과",
+        "name" : "21C Hermit",
+        "description" : "21 Hermit 21기 모집",
+        "deadline" : "2021-09-20"
+    },
+    {
+        "id" : 3,
+        "category" : "언행예술분과",
+        "name" : "마수지",
+        "description" : "마수지 신입부원 모집",
+        "deadline" : "2021-09-01"
+    },
+    {
+        "id" : 4,
+        "category" : "종교분과",
+        "name" : "네비게이토 선교회",
+        "description" : "네비게이토 모집",
+        "deadline" : "2021-09-03"
+    },
+    {
+        "id" : 5,
+        "category" : "체육분과",
+        "name" : "농우회",
+        "description" : "농우회 12기 모집",
+        "deadline" : "2021-09-11"
+    },
+    {
+        "id" : 6,
+        "category" : "학술분과",
+        "name" : "별반",
+        "description" : "별반 12기 모집",
+        "deadline" : "2021-09-25"
+    },
+    {
+        "id" : 7,
+        "category" : "봉사분과",
+        "name" : "애드리랑",
+        "description" : "애드리랑 18기 모집",
+        "deadline" : "2021-09-10"
+    },
+    {
+        "id" : 8,
+        "category" : "사회교양분과",
+        "name" : "감미반",
+        "description" : "감미반 신입 모집",
+        "deadline" : "2021-09-21"
+    },
+    {
+        "id" : 9,
+        "category" : "언행예술분과",
+        "name" : "맥박",
+        "description" : "맥박 신입부원 모집",
+        "deadline" : "2021-09-01"
+    },
+    {
+        "id" : 10,
+        "category" : "종교분과",
+        "name" : "예수전도단",
+        "description" : "예수전도단 모집",
+        "deadline" : "2021-09-03"
+    },
+    {
+        "id" : 11,
+        "category" : "체육분과",
+        "name" : "서강 알바트로스",
+        "description" : "서강 알바트로스 12기 모집",
+        "deadline" : "2021-09-15"
+    },
+    {
+        "id" : 12,
+        "category" : "학술분과",
+        "name" : "서강러브",
+        "description" : "서강러브 10기 모집",
+        "deadline" : "2021-09-30"
+    }
+]

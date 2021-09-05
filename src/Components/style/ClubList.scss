@@ -1,0 +1,20 @@
+.ClubList {
+  width: 80%;
+  margin: 1.5rem auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #cfcfcf;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+}
+
+.Posts {
+  padding: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  & + & {
+    border-top: 1px solid #bbbbbb;
+  }
+}

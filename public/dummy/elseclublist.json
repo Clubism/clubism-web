@@ -1,0 +1,92 @@
+[
+    {
+        "_id" : 1,
+        "title" : "[스터디]기상스터디 모집합니다.",
+        "desc" : "...",
+        "category_id" : 1,
+        "state": true,
+        "date": "2021-08-21",
+        "writer": "user1"
+    },
+    {
+        "_id" : 2,
+        "title" : "[프로젝트]디자이너 구해요.",
+        "desc" : "...",
+        "category_id" : 2,
+        "state": false,
+        "date": "2021-08-20",
+        "writer": "user2"
+    },
+    {
+        "_id" : 3,
+        "title" : "[스터디]알고리즘 스터디 하실분!",
+        "desc" : "...",
+        "category_id" : 1,
+        "state": true,
+        "date": "2021-08-19",
+        "writer": "user3"
+    },
+    {
+        "_id" : 4,
+        "title" : "[구독]넷플릭스 한자리 구해요",
+        "desc" : "...",
+        "category_id" : 3,
+        "state": false,
+        "date": "2021-08-18",
+        "writer": "user4"
+    },
+    {
+        "_id" : 5,
+        "title" : "[프로젝트]사이드 프로젝트 팀원 모집합니다.",
+        "desc" : "...",
+        "category_id" : 2,
+        "state": false,
+        "date": "2021-08-17",
+        "writer": "user5"
+    },
+    {
+        "_id" : 6,
+        "title" : "[구독]왓챠 하실분",
+        "desc" : "...",
+        "category_id" : 3,
+        "state": true,
+        "date": "2021-08-16",
+        "writer": "user6"
+    },
+    {
+        "_id" : 7,
+        "title" : "[프로젝트]해커톤 나가실분 구해용",
+        "desc" : "...",
+        "category_id" : 2,
+        "state": true,
+        "date": "2021-08-15",
+        "writer": "user7"
+    },
+    {
+        "_id" : 8,
+        "title" : "[스터디]토익 스터디 구합니다!",
+        "desc" : "...",
+        "category_id" : 1,
+        "state": false,
+        "date": "2021-08-14",
+        "writer": "user8"
+    },
+    {
+        "_id" : 9,
+        "title" : "[구독]티빙 같이 하실분~",
+        "desc" : "...",
+        "category_id" : 3,
+        "state": true,
+        "date": "2021-08-13",
+        "writer": "user9"
+    },
+    {
+        "_id" : 10,
+        "title" : "[프로젝트]프로젝트 팀원 구합니당",
+        "desc" : "...",
+        "category_id" : 2,
+        "state": true,
+        "date": "2021-08-12",
+        "writer": "user10"
+    }
+]

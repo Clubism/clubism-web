@@ -1,0 +1,58 @@
+.clubContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+  height: auto;
+  overflow: scroll;
+}
+.club {
+  display: flex;
+  border: 1px solid #dadada;
+  margin: 0.5rem 0.5rem;
+  padding: 0.5rem 0.5rem;
+  border-radius: 4px;
+  width: 40%;
+  height: 120px;
+  justify-content: space-between;
+}
+.clubText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  .category {
+    width: 60px;
+    font-size: 0.4rem;
+    margin-bottom: 0.5rem;
+    background: rgb(53, 53, 53);
+    color: white;
+    padding: 0.1 rem;
+    border-radius: 12px;
+    //box-shadow: rgba(53, 53, 53, 0.6) 0px 3px 12px 0px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    //background: linear-gradient(45deg, #525252 0%, #3d3d3d 90%);
+  }
+  .name {
+    padding-left: 0.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .description {
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .deadline {
+    width: 50%;
+    padding: 0.3rem;
+    background-color: #dadada;
+    border-radius: 12px;
+    text-align: center;
+  }
+}
+
+.clubImage {
+  border: 1px solid #dadada;
+  border-radius: 4px;
+  width: 25%;
+}

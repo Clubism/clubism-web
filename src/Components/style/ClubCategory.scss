@@ -1,0 +1,20 @@
+.ClubCategory {
+  display: block;
+  width: 20%;
+  height: 100%;
+  background: #dadada;
+}
+
+li {
+  list-style: none;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.show-menu {
+  position: relative;
+}
+
+.hide-menu {
+  display: none;
+}
