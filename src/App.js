@@ -1,9 +1,12 @@
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Index from './Pages/Index';
 import Error404 from './Pages/Error404';
 import MainClub from './Pages/MainClub';
 import SubClub from './Pages/SubClub';
 import ElseClub from './Pages/ElseClub';
+import Login from './Pages/Login';
+import SignUp from './Pages/SignUp';
 
 function App() {
   return (
@@ -12,6 +15,8 @@ function App() {
       <Route path="/mainClub" component={MainClub} exact />
       <Route path="/subClub" component={SubClub} exact />
       <Route path="/elseClub" component={ElseClub} exact />
+      <Route path="/login" component={Login} exact />
+      <Route path="/signup" component={SignUp} exact />
       <Route component={Error404} />
     </Switch>
   );
