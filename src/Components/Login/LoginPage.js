@@ -2,35 +2,36 @@ import React from 'react';
 import './style/LoginPage.scss';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form'
 
 const LoginPage = () => {
     return (
         <div className="login-container">
-            <form>
+            <Form>
                 <h3 className="login-h3">Login</h3>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label className="login-label">Email address</Form.Label>
+                    <Form.Control className="form-control" type="email" placeholder="Enter email" />
+                    {/* <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                    </Form.Text> */}
+                </Form.Group>
 
-                <div className="form-group">
-                    <label className="login-label">Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
-                </div>
-
-                <div className="form-group">
-                    <label className="login-label">Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
-                </div>
-
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label login-label" htmlFor="customCheck1">Remember me</label>
-                    </div>
-                </div>
-
-                <Button type="submit" className="btn btn-primary btn-block">Submit</Button>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label className="login-label">Password</Form.Label>
+                    <Form.Control className="form-control" type="password" placeholder="Enter password" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check className="login-label" type="checkbox" label="Remember me" />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
-            </form>
+
+            </Form>
         </div>
     )
 };

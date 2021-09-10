@@ -1,17 +1,18 @@
 .ClubCategory {
   display: block;
   width: 20%;
-  height: 100%;
+  // height: calc(100vh - 4rem);
   background: #dadada;
-  
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-li {
-  list-style: none;
-  font-weight: bold;
-  margin-top: 2rem;
-  cursor: pointer;
-}
+// li {
+//   list-style: none;
+//   font-weight: bold;
+//   margin-top: 2rem;
+//   cursor: pointer;
+// }
 
 .show-menu {
   position: relative;
@@ -19,4 +20,21 @@ li {
 
 .hide-menu {
   display: none;
+}
+
+.sidebar-item-text {
+  padding-left: 10px;
+  font-size: 0.8rem;
+}
+
+.scroll-type1::-webkit-scrollbar{
+    width: 6px;
+}
+
+/* 스크롤바 막대 설정*/
+.scroll-type1::-webkit-scrollbar-thumb{
+    height: 5%;
+    background-color: rgba(255,255,255,1);
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 10px;    
 }

@@ -1,7 +1,8 @@
-.clubContainer{
-    padding : 20px;
+.detail-container{
+    width: 70%;
     vertical-align: middle;
-    display: table-cell;
+    margin: 0 auto;
+    
 }
 
 .category{
@@ -15,8 +16,4 @@
     border-radius: 12px;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
     text-align: center;
-}
-
-.clubName{
-
 }

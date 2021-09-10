@@ -46,9 +46,7 @@ const IndexTemplate = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className='content'>
-        {children}
-      </div>
+      {children}
     </div>
   )
 };
