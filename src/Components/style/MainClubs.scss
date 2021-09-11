@@ -8,6 +8,7 @@
 }
 .club {
   display: flex;
+  flex-wrap: flex;
   border: 1px solid #dadada;
   margin: 0.5rem 0.5rem;
   padding: 0.5rem 0.5rem;
@@ -20,6 +21,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  flex-wrap: wrap;
   .category {
     width: 60px;
     font-size: 0.4rem;
@@ -36,18 +38,24 @@
   .name {
     padding-left: 0.5rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    // margin-bottom: 0.5rem;
+    margin-bottom: 0px;
   }
   .description {
     padding-left: 1rem;
-    margin-bottom: 1.5rem;
+    // margin-bottom: 1.5rem;
+    margin-bottom: 5px;
   }
   .deadline {
-    width: 50%;
+    width: 60%;
     padding: 0.3rem;
     background-color: #dadada;
     border-radius: 12px;
     text-align: center;
+    // height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -56,4 +64,3 @@
   border-radius: 4px;
   width: 25%;
 }
-
