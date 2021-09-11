@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import './style/DetailClubPage.scss'
+import React from 'react';
+import '../style/DetailClubPage.scss'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
-import DetailClubAll from './DetailClub/All';
-import DetailClubCurrent from './DetailClub/Current';
-import DetailClubQA from './DetailClub/QA';
-import DetailClubIntro from './DetailClub/Intro';
+import DetailClubAll from './All';
+import DetailClubCurrent from './Current';
+import DetailClubQA from './QA';
+import DetailClubIntro from './Intro';
 
 const DetailCulbPage = (props) => {
-  console.log(props);
   return (
     <div className="detail-container">
       <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3" >

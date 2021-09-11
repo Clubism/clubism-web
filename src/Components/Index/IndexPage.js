@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/IndexPage.scss';
+import '../style/IndexPage.scss';
 import ClubRolling from './ClubRolling';
 import ClubList from './ClubList';
 import {IoIosAdd} from 'react-icons/io';

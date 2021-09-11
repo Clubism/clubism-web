@@ -1,6 +1,6 @@
 import React from 'react';
 import IndexTemplate from '../Components/IndexTemplate';
-import IndexPage from '../Components/IndexPage';
+import IndexPage from '../Components/Index/IndexPage';
 
 const Index = () => {
   return (

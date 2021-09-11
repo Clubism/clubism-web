@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './style/MainClubs.scss';
+import '../style/MainClubs.scss';
 
 const Clubs = (props) => {
   const [Club, setClub] = useState([]);

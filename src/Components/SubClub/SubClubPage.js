@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import SubClubCategory from './SubClubCategory';
 import SubClubs from './SubClubs';
-import './style/ClubPage.scss';
+import '../style/ClubPage.scss';
 
 const SubClubCategories = [
     {id:0, title:'all', value:'전체보기'},

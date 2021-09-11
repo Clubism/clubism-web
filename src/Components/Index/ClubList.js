@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/ClubList.scss';
+import '../style/ClubList.scss';
 
 const Posts = [
   {

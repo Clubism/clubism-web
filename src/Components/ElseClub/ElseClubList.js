@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './style/ElseClubList.scss';
+import '../style/ElseClubList.scss';
 
 const ClubList = (props)=>{
   const [Post, setPost] = useState([]);

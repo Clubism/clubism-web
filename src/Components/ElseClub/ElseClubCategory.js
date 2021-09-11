@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import './style/ElseClubCategory.scss'
+import React from 'react';
+import '../style/ElseClubCategory.scss'
 
 const ElseClubCategory = (props)=>{
   var categoryList = [];

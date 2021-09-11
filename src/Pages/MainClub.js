@@ -1,6 +1,6 @@
 import React from 'react';
 import IndexTemplate from '../Components/IndexTemplate';
-import MainClubPage from '../Components/MainClubPage';
+import MainClubPage from '../Components/MainClub/MainClubPage';
 
 const MainClub = ({ match }) => {
   return (

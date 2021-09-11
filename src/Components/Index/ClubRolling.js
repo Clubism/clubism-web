@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/ClubRolling.scss';
+import '../style/ClubRolling.scss';
 import Slider from 'react-slick';
 
 

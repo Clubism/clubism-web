@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import MainClubCategory from './MainClubCategory';
 import MainClubs from './MainClubs';
-import DetailClubPage from './DetailClubPage';
-import './style/ClubPage.scss';
+import DetailClubPage from '../DetailClub/DetailClubPage';
+import '../style/ClubPage.scss';
 
 const MainClubCategories = [
   { id: 0, title: 'all', value: '전체보기' },

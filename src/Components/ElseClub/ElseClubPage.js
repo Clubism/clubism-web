@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './style/ElseClubPage.scss';
+import '../style/ElseClubPage.scss';
 import ElseClubList from './ElseClubList';
 import ElseClubCategory from './ElseClubCategory';
 
