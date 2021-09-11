@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../style/ClubCategory.scss'
+import {Link} from 'react-router-dom';
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -24,7 +25,7 @@ const MainClubCategory = (props) => {
 
   useEffect((data) => {
     setClubListFilter(ClubList.filter(data => data.category === props.category))
-  }, [props.category])
+  }, [props.category, ClubList])
 
   return (
     <div className="ClubCategory scroll-type1">
@@ -43,11 +44,13 @@ const MainClubCategory = (props) => {
               <List disablePadding className={(data.value === props.category) && props.category !== '전체보기' ? 'show-menu' : 'hide-menu'}>
                 {ClubListFilter.map(data => {
                   return (
+                    <Link to={{pathname : `/mainClub/${data.label}`}} className="sidebar-item-text">
                     <ListItem key={data.id} button dense>
-                      <ListItemText>
-                        <span className="sidebar-item-text">{data.name}</span>
-                      </ListItemText>
+                      
+                        <ListItemText>{data.name}</ListItemText>
+                      
                     </ListItem>
+                    </Link>
                   )
                 })}
               </List>

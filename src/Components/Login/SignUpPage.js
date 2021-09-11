@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/LoginPage.scss';
+import '../style/LoginPage.scss';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form'

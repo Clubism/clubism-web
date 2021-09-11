@@ -21,12 +21,12 @@ const Clubs = (props) => {
   useEffect((data) => {
     if (props.category === '전체보기') setFilter(Club);
     else setFilter(Club.filter(data => data.category === props.category))
-  }, [props.category])
+  }, [props.category, Club])
 
   return (
     <div className='clubContainer'>
       {Filter.map((mainClub, index) => (
-        <div className='club' onClick={function () {
+        <div className='club' key={index} onClick={function () {
           props.setDetailPage(true);
           props.setSelectedClub(mainClub)
         }}>

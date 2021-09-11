@@ -25,16 +25,18 @@
 .sidebar-item-text {
   padding-left: 10px;
   font-size: 0.8rem;
+  color: black;
+  text-decoration: none;
 }
 
-.scroll-type1::-webkit-scrollbar{
-    width: 6px;
+.scroll-type1::-webkit-scrollbar {
+  width: 6px;
 }
 
 /* 스크롤바 막대 설정*/
-.scroll-type1::-webkit-scrollbar-thumb{
-    height: 5%;
-    background-color: rgba(255,255,255,1);
-    /* 스크롤바 둥글게 설정    */
-    border-radius: 10px;    
+.scroll-type1::-webkit-scrollbar-thumb {
+  height: 5%;
+  background-color: rgba(255, 255, 255, 1);
+  /* 스크롤바 둥글게 설정    */
+  border-radius: 10px;
 }

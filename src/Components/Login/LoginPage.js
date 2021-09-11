@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/LoginPage.scss';
+import '../style/LoginPage.scss';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
@@ -30,7 +30,6 @@ const LoginPage = () => {
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
-
             </Form>
         </div>
     )

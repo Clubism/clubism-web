@@ -2,366 +2,439 @@
  {
    "id": 1,
    "category": "언행예술분과",
-   "name": "맥박"
+   "name": "맥박",
+   "label": "macbak"
  },
  {
    "id": 2,
    "category": "언행예술분과",
-   "name": "SHOCK"
+   "name": "SHOCK",
+   "label": "shock"
  },
  {
    "id": 3,
    "category": "언행예술분과",
-   "name": "광야"
+   "name": "광야",
+   "label": "gwangya"
  },
  {
    "id": 4,
    "category": "언행예술분과",
-   "name": "메시지"
+   "name": "메시지",
+   "label": "message"
  },
  {
    "id": 5,
    "category": "언행예술분과",
-   "name": "ACES"
+   "name": "ACES",
+   "label": "aces"
  },
  {
    "id": 6,
    "category": "언행예술분과",
-   "name": "현우회"
+   "name": "현우회",
+   "label": "hyunwoohwi"
  },
  {
    "id": 7,
    "category": "언행예술분과",
-   "name": "ABYSS"
+   "name": "ABYSS",
+   "label": "abyss"
  },
  {
    "id": 8,
    "category": "언행예술분과",
-   "name": "서강합창단"
+   "name": "서강합창단",
+   "label": "sogangchoir"
  },
  {
    "id": 9,
    "category": "언행예술분과",
-   "name": "서강연극회"
+   "name": "서강연극회",
+   "label": "sogangtheater"
  },
  {
    "id": 10,
    "category": "언행예술분과",
-   "name": "마수지"
+   "name": "마수지",
+   "label": "masuz"
  },
  {
    "id": 11,
    "category": "언행예술분과",
-   "name": "킨젝스"
+   "name": "킨젝스",
+   "label": "kinjex"
  },
  {
    "id": 12,
    "category": "언행예술분과",
-   "name": "에밀레"
+   "name": "에밀레",
+   "label": "emile"
  },
  {
    "id": 13,
    "category": "언행예술분과",
-   "name": "건드림"
+   "name": "건드림",
+   "label": "gundream"
  },
  {
    "id": 14,
    "category": "언행예술분과",
-   "name": "MITY"
+   "name": "MITY",
+   "label": "mity"
  },
  {
    "id": 15,
    "category": "사회교양분과",
-   "name": "서광회"
+   "name": "서광회",
+   "label": "camera"
  },
  {
    "id": 16,
    "category": "사회교양분과",
-   "name": "AIESEC"
+   "name": "AIESEC",
+   "label": "aiesec"
  },
  {
    "id": 17,
    "category": "사회교양분과",
-   "name": "서강만화창작부"
+   "name": "서강만화창작부",
+   "label": "cartoon"
  },
  {
    "id": 18,
    "category": "사회교양분과",
-   "name": "서강영화공동체"
+   "name": "서강영화공동체",
+   "label": "sogangfilm"
  },
  {
    "id": 19,
    "category": "사회교양분과",
-   "name": "Black Box"
+   "name": "Black Box",
+   "label": "blackbox"
  },
  {
    "id": 20,
    "category": "사회교양분과",
-   "name": "Enactus"
+   "name": "Enactus",
+   "label": "enactus"
  },
  {
    "id": 21,
    "category": "사회교양분과",
-   "name": "강미반"
+   "name": "강미반",
+   "label": "drawing"
  },
  {
    "id": 22,
    "category": "사회교양분과",
-   "name": "21c hermit"
+   "name": "21c hermit",
+   "label": "21chermit"
  },
  {
    "id": 23,
    "category": "사회교양분과",
-   "name": "SWIC"
+   "name": "SWIC",
+   "label": "swic"
  },
  {
    "id": 24,
    "category": "사회교양분과",
-   "name": "TedxSogangU"
+   "name": "TedxSogangU",
+   "label": "tedxsogangu"
  },
  {
    "id": 25,
    "category": "봉사분과",
-   "name": "손짓사랑"
+   "name": "손짓사랑",
+   "label": "sonjit"
  },
  {
    "id": 26,
    "category": "봉사분과",
-   "name": "KUSA"
+   "name": "KUSA",
+   "label": "kusa"
  },
  {
    "id": 27,
    "category": "봉사분과",
-   "name": "HUG"
+   "name": "HUG",
+   "label": "hug"
  },
  {
    "id": 28,
    "category": "봉사분과",
-   "name": "CHANCE"
+   "name": "CHANCE",
+   "label": "change"
  },
  {
    "id": 29,
    "category": "봉사분과",
-   "name": "애드리랑"
+   "name": "애드리랑",
+   "label": "aedrirang"
  },
  {
    "id": 30,
    "category": "봉사분과",
-   "name": "아루페봉사단"
+   "name": "아루페봉사단",
+   "label": "arupe"
  },
  {
    "id": 31,
    "category": "종교분과",
-   "name": "IVF"
+   "name": "IVF",
+   "label": "ivf"
  },
  {
    "id": 32,
    "category": "종교분과",
-   "name": "네비게이토"
+   "name": "네비게이토",
+   "label": "navigato"
  },
  {
    "id": 33,
    "category": "종교분과",
-   "name": "예수전도단"
+   "name": "예수전도단",
+   "label": "jesus"
  },
  {
    "id": 34,
    "category": "종교분과",
-   "name": "혜명"
+   "name": "혜명",
+   "label": "budah"
  },
  {
    "id": 35,
    "category": "종교분과",
-   "name": "CCC"
+   "name": "CCC",
+   "label": "ccc"
  },
  {
    "id": 36,
    "category": "종교분과",
-   "name": "이냐시오회"
+   "name": "이냐시오회",
+   "label": "inyasio"
  },
  {
    "id": 37,
    "category": "종교분과",
-   "name": "UDC"
+   "name": "UDC",
+   "label": "udc"
  },
  {
    "id": 38,
    "category": "체육분과",
-   "name": "서강탁구반"
+   "name": "서강탁구반",
+   "label": "pingpong"
  },
  {
    "id": 39,
    "category": "체육분과",
-   "name": "SGTC"
+   "name": "SGTC",
+   "label": "sgtc"
  },
  {
    "id": 40,
    "category": "체육분과",
-   "name": "TAP"
+   "name": "TAP",
+   "label": "tap"
  },
  {
    "id": 41,
    "category": "체육분과",
-   "name": "FC VENTURA"
+   "name": "FC VENTURA",
+   "label": "fcventura"
  },
  {
    "id": 42,
    "category": "체육분과",
-   "name": "YPOS"
+   "name": "YPOS",
+   "label": "ypos"
  },
  {
    "id": 43,
    "category": "체육분과",
-   "name": "WALCS"
+   "name": "WALCS",
+   "label": "walcs"
  },
  {
    "id": 44,
    "category": "체육분과",
-   "name": "SMASH"
+   "name": "SMASH",
+   "label": "smash"
  },
  {
    "id": 45,
    "category": "체육분과",
-   "name": "서강축구반"
+   "name": "서강축구반",
+   "label": "soccer"
  },
  {
    "id": 46,
    "category": "체육분과",
-   "name": "서강야구반"
+   "name": "서강야구반",
+   "label": "baseball"
  },
  {
    "id": 47,
    "category": "체육분과",
-   "name": "서강산악부"
+   "name": "서강산악부",
+   "label": "climbing"
  },
  {
    "id": 48,
    "category": "체육분과",
-   "name": "서강농구반"
+   "name": "서강농구반",
+   "label": "basketball"
  },
  {
    "id": 49,
    "category": "체육분과",
-   "name": "FC EINS"
+   "name": "FC EINS",
+   "label": "fceins"
  },
  {
    "id": 50,
    "category": "체육분과",
-   "name": "서강태권도부"
+   "name": "서강태권도부",
+   "label": "taekwondo"
  },
  {
    "id": 51,
    "category": "체육분과",
-   "name": "굿민턴"
+   "name": "굿민턴",
+   "label": "goodminton"
  },
  {
    "id": 52,
    "category": "체육분과",
-   "name": "서강기우회"
+   "name": "서강기우회",
+   "label": "giwoohwi"
  },
  {
    "id": 53,
    "category": "체육분과",
-   "name": "서강검우회"
+   "name": "서강검우회",
+   "label": "gumwoohwi"
  },
  {
    "id": 54,
    "category": "체육분과",
-   "name": "서강나비"
+   "name": "서강나비",
+   "label": "butterfly"
  },
  {
    "id": 55,
    "category": "체육분과",
-   "name": "Spike-G"
+   "name": "Spike-G",
+   "label": "spike-g"
  },
  {
    "id": 56,
    "category": "체육분과",
-   "name": "스트로크"
+   "name": "스트로크",
+   "label": "stroke"
  },
  {
    "id": 57,
    "category": "체육분과",
-   "name": "SGAEM"
+   "name": "SGAEM",
+   "label": "sgaem"
  },
  {
    "id": 58,
    "category": "체육분과",
-   "name": "농우회"
+   "name": "농우회",
+   "label": "nongwoohwi"
  },
  {
    "id": 59,
    "category": "체육분과",
-   "name": "스프린트"
+   "name": "스프린트",
+   "label": "sprint"
  },
  {
    "id": 60,
    "category": "학술분과",
-   "name": "POE"
+   "name": "POE",
+   "label": "poe"
  },
  {
    "id": 61,
    "category": "학술분과",
-   "name": "서강AD"
+   "name": "서강AD",
+   "label": "sogangad"
  },
  {
    "id": 62,
    "category": "학술분과",
-   "name": "ELM"
+   "name": "ELM",
+   "label": "elm"
  },
  {
    "id": 63,
    "category": "학술분과",
-   "name": "SGCC"
+   "name": "SGCC",
+   "label": "sgcc"
  },
  {
    "id": 64,
    "category": "학술분과",
-   "name": "ADS"
+   "name": "ADS",
+   "label": "ads"
  },
  {
    "id": 65,
    "category": "학술분과",
-   "name": "SRS"
+   "name": "SRS",
+   "label": "srs"
  },
  {
    "id": 66,
    "category": "학술분과",
-   "name": "SG Fenero"
+   "name": "SG Fenero",
+   "label": "sgfenero"
  },
  {
    "id": 67,
    "category": "학술분과",
-   "name": "WAVB"
+   "name": "WAVB",
+   "label": "wavb"
  },
  {
    "id": 68,
    "category": "학술분과",
-   "name": "LENS"
+   "name": "LENS",
+   "label": "lens"
  },
  {
    "id": 69,
    "category": "학술분과",
-   "name": "별반"
+   "name": "별반",
+   "label": "star"
  },
  {
    "id": 70,
    "category": "학술분과",
-   "name": "서강정토"
+   "name": "서강정토",
+   "label": "debate"
  },
  {
    "id": 71,
    "category": "학술분과",
-   "name": "서강번역회"
+   "name": "서강번역회",
+   "label": "translation"
  },
  {
    "id": 72,
    "category": "학술분과",
-   "name": "Pridean"
+   "name": "Pridean",
+   "label": "pridean"
  },
  {
    "id": 73,
    "category": "학술분과",
-   "name": "서강러브"
+   "name": "서강러브",
+   "label": "love"
  }
 ]
