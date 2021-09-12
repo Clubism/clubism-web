@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
+
 const SignUpPage = () => {
   return (
     <div className="login-container">
