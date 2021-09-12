@@ -1,0 +1,19 @@
+.IntroContainer {
+  height: inherit;
+  width: inherit;
+  border: 1px solid rgb(190, 190, 190);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+}
+.IntroPoster {
+  border: 1px solid rgb(190, 190, 190);
+  width: 200px;
+  height: 280px;
+  margin: auto 20px;
+}
+.IntroMain {
+  border: 1px solid rgb(190, 190, 190);
+  width: calc(100% - 260px);
+  height: 280px;
+}

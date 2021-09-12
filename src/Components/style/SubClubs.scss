@@ -4,10 +4,16 @@
   width: 80%;
   justify-content: center;
   height: auto;
-  overflow: hidden;
+  overflow-y: none;
+  :hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    top: -4px;
+  }
 }
 .sub_club {
   display: flex;
+  flex-wrap: wrap;
   border: 1px solid #dadada;
   margin: 0.5rem 0.5rem;
   padding: 0.5rem 0.5rem;
@@ -15,11 +21,16 @@
   width: 40%;
   height: 120px;
   justify-content: space-between;
+  :hover {
+    top: 0px;
+    box-shadow: none;
+  }
 }
 .sub_clubText {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  flex-wrap: wrap;
   .sub_category {
     width: 60px;
     font-size: 0.4rem;
@@ -36,18 +47,24 @@
   .sub_name {
     padding-left: 0.5rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    // margin-bottom: 0.5rem;
+    margin-bottom: 0px;
   }
   .sub_description {
     padding-left: 1rem;
     // margin-bottom: 1.5rem;
+    margin-bottom: 5px;
   }
   .sub_deadline {
-    width: 50%;
+    width: 70px;
     padding: 0.3rem;
     background-color: #dadada;
     border-radius: 12px;
     text-align: center;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
