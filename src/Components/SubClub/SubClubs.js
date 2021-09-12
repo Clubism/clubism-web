@@ -1,53 +1,55 @@
-import React, {useState, useEffect} from 'react';
-import '../style/SubClubs.scss';
+import React, { useState, useEffect } from "react";
+import "../style/SubClubs.scss";
 
-const Clubs = (props)=>{
+const Clubs = (props) => {
   const [Club, setClub] = useState([]);
   const [Filter, setFilter] = useState(Club);
-  useEffect(()=>{
-    fetch('dummy/subclublist.json')
-      .then(res=>res.json())
+  useEffect(() => {
+    fetch("dummy/subclublist.json")
+      .then((res) => res.json())
       .then(
-        (result) =>{
+        (result) => {
           setClub(result);
           setFilter(result);
         },
         (error) => {
           console.log(error);
         }
-      )
-  }, [])
+      );
+  }, []);
 
-  useEffect((data)=>{
-    if(props.category==='전체보기') setFilter(Club);
-    else setFilter(Club.filter(data=>data.category===props.category))
-  }, [props])
+  useEffect(
+    (data) => {
+      if (props.category === "전체보기") setFilter(Club);
+      else setFilter(Club.filter((data) => data.category === props.category));
+    },
+    [props]
+  );
 
   return (
-    <div className='clubContainer'>
-    {Filter.map((mainClub, index)=>(
-      <div className='club'>
-        <div className='clubText'>
-          <div className='category'>
-            {mainClub.category}
-          </div> 
-          <div className='name'>
-            {mainClub.name}
+    <div className="sub_clubContainer">
+      {Filter.map((mainClub, index) => (
+        <div className="sub_club">
+          <div className="sub_clubText">
+            <div className="sub_category">{mainClub.category}</div>
+            <div className="sub_name">{mainClub.name}</div>
+            <div className="sub_description">{mainClub.description}</div>
+            <div className="sub_deadline">
+              {new Date() < new Date(mainClub.deadline)
+                ? "D - " +
+                  (
+                    new Date(mainClub.deadline).getDate() - new Date().getDate()
+                  ).toString()
+                : "마감"}
+            </div>
           </div>
-          <div className='description'>
-            {mainClub.description}
-          </div>
-          <div className='deadline'>
-            {new Date() < new Date(mainClub.deadline)? 'D - ' + (new Date(mainClub.deadline).getDate() - new Date().getDate()).toString() : "마감"}
+          <div className="sub_clubImage">
+            <img src="" alt="poster" />
           </div>
         </div>
-        <div className='clubImage'>
-          <img src="" alt="poster" />
-        </div>
-      </div>
-    ))}
+      ))}
     </div>
-  )
+  );
 };
 
 export default Clubs;
