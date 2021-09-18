@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import '../style/ElseClubCategory.scss'
 
 const ElseClubCategory = (props)=>{
@@ -8,10 +9,11 @@ const ElseClubCategory = (props)=>{
     console.log(value);
     categoryList.push(
       <li key={value.id}>
-        <a onClick={function(e){
+        <Link to="#" className='link' onClick={(e)=>{
           e.preventDefault();
-          props.setCategory(value.value);
-        }}>{value.value}</a>
+          props.setCategory(value.id);
+        }}>{value.value}</Link>  
+
       </li>
     )
   }

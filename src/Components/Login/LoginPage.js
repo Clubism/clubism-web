@@ -18,8 +18,8 @@ const LoginPage = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label className="login-label">Password</Form.Label>
-                    <Form.Control className="form-control" type="password" placeholder="Enter password" />
+                  <Form.Label className="login-label">Password</Form.Label>
+                  <Form.Control className="form-control" type="password" placeholder="Enter password" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check className="login-label" type="checkbox" label="Remember me" />
@@ -28,7 +28,7 @@ const LoginPage = () => {
                     Submit
                 </Button>
                 <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
+                    Forgot <Link to="#">password?</Link>
                 </p>
             </Form>
         </div>

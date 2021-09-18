@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import './style/IndexTemplate.scss';
 import { Link } from 'react-router-dom';
 
-
 const IndexTemplate = ({ children }) => {
+  const isLoggedIn = useRef(true);
+
+  console.log('isLoggedIn : ', isLoggedIn.current);
   return (
     <div className='IndexTemplate'>
       <div className='topBar'>
@@ -13,7 +15,7 @@ const IndexTemplate = ({ children }) => {
             clubism
           </Link>
         </div>
-        <div className='auth'>
+        <div className={isLoggedIn.current ? 'auth-hide' : 'auth-show'}>
           <div className="login">
             <Link className='link' to="/login">
               로그인&nbsp;
@@ -23,6 +25,19 @@ const IndexTemplate = ({ children }) => {
           <div className="login">
             <Link className='link' to="/signup">
               회원가입
+            </Link>
+          </div>
+        </div>
+        <div className={isLoggedIn.current ? 'auth-show' : 'auth-hide'}>
+          <div className='mypage'>
+            <Link className='mypage link' to="/mypage">
+              mypage
+            </Link>
+          </div>
+          <span> | </span>
+          <div className='logout'>
+            <Link className='logout link' to="/logout">
+              logout
             </Link>
           </div>
         </div>

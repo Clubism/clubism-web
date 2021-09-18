@@ -22,7 +22,8 @@ const ClubList = (props)=>{
   useEffect((data)=>{
     if(props.category==="전체보기") setFilter(Post);
     else setFilter(Post.filter(data=>data.category===props.category))
-  }, [props])
+  }, [props, Post])
+
 
   return(
     <div className='ClubList'>
