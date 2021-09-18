@@ -26,7 +26,17 @@
 }
 
 .State {
+  background-color: #333333;
+  color:#ffffff;
+  border-radius: 4px;
+}
+
+.Posting{
   background-color: #777777;
   color:#ffffff;
   border-radius: 4px;
+  width: 50px;
+  justify-content: center;
+  position: relative;
+  display: flex;
 }

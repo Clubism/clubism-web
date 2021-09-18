@@ -26,7 +26,7 @@ const Clubs = (props) => {
   return (
     <div className='clubContainer'>
       {Filter.map((mainClub, index) => (
-        <div className='club' key={index} onClick={function () {
+        <div className='club' key={index} onClick={()=>{
           props.setDetailPage(true);
           props.setSelectedClub(mainClub)
         }}>

@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../style/ElseClubPage.scss';
 import ElseClubList from './ElseClubList';
 import ElseClubCategory from './ElseClubCategory';
+import ElseClubPosting from './ElseClubPosting';
+// import { Route } from 'react-router-dom';
 
 
 const ElseClubCategories = [
@@ -12,11 +14,15 @@ const ElseClubCategories = [
   ];
 
 const ElseClubPage = ()=>{
-  const [category, setCategory] = useState(0);
+  const [category, setCategory] = useState('전체보기');
+  const [viewList, setViewList] = useState(1);
+
   return(
     <div className='ElseClubPage'>
       <ElseClubCategory category={ElseClubCategories} setCategory={setCategory}/>
-      <ElseClubList category={category}/>
+      {viewList?<ElseClubList category={category} setViewList={setViewList}/>:<ElseClubPosting category={category} setViewList={setViewList}/>}
+      {/* <Route path='/elseClub' component={ElseClubList} exact />
+      <Route path='/elseClub/posting' component={ElseClubPosting} exact /> */}
     </div>
   )
 };
