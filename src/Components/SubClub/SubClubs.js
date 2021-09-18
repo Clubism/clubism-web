@@ -18,20 +18,13 @@ const Clubs = (props) => {
       );
   }, []);
 
-<<<<<<< HEAD
-  useEffect((data)=>{
-    if(props.category==='전체보기') setFilter(Club);
-    else setFilter(Club.filter(data=>data.category===props.category))
-  }, [props, Club])
-=======
   useEffect(
     (data) => {
       if (props.category === "전체보기") setFilter(Club);
       else setFilter(Club.filter((data) => data.category === props.category));
     },
-    [props]
+    [props, Club]
   );
->>>>>>> fb2b0f29a17d8d34cf43063c7302497d9607e79b
 
   return (
     <div className="sub_clubContainer">
