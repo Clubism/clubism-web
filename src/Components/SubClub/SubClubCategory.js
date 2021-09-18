@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import '../style/ClubCategory.scss'
 
 const SubClubCategory = (props)=>{
-  var categoryList = [];
+  let categoryList = [];
   for(var i=0;i<props.category.length;i++){
     const value = props.category[i];
     categoryList.push(
