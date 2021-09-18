@@ -21,7 +21,7 @@ const ClubList = (props)=>{
   useEffect((data)=>{
     if(props.category===0) setFilter(Post);
     else setFilter(Post.filter(data=>data.category_id===props.category))
-  }, [props])
+  }, [props, Post])
 
   return(
     <div className='ClubList'>

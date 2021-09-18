@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import '../style/ClubCategory.scss'
 
 const SubClubCategory = (props)=>{
@@ -7,11 +8,11 @@ const SubClubCategory = (props)=>{
     const value = props.category[i];
     categoryList.push(
       <li key={value.id}>
-        <a onClick={function(e){
+        <Link to="#" onClick={function(e){
           e.preventDefault();
           props.setCategory(value.value);
           console.log(value.value);
-        }}>{value.value}</a>
+        }}>{value.value}</Link>
       </li>
     )
   }

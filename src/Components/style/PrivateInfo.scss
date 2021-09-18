@@ -1,0 +1,48 @@
+.PrivateInfo {
+  margin: 20px 50px;
+  width: 1200px;
+}
+.PrivateInfo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  button {
+    outline: none;
+    border: none;
+    background: #dadada;
+    border-radius: 18px;
+    padding: 6px 24px;
+  }
+}
+.PrivateInfo-content {
+  label {
+    width: 120px;
+    font-weight: bold;
+  }
+  input {
+    width: 400px;
+    outline: none;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    padding: 5px 10px;
+    &:focus {
+      outline: none;
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-transition: background-color 9999s ease-out;
+      //-webkit-box-shadow: 0 0 0px 1000px white inset !important;
+      -webkit-text-fill-color: #000 !important;
+    }
+  }
+  div {
+    margin-bottom: 20px;
+  }
+}

@@ -10,6 +10,7 @@ import SubClub from './Pages/SubClub';
 import ElseClub from './Pages/ElseClub';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
+import MyPage from './Pages/MyPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/elseClub" component={ElseClub} exact />
       <Route path="/login" component={Login} exact />
       <Route path="/signup" component={SignUp} exact />
+      <Route path="/mypage" component={MyPage} exact />
       <Route component={Error404} />
     </Switch>
   );

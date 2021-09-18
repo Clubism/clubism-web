@@ -46,9 +46,7 @@ const MainClubCategory = (props) => {
                   return (
                     <Link to={{pathname : `/mainClub/${data.label}`}} className="sidebar-item-text">
                     <ListItem key={data.id} button dense>
-                      
-                        <ListItemText>{data.name}</ListItemText>
-                      
+                      <ListItemText>{data.name}</ListItemText>
                     </ListItem>
                     </Link>
                   )
