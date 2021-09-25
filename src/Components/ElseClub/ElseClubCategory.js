@@ -11,7 +11,7 @@ const ElseClubCategory = (props)=>{
       <li key={value.id}>
         <Link to="#" className='link' onClick={(e)=>{
           e.preventDefault();
-          props.setCategory(value.id);
+          props.setCategory(value.value);
         }}>{value.value}</Link>  
 
       </li>

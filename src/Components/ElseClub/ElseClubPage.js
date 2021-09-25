@@ -3,7 +3,7 @@ import '../style/ElseClubPage.scss';
 import ElseClubList from './ElseClubList';
 import ElseClubCategory from './ElseClubCategory';
 import ElseClubPosting from './ElseClubPosting';
-// import { Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 
 const ElseClubCategories = [
