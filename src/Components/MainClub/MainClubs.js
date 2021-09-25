@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import '../style/MainClubs.scss';
+import React, { useState, useEffect } from "react";
+import "../style/MainClubs.scss";
+import { Link } from "react-router-dom";
 
 const Clubs = (props) => {
   const [Club, setClub] = useState([]);
   const [Filter, setFilter] = useState(Club);
   useEffect(() => {
-    fetch('dummy/mainclublist.json')
-      .then(res => res.json())
+    fetch("dummy/mainclublist.json")
+      .then((res) => res.json())
       .then(
         (result) => {
           setClub(result);
@@ -15,42 +16,57 @@ const Clubs = (props) => {
         (error) => {
           console.log(error);
         }
-      )
-  }, [])
+      );
+  }, []);
 
-  useEffect((data) => {
-    if (props.category === '전체보기') setFilter(Club);
-    else setFilter(Club.filter(data => data.category === props.category))
-  }, [props.category, Club])
+  useEffect(
+    (data) => {
+      if (props.category === "전체보기") setFilter(Club);
+      else setFilter(Club.filter((data) => data.category === props.category));
+    },
+    [props.category, Club]
+  );
 
   return (
-    <div className='clubContainer'>
+    <div className="clubContainer">
       {Filter.map((mainClub, index) => (
-        <div className='club' key={index} onClick={()=>{
-          props.setDetailPage(true);
-          props.setSelectedClub(mainClub)
-        }}>
-          <div className='clubText'>
-            <div className='category'>
-              {mainClub.category}
+        <div
+          className="club"
+          key={index}
+          onClick={() => {
+            props.setDetailPage(true);
+            props.setSelectedClub(mainClub);
+            console.log(`${mainClub.label}`);
+          }}
+          // style={{ backgroundColor: "blue" }}
+        >
+          <Link
+            to={{ pathname: `/mainClub/${mainClub.label}` }}
+            // style={{ backgroundColor: "pink" }}
+            className="LinkTp"
+          >
+            <div className="clubText">
+              <div className="category">{mainClub.category}</div>
+              <div className="name">{mainClub.name}</div>
+              <div className="description">{mainClub.description}</div>
+              <div className="deadline">
+                {new Date() < new Date(mainClub.deadline)
+                  ? "D - " +
+                    (
+                      new Date(mainClub.deadline).getDate() -
+                      new Date().getDate()
+                    ).toString()
+                  : "마감"}
+              </div>
             </div>
-            <div className='name'>
-              {mainClub.name}
+            <div className="clubImage">
+              <img src="" alt="poster" />
             </div>
-            <div className='description'>
-              {mainClub.description}
-            </div>
-            <div className='deadline'>
-              {new Date() < new Date(mainClub.deadline) ? 'D - ' + (new Date(mainClub.deadline).getDate() - new Date().getDate()).toString() : "마감"}
-            </div>
-          </div>
-          <div className='clubImage'>
-            <img src="" alt="poster" />
-          </div>
+          </Link>
         </div>
       ))}
     </div>
-  )
+  );
 };
 
 export default Clubs;
