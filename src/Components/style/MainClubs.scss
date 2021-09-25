@@ -17,21 +17,31 @@
   flex-wrap: wrap;
   border: 1px solid #dadada;
   margin: 0.5rem 0.5rem;
-  padding: 0.5rem 0.5rem;
+  // padding: 0.5rem 0.5rem;
   border-radius: 4px;
   width: 40%;
   height: 120px;
-  justify-content: space-between;
+
   :hover {
     top: 0px;
     box-shadow: none;
   }
 }
+.LinkTp {
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
 .clubText {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
+  color: black;
+  text-decoration: unset;
   .category {
     width: 60px;
     font-size: 0.4rem;
