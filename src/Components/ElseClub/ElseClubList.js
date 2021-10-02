@@ -38,7 +38,10 @@ const ClubList = (props)=>{
           <div>모집</div><div className='Title'>제목</div><div>작성일</div><div>작성자</div>
       </div>
       {Filter.map(post=>(
-        <div className='Posts' key={post._id}>
+        <Link to="/elseClub/post" className='link' onClick={()=>{
+          props.setPost(post);
+        }}>
+          <div className='Posts' key={post._id}>
           <div className='State'>
             {post.state ? "진행중" : "마감"}
           </div>
@@ -51,7 +54,10 @@ const ClubList = (props)=>{
           <div>
             {post.writer}
           </div>
-        </div>))}
+        </div>
+        </Link>  
+
+        ))}
     </div>
   )
 };
