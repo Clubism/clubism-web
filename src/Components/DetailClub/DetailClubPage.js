@@ -4,7 +4,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import DetailClubAll from "./All";
 import DetailClubCurrent from "./Current";
-import DetailClubQA from "./QnA";
+import DetailClubQA from "./QA";
 import DetailClubIntro from "./Intro";
 
 const DetailCulbPage = (props) => {
