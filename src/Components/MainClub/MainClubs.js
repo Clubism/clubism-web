@@ -36,7 +36,7 @@ const Clubs = (props) => {
           onClick={() => {
             props.setDetailPage(true);
             props.setSelectedClub(mainClub);
-            console.log(`${mainClub.label}`);
+            console.log(mainClub.label);
           }}
           // style={{ backgroundColor: "blue" }}
         >
