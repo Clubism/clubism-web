@@ -17,7 +17,8 @@ function App() {
     <Switch>
       <Route path="/" component={Index} exact />
       <Route path="/mainClub" component={MainClub} exact />
-      <Route path="/mainClub/:name" component={MainClub} exact />
+      <Route path="/mainClub/:category" component={MainClub} exact />
+      <Route path="/mainClub/:category/:name" component={MainClub} exact />
       <Route path="/subClub" component={SubClub} exact />
       <Route path="/elseClub" component={ElseClub} exact />
       <Route path="/login" component={Login} exact />

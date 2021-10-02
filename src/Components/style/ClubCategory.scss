@@ -3,7 +3,7 @@
   width: 20%;
   // height: calc(100vh - 4rem);
   background: #dadada;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 // li {
@@ -38,4 +38,8 @@
   background-color: rgba(255, 255, 255, 1);
   /* 스크롤바 둥글게 설정    */
   border-radius: 10px;
+}
+
+.sidebar-item-text {
+  padding: 0px;
 }
