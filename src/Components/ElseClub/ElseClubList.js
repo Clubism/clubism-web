@@ -28,12 +28,12 @@ const ClubList = (props)=>{
 
   return(
     <div className='ElseClubList'>
-      <div className='Posting' onClick={()=>{
+      {/* <div className='Posting' onClick={()=>{
         props.setViewList(0);
       }}>
         글작성
-      </div>
-      {/* <Link to="/elseClub/posting" className='Posting'>글작성</Link> */}
+      </div> */}
+      <Link to= "/elseClub/posting" className='Posting'>글작성</Link>
       <div className='Posts'>
           <div>모집</div><div className='Title'>제목</div><div>작성일</div><div>작성자</div>
       </div>

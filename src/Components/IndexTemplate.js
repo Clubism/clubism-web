@@ -55,7 +55,7 @@ const IndexTemplate = ({ children }) => {
             </Link>
           </div>
           <div className='elseClub'>
-            <Link className='link' to="./elseClub">
+            <Link className='link' to="/elseClub">
               소모임
             </Link>
           </div>

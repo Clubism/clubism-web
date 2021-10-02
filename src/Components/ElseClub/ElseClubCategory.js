@@ -9,8 +9,8 @@ const ElseClubCategory = (props)=>{
     console.log(value);
     categoryList.push(
       <li key={value.id}>
-        <Link to="#" className='link' onClick={(e)=>{
-          e.preventDefault();
+        <Link to="/elseClub" className='link' onClick={(e)=>{
+          // e.preventDefault();
           props.setCategory(value.value);
         }}>{value.value}</Link>  
 

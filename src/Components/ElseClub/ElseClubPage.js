@@ -3,7 +3,7 @@ import '../style/ElseClubPage.scss';
 import ElseClubList from './ElseClubList';
 import ElseClubCategory from './ElseClubCategory';
 import ElseClubPosting from './ElseClubPosting';
-import { Route } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 
 
 const ElseClubCategories = [
@@ -20,7 +20,11 @@ const ElseClubPage = ()=>{
   return(
     <div className='ElseClubPage'>
       <ElseClubCategory category={ElseClubCategories} setCategory={setCategory}/>
-      {viewList?<ElseClubList category={category} setViewList={setViewList}/>:<ElseClubPosting category={category} setViewList={setViewList}/>}
+      {/* {viewList?<ElseClubList category={category} setViewList={setViewList}/>:<ElseClubPosting category={category} setViewList={setViewList}/>} */}
+      <Switch>
+        <Route path='/elseClub' exact><ElseClubList category={category} setViewList={setViewList}/></Route>
+        <Route path='/elseClub/posting' exact><ElseClubPosting category={category} setViewList={setViewList}/></Route>
+      </Switch>
       {/* <Route path='/elseClub' component={ElseClubList} exact />
       <Route path='/elseClub/posting' component={ElseClubPosting} exact /> */}
     </div>
