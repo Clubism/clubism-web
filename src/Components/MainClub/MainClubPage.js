@@ -5,13 +5,43 @@ import DetailClubPage from "../DetailClub/DetailClubPage";
 import "../style/ClubPage.scss";
 
 const MainClubCategories = [
-  { id: 0, title: "all", value: "전체보기" },
-  { id: 1, title: "service", value: "봉사분과" },
-  { id: 2, title: "social", value: "사회교양분과" },
-  { id: 3, title: "art", value: "언행예술분과" },
-  { id: 4, title: "religion", value: "종교분과" },
-  { id: 5, title: "pe", value: "체육분과" },
-  { id: 6, title: "academic", value: "학술분과" }
+  { id: 0, value: "all", title: "전체보기", itemId: "/mainClub", subNav: [] },
+  {
+    id: 1,
+    value: "service",
+    title: "봉사분과",
+    itemId: "/mainClub/service",
+    subNav: []
+  },
+  {
+    id: 2,
+    value: "social",
+    title: "사회교양분과",
+    itemId: "/mainClub/social",
+    subNav: []
+  },
+  {
+    id: 3,
+    value: "art",
+    title: "언행예술분과",
+    itemId: "/mainClub/art",
+    subNav: []
+  },
+  {
+    id: 4,
+    value: "religion",
+    title: "종교분과",
+    itemId: "/mainClub/religion",
+    subNav: []
+  },
+  { id: 5, value: "pe", title: "체육분과", itemId: "/mainClub/pe", subNav: [] },
+  {
+    id: 6,
+    value: "academic",
+    title: "학술분과",
+    itemId: "/mainClub/academic",
+    subNav: []
+  }
 ];
 
 const MainClubPage = () => {
