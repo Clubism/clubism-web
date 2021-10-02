@@ -18,3 +18,12 @@ li {
   .side-navigation-panel-select-inner-option {
   padding: 0 2.5rem;
 }
+
+.side-navigation-panel
+  .side-navigation-panel-select
+  .side-navigation-panel-select-wrap
+  .side-navigation-panel-select-option
+  .side-navigation-panel-select-option-wrap
+  .side-navigation-panel-select-option-text {
+  font-weight: bold;
+}
