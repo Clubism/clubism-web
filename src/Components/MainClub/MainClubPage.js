@@ -6,13 +6,7 @@ import "../style/ClubPage.scss";
 
 const MainClubCategories = [
   { id: 0, value: "all", title: "전체보기", itemId: "/mainClub", subNav: [] },
-  {
-    id: 1,
-    value: "service",
-    title: "봉사분과",
-    itemId: "/mainClub/service",
-    subNav: []
-  },
+  { id: 1, value: "service", title: "봉사분과", itemId: "/mainClub/service", subNav: []},
   {
     id: 2,
     value: "social",
@@ -44,7 +38,9 @@ const MainClubCategories = [
   }
 ];
 
-const MainClubPage = () => {
+const MainClubPage = (props) => {
+    // const {params}=props.match;
+    console.log(props);
   const [category, setCategory] = useState("전체보기");
   const [detailPage, setDetailPage] = useState(false);
   const [selectedClub, setSelectedClub] = useState({});

@@ -3,6 +3,7 @@ import "../style/MainClubs.scss";
 import { Link } from "react-router-dom";
 
 const Clubs = (props) => {
+
   const [Club, setClub] = useState([]);
   const [Filter, setFilter] = useState(Club);
   useEffect(() => {
