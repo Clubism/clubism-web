@@ -4,54 +4,33 @@ import MainClubs from "./MainClubs";
 import DetailClubPage from "../DetailClub/DetailClubPage";
 import "../style/ClubPage.scss";
 
-const MainClubCategories = [
-  { id: 0, value: "all", title: "전체보기", itemId: "/mainClub", subNav: [] },
-  {
-    id: 1,
-    value: "service",
-    title: "봉사분과",
-    itemId: "/mainClub/service",
-    subNav: []
-  },
-  {
-    id: 2,
-    value: "social",
-    title: "사회교양분과",
-    itemId: "/mainClub/social",
-    subNav: []
-  },
-  {
-    id: 3,
-    value: "art",
-    title: "언행예술분과",
-    itemId: "/mainClub/art",
-    subNav: []
-  },
-  {
-    id: 4,
-    value: "religion",
-    title: "종교분과",
-    itemId: "/mainClub/religion",
-    subNav: []
-  },
-  { id: 5, value: "pe", title: "체육분과", itemId: "/mainClub/pe", subNav: [] },
-  {
-    id: 6,
-    value: "academic",
-    title: "학술분과",
-    itemId: "/mainClub/academic",
-    subNav: []
-  }
-];
-
-// const clubOnClick = () => {
-
-// }
-
-const MainClubPage = () => {
+const MainClubPage = (props) => {
+  // const {params}=props.match;
+  console.log(props.category, props.name);
   const [category, setCategory] = useState("전체보기");
   const [detailPage, setDetailPage] = useState(false);
   const [selectedClub, setSelectedClub] = useState({});
+  const [mainCategory, setMainCategory] = useState({});
+
+  useEffect(() => {
+    fetch("dummy/maincategorylist.json")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setMainCategory(result);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }, []);
+
+  useEffect(() => {
+    if (props.name !== undefined) {
+      setDetailPage(true);
+      console.log(detailPage);
+    }
+  }, [props.name, detailPage]);
 
   // useEffect(()=>{
   //   clubOnClick();
@@ -60,7 +39,7 @@ const MainClubPage = () => {
   return (
     <div className="ClubPage">
       <MainClubCategory
-        categoryList={MainClubCategories}
+        categoryList={mainCategory}
         setCategory={setCategory}
         category={category}
       />
