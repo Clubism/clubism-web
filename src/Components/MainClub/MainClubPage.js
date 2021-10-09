@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainClubCategory from "./MainClubCategory";
 import MainClubs from "./MainClubs";
 import DetailClubPage from "../DetailClub/DetailClubPage";
@@ -44,10 +44,18 @@ const MainClubCategories = [
   }
 ];
 
+// const clubOnClick = () => {
+
+// }
+
 const MainClubPage = () => {
   const [category, setCategory] = useState("전체보기");
   const [detailPage, setDetailPage] = useState(false);
   const [selectedClub, setSelectedClub] = useState({});
+
+  // useEffect(()=>{
+  //   clubOnClick();
+  // },[selectedClub])
 
   return (
     <div className="ClubPage">
