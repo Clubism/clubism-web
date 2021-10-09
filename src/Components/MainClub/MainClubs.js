@@ -42,7 +42,7 @@ const Clubs = (props) => {
           // style={{ backgroundColor: "blue" }}
         >
           <Link
-            to={{ pathname: `/mainClub/${mainClub.label}` }}
+            to={{ pathname: `/mainClub/${props.categoryvalue}/${mainClub.label}` }}
             // style={{ backgroundColor: "pink" }}
             className="LinkTp"
           >

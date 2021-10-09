@@ -12,23 +12,23 @@ const MainClubPage = (props) => {
   const [selectedClub, setSelectedClub] = useState({});
   const [mainCategory, setMainCategory] = useState({});
 
-  useEffect(() => {
-    fetch("dummy/maincategorylist.json")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setMainCategory(result);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }, []);
+  // useEffect(() => {
+  //   fetch("dummy/maincategorylist.json")
+  //     .then((res) => res.json())
+  //     .then(
+  //       (result) => {
+  //         setMainCategory(result);
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }, []);
 
   useEffect(() => {
     if (props.name !== undefined) {
       setDetailPage(true);
-      console.log(detailPage);
+      setSelectedClub(props.name);
     }
   }, [props.name, detailPage]);
 
@@ -38,11 +38,6 @@ const MainClubPage = (props) => {
 
   return (
     <div className="ClubPage">
-      <MainClubCategory
-        categoryList={mainCategory}
-        setCategory={setCategory}
-        category={category}
-      />
       {detailPage ? (
         <DetailClubPage selectedClub={selectedClub} />
       ) : (
@@ -50,6 +45,7 @@ const MainClubPage = (props) => {
           category={category}
           setDetailPage={setDetailPage}
           setSelectedClub={setSelectedClub}
+          categoryvalue = {props.category}
         />
       )}
     </div>
