@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from 'react';
-// import { Route } from 'react-router-dom';
 import '../style/ElseClubList.scss';
 import {Link} from 'react-router-dom';
+import Paging from './Paging';
 
 const ClubList = (props)=>{
   const [Post, setPost] = useState([]);
   const [Filter, setFilter] = useState(Post);
+
+  const [Page, setPage] = useState(0);
+  const PageNum = 15;
+
   useEffect(()=>{
     fetch('dummy/elseclublist.json')
       .then(res=>res.json())
@@ -23,7 +27,7 @@ const ClubList = (props)=>{
   useEffect((data)=>{
     console.log(props.category);
     if(props.category==="전체보기") setFilter(Post);
-    else setFilter(Post.filter(data=>data.category===props.category))
+    else setFilter(Post);
   }, [props])
 
   return(
@@ -58,6 +62,7 @@ const ClubList = (props)=>{
         </Link>  
 
         ))}
+        <Paging page={Page} count={Filter.length} setPage={setPage} PageNum={PageNum}></Paging>
     </div>
   )
 };
