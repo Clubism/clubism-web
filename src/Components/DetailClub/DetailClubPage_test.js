@@ -7,9 +7,10 @@ import DetailClubCurrent from "./Current";
 import DetailClubQA from "./QA";
 import DetailClubIntro from "./Intro";
 
-const DetailCulbPage = (props) => {
+const DetailClubPageTest = (props) => {
     console.log(props);
     const [selectedClub, setSelectedClub] = useState([]);
+    const [clubName, setClubName] = useState("");
 
     var fetchURL;
     if (props.category === undefined)
@@ -25,14 +26,16 @@ const DetailCulbPage = (props) => {
             .then(
                 (result) => {
                     setSelectedClub(result.filter((data) => data.label === props.name));
+                    console.log(selectedClub)
+                    // setClubName(selectedClub[0].name);
                 },
                 (error) => {
                     console.log(error);
                 }
             );
-    }, [props.name, fetchURL]);
+    }, [props.name, fetchURL, selectedClub]);
+    console.log(selectedClub)
 
-    console.log(selectedClub);
     return (
         <div className="detail-container">
             <Tabs
@@ -43,7 +46,7 @@ const DetailCulbPage = (props) => {
                 <Tab
                     className="detail-tab"
                     eventKey={1}
-                    title={selectedClub.name}
+                    title={clubName}
                     disabled
                 >
                     {/* <Sonnet /> */}
@@ -65,4 +68,4 @@ const DetailCulbPage = (props) => {
     );
 };
 
-export default DetailCulbPage;
+export default DetailClubPageTest;
