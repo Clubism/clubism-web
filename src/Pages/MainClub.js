@@ -14,7 +14,7 @@ const MainClub = (props) => {
     <div>
       <IndexTemplate>
       </IndexTemplate>
-      <div className="mainClubBox">
+      <div className="mainClubContainer">
         <MainClubCategoryTest category={params.category} name={params.name} />
         <MainClubPageTest category={params.category} name={params.name} />
       </div>

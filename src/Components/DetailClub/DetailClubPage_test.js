@@ -10,7 +10,6 @@ import DetailClubIntro from "./Intro";
 const DetailClubPageTest = (props) => {
     console.log(props);
     const [selectedClub, setSelectedClub] = useState([]);
-    const [clubName, setClubName] = useState("");
 
     var fetchURL;
     if (props.category === undefined)
@@ -26,44 +25,51 @@ const DetailClubPageTest = (props) => {
             .then(
                 (result) => {
                     setSelectedClub(result.filter((data) => data.label === props.name));
-                    console.log(selectedClub)
-                    // setClubName(selectedClub[0].name);
+                    console.log(props.name, fetchURL)
                 },
                 (error) => {
                     console.log(error);
+                    return;
                 }
             );
-    }, [props.name, fetchURL, selectedClub]);
-    console.log(selectedClub)
+    }, [props.name, fetchURL]);
+
+    var clubName = "";
+    if (selectedClub.length !== 0)
+        clubName = selectedClub[0].name;
+
 
     return (
         <div className="detail-container">
-            <Tabs
-                defaultActiveKey="profile"
-                id="uncontrolled-tab-example"
-                className="mb-3"
-            >
-                <Tab
-                    className="detail-tab"
-                    eventKey={1}
-                    title={clubName}
-                    disabled
+            {clubName !== "" ? (
+                <Tabs
+                    defaultActiveKey="profile"
+                    id="uncontrolled-tab-example"
+                    className="mb-3"
                 >
-                    {/* <Sonnet /> */}
-                </Tab>
-                <Tab className="detail-tab" eventKey={2} title="동아리 소개">
-                    <DetailClubIntro />
-                </Tab>
-                <Tab className="detail-tab" eventKey={3} title="현재 모집 공고">
-                    <DetailClubCurrent />
-                </Tab>
-                <Tab className="detail-tab" eventKey={4} title="전체 모집 공고">
-                    <DetailClubAll />
-                </Tab>
-                <Tab className="detail-tab" eventKey={5} title="Q&A">
-                    <DetailClubQA />
-                </Tab>
-            </Tabs>
+                    <Tab
+                        className="detail-tab"
+                        eventKey={1}
+                        title={clubName}
+                        disabled
+                    >
+                        {/* <Sonnet /> */}
+                    </Tab>
+                    <Tab className="detail-tab" eventKey={2} title="동아리 소개">
+                        <DetailClubIntro />
+                    </Tab>
+                    <Tab className="detail-tab" eventKey={3} title="현재 모집 공고">
+                        <DetailClubCurrent />
+                    </Tab>
+                    <Tab className="detail-tab" eventKey={4} title="전체 모집 공고">
+                        <DetailClubAll />
+                    </Tab>
+                    <Tab className="detail-tab" eventKey={5} title="Q&A">
+                        <DetailClubQA />
+                    </Tab>
+                </Tabs>) : (
+                <div>none</div>
+            )}
         </div>
     );
 };

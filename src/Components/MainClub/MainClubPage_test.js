@@ -18,7 +18,7 @@ const MainClubPageTest = (props) => {
 
     console.log(detailPage)
     return (
-        <div>
+        <div className="mainClubBox">
             {detailPage ? (
                 <DetailClubPageTest category={props.category} name={props.name} />
             ) : (
