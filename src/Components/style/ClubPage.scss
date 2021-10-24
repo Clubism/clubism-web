@@ -1,13 +1,7 @@
-.ClubPage {
-  display: flex;
-  height: 100%;
+.mainClubBox {
+  width: 100%;
 }
 
-.ClubCategory {
-  width: 20%;
-  overflow-y: auto;
-}
-
-.ClubCategory::-webkit-scrollbar {
-  display: none;
+.detail-container {
+  overflow: auto;
 }
