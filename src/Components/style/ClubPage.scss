@@ -5,4 +5,9 @@
 
 .ClubCategory {
   width: 20%;
+  overflow-y: auto;
+}
+
+.ClubCategory::-webkit-scrollbar {
+  display: none;
 }

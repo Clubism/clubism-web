@@ -4,8 +4,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // border: 1px solid #cfcfcf;
+  justify-content: flex-start;
+  border: 1px solid #cfcfcf;
   padding: 1rem 2rem;
   border-radius: 4px;
 }
@@ -27,17 +27,16 @@
 
 .State {
   background-color: #333333;
-  color:#ffffff;
+  color: #ffffff;
   border-radius: 4px;
 }
 
-.Posting{
+.Posting {
   background-color: #777777;
-  color:#ffffff;
+  color: #ffffff;
   border-radius: 4px;
   width: 50px;
   justify-content: center;
   position: relative;
   display: flex;
 }
-

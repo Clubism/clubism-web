@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const IndexTemplate = ({ children }) => {
   const isLoggedIn = useRef(true);
 
-  console.log('isLoggedIn : ', isLoggedIn.current);
+  // console.log('isLoggedIn : ', isLoggedIn.current);
   return (
     <div className='IndexTemplate'>
       <div className='topBar'>
