@@ -4,29 +4,26 @@
 // import DetailClubPage from "../DetailClub/DetailClubPage";
 // import "../style/ClubPage.scss";
 
-const MainClubPage = (props) => {
-  // const {params}=props.match;
-  console.log(props.category, props.name);
-  const [category, setCategory] = useState("전체보기");
-  const [detailPage, setDetailPage] = useState(false);
-  const [selectedClub, setSelectedClub] = useState({});
-  const [mainCategory, setMainCategory] = useState({});
+// const MainClubPage = (props) => {
+//     // const {params}=props.match;
 
 //   const [category, setCategory] = useState("전체보기");
 //   const [detailPage, setDetailPage] = useState(false);
 //   const [selectedClub, setSelectedClub] = useState({});
 //   const [mainCategory, setMainCategory] = useState({});
 
-  useEffect(() => {
-    if (props.name !== undefined) {
-      setDetailPage(true);
-      setSelectedClub(props.name);
-    }
-  }, [props.name, detailPage]);
-
-  // useEffect(()=>{
-  //   clubOnClick();
-  // },[selectedClub])
+//   // useEffect(() => {
+//   //   fetch("dummy/maincategorylist.json")
+//   //     .then((res) => res.json())
+//   //     .then(
+//   //       (result) => {
+//   //         setMainCategory(result);
+//   //       },
+//   //       (error) => {
+//   //         console.log(error);
+//   //       }
+//   //     );
+//   // }, []);
 
 //   useEffect(()=>{
 //     if(props.name!==undefined){
@@ -50,3 +47,5 @@ const MainClubPage = (props) => {
 //     </div>
 //   );
 // };
+
+// export default MainClubPage;
