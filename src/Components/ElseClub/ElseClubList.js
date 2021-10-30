@@ -28,9 +28,11 @@ const ClubList = (props)=>{
     console.log(props.category);
     if(props.category==="전체보기") {
       setFilter(Post);
+      setPage(1);
     }
     else {
       setFilter(Post.filter(data=>data.category===props.category));
+      setPage(1);
     }
   }, [props])
 

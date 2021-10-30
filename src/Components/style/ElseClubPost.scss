@@ -25,3 +25,25 @@
     border: 1px solid #ffffff;
     margin: auto 20px;
 }
+
+.ElseClubComment{
+  border: 1px solid #ffffff;
+  border: 0;
+}
+
+.InputComment{
+  // @if $type==0 {
+  //    background-color: 999999;
+  // }
+  input {
+    width: 85%;
+    border: 1px solid #999999;
+  }
+  button {
+    width: 10%;
+    background-color: #999999;
+    color: #ffffff;
+    border: 1px solid #999999;
+    margin: 5px;
+  }
+}

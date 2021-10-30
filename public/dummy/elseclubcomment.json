@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "comment": "댓글1",
+        "postNum": 1,
+        "class": 0,
+        "order": 1,
+        "groupNum": 0
+    },
+    {
+        "id": 2,
+        "comment": "댓글1답글1",
+        "postNum": 1,
+        "class": 1,
+        "order": 2,
+        "groupNum": 0
+    },
+    {
+        "id": 3,
+        "comment": "댓글1답글2",
+        "postNum": 1,
+        "class": 1,
+        "order": 3,
+        "groupNum": 0
+    },
+    {
+        "id": 4,
+        "comment": "댓글2",
+        "postNum": 1,
+        "class": 0,
+        "order": 4,
+        "groupNum": 1
+    },
+    {
+        "id": 5,
+        "comment": "댓글2답글1",
+        "postNum": 1,
+        "class": 1,
+        "order": 5,
+        "groupNum": 1
+    }
+]
