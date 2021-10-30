@@ -1,0 +1,11 @@
+.CurrentContainer {
+  background-color: "#eee";
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.HorContainer {
+  display: flex;
+  flex-direction: row;
+}
