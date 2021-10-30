@@ -1,0 +1,27 @@
+.ElseClubPostContainer {
+  width: 70%;
+  vertical-align: middle;
+  margin: 30px auto;
+  // margin: 30px;
+  overflow-y: scroll;
+}
+
+.ElseClubPost {
+  // border: 1px solid rgb(190, 190, 190);
+  margin: auto 20px;
+  border: 0;
+}
+
+.ElseClubPost-sub{
+    font-size: small;
+}
+
+.ElseClubPost-date{
+    font-size: small;
+    text-align: end;
+}
+
+.ElseClubPost-data{
+    border: 1px solid #ffffff;
+    margin: auto 20px;
+}

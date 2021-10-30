@@ -1,0 +1,19 @@
+.detail-container {
+  width: 70%;
+  vertical-align: middle;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.category {
+  width: 60px;
+  height: 20px;
+  font-size: 0.4rem;
+  margin-bottom: 0.5rem;
+  background: rgb(53, 53, 53);
+  color: white;
+  padding: 0.1 rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}

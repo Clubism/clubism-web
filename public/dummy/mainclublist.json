@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "category": "봉사분과",
+    "value": "service",
+    "name": "서강챈스",
+    "label": "chance",
+    "description": "서강 챈스 12기 모집",
+    "deadline": "2021-09-10"
+  },
+  {
+    "id": 2,
+    "category": "사회교양분과",
+    "value": "social",
+    "name": "21C Hermit",
+    "label": "21chermit",
+    "description": "21 Hermit 21기 모집",
+    "deadline": "2021-09-20"
+  },
+  {
+    "id": 3,
+    "category": "언행예술분과",
+    "value": "art",
+    "name": "마수지",
+    "label": "masuz",
+    "description": "마수지 신입부원 모집",
+    "deadline": "2021-09-01"
+  },
+  {
+    "id": 4,
+    "category": "종교분과",
+    "value": "religion",
+    "name": "네비게이토 선교회",
+    "label": "navigato",
+    "description": "네비게이토 모집",
+    "deadline": "2021-09-03"
+  },
+  {
+    "id": 5,
+    "category": "체육분과",
+    "value": "pe",
+    "name": "농우회",
+    "label": "nongwoohwi",
+    "description": "농우회 12기 모집",
+    "deadline": "2021-09-11"
+  },
+  {
+    "id": 6,
+    "category": "학술분과",
+    "value": "academic",
+    "name": "별반",
+    "label": "star",
+    "description": "별반 12기 모집",
+    "deadline": "2021-09-25"
+  },
+  {
+    "id": 7,
+    "category": "봉사분과",
+    "value": "service",
+    "name": "애드리랑",
+    "label": "aedrirang",
+    "description": "애드리랑 18기 모집",
+    "deadline": "2021-09-10"
+  },
+  {
+    "id": 8,
+    "category": "사회교양분과",
+    "value": "social",
+    "name": "강미반",
+    "label": "drawing",
+    "description": "강미반 신입 모집",
+    "deadline": "2021-09-21"
+  },
+  {
+    "id": 9,
+    "category": "언행예술분과",
+    "value": "art",
+    "name": "맥박",
+    "label": "macbak",
+    "description": "맥박 신입부원 모집",
+    "deadline": "2021-09-01"
+  },
+  {
+    "id": 10,
+    "category": "종교분과",
+    "value": "religion",
+    "name": "예수전도단",
+    "label": "jesus",
+    "description": "예수전도단 모집",
+    "deadline": "2021-09-03"
+  },
+  {
+    "id": 11,
+    "category": "체육분과",
+    "value": "pe",
+    "name": "서강 YPOS",
+    "label": "ypos",
+    "description": "서강 YPOS 12기 모집",
+    "deadline": "2021-09-15"
+  },
+  {
+    "id": 12,
+    "category": "학술분과",
+    "value": "academic",
+    "name": "서강러브",
+    "label": "love",
+    "description": "서강러브 10기 모집",
+    "deadline": "2021-09-30"
+  }
+]

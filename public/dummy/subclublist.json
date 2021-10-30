@@ -1,0 +1,74 @@
+[
+    {
+        "id" : 1,
+        "category" : "국제인문학부",
+        "label" : "1",
+        "name" : "동아리1"
+    },
+    {        
+        "id" : 2,
+        "category" : "사회과학부",
+        "label" : "2",
+        "name" : "동아리2"
+    },
+    {
+        "id" : 3,
+        "category" : "사회과학부",
+        "label" : "3",
+        "name" : "동아리3"
+    },
+    {
+        "id" : 4,
+        "category" : "경제학부",
+        "label" : "4",
+        "name" : "동아리4"
+    },
+    {
+        "id" : 5,
+        "category" : "공학부",
+        "label" : "5",
+        "name" : "동아리5"
+    },
+    {
+        "id" : 6,
+        "category" : "경제학부",
+        "label" : "6",
+        "name" : "동아리6"
+    },
+    {
+        "id" : 7,
+        "category" : "경영학부",
+        "label" : "7",
+        "name" : "동아리7"
+    },
+    {
+        "id" : 8,
+        "category" : "공학부",
+        "label" : "8",
+        "name" : "동아리8"
+    },
+    {
+        "id" : 9,
+        "category" : "국제인문학부",
+        "label" : "9",
+        "name" : "동아리9"
+    },
+    {
+        "id" : 10,
+        "category" : "자연과학부",
+        "label" : "10",
+        "name" : "동아리10"
+    },
+    {
+        "id" : 11,
+        "category" : "경영학부",
+        "label" : "11",
+        "name" : "동아리11"
+    },
+    {
+        "id" : 12,
+        "category" : "지융미학부",
+        "label" : "12",
+        "name" : "동아리12"
+    }
+]

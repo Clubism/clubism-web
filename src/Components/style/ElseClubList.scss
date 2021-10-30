@@ -1,0 +1,42 @@
+.ElseClubList {
+  width: 80%;
+  margin: 1.5rem auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 0px;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+}
+
+.Title {
+  width: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.Posts {
+  padding: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  & + & {
+    border-top: 1px solid #bbbbbb;
+  }
+}
+
+.State {
+  background-color: #333333;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.Posting {
+  background-color: #777777;
+  color: #ffffff;
+  border-radius: 4px;
+  width: 50px;
+  justify-content: center;
+  position: relative;
+  display: flex;
+}

@@ -1,0 +1,21 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+.slick-slider {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+
+  & :focus {
+    border: none;
+    outline: none;
+  }
+}
+.poster {
+  width: 180px;
+}
+.slick-slider img {
+  width: 150px;
+  height: 200px;
+  margin: 0 auto;
+}
+

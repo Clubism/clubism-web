@@ -1,0 +1,23 @@
+import React from 'react';
+import IndexTemplate from '../Components/IndexTemplate';
+import SubClubCategory from '../Components/SubClub/SubClubCategory';
+import SubClubPage from '../Components/SubClub/SubClubPage';
+import "../Components/style/SubClub.scss";
+
+const SubClub = (props) => {
+  const { params } = props.match;
+  // console.log(params.category, params.name);
+
+  return (
+    <div>
+      <IndexTemplate>
+      </IndexTemplate>
+      <div className="SubClubContainer">
+        <SubClubCategory category={params.category} name={params.name} />
+        <SubClubPage category={params.category} name={params.name} />
+      </div>
+    </div>
+  )
+}
+
+export default SubClub;
