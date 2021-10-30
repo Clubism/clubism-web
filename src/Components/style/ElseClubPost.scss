@@ -29,18 +29,31 @@
 .ElseClubComment{
   border: 1px solid #ffffff;
   border: 0;
+  .second{
+    padding: 0px 20px;
+  }
+  .cmtSmall{
+  font-size: small;
+  display: flex;
+  align-items: center;
+    .cmtDate{
+      color: #777777;
+    }
+  }
 }
 
 .InputComment{
   // @if $type==0 {
   //    background-color: 999999;
   // }
+  // display: inline-block;
+
   input {
     width: 85%;
     border: 1px solid #999999;
   }
   button {
-    width: 10%;
+    width: 13%;
     background-color: #999999;
     color: #ffffff;
     border: 1px solid #999999;

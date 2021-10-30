@@ -33,13 +33,18 @@ const ElseClubPost = (props)=>{
             <h5>댓글 {comment.length}개</h5>
 
             {comment.map((cmt, index) => {
-              let com = "->";
-              
-              if(cmt.class===1) com += " "+cmt.comment;
-              else com = cmt.comment;
+              let com = "first";
+              if(cmt.class===1) com = "second";
+
               return <div className="ElseClubComment" key = {cmt.id}>
                 <hr />
-                <div>{com}</div>
+                <div className={com}>
+                  <div className="cmtSmall">
+                    <div className="cmtUser">{cmt.user}</div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div className="cmtDate">{cmt.date}</div>
+                  </div>
+                {cmt.comment}</div>
               </div>
             })}
 
@@ -48,8 +53,8 @@ const ElseClubPost = (props)=>{
               <input></input>
               <button>입력</button>
             </div>
-            </div>
 
+        </div>
        </div>
   );
 };
