@@ -21,6 +21,8 @@ function App() {
       <Route path="/mainClub/:category/:name" component={MainClub} exact />
       <Route path="/subClub" component={SubClub} exact />
       <Route path="/elseClub" component={ElseClub} exact />
+      <Route path="/elseClub/post" component={ElseClub} exact />
+      <Route path="/elseClub/posting" component={ElseClub} exact />
       <Route path="/login" component={Login} exact />
       <Route path="/signup" component={SignUp} exact />
       <Route path="/mypage" component={MyPage} exact />
