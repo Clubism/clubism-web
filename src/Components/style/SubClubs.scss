@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .clubContainer {
   display: flex;
   flex-wrap: wrap;
@@ -7,48 +6,26 @@
   overflow-y: none;
   align-content: flex-start;
   justify-content: center;
-=======
-.sub_clubContainer {
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  justify-content: center;
-  height: auto;
-  overflow-y: none;
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
   :hover {
     transition: all 0.2s ease-out;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     top: -4px;
   }
 }
-<<<<<<< HEAD
 .club {
-=======
-.sub_club {
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
   display: flex;
   flex-wrap: wrap;
   border: 1px solid #dadada;
   margin: 0.5rem 0.5rem;
-<<<<<<< HEAD
   border-radius: 4px;
   width: 40%;
   height: 120px;
 
-=======
-  padding: 0.5rem 0.5rem;
-  border-radius: 4px;
-  width: 40%;
-  height: 120px;
-  justify-content: space-between;
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
   :hover {
     top: 0px;
     box-shadow: none;
   }
 }
-<<<<<<< HEAD
 .LinkTp {
   height: 100%;
   width: 100%;
@@ -60,20 +37,13 @@
 }
 
 .clubText {
-=======
-.sub_clubText {
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
-<<<<<<< HEAD
   color: black;
   text-decoration: unset;
   .category {
-=======
-  .sub_category {
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
     width: 60px;
     font-size: 0.4rem;
     margin-bottom: 0.5rem;
@@ -86,30 +56,18 @@
     text-align: center;
     //background: linear-gradient(45deg, #525252 0%, #3d3d3d 90%);
   }
-<<<<<<< HEAD
   .name {
-=======
-  .sub_name {
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
     padding-left: 0.5rem;
     font-weight: bold;
     // margin-bottom: 0.5rem;
     margin-bottom: 0px;
   }
-<<<<<<< HEAD
   .description {
-=======
-  .sub_description {
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
     padding-left: 1rem;
     // margin-bottom: 1.5rem;
     margin-bottom: 5px;
   }
-<<<<<<< HEAD
   .deadline {
-=======
-  .sub_deadline {
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
     width: 70px;
     padding: 0.3rem;
     background-color: #dadada;
@@ -122,20 +80,13 @@
   }
 }
 
-<<<<<<< HEAD
 .clubImage {
-=======
-.sub_clubImage {
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
   border: 1px solid #dadada;
   border-radius: 4px;
   width: 25%;
 }
-<<<<<<< HEAD
 
 .slick-prev:before,
 .slick-next:before {
   color: black;
 }
-=======
->>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
