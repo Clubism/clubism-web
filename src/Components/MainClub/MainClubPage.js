@@ -5,6 +5,7 @@
 // import "../style/ClubPage.scss";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const MainClubPage = (props) => {
   // const {params}=props.match;
   console.log(props.category, props.name);
@@ -16,12 +17,17 @@ const MainClubPage = (props) => {
 // const MainClubPage = (props) => {
 //     // const {params}=props.match;
 >>>>>>> 8a9ae42796060ab3199105bc1adecc981035bd7b
+=======
+// const MainClubPage = (props) => {
+//     // const {params}=props.match;
+>>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
 
 //   const [category, setCategory] = useState("전체보기");
 //   const [detailPage, setDetailPage] = useState(false);
 //   const [selectedClub, setSelectedClub] = useState({});
 //   const [mainCategory, setMainCategory] = useState({});
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   useEffect(() => {
     if (props.name !== undefined) {
@@ -34,6 +40,8 @@ const MainClubPage = (props) => {
   //   clubOnClick();
   // },[selectedClub])
 =======
+=======
+>>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
 //   // useEffect(() => {
 //   //   fetch("dummy/maincategorylist.json")
 //   //     .then((res) => res.json())
@@ -46,7 +54,10 @@ const MainClubPage = (props) => {
 //   //       }
 //   //     );
 //   // }, []);
+<<<<<<< HEAD
 >>>>>>> 8a9ae42796060ab3199105bc1adecc981035bd7b
+=======
+>>>>>>> 2ab081a13079669e4a6df75fa728f10cb0480a2c
 
 //   useEffect(()=>{
 //     if(props.name!==undefined){

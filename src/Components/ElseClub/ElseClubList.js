@@ -6,7 +6,6 @@ import Paging from './Paging';
 const ClubList = (props)=>{
   const [Post, setPost] = useState([]);
   const [Filter, setFilter] = useState(Post);
-
   const [Page, setPage] = useState(1);
   const PageNum = 15;
 
