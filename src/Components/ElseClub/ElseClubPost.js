@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import '../style/ElseClubPost.scss'
+import {BsArrowReturnRight} from 'react-icons/bs';
 
 const ElseClubPost = (props)=>{
   const [comment, setComment] = useState([]);
+  const [replyComment, setReplyComment] = useState(-1);
 
   useEffect(()=>{
     fetch('../dummy/elseclubcomment.json')
       .then(res=>res.json())
       .then(
         (result) =>{
-          // console.log(props.post._id);
-          // console.log(result);
           setComment(result.filter(data => data.postNum === props.post._id));
         },
         (error) => {
@@ -18,6 +18,13 @@ const ElseClubPost = (props)=>{
         }
       )
   }, [])
+
+  const InputComment = () => (
+    <div className="InputComment">
+      <textarea></textarea>
+      <button>입력</button>
+    </div>
+  )
 
   return(
       <div className="ElseClubPostContainer">
@@ -43,16 +50,23 @@ const ElseClubPost = (props)=>{
                     <div className="cmtUser">{cmt.user}</div>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div className="cmtDate">{cmt.date}</div>
+                    &nbsp;&nbsp;&nbsp;
+                    {com==="first"?
+                      <div><BsArrowReturnRight onClick={()=>{
+                        console.log("click");
+                        if(replyComment===index) setReplyComment(-1);
+                        else setReplyComment(index);
+                      }}/>
+                      </div>
+                    :<div></div>}
                   </div>
                 {cmt.comment}</div>
+                {replyComment===index?<InputComment /> : <div></div>}
               </div>
             })}
 
             <br />
-            <div className="InputComment">
-              <input></input>
-              <button>입력</button>
-            </div>
+            <InputComment />
 
         </div>
        </div>

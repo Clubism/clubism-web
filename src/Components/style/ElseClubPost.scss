@@ -47,16 +47,19 @@
   //    background-color: 999999;
   // }
   // display: inline-block;
-
-  input {
+  textarea {
     width: 85%;
     border: 1px solid #999999;
+    margin: 5px;
+    float: left;
   }
   button {
-    width: 13%;
+    width: 50px;
+    height: 50px;
     background-color: #999999;
     color: #ffffff;
     border: 1px solid #999999;
     margin: 5px;
+    display: inline-block;
   }
 }
