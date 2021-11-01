@@ -10,6 +10,12 @@
   border-radius: 4px;
 }
 
+.ElseClubListTop{
+  input{
+    margin: 0px 5px 0px 15px;
+  }
+}
+
 .Title {
   width: 50%;
   overflow: hidden;
@@ -39,4 +45,5 @@
   justify-content: center;
   position: relative;
   display: flex;
+  float: left;
 }

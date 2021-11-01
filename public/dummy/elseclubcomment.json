@@ -48,5 +48,55 @@
         "groupNum": 1,
         "date": "2021-10-30 02:34:50",
         "user": "user5"
+    },
+        {
+        "id": 6,
+        "comment": "댓글1",
+        "postNum": 2,
+        "class": 0,
+        "order": 1,
+        "groupNum": 0,
+        "date": "2021-10-30 02:34:50",
+        "user": "user1"
+    },
+    {
+        "id": 7,
+        "comment": "댓글1답글1",
+        "postNum": 2,
+        "class": 1,
+        "order": 2,
+        "groupNum": 0,
+        "date": "2021-10-30 02:34:50",
+        "user": "user2"
+    },
+    {
+        "id": 8,
+        "comment": "댓글1답글2",
+        "postNum": 2,
+        "class": 1,
+        "order": 3,
+        "groupNum": 0,
+        "date": "2021-10-30 02:34:50",
+        "user": "user3"
+    },
+    {
+        "id": 9,
+        "comment": "댓글1",
+        "postNum": 3,
+        "class": 0,
+        "order": 1,
+        "groupNum": 1,
+        "date": "2021-10-30 02:34:50",
+        "user": "user4"
+    },
+    {
+        "id": 10,
+        "comment": "댓글1답글2",
+        "postNum": 3,
+        "class": 1,
+        "order": 2,
+        "groupNum": 1,
+        "date": "2021-10-30 02:34:50",
+        "user": "user5"
     }
 ]
