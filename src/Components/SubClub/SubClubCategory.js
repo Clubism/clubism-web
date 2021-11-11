@@ -1,9 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "../style/ClubCategory.scss";
-
+import { Navigation } from "react-minimal-side-navigation";
+import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 const SubClubCategory = (props) => {
   let categoryList = [];
+  const location = useLocation();
+  categoryList = props.category;
+  
+  /*
   for (var i = 0; i < props.category.length; i++) {
     const value = props.category[i];
     categoryList.push(
@@ -21,9 +26,13 @@ const SubClubCategory = (props) => {
       </li>
     );
   }
+  */
   return (
     <div className="ClubCategory">
-      <ul>{categoryList}</ul>
+      <Navigation
+        activeItemId={location.pathname}
+        items={categoryList}
+      />
     </div>
   );
 };
