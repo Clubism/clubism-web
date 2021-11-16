@@ -3,7 +3,7 @@ import './style/IndexTemplate.scss';
 import { Link } from 'react-router-dom';
 
 const IndexTemplate = ({ children }) => {
-  const isLoggedIn = useRef(true);
+  const isLoggedIn = useRef(false);
 
   // console.log('isLoggedIn : ', isLoggedIn.current);
   return (
