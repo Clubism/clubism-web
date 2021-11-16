@@ -54,13 +54,8 @@ const IndexTemplate = ({ children }) => {
               단과대 동아리 / 학회
             </Link>
           </div>
-<<<<<<< HEAD
-          <div className='elseClub'>
-            <Link className='link' to="/elseClub">
-=======
           <div className="elseClub">
-            <Link className="link" to="./elseClub">
->>>>>>> dev
+            <Link className="link" to="/elseClub">
               소모임
             </Link>
           </div>
