@@ -14,7 +14,10 @@ const DetailClubCurrent = () => {
             />
           </div>
           {/* *********** */}
-          <div className="CurrentMain">asdfasdasfd</div>
+          <div className="CurrentMain">
+            <div className="MainTitle">[SGAEM] 2021 가을학기 신입부원 모집</div>
+            <div> 모집 인원 | 0명</div>
+          </div>
         </div>
         <div>동아리 소개</div>
       </div>
