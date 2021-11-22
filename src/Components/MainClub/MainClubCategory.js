@@ -40,6 +40,7 @@ const MainClubCategory = (props) => {
           itemId: newCategoryList[i].itemId + "/" + ClubList[j].label
         });
         //  console.log(ClubList[j].name)
+        
       }
     }
   }
