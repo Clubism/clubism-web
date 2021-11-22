@@ -14,8 +14,12 @@ const SignUpPage = () => {
   const onButtonSubmit = () => {
     console.log("here");
     setTimeout(5000);
-    axios.post("http://localhost:4000/auth/join", info).then(() => {
+
+    axios.post("http://localhost:4000/auth/join", info)
+    .then(() => {
       console.log("successs");
+    }).catch((err)=>{
+      console.log(err)
     });
   };
   return (
@@ -63,9 +67,9 @@ const SignUpPage = () => {
           Sign Up
         </Button>
         <p className="forgot-password text-right">
-          Already registered&nbsp;
+          Already registered?&nbsp;
           <Link className="link" to="/login">
-            sign in?
+            sign in
           </Link>
         </p>
       </Form>

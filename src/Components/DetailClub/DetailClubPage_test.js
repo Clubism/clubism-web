@@ -6,6 +6,7 @@ import DetailClubAll from "./All";
 import DetailClubCurrent from "./Current";
 import DetailClubQA from "./QA";
 import DetailClubIntro from "./Intro";
+import { PinDropTwoTone } from "@material-ui/icons";
 
 const DetailClubPageTest = (props) => {
   console.log(props);
@@ -17,8 +18,15 @@ const DetailClubPageTest = (props) => {
     fetchURL = "../";
   else fetchURL = "../../";
 
+  var url;
+  if (props.statue === 1) {
+    url = "dummy/mainclublist.json";
+  } else if (props.status === 2) {
+    url = "dummy/subclubrecruitlist.json";
+  }
+
   useEffect(() => {
-    fetch(fetchURL + "dummy/mainclublist.json")
+    fetch(fetchURL + url)
       .then((res) => res.json())
       .then(
         (result) => {

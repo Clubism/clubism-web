@@ -12,37 +12,37 @@
   border: 0;
 }
 
-.ElseClubPost-sub{
-    font-size: small;
+.ElseClubPost-sub {
+  font-size: small;
 }
 
-.ElseClubPost-date{
-    font-size: small;
-    text-align: end;
+.ElseClubPost-date {
+  font-size: small;
+  text-align: end;
 }
 
-.ElseClubPost-data{
-    border: 1px solid #ffffff;
-    margin: auto 20px;
+.ElseClubPost-data {
+  border: 1px solid #ffffff;
+  margin: auto 20px;
 }
 
-.ElseClubComment{
+.ElseClubComment {
   border: 1px solid #ffffff;
   border: 0;
-  .second{
+  .second {
     padding: 0px 20px;
   }
-  .cmtSmall{
-  font-size: small;
-  display: flex;
-  align-items: center;
-    .cmtDate{
+  .cmtSmall {
+    font-size: small;
+    display: flex;
+    align-items: center;
+    .cmtDate {
       color: #777777;
     }
   }
 }
 
-.InputComment{
+.InputComment {
   // @if $type==0 {
   //    background-color: 999999;
   // }

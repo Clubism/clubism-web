@@ -20,7 +20,7 @@ const MainClubPageTest = (props) => {
     return (
         <div className="mainClubBox">
             {detailPage ? (
-                <DetailClubPageTest category={props.category} name={props.name} />
+                <DetailClubPageTest category={props.category} name={props.name} status={1}/>
             ) : (
                 <ClubsTest category={props.category} name={props.name}
                 />
