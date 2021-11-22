@@ -11,16 +11,15 @@ const SignUpPage = () => {
   const onSignChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
-  const onButtonSubmit = () => {
-    console.log("here");
-    setTimeout(5000);
-
+  const onButtonSubmit = (e) => {
     axios.post("http://localhost:4000/auth/join", info)
     .then(() => {
       console.log("successs");
     }).catch((err)=>{
       console.log(err)
     });
+
+    setInfo({ username: "", id: "", password: "" });
   };
   return (
     <div className="login-container">
@@ -31,7 +30,7 @@ const SignUpPage = () => {
           name="username"
           label="Name"
           className="mb-3"
-          onChange={onSignChange}
+          onChange={(e) => onSignChange(e)}
         >
           <Form.Control type="name" placeholder="sogang" />
         </FloatingLabel>
@@ -41,7 +40,7 @@ const SignUpPage = () => {
           name="id"
           label="Email"
           className="mb-3"
-          onChange={onSignChange}
+          onChange={(e) => onSignChange(e)}
         >
           <Form.Control type="email" placeholder="sogang" />
         </FloatingLabel>
@@ -51,7 +50,7 @@ const SignUpPage = () => {
           label="Password"
           className="mb-3"
           name="password"
-          onChange={onSignChange}
+          onChange={(e) => onSignChange(e)}
         >
           <Form.Control type="password" placeholder="sogang" />
         </FloatingLabel>
@@ -63,7 +62,7 @@ const SignUpPage = () => {
             label="Remember me"
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={onButtonSubmit}>
+        <Button variant="primary" type="submit" onClick={(e)=>onButtonSubmit(e)}>
           Sign Up
         </Button>
         <p className="forgot-password text-right">
