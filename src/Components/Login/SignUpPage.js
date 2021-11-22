@@ -7,52 +7,56 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import axios from "axios";
 
 const SignUpPage = () => {
-  const [info, setInfo] = useState({ username: "", id: "", password: "" });
+  const [Info, setInfo] = useState({ username: "", id: "", password: "" });
   const onSignChange = (e) => {
-    setInfo({ ...info, [e.target.name]: e.target.value });
+    setInfo({ ...Info, [e.target.name]: e.target.value });
   };
   const onButtonSubmit = (e) => {
-    axios.post("http://localhost:4000/auth/join", info)
+    e.preventDefault();
+    console.log(Info);
+    axios.post("http://localhost:4000/auth/join", Info)
     .then(() => {
       console.log("successs");
+      setInfo({ username: "", id: "", password: "" });
+      e.target.username.value = ""
     }).catch((err)=>{
       console.log(err)
     });
 
-    setInfo({ username: "", id: "", password: "" });
+    
   };
   return (
     <div className="login-container">
-      <Form>
+      <Form onSubmit = {onButtonSubmit}>
         <h3 className="login-h3">Sign Up</h3>
         <FloatingLabel
           controlId="floatingInput"
-          name="username"
           label="Name"
           className="mb-3"
+          value={Info.username}
           onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="name" placeholder="sogang" />
+          <Form.Control type="name" placeholder="sogang" as="input" name="username"/>
         </FloatingLabel>
 
         <FloatingLabel
           controlId="floatingInput"
-          name="id"
           label="Email"
           className="mb-3"
+          value={Info.id}
           onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="email" placeholder="sogang" />
+          <Form.Control type="email" placeholder="sogang" as="input" name="id"/>
         </FloatingLabel>
 
         <FloatingLabel
           controlId="floatingInput"
           label="Password"
           className="mb-3"
-          name="password"
+          value={Info.password}
           onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="password" placeholder="sogang" />
+          <Form.Control type="password" placeholder="sogang" as="input" name="password"/>
         </FloatingLabel>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
