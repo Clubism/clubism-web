@@ -7,63 +7,71 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import axios from "axios";
 
 const SignUpPage = () => {
-  const [info, setInfo] = useState({ username: "", id: "", password: "" });
+  const [Info, setInfo] = useState({ username: "", id: "", password: "" });
   const onSignChange = (e) => {
-    setInfo({ ...info, [e.target.name]: e.target.value });
+    setInfo({ ...Info, [e.target.name]: e.target.value });
   };
-  const onButtonSubmit = () => {
-    console.log("here");
-    console.log({
-      username: "asdf",
-      id: "1234@123.123",
-      password: "123"
-    });
+  const onButtonSubmit = (e) => {
+    e.preventDefault();
+    console.log(Info);
     axios
-      // .post("http://localhost:4000/auth/join", JSON.stringify(info))
-      .post("http://localhost:4000/auth/join", {
-        username: "asdf",
-        id: "1234@123.123",
-        password: "123"
+      .post("http://localhost:4000/auth/join", Info)
+      .then(() => {
+        console.log("successs");
+        setInfo({ username: "", id: "", password: "" });
+        e.target.username.value = "";
       })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   };
   return (
     <div className="login-container">
-      <Form>
+      <Form onSubmit={onButtonSubmit}>
         <h3 className="login-h3">Sign Up</h3>
         <FloatingLabel
           controlId="floatingInput"
-          name="username"
           label="Name"
           className="mb-3"
-          onChange={onSignChange}
+          value={Info.username}
+          onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="name" placeholder="sogang" />
+          <Form.Control
+            type="name"
+            placeholder="sogang"
+            as="input"
+            name="username"
+          />
         </FloatingLabel>
 
         <FloatingLabel
           controlId="floatingInput"
-          name="id"
           label="Email"
           className="mb-3"
-          onChange={onSignChange}
+          value={Info.id}
+          onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="email" placeholder="sogang" />
+          <Form.Control
+            type="email"
+            placeholder="sogang"
+            as="input"
+            name="id"
+          />
         </FloatingLabel>
 
         <FloatingLabel
           controlId="floatingInput"
           label="Password"
           className="mb-3"
-          name="password"
-          onChange={onSignChange}
+          value={Info.password}
+          onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="password" placeholder="sogang" />
+          <Form.Control
+            type="password"
+            placeholder="sogang"
+            as="input"
+            name="password"
+          />
         </FloatingLabel>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -73,7 +81,11 @@ const SignUpPage = () => {
             label="Remember me"
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={onButtonSubmit}>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => onButtonSubmit(e)}
+        >
           Sign Up
         </Button>
         <div style={{ backgroundColor: "blue" }} onClick={onButtonSubmit}>
