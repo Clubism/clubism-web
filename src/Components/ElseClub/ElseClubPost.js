@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "../style/ElseClubPost.scss";
 import { BsArrowReturnRight } from "react-icons/bs";
+import axios from "axios"
 
 const ElseClubPost = (props) => {
   const [comment, setComment] = useState([]);
   const [replyComment, setReplyComment] = useState(-1);
 
   useEffect(() => {
+    axios.get('http://localhost:4000/post')
+    .then((res)=>{
+      console.log(res.data);
+    });
+    
+    /*
     fetch("../dummy/elseclubcomment.json")
       .then((res) => res.json())
       .then(
@@ -17,6 +24,7 @@ const ElseClubPost = (props) => {
           console.log(error);
         }
       );
+      */
   }, []);
 
   const InputComment = () => (

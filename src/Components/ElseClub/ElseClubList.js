@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style/ElseClubList.scss";
 import { Link } from "react-router-dom";
 import Paging from "./Paging";
+import axios from "axios"
 
 const ClubList = (props) => {
   const [Post, setPost] = useState([]);
@@ -11,6 +12,13 @@ const ClubList = (props) => {
   const PageNum = 15;
 
   useEffect(() => {
+    axios.get('http://localhost:4000/post')
+    .then((res)=>{
+      setPost(res.data)
+      setFilter(res.data)
+      console.log(res.data);
+    });
+    /*
     fetch("dummy/elseclublist.json")
       .then((res) => res.json())
       .then(
@@ -21,7 +29,7 @@ const ClubList = (props) => {
         (error) => {
           console.log(error);
         }
-      );
+      );*/
   }, []);
 
   useEffect(
