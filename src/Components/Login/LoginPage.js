@@ -15,7 +15,7 @@ const LoginPage = ({history}) => {
   const onLoginSubmit = (e)=>{
     e.preventDefault();
 
-    axios.post('http://localhost:4000/auth/login', LoginInfo)
+    axios.post('http://localhost:4000/auth/login', LoginInfo, {withCredentials : true})
     .then((res)=>{
       if(res.data === 'login success'){
         history.push("/");

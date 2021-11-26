@@ -14,11 +14,11 @@ const SignUpPage = () => {
   const onButtonSubmit = (e) => {
     e.preventDefault();
     console.log(Info);
-    axios.post("http://localhost:4000/auth/join", Info)
+    axios.post("http://localhost:4000/auth/join", Info, {withCredentials : true})
     .then(() => {
       console.log("successs");
       setInfo({ username: "", id: "", password: "" });
-      e.target.username.value = ""
+      //e.target.username.value = ""
     }).catch((err)=>{
       console.log(err)
     });

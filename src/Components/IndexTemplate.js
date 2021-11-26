@@ -1,9 +1,21 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./style/IndexTemplate.scss";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 const IndexTemplate = ({ children }) => {
   const isLoggedIn = useRef(false);
+
+  useEffect(()=>{
+    axios.get("http://localhost:4000/auth/userSession", {withCredentials : true}).then(res=>{
+      console.log(res);
+      console.log(res.data.isLoggedIn);
+      isLoggedIn.current = res.data.isLoggedIn;
+      console.log(isLoggedIn.current);
+    });
+  }, []);
+  
+  
 
   // console.log('isLoggedIn : ', isLoggedIn.current);
   return (
