@@ -7,11 +7,11 @@ const ElseClubPost = (props) => {
   const [comment, setComment] = useState([]);
   const [replyComment, setReplyComment] = useState(-1);
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/post')
-    .then((res)=>{
-      console.log(res.data);
-    });
+  // useEffect(() => {
+  //   axios.get('http://localhost:4000/post')
+  //   .then((res)=>{
+  //     console.log(res.data);
+  //   });
     
     /*
     fetch("../dummy/elseclubcomment.json")
@@ -25,7 +25,7 @@ const ElseClubPost = (props) => {
         }
       );
       */
-  }, []);
+  // }, []);
 
   const InputComment = () => (
     <div className="InputComment">
@@ -43,7 +43,7 @@ const ElseClubPost = (props) => {
         </div>
         <div className="ElseClubPost-date">{props.post.date}</div>
         <hr />
-        <div className="ElseClubPost-data">{props.post.desc}</div>
+        <div className="ElseClubPost-data">{props.post.content}</div>
         <br />
         <br />
         <hr />

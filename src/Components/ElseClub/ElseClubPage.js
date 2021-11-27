@@ -16,7 +16,7 @@ const ElseClubCategories = [
 
 const ElseClubPage = ()=>{
   const [category, setCategory] = useState('전체보기');
-  const [viewList, setViewList] = useState(1);
+  // const [viewList, setViewList] = useState(1);
   const [post, setPost] = useState({});
 
   return(
@@ -24,8 +24,8 @@ const ElseClubPage = ()=>{
       <ElseClubCategory category={ElseClubCategories} setCategory={setCategory}/>
       {/* {viewList?<ElseClubList category={category} setViewList={setViewList}/>:<ElseClubPosting category={category} setViewList={setViewList}/>} */}
       <Switch>
-        <Route path='/elseClub' exact><ElseClubList category={category} setViewList={setViewList} setPost={setPost}/></Route>
-        <Route path='/elseClub/posting' exact><ElseClubPosting category={category} setViewList={setViewList} /></Route>
+        <Route path='/elseClub' exact><ElseClubList category={category} setPost={setPost}/></Route>
+        <Route path='/elseClub/posting' exact><ElseClubPosting category={category} /></Route>
         <Route path='/elseClub/post' exact><ElseClubPost post={post}/></Route>
       </Switch>
       {/* <Route path='/elseClub' component={ElseClubList} exact />
