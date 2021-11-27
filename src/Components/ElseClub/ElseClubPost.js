@@ -4,35 +4,42 @@ import { BsArrowReturnRight } from "react-icons/bs";
 import axios from "axios"
 
 const ElseClubPost = (props) => {
-  const [comment, setComment] = useState([]);
+  const [reload, setreload] = useState(0);
+  const [commentList, setCommentList] = useState([]);
+  const [inputComment, setInputComment] = useState("");
   const [replyComment, setReplyComment] = useState(-1);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:4000/post')
-  //   .then((res)=>{
-  //     console.log(res.data);
-  //   });
-    
-    /*
-    fetch("../dummy/elseclubcomment.json")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setComment(result.filter((data) => data.postNum === props.post._id));
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-      */
-  // }, []);
+  
+  useEffect(() => {
+    axios.get('http://localhost:4000/post/comment/'+props.post._id)
+    .then((res)=>{
+      setCommentList(res.data);
+      console.log("comment", res.data);
+      console.log("개수", commentList.length);
+    });
+    console.log("check");
+  }, [reload]);
 
-  const InputComment = () => (
-    <div className="InputComment">
-      <textarea />
-      <button>입력</button>
-    </div>
-  );
+  const inputCommentHandler = (e) => {
+    console.log(e.target.value);
+    setInputComment(e.target.value)
+  }
+
+  const commentSubmitHandler = (param) => {
+    setreload(reload+1);
+      axios.post("http://localhost:4000/post/comment/"+props.post._id, 
+      {
+        comment: inputComment,
+        postNum: props.post._id,
+        class: param,
+      })
+    .then((res)=>{
+      console.log("post submit success");
+      // setInputComment('');
+    });
+    setInputComment('');
+  }
+  
 
   return (
     <div className="ElseClubPostContainer">
@@ -43,14 +50,15 @@ const ElseClubPost = (props) => {
         </div>
         <div className="ElseClubPost-date">{props.post.date}</div>
         <hr />
-        <div className="ElseClubPost-data">{props.post.content}</div>
+        {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
+        <div className="ElseClubPost-data" dangerouslySetInnerHTML={{__html:props.post.content}}></div>
         <br />
         <br />
         <hr />
 
-        <h5>댓글 {comment.length}개</h5>
+        <h5>댓글 {commentList.length} 개</h5>
 
-        {comment.map((cmt, index) => {
+        {commentList.map((cmt, index) => {
           let com = "first";
           if (cmt.class === 1) com = "second";
 
@@ -79,13 +87,35 @@ const ElseClubPost = (props) => {
                 </div>
                 {cmt.comment}
               </div>
-              {replyComment === index ? <InputComment /> : <div />}
+              {replyComment === index ? 
+
+                <div className="InputComment">
+                  <textarea
+                    placeholder={"댓글을 입력하세요."}
+                    value={inputComment}
+                    onChange={inputCommentHandler}
+                  />
+                  <button onClick={()=>{
+                    commentSubmitHandler(1);
+                  }}>입력</button>
+                </div>  
+
+               : <div />}
             </div>
           );
         })}
 
         <br />
-        <InputComment />
+        
+        <div className="InputComment">
+          <textarea
+            placeholder={"댓글을 입력하세요."}
+            value={inputComment}
+            onChange={inputCommentHandler}
+          />
+          <button onClick={()=>{commentSubmitHandler(0)}}>입력</button>
+        </div>
+
       </div>
     </div>
   );
