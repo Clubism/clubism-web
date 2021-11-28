@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import '../style/ElseClubPosting.scss'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -8,6 +8,7 @@ import axios from "axios"
 const ElseClubPosting = (props)=>{
   
   // let category = props.category;
+  const postNum = useRef(1);
   const [category, setCategory] = useState(props.category);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -21,29 +22,40 @@ const ElseClubPosting = (props)=>{
       return;
     }
 
+    else if(title === ''){
+      alert('제목을 입력해 주세요')
+      return
+    }
+    
+    else if(content === ''){
+      alert('내용을 입력해 주세요')
+      return
+    }
+
     axios.post("http://localhost:4000/post/submit", 
       {
         title : title, 
         content : content,
-        category : category
+        category : category,
+        postNum : postNum.current,
       })
     .then((res)=>{
-      console.log("post submit success");
+      postNum.current += 1;
+      console.log(res.data);
     });
   }
-
-  console.log(category);
 
   return(
     <div className='ElseClubPosting'>
         <DropdownButton className='dropdown' id="category" title={category} onSelect={(eventKey)=>{
-          console.log(eventKey);
+          //console.log(eventKey);
           setCategory(eventKey);
           }}>
             <Dropdown.Item eventKey="스터디">스터디</Dropdown.Item>
             <Dropdown.Item eventKey="프로젝트">프로젝트</Dropdown.Item>
             <Dropdown.Item eventKey="구독">구독</Dropdown.Item>
         </DropdownButton>
+
         <Form onSubmit = {(e)=>{onPostSubmit(e)}}>
           <Form className='titleForm'>
           <Form.Control type="title" placeholder="제목을 입력하세요." 
@@ -53,13 +65,13 @@ const ElseClubPosting = (props)=>{
           <CKEditor
               editor={ ClassicEditor }
               // data="<p>Hello from CKEditor 5!</p>"
-              onReady={ editor => {
+              onReady={(editor) => {
                   // You can store the "editor" and use when it is needed.
                   console.log( 'Editor is ready to use!', editor );
               } }
               onChange={ ( event, editor ) => {
                   const data = editor.getData();
-                  setContent(data);
+                  setContent(editor.getData());
                   //console.log( { event, editor, data } );
               } }
               onBlur={ ( event, editor ) => { 

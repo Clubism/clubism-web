@@ -3,6 +3,8 @@ import "../style/ElseClubList.scss";
 import { Link } from "react-router-dom";
 import Paging from "./Paging";
 import axios from "axios"
+import Moment from  'react-moment'
+
 
 const ClubList = (props) => {
   const [Post, setPost] = useState([]);
@@ -98,7 +100,11 @@ const ClubList = (props) => {
               <div className="Posts" key={post._id}>
                 <div className="State">{post.state ? "진행중" : "마감"}</div>
                 <div className="Title">{post.title}</div>
-                <div>{post.date}</div>
+                <div>
+                  <Moment format="YYYY/MM/DD">
+                    {props.date}
+                  </Moment>
+                </div>
                 <div>{post.writer}</div>
               </div>
             </Link>
