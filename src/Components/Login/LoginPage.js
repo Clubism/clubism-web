@@ -17,16 +17,15 @@ const LoginPage = ({history}) => {
 
     axios.post('http://localhost:4000/auth/login', LoginInfo, {withCredentials : true})
     .then((res)=>{
-      if(res.data === 'login success'){
-        history.push("/");
+      if(res.data === 'no such user'){
+        alert('등록된 회원 정보가 없습니다');
+      }
+      else if(res.data === 'wrong password'){
+        alert('비밀번호를 확인해주세요')
       }
       else{
-        if(res.data === 'no such user'){
-          alert('등록된 회원 정보가 없습니다');
-        }
-        else if(res.data === 'wrong password'){
-          alert('비밀번호를 확인해주세요')
-        }
+        localStorage.setItem('user_id', res.data.id);
+        history.push("/")
       }
     })
   }

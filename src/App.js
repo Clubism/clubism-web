@@ -11,6 +11,7 @@ import ElseClub from './Pages/ElseClub';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import MyPage from './Pages/MyPage';
+import Logout from './Pages/Logout'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="/login" component={Login} exact />
       <Route path="/signup" component={SignUp} exact />
       <Route path="/mypage" component={MyPage} exact />
+      <Route path="/logout" component={Logout} exact />
       <Route component={Error404} />
     </Switch>
   );

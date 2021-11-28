@@ -2,21 +2,24 @@ import React, { useEffect, useRef, useState } from "react";
 import "./style/IndexTemplate.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Logout from "../Pages/Logout";
 
-const IndexTemplate = ({children}) => {
+const IndexTemplate = ({children, history}) => {
   const isLoggedIn = useRef(false);
   
   //console.log(children);
-  useEffect(()=>{
-    axios.get("http://localhost:4000/auth/userSession", {withCredentials : true}).then(res=>{
-      //console.log(res);
-      console.log(res.data.isLoggedIn);
-      isLoggedIn.current = res.data.isLoggedIn;
-      console.log(isLoggedIn.current);
+  //useEffect(()=>{
+    localStorage.getItem('user_id')!==undefined ? isLoggedIn.current = true : isLoggedIn.current = false;
+ // }, []);
+  
+  const onClickLogout = ()=>{
+    axios.get('localhost:4000/auth/logout', {withCredentials : true})
+    .then((res)=>{
+      localStorage.clear();
+      history.push("/");
     });
-  }, []);
-  
-  
+  };
+
 
   // console.log('isLoggedIn : ', isLoggedIn.current);
   return (
@@ -48,10 +51,10 @@ const IndexTemplate = ({children}) => {
             </Link>
           </div>
           <span> | </span>
-          <div className="logout">
-            <Link className="logout link" to="/logout">
+          <div className="logout" onClick={()=>{onClickLogout()}}>
+            {/* <Link className="logout link" to="/logout"> */}
               logout
-            </Link>
+            {/* </Link> */}
           </div>
         </div>
       </div>
