@@ -1,120 +1,69 @@
 import React, { useEffect, useState } from "react";
-import Moment from 'react-moment'
 import "../style/ElseClubPost.scss";
 import { BsArrowReturnRight } from "react-icons/bs";
-import { Form, Button } from 'react-bootstrap';
 import axios from "axios"
 
-const ElseClubPost = ({post}) => {
-  const comments = []; // 백에서 가져온 댓글들
-
-  //const [comment, setcomment] = useState('');
-  
-  
-  const [comment, setComment] = useState({
-    content : "",
-    postNum : post.postNum,
-    class : 0,
-    writer : "",
-  });
+const ElseClubPost = (props) => {
+  const [reload, setreload] = useState(0);
+  const [commentList, setCommentList] = useState([]);
+  const [inputComment, setInputComment] = useState("");
   const [replyComment, setReplyComment] = useState(-1);
-/*
-  {
-    "id": 1,
-    "comment": "댓글1",
-    "postNum": 1,
-    "class": 0,
-    "order": 1,
-    "groupNum": 0,
-    "date": "2021-10-30 02:34:50",
-    "user": "user1"
-  },
-*/
 
-  // 처음에 게시글이 로드될 때 서버에서 댓글 가져오기
-  useEffect(() => {
-    axios.get(`post/comment/${post._id}.`).then((res)=>{
-      comments = JSON.parse(res.data);
-      //setComment(JSON.parse(res.data));
-    });
-  /*
-    fetch("../dummy/elseclubcomment.json")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setComment(result.filter((data) => data.postNum === props.post._id));
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  */
-  }, []);
-
-  // 댓글 submit event가 발생했을 때
-  const onCommentSubmit = (e)=>{
-    e.preventDefault();
-    console.log('comment submit called\n');
-    console.log(comment);
-    /*
-    comment : "",
-    postNum : post.postNum,
-    class : 0,
-    date : "",
-    writer : "",
-    */
-    axios.post(`http://localhost:4000/post/comment/${post._id}`, comment)
-    .then((res)=>{
-
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
-  };
   
-  // 댓글을 작성하는 컴포넌트
-  const InputComment = () => (
-    <div className="InputComment">
-      <Form onSubmit={(e)=>{onCommentSubmit(e)}}>
-        <Form.Group className="mb-3" >
-          <Form.Control 
-            as="textarea" 
-            row={3} 
-            value={comment.content}
-            onChange = {(e)=>{setComment({...comment, content : e.target.value})}}
-          />
-        </Form.Group>
-        <Button>입력</Button>
-      </Form>
-    </div>
-  );
+  useEffect(() => {
+    axios.get('http://localhost:4000/post/comment/'+props.post._id)
+    .then((res)=>{
+      setCommentList(res.data);
+      console.log("comment", res.data);
+      console.log("개수", commentList.length);
+    });
+    console.log("check");
+  }, [reload]);
+
+  const inputCommentHandler = (e) => {
+    console.log(e.target.value);
+    setInputComment(e.target.value)
+  }
+
+  const commentSubmitHandler = (param) => {
+    setreload(reload+1);
+      axios.post("http://localhost:4000/post/comment/"+props.post._id, 
+      {
+        comment: inputComment,
+        postNum: props.post._id,
+        class: param,
+      })
+    .then((res)=>{
+      console.log("post submit success");
+      // setInputComment('');
+    });
+    setInputComment('');
+  }
+  
 
   return (
     <div className="ElseClubPostContainer">
       <div className="ElseClubPost">
-        <h4>{post.title}</h4>
+        <h4>{props.post.title}</h4>
         <div className="ElseClubPost-sub">
-          {post.category}&nbsp;|&nbsp;{post.writer}
+          {props.post.category} | {props.post.writer}
         </div>
-        <div className="ElseClubPost-date">
-          <Moment format="YYYY/MM/DD">
-          {post.date}
-          </Moment>
-        </div>
+        <div className="ElseClubPost-date">{props.post.date}</div>
         <hr />
-        <div className="ElseClubPost-data">{post.content}</div>
+        {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
+        <div className="ElseClubPost-data" dangerouslySetInnerHTML={{__html:props.post.content}}></div>
         <br />
         <br />
         <hr />
 
-        <h5>댓글 {comments.length}개</h5>
+        <h5>댓글 {commentList.length} 개</h5>
 
-        {comments.map((cmt, index) => {
+        {commentList.map((cmt, index) => {
           let com = "first";
           if (cmt.class === 1) com = "second";
 
           return (
-            <div className="ElseClubComment" key={cmt._id}>
+            <div className="ElseClubComment" key={cmt.id}>
               <hr />
               <div className={com}>
                 <div className="cmtSmall">
@@ -136,9 +85,22 @@ const ElseClubPost = ({post}) => {
                     <div />
                   )}
                 </div>
-                {cmt.content}
+                {cmt.comment}
               </div>
-              {replyComment === index ? <InputComment /> : <div />}
+              {replyComment === index ? 
+
+                <div className="InputComment">
+                  <textarea
+                    placeholder={"댓글을 입력하세요."}
+                    value={inputComment}
+                    onChange={inputCommentHandler}
+                  />
+                  <button onClick={()=>{
+                    commentSubmitHandler(1);
+                  }}>입력</button>
+                </div>  
+
+               : <div />}
             </div>
           );
         })}
@@ -146,19 +108,13 @@ const ElseClubPost = ({post}) => {
         <br />
         
         <div className="InputComment">
-      <Form onSubmit={(e)=>{onCommentSubmit(e)}}>
-        <Form.Group className="mb-3" 
-        onChange = {
-          (e)=>{setComment({...comment, content : e.target.value})}}>
-          <Form.Control 
-            as="textarea" 
-            row={3} 
-            value={comment.content}
+          <textarea
+            placeholder={"댓글을 입력하세요."}
+            value={inputComment}
+            onChange={inputCommentHandler}
           />
-        </Form.Group>
-        <Button type="submit">입력</Button>
-      </Form>
-      </div>
+          <button onClick={()=>{commentSubmitHandler(0)}}>입력</button>
+        </div>
 
       </div>
     </div>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "../style/ElseClubList.scss";
 import { Link } from "react-router-dom";
 import Paging from "./Paging";
 import axios from "axios"
 import Moment from  'react-moment'
+
 
 
 const ClubList = (props) => {
@@ -13,6 +15,9 @@ const ClubList = (props) => {
   const [Page, setPage] = useState(1);
   const PageNum = 15;
 
+  const { category: storeCategory } = useSelector((state) => state.category);
+
+
   useEffect(() => {
     axios.get('http://localhost:4000/post')
     .then((res)=>{
@@ -20,52 +25,40 @@ const ClubList = (props) => {
       setFilter(res.data)
       console.log(res.data);
     });
-    /*
-    fetch("dummy/elseclublist.json")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setPost(result);
-          setFilter(result);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );*/
   }, []);
 
   useEffect(
     (data) => {
-      console.log(props.category);
-      if (props.category === "전체보기") {
+      if (storeCategory === "전체보기") {
         setFilter(Post);
         setPage(1);
       } else {
-        setFilter(Post.filter((data) => data.category === props.category));
+        setFilter(Post.filter((data) => data.category === storeCategory));
         setPage(1);
       }
     },
-    [props]
+    [storeCategory]
   );
 
   useEffect(() => {
     if (Check) {
-      if (props.category === "전체보기")
+      if (storeCategory === "전체보기")
         setFilter(Post.filter((data) => data.state === true));
       else
         setFilter(
-          Post.filter((data) => data.category === props.category).filter(
+          Post.filter((data) => data.category === storeCategory).filter(
             (data) => data.state === true
           )
         );
     } else {
-      if (props.category === "전체보기") setFilter(Post);
-      else setFilter(Post.filter((data) => data.category === props.category));
+      if (storeCategory === "전체보기") setFilter(Post);
+      else setFilter(Post.filter((data) => data.category === storeCategory));
     }
   }, [Check]);
 
   return (
     <div className="ElseClubList">
+    {/* <div>{storeCategory}</div> */}
       <div className="ElseClubListTop">
         <Link to="/elseClub/posting" className="Posting">
           글작성
@@ -90,21 +83,18 @@ const ClubList = (props) => {
         if (index >= (Page - 1) * PageNum && index < Page * PageNum)
           return (
             <Link
-              to="/elseClub/post"
+              to={"/elseClub/post/"+post._id}
               className="link"
               onClick={() => {
+                console.log(post._id);
                 props.setPost(post);
               }}
               key={post._id}
             >
               <div className="Posts" key={post._id}>
                 <div className="State">{post.state ? "진행중" : "마감"}</div>
-                <div className="Title">{post.title}</div>
-                <div>
-                  <Moment format="YYYY/MM/DD">
-                    {props.date}
-                  </Moment>
-                </div>
+                <div className="Title">[{post.category}] {post.title}</div>
+                <div>{post.date}</div>
                 <div>{post.writer}</div>
               </div>
             </Link>
