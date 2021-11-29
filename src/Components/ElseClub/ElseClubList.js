@@ -3,10 +3,8 @@ import { useSelector } from "react-redux";
 import "../style/ElseClubList.scss";
 import { Link } from "react-router-dom";
 import Paging from "./Paging";
-import axios from "axios"
-import Moment from  'react-moment'
-
-
+import axios from "axios";
+// import Moment from  'react-moment'
 
 const ClubList = (props) => {
   const [Post, setPost] = useState([]);
@@ -17,12 +15,10 @@ const ClubList = (props) => {
 
   const { category: storeCategory } = useSelector((state) => state.category);
 
-
   useEffect(() => {
-    axios.get('http://localhost:4000/post')
-    .then((res)=>{
-      setPost(res.data)
-      setFilter(res.data)
+    axios.get("http://localhost:4000/post").then((res) => {
+      setPost(res.data);
+      setFilter(res.data);
       console.log(res.data);
     });
   }, []);
@@ -37,7 +33,7 @@ const ClubList = (props) => {
         setPage(1);
       }
     },
-    [storeCategory]
+    [storeCategory, Post]
   );
 
   useEffect(() => {
@@ -54,11 +50,11 @@ const ClubList = (props) => {
       if (storeCategory === "전체보기") setFilter(Post);
       else setFilter(Post.filter((data) => data.category === storeCategory));
     }
-  }, [Check]);
+  }, [Check, Post, storeCategory]);
 
   return (
     <div className="ElseClubList">
-    {/* <div>{storeCategory}</div> */}
+      {/* <div>{storeCategory}</div> */}
       <div className="ElseClubListTop">
         <Link to="/elseClub/posting" className="Posting">
           글작성
@@ -83,7 +79,7 @@ const ClubList = (props) => {
         if (index >= (Page - 1) * PageNum && index < Page * PageNum)
           return (
             <Link
-              to={"/elseClub/post/"+post._id}
+              to={"/elseClub/post/" + post._id}
               className="link"
               onClick={() => {
                 console.log(post._id);
@@ -93,7 +89,9 @@ const ClubList = (props) => {
             >
               <div className="Posts" key={post._id}>
                 <div className="State">{post.state ? "진행중" : "마감"}</div>
-                <div className="Title">[{post.category}] {post.title}</div>
+                <div className="Title">
+                  [{post.category}] {post.title}
+                </div>
                 <div>{post.date}</div>
                 <div>{post.writer}</div>
               </div>
