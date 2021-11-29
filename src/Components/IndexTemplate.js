@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import "./style/IndexTemplate.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -15,6 +14,7 @@ const IndexTemplate = ({ children, history }) => {
     : (isLoggedIn.current = false);
   // }, []);
 
+  isLoggedIn.current = false;
   const onClickLogout = () => {
     axios
       .get("localhost:4000/auth/logout", { withCredentials: true })
@@ -28,54 +28,53 @@ const IndexTemplate = ({ children, history }) => {
   return (
     <Container>
       <Title>
-        <TitleItem className="link" to="/">
+        <TitleItem to="/">
           LOGO club
           <TitleItem2>ism</TitleItem2>
         </TitleItem>
       </Title>
       <Menu>
-        <MenuItem>
-          <MenuItemLink to="/subClub">단과대 동아리 / 학회</MenuItemLink>
+      <MenuItem>
+          <MenuItemLink to="/mainClub">중앙 동아리</MenuItemLink>
         </MenuItem>
         <MenuItem>
-          <MenuItemLink to="/mainClub">중앙 동아리</MenuItemLink>
+          <MenuItemLink to="/subClub">단과대 동아리 / 학회</MenuItemLink>
         </MenuItem>
         <MenuItem>
           <MenuItemLink to="/elseClub">소모임</MenuItemLink>
         </MenuItem>
       </Menu>
-      <div className={isLoggedIn.current ? "auth-hide" : "auth-show"}>
-        <div className="login">
-          <Link className="link" to="/login">
+      <UserNotExist toggle={isLoggedIn.current}>
+        <UserItem>
+          <UserItemLink to="/login">
             로그인&nbsp;
-          </Link>
-        </div>
-        <div className="login">|&nbsp; </div>
-        <div className="login">
-          <Link className="link" to="/signup">
-            회원가입
-          </Link>
-        </div>
-      </div>
-      <div className={isLoggedIn.current ? "auth-show" : "auth-hide"}>
-        <div className="mypage">
-          <Link className="mypage link" to="/mypage">
-            mypage
-          </Link>
-        </div>
-        <span> | </span>
-        <div
-          className="logout"
+          </UserItemLink>
+        </UserItem>
+        <UserItemBar>|</UserItemBar>
+        <UserItem>
+          <UserItemLink to="/signup">
+            &nbsp;회원가입
+          </UserItemLink>
+        </UserItem>
+      </UserNotExist>
+      <UserExist toggle={isLoggedIn.current}>
+        <UserItem>
+          <UserItemLink to="/mypage">
+            mypage&nbsp;
+          </UserItemLink>
+        </UserItem>
+        <UserItemBar>|</UserItemBar>
+        <UserItem
           onClick={() => {
             onClickLogout();
           }}
         >
           {/* <Link className="logout link" to="/logout"> */}
-          logout
+          <Logout>&nbsp;logout</Logout>
           {/* </Link> */}
-        </div>
-      </div>
-      {children}
+        </UserItem>
+      </UserExist>
+      {/* {children} */}
     </Container>
   );
 };
@@ -83,10 +82,14 @@ const IndexTemplate = ({ children, history }) => {
 export default IndexTemplate;
 
 const Container = styled.div`
+  position:fixed;
+  top:0;
   width: 100%;
   height: 80px;
   display: flex;
   padding: 0px 80px;
+  box-shadow: 0 2px 10px -2px gray;
+  background-color:white;
 `;
 
 const Title = styled.div`
@@ -98,6 +101,7 @@ const Title = styled.div`
 `;
 
 const TitleItem = styled(Link)`
+  text-decoration-line: none; 
   font-family: "BebasNeue-Regular";
   font-size: 40px;
   font-weight: 600;
@@ -105,6 +109,9 @@ const TitleItem = styled(Link)`
   display: table-cell;
   vertical-align: middle;
   color: #023b6d;
+  &:hover{
+    color: #023b6d;
+  }
 `;
 
 const TitleItem2 = styled.span`
@@ -130,4 +137,71 @@ const MenuItemLink = styled(Link)`
   color: #023b6d;
   font-size: 16px;
   font-weight: 1000;
+`;
+
+const UserExist = styled.div`
+  width: 30%;
+  height: inherit;
+  color: blue;
+  float: left;
+  ${props=>{
+    console.log(props);
+    if(!props.toggle){
+      return `
+        display: none;
+      `
+    }
+    else{
+      return`
+        display: "";
+      `
+    }
+  }}
+`;
+
+const UserNotExist = styled.div`
+  width: 30%;
+  height: inherit;
+  color: blue;
+  float: left;
+  ${props=>{
+    if(props.toggle){
+      return `
+        display: none;
+      `
+    }
+    else{
+      return`
+        display: "";
+      `
+    }
+  }}
+`;
+
+const UserItem = styled.div`
+  height: inherit;
+  float: left;
+  padding: 28px 20px;
+`;
+
+const UserItemBar = styled.div`
+  height: inherit;
+  float: left;
+  padding: 28px 0px;
+  color: #023b6d;
+`;
+
+const UserItemLink = styled(Link)`
+  text-decoration-line: none;
+  color: #023b6d;
+  font-size: 16px;
+  font-weight: 1000;
+`;
+
+const Logout = styled.span`
+  text-decoration-line: none;
+  color: #023b6d;
+  font-size: 16px;
+  font-weight: 1000;
+  cursor: pointer;
 `;
