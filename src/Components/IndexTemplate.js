@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import MenuCategory from "./Category";
 // import Logout from "../Pages/Logout";
 
 const IndexTemplate = ({ children, history }) => {
@@ -26,70 +27,69 @@ const IndexTemplate = ({ children, history }) => {
 
   // console.log('isLoggedIn : ', isLoggedIn.current);
   return (
-    <Container>
-      <Title>
-        <TitleItem to="/">
-          LOGO club
-          <TitleItem2>ism</TitleItem2>
-        </TitleItem>
-      </Title>
-      <Menu>
-      <MenuItem>
-          <MenuItemLink to="/mainClub">중앙 동아리</MenuItemLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuItemLink to="/subClub">단과대 동아리 / 학회</MenuItemLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuItemLink to="/elseClub">소모임</MenuItemLink>
-        </MenuItem>
-      </Menu>
-      <UserNotExist toggle={isLoggedIn.current}>
-        <UserItem>
-          <UserItemLink to="/login">
-            로그인&nbsp;
-          </UserItemLink>
-        </UserItem>
-        <UserItemBar>|</UserItemBar>
-        <UserItem>
-          <UserItemLink to="/signup">
-            &nbsp;회원가입
-          </UserItemLink>
-        </UserItem>
-      </UserNotExist>
-      <UserExist toggle={isLoggedIn.current}>
-        <UserItem>
-          <UserItemLink to="/mypage">
-            mypage&nbsp;
-          </UserItemLink>
-        </UserItem>
-        <UserItemBar>|</UserItemBar>
-        <UserItem
-          onClick={() => {
-            onClickLogout();
-          }}
-        >
-          {/* <Link className="logout link" to="/logout"> */}
-          <Logout>&nbsp;logout</Logout>
-          {/* </Link> */}
-        </UserItem>
-      </UserExist>
-      {/* {children} */}
-    </Container>
+    <div>
+      <Container>
+        <Title>
+          <TitleItem to="/">
+            LOGO club
+            <TitleItem2>ism</TitleItem2>
+          </TitleItem>
+        </Title>
+        <Menu>
+          <MenuItem>
+            <MenuItemLink to="/mainClub">중앙 동아리</MenuItemLink>
+          </MenuItem>
+          <MenuItem>
+            <MenuItemLink to="/subClub">단과대 동아리 / 학회</MenuItemLink>
+          </MenuItem>
+          <MenuItem>
+            <MenuItemLink to="/elseClub">소모임</MenuItemLink>
+          </MenuItem>
+        </Menu>
+        <UserNotExist toggle={isLoggedIn.current}>
+          <UserItem>
+            <UserItemLink to="/login">로그인&nbsp;</UserItemLink>
+          </UserItem>
+          <UserItemBar>|</UserItemBar>
+          <UserItem>
+            <UserItemLink to="/signup">&nbsp;회원가입</UserItemLink>
+          </UserItem>
+        </UserNotExist>
+        <UserExist toggle={isLoggedIn.current}>
+          <UserItem>
+            <UserItemLink to="/mypage">mypage&nbsp;</UserItemLink>
+          </UserItem>
+          <UserItemBar>|</UserItemBar>
+          <UserItem
+            onClick={() => {
+              onClickLogout();
+            }}
+          >
+            {/* <Link className="logout link" to="/logout"> */}
+            <Logout>&nbsp;logout</Logout>
+            {/* </Link> */}
+          </UserItem>
+        </UserExist>
+        {children}
+      </Container>
+      <Category>
+        <MenuCategory />
+      </Category>
+    </div>
   );
 };
 
 export default IndexTemplate;
 
 const Container = styled.div`
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 80px;
   display: flex;
   padding: 0px 80px;
   box-shadow: 0 2px 10px -2px gray;
-  background-color:white;
+  background-color: white;
 `;
 
 const Title = styled.div`
@@ -101,7 +101,7 @@ const Title = styled.div`
 `;
 
 const TitleItem = styled(Link)`
-  text-decoration-line: none; 
+  text-decoration-line: none;
   font-family: "BebasNeue-Regular";
   font-size: 40px;
   font-weight: 600;
@@ -109,7 +109,7 @@ const TitleItem = styled(Link)`
   display: table-cell;
   vertical-align: middle;
   color: #023b6d;
-  &:hover{
+  &:hover {
     color: #023b6d;
   }
 `;
@@ -144,17 +144,16 @@ const UserExist = styled.div`
   height: inherit;
   color: blue;
   float: left;
-  ${props=>{
+  ${(props) => {
     console.log(props);
-    if(!props.toggle){
+    if (!props.toggle) {
       return `
         display: none;
-      `
-    }
-    else{
-      return`
+      `;
+    } else {
+      return `
         display: "";
-      `
+      `;
     }
   }}
 `;
@@ -164,16 +163,15 @@ const UserNotExist = styled.div`
   height: inherit;
   color: blue;
   float: left;
-  ${props=>{
-    if(props.toggle){
+  ${(props) => {
+    if (props.toggle) {
       return `
         display: none;
-      `
-    }
-    else{
-      return`
+      `;
+    } else {
+      return `
         display: "";
-      `
+      `;
     }
   }}
 `;
@@ -205,3 +203,5 @@ const Logout = styled.span`
   font-weight: 1000;
   cursor: pointer;
 `;
+
+const Category = styled.div``;
