@@ -1,13 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import MenuCategory from "./Category";
+import CategoryMain from "./CategoryMain";
+import CategorySub from "./CategorySub"
 // import Logout from "../Pages/Logout";
 
 const IndexTemplate = ({ children, history }) => {
   const isLoggedIn = useRef(false);
   const [category1, setCategory1] = useState(false);
+  const [category2, setCategory2] = useState(false);
+  const [category3, setCategory3] = useState(false);
 
   //useEffect(()=>{
   localStorage.getItem("user_id") !== undefined
@@ -27,12 +30,18 @@ const IndexTemplate = ({ children, history }) => {
   };
 
   const onClickCategory = (e) => {
-    console.log(e.target.innerText);
+    setCategory1(false);
+    setCategory2(false);
+    setCategory3(false);
     if (e.target.innerText === "중앙 동아리") setCategory1(!category1);
+    else if(e.target.innerText === "단과대 동아리 / 학회") setCategory2(!category2);
+    else if(e.target.innerText === "소모임") setCategory3(!category3);
   };
 
   const onClickClose = (e) => {
     setCategory1(false);
+    setCategory2(false);
+    setCategory3(false);
   };
 
   return (
@@ -50,10 +59,12 @@ const IndexTemplate = ({ children, history }) => {
             <MenuBar1 toggle={category1} />
           </MenuItem>
           <MenuItem>
-            <MenuItemLink>단과대 동아리 / 학회</MenuItemLink>
+            <MenuItemLink  onClick={onClickCategory}>단과대 동아리 / 학회</MenuItemLink>
+            <MenuBar2 toggle={category2} />
           </MenuItem>
           <MenuItem>
-            <MenuItemLink>소모임</MenuItemLink>
+            <MenuItemLink  onClick={onClickCategory}>소모임</MenuItemLink>
+            <MenuBar3 toggle={category3} />
           </MenuItem>
         </Menu>
         <UserNotExist toggle={isLoggedIn.current}>
@@ -82,9 +93,12 @@ const IndexTemplate = ({ children, history }) => {
         </UserExist>
         {/* {children} */}
       </Container>
-      <Category toggle={category1}>
-        <MenuCategory close={onClickClose} />
-      </Category>
+      <Category1 toggle={category1}>
+        <CategoryMain close={onClickClose}></CategoryMain>
+      </Category1>
+      <Category2 toggle={category2}>
+        <CategorySub close={onClickClose}></CategorySub>
+      </Category2>
     </div>
   );
 };
@@ -221,7 +235,15 @@ const Logout = styled.span`
   cursor: pointer;
 `;
 
-const Category = styled.div`
+const Category1 = styled.div`
+  display: ${(props) => (props.toggle ? "" : "none")};
+`;
+
+const Category2 = styled.div`
+  display: ${(props) => (props.toggle ? "" : "none")};
+`;
+
+const Category3 = styled.div`
   display: ${(props) => (props.toggle ? "" : "none")};
 `;
 
@@ -234,3 +256,24 @@ const MenuBar1 = styled.span`
   background-color: #023b6d;
   display: ${(props) => (props.toggle ? "" : "none")};
 `;
+
+const MenuBar2 = styled.span`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 170px;
+  height: 4px;
+  background-color: #023b6d;
+  display: ${(props) => (props.toggle ? "" : "none")};
+`;
+
+const MenuBar3 = styled.span`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: #023b6d;
+  display: ${(props) => (props.toggle ? "" : "none")};
+`;
+

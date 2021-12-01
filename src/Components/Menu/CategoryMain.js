@@ -131,9 +131,9 @@
 import React, { useState, useEffect } from "react";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
-import { AiOutlineClose } from "react-icons/ai";
+import { MdClose } from "react-icons/md";
 
-const MenuCategory = (props) => {
+const CategoryMain = (props) => {
   const [ClubList, setClubList] = useState([]);
 
   //큰틀 category list 불러오기
@@ -249,17 +249,17 @@ const MenuCategory = (props) => {
           </Category>
         </SubContainer>
         <CloseButton onClick={props.close}>
-          <AiOutlineClose size="25" color="black" />
+          <MdClose size="25" color="black" />
         </CloseButton>
       </Container>
     </div>
   );
 };
-export default MenuCategory;
+export default CategoryMain;
 
 const Container = styled.div`
   width: 100%;
-  height: 780px;
+  height: auto;
   position: absolute;
   top: 80px;
   left: 0px;
@@ -267,6 +267,7 @@ const Container = styled.div`
   background-color: white;
   z-index: 100003;
   box-shadow: 0 2px 5px -2px gray;
+  padding-bottom: 15px;
 `;
 
 const SubContainer = styled.div`
@@ -309,11 +310,11 @@ const ListItem = styled.div`
   padding: 8px 0;
   font-weight: normal;
   &:hover {
-    color: #023b6d;
+    color: #009bd9;
   }
 `;
 
-const CloseButton = styled.button`
+const CloseButton = styled.span`
   all: unset;
   cursor: pointer;
   position: absolute;

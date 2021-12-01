@@ -13,7 +13,7 @@ import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import MyPage from "./Pages/MyPage";
 import Logout from "./Pages/Logout";
-import IndexTemplate from "./Components/IndexTemplate";
+import IndexTemplate from "./Components/Menu/IndexTemplate";
 
 function App() {
   return (

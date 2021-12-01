@@ -110,7 +110,7 @@
   {
     "id": 19,
     "category": "사회교양분과",
-    "name": "Black Box",
+    "name": "BlackBox",
     "label": "blackbox"
   },
   {
@@ -136,12 +136,6 @@
     "category": "사회교양분과",
     "name": "SWIC",
     "label": "swic"
-  },
-  {
-    "id": 24,
-    "category": "사회교양분과",
-    "name": "TedxSogangU",
-    "label": "tedxsogangu"
   },
   {
     "id": 25,
@@ -172,12 +166,6 @@
     "category": "봉사분과",
     "name": "애드리랑",
     "label": "adreelang"
-  },
-  {
-    "id": 30,
-    "category": "봉사분과",
-    "name": "아루페봉사단",
-    "label": "arupe"
   },
   {
     "id": 31,
@@ -326,7 +314,7 @@
   {
     "id": 55,
     "category": "체육분과",
-    "name": "Spike-G",
+    "name": "SpikeG",
     "label": "spikeg"
   },
   {
@@ -364,12 +352,6 @@
     "category": "학술분과",
     "name": "서강AD",
     "label": "sogangad"
-  },
-  {
-    "id": 62,
-    "category": "학술분과",
-    "name": "ELM",
-    "label": "elm"
   },
   {
     "id": 63,
@@ -418,18 +400,6 @@
     "category": "학술분과",
     "name": "서방정토",
     "label": "jeongto"
-  },
-  {
-    "id": 71,
-    "category": "학술분과",
-    "name": "서강번역회",
-    "label": "translation"
-  },
-  {
-    "id": 72,
-    "category": "학술분과",
-    "name": "Pridean",
-    "label": "pridean"
   },
   {
     "id": 73,
