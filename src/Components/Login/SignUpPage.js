@@ -17,7 +17,7 @@ const SignUpPage = () => {
     axios
       .post("http://localhost:4000/auth/join", Info)
       .then(() => {
-        console.log("successs");
+        console.log("successs_from SignUpPage.js");
         setInfo({ username: "", id: "", password: "" });
         e.target.username.value = "";
       })
