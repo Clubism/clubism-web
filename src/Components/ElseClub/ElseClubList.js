@@ -97,6 +97,7 @@ const ClubList = (props) => {
               </div>
             </Link>
           );
+        else return "";
       })}
       <Paging
         page={Page}

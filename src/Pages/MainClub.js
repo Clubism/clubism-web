@@ -1,8 +1,6 @@
-import React from 'react';
-import MainClubCategoryTest from "../Components/MainClub/MainClubCategory_test";
+import React from "react";
 import MainClubPageTest from "../Components/MainClub/MainClubPage_test";
 import "../Components/style/MainClub.scss";
-
 
 const MainClub = (props) => {
   const { params } = props.match;
@@ -11,11 +9,10 @@ const MainClub = (props) => {
   return (
     <div>
       <div className="mainClubContainer">
-        <MainClubCategoryTest category={params.category} name={params.name} />
         <MainClubPageTest category={params.category} name={params.name} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default MainClub;

@@ -1,40 +1,58 @@
 [
-    { "id": 0, "value": "all", "title": "전체보기", "itemId": "/subClub", "subNav": [] },
-    { "id": 1, "value": "international", "title": "국제인문학부", "itemId": "/subClub/international", "subNav": []},
-    {
-      "id": 2,
-      "value": "social",
-      "title": "사회과학부",
-      "itemId": "/subClub/social",
-      "subNav": []
-    },
-    {
-      "id": 3,
-      "value": "economy",
-      "title": "경제학부",
-      "itemId": "/subClub/economy",
-      "subNav": []
-    },
-    {
-      "id": 4,
-      "value": "engineering",
-      "title": "공학부",
-      "itemId": "/subClub/engineering",
-      "subNav": []
-    },
-    { "id": 5, "value": "management", "title": "경영학부", "itemId": "/subClub/management", "subNav": [] },
-    {
-      "id": 6,
-      "value": "science",
-      "title": "자연과학부",
-      "itemId": "/subClub/science",
-      "subNav": []
-    },
-    {
-        "id": 7,
-        "value": "media",
-        "title": "지융미학부",
-        "itemId": "/subClub/media",
-        "subNav": []
-      }
-  ]
+  {
+    "id": 0,
+    "value": "all",
+    "title": "전체보기",
+    "itemId": "/subClub",
+    "subNav": []
+  },
+  {
+    "id": 1,
+    "value": "international",
+    "title": "국제인문학부",
+    "itemId": "/subClub/liberalarts",
+    "subNav": []
+  },
+  {
+    "id": 2,
+    "value": "social",
+    "title": "사회과학부",
+    "itemId": "/subClub/sdoss",
+    "subNav": []
+  },
+  {
+    "id": 3,
+    "value": "economy",
+    "title": "경제학부",
+    "itemId": "/subClub/econ",
+    "subNav": []
+  },
+  {
+    "id": 4,
+    "value": "engineering",
+    "title": "공학부",
+    "itemId": "/subClub/eng",
+    "subNav": []
+  },
+  {
+    "id": 5,
+    "value": "management",
+    "title": "경영학부",
+    "itemId": "/subClub/sbs",
+    "subNav": []
+  },
+  {
+    "id": 6,
+    "value": "science",
+    "title": "자연과학부",
+    "itemId": "/subClub/science",
+    "subNav": []
+  },
+  {
+    "id": 7,
+    "value": "media",
+    "title": "지식융합미디어학부",
+    "itemId": "/subClub/smas",
+    "subNav": []
+  }
+]

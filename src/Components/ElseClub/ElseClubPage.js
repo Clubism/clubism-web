@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../style/ElseClubPage.scss";
 import ElseClubList from "./ElseClubList";
-import ElseClubCategory from "./ElseClubCategory";
 import ElseClubPosting from "./ElseClubPosting";
 import ElseClubPost from "./ElseClubPost";
 import { Route, Switch } from "react-router-dom";
@@ -11,7 +10,6 @@ const ElseClubPage = () => {
 
   return (
     <div className="ElseClubPage">
-      <ElseClubCategory />
       <Switch>
         <Route path="/elseClub" exact>
           <ElseClubList setPost={setPost} />
