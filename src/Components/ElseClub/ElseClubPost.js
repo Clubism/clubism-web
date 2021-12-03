@@ -16,18 +16,16 @@ const ElseClubPost = (props) => {
       .then((res) => {
         setCommentList(res.data);
         console.log("comment", res.data);
-        console.log("개수", commentList.length);
+        // console.log("개수", commentList.length);
       });
-    console.log("check");
+    // console.log("check");
   }, [reload, commentList.length, props.post._id]);
 
   const inputCommentHandler = (e) => {
-    console.log(e.target.value);
     setInputComment(e.target.value);
   };
 
     const inputRecommentHandler = (e) => {
-    console.log(e.target.value);
     setInputRecomment(e.target.value);
   };
 
@@ -37,12 +35,11 @@ const ElseClubPost = (props) => {
       .post("http://localhost:4000/post/comment/" + props.post._id, {
         comment: inputComment,
         postNum: props.post._id,
-        class : 0,
+        _class : 0,
         parentComment: "",
       })
       .then((res) => {
         console.log("post submit success");
-        // setInputComment('');
       });
     setInputComment("");
   };
@@ -50,15 +47,14 @@ const ElseClubPost = (props) => {
     const recommentSubmitHandler = (parent) => {
     setreload(reload + 1);
     axios
-      .post("http://localhost:4000/post/recomment/" + props.post._id, {
+      .post("http://localhost:4000/post/comment/" + props.post._id, {
         comment: inputRecomment,
         postNum: props.post._id,
-        class : 1,
+        _class : 1,
         parentComment: parent,
       })
       .then((res) => {
         console.log("post submit success");
-        // setInputComment('');
       });
     setInputRecomment("");
   };
@@ -85,7 +81,7 @@ const ElseClubPost = (props) => {
 
         {commentList.map((cmt, index) => {
           let com = "first";
-          if (cmt.class === 1) com = "second";
+          if (cmt._class === 1) com = "second";
 
           return (
             <div className="ElseClubComment" key={cmt.id}>
@@ -100,7 +96,7 @@ const ElseClubPost = (props) => {
                     <div>
                       <BsArrowReturnRight
                         onClick={() => {
-                          console.log("click");
+                          // console.log("click");
                           if (replyComment === index) setReplyComment(-1);
                           else setReplyComment(index);
                         }}
@@ -121,7 +117,6 @@ const ElseClubPost = (props) => {
                   />
                   <button
                     onClick={() => {
-                      console.log()
                       recommentSubmitHandler(cmt._id);
                     }}
                   >
