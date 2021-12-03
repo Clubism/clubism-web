@@ -2,7 +2,7 @@
   {
     "id": 1,
     "category": "국제인문학부",
-    "value": "international",
+    "value": "liberalarts",
     "label": "동아리1",
     "name": "동아리1",
     "description": "동아리1 모집",
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "category": "사회과학부",
-    "value": "social",
+    "value": "sdoss",
     "label": "동아리2",
     "name": "동아리2",
     "description": "동아리2 모집",
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "category": "사회과학부",
-    "value": "social",
+    "value": "sdoss",
     "label": "동아리3",
     "name": "동아리3",
     "description": "동아리3 모집",
@@ -29,7 +29,7 @@
   {
     "id": 4,
     "category": "경제학부",
-    "value": "economoy",
+    "value": "econ",
     "label": "동아리4",
     "name": "동아리4",
     "description": "동아리4 모집",
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "category": "공학부",
-    "value": "engineering",
+    "value": "eng",
     "label": "동아리5",
     "name": "동아리5",
     "description": "동아리5 모집",
@@ -47,7 +47,7 @@
   {
     "id": 6,
     "category": "경제학부",
-    "value": "economoy",
+    "value": "econ",
     "label": "동아리6",
     "name": "동아리6",
     "description": "동아리6 모집",
@@ -56,7 +56,7 @@
   {
     "id": 7,
     "category": "경영학부",
-    "value": "management",
+    "value": "sbs",
     "label": "동아리7",
     "name": "동아리7",
     "description": "동아리7 모집",
@@ -65,7 +65,7 @@
   {
     "id": 8,
     "category": "공학부",
-    "value": "engineering",
+    "value": "eng",
     "label": "동아리8",
     "name": "동아리8",
     "description": "동아리8 모집",
@@ -74,7 +74,7 @@
   {
     "id": 9,
     "category": "국제인문학부",
-    "value": "international",
+    "value": "liberalarts",
     "label": "동아리9",
     "name": "동아리9",
     "description": "동아리9 모집",
@@ -92,7 +92,7 @@
   {
     "id": 11,
     "category": "경영학부",
-    "value": "management",
+    "value": "sbs",
     "label": "동아리11",
     "name": "동아리11",
     "description": "동아리11 모집",
@@ -101,7 +101,7 @@
   {
     "id": 12,
     "category": "지식융합미디어학부",
-    "value": "media",
+    "value": "smas",
     "label": "동아리12",
     "name": "동아리12",
     "description": "동아리12 모집",

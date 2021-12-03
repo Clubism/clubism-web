@@ -36,9 +36,9 @@ const CategoryMain = (props) => {
       window.location.replace("/mainclub/religion");
   };
 
-  const onClickList = (index, e) => {
-    console.log(index, e);
-    // window.location.replace("/mainclub/art");
+  const onClickList = (item, url) => {
+    // console.log(item);
+    window.location.replace("/mainclub/" + url + "/" + item.item.label);
   };
 
   return (
@@ -57,7 +57,7 @@ const CategoryMain = (props) => {
                     <ListTitle key={index}>
                       <ListItem
                         onClick={(e) => {
-                          onClickList({ index }, e);
+                          onClickList({ item }, "service");
                         }}
                       >
                         {item.name}
@@ -73,7 +73,13 @@ const CategoryMain = (props) => {
                   {ClubList.filter((data) => data.category === "종교분과").map(
                     (item, index) => (
                       <ListTitle key={index}>
-                        <ListItem>{item.name}</ListItem>
+                        <ListItem
+                          onClick={(e) => {
+                            onClickList({ item }, "religion");
+                          }}
+                        >
+                          {item.name}
+                        </ListItem>
                       </ListTitle>
                     )
                   )}
@@ -89,7 +95,13 @@ const CategoryMain = (props) => {
                   (data) => data.category === "사회교양분과"
                 ).map((item, index) => (
                   <ListTitle key={index}>
-                    <ListItem>{item.name}</ListItem>
+                    <ListItem
+                      onClick={(e) => {
+                        onClickList({ item }, "social");
+                      }}
+                    >
+                      {item.name}
+                    </ListItem>
                   </ListTitle>
                 ))}
               </List>
@@ -103,7 +115,13 @@ const CategoryMain = (props) => {
                   (data) => data.category === "언행예술분과"
                 ).map((item, index) => (
                   <ListTitle key={index}>
-                    <ListItem>{item.name}</ListItem>
+                    <ListItem
+                      onClick={(e) => {
+                        onClickList({ item }, "art");
+                      }}
+                    >
+                      {item.name}
+                    </ListItem>
                   </ListTitle>
                 ))}
               </List>
@@ -117,7 +135,13 @@ const CategoryMain = (props) => {
                     if (index < 12) {
                       return (
                         <ListTitle key={index}>
-                          <ListItem>{item.name}</ListItem>
+                          <ListItem
+                            onClick={(e) => {
+                              onClickList({ item }, "pe");
+                            }}
+                          >
+                            {item.name}
+                          </ListItem>
                         </ListTitle>
                       );
                     } else return "";
@@ -133,7 +157,13 @@ const CategoryMain = (props) => {
                     if (index > 12) {
                       return (
                         <ListTitle key={index}>
-                          <ListItem>{item.name}</ListItem>
+                          <ListItem
+                            onClick={(e) => {
+                              onClickList({ item }, "pe");
+                            }}
+                          >
+                            {item.name}
+                          </ListItem>
                         </ListTitle>
                       );
                     } else return "";
@@ -147,7 +177,13 @@ const CategoryMain = (props) => {
                 {ClubList.filter((data) => data.category === "학술분과").map(
                   (item, index) => (
                     <ListTitle key={index}>
-                      <ListItem>{item.name}</ListItem>
+                      <ListItem
+                        onClick={(e) => {
+                          onClickList({ item }, "academic");
+                        }}
+                      >
+                        {item.name}
+                      </ListItem>
                     </ListTitle>
                   )
                 )}

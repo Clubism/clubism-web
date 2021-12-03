@@ -6,13 +6,8 @@ const SubClubs = (props) => {
   const [Club, setClub] = useState([]);
   const [Filter, setFilter] = useState(Club);
 
-  var fetchURL;
-  if (props.category === undefined) fetchURL = "";
-  else if (props.category !== undefined && props.name === undefined)
-    fetchURL = "../";
-
   useEffect(() => {
-    fetch(fetchURL + "dummy/subclubrecruitlist.json")
+    fetch("../dummy/subclubrecruitlist.json")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -23,7 +18,7 @@ const SubClubs = (props) => {
           console.log(error);
         }
       );
-  }, [fetchURL]);
+  }, []);
 
   useEffect(() => {
     if (props.category === undefined) setFilter(Club);

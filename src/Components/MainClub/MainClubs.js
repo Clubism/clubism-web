@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../style/MainClubs.scss";
 import { Link } from "react-router-dom";
 
-const Clubs = (props) => {
-
+const MainClubs = (props) => {
   const [Club, setClub] = useState([]);
   const [Filter, setFilter] = useState(Club);
+
   useEffect(() => {
-    fetch("dummy/mainclublist.json")
+    fetch("../dummy/mainclubrecruitlist.json")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -20,30 +20,18 @@ const Clubs = (props) => {
       );
   }, []);
 
-  useEffect(
-    (data) => {
-      if (props.category === "전체보기") setFilter(Club);
-      else setFilter(Club.filter((data) => data.category === props.category));
-    },
-    [props.category, Club]
-  );
+  useEffect(() => {
+    if (props.category === undefined) setFilter(Club);
+    else setFilter(Club.filter((data) => data.value === props.category));
+  }, [props.category, Club]);
 
+  console.log(Filter);
   return (
     <div className="clubContainer">
       {Filter.map((mainClub, index) => (
-        <div
-          className="club"
-          key={index}
-          onClick={() => {
-            props.setDetailPage(true);
-            props.setSelectedClub(mainClub);
-            console.log(mainClub.label);
-          }}
-          // style={{ backgroundColor: "blue" }}
-        >
+        <div className="club" key={index}>
           <Link
-            to={{ pathname: `/mainClub/${props.categoryvalue}/${mainClub.label}` }}
-            // style={{ backgroundColor: "pink" }}
+            to={{ pathname: `/mainClub/${mainClub.value}/${mainClub.label}` }}
             className="LinkTp"
           >
             <div className="clubText">
@@ -70,4 +58,4 @@ const Clubs = (props) => {
   );
 };
 
-export default Clubs;
+export default MainClubs;

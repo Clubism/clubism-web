@@ -1,5 +1,5 @@
 import React from "react";
-import MainClubPageTest from "../Components/MainClub/MainClubPage_test";
+import MainClubPage from "../Components/MainClub/MainClubPage";
 import "../Components/style/MainClub.scss";
 
 const MainClub = (props) => {
@@ -9,7 +9,7 @@ const MainClub = (props) => {
   return (
     <div>
       <div className="mainClubContainer">
-        <MainClubPageTest category={params.category} name={params.name} />
+        <MainClubPage category={params.category} name={params.name} />
       </div>
     </div>
   );
