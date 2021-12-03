@@ -1,11 +1,13 @@
-import React from 'react';
-import IndexTemplate from '../Components/IndexTemplate';
-import ElseClubPage from '../Components/ElseClub/ElseClubPage';
+import React from "react";
+import ElseClubPage from "../Components/ElseClub/ElseClubPage";
+// import { BrowserRouter } from "react-router-dom";
 
-const MainClub = ()=>{
+const MainClub = () => {
   return (
-    <IndexTemplate><ElseClubPage /></IndexTemplate>
-  )
-}
+    // <BrowserRouter>
+      <ElseClubPage />
+    // </BrowserRouter>
+  );
+};
 
 export default MainClub;

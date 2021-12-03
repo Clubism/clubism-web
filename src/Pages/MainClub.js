@@ -1,11 +1,18 @@
-import React from 'react';
-import IndexTemplate from '../Components/IndexTemplate';
-import MainClubPage from '../Components/MainClub/MainClubPage';
+import React from "react";
+import MainClubPageTest from "../Components/MainClub/MainClubPage_test";
+import "../Components/style/MainClub.scss";
 
-const MainClub = ({ match }) => {
+const MainClub = (props) => {
+  const { params } = props.match;
+  // console.log(params.category, params.name);
+
   return (
-    <IndexTemplate><MainClubPage /></IndexTemplate>
-  )
-}
+    <div>
+      <div className="mainClubContainer">
+        <MainClubPageTest category={params.category} name={params.name} />
+      </div>
+    </div>
+  );
+};
 
 export default MainClub;

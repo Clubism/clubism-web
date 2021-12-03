@@ -1,8 +1,11 @@
-.ClubPage {
-  display: flex;
-  height: 100%;
+.mainClubBox {
+  width: 100%;
 }
 
-.ClubCategory {
-  width: 20%;
+.subClubBox {
+  width: 100%;
+}
+
+.detail-container {
+  overflow: auto;
 }

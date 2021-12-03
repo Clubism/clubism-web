@@ -1,11 +1,8 @@
-import React from 'react';
-import IndexTemplate from '../Components/IndexTemplate';
-import IndexPage from '../Components/Index/IndexPage';
+import React from "react";
+import IndexPage from "../Components/Index/IndexPage";
 
-const Index = () => {
-  return (
-    <IndexTemplate><IndexPage /></IndexTemplate>
-  )
-}
+const Index = ({ history }) => {
+  return <IndexPage />;
+};
 
 export default Index;
