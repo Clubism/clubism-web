@@ -9,6 +9,7 @@ const ElseClubPost = (props) => {
   const [inputRecomment, setInputRecomment] = useState("");
   const [inputComment, setInputComment] = useState("");
   const [replyComment, setReplyComment] = useState(-1);
+//  const [showCommentList, setShowCommentList] = useState([]);
 
   useEffect(() => {
     axios
@@ -16,10 +17,9 @@ const ElseClubPost = (props) => {
       .then((res) => {
         setCommentList(res.data);
         console.log("comment", res.data);
-        // console.log("개수", commentList.length);
       });
     // console.log("check");
-  }, [reload, commentList.length, props.post._id]);
+  }, [reload]);
 
   const inputCommentHandler = (e) => {
     setInputComment(e.target.value);
@@ -59,6 +59,7 @@ const ElseClubPost = (props) => {
     setInputRecomment("");
   };
 
+  
   return (
     <div className="ElseClubPostContainer">
       <div className="ElseClubPost">
@@ -88,10 +89,14 @@ const ElseClubPost = (props) => {
               <hr />
               <div className={com}>
                 <div className="cmtSmall">
-                  <div className="cmtUser">{cmt.user}</div>
+                  <div className="cmtUser">
+                    user
+                    {/* {cmt.user} */}
+                    </div>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <div className="cmtDate">{cmt.date}</div>
                   &nbsp;&nbsp;&nbsp;
+
                   {com === "first" ? (
                     <div>
                       <BsArrowReturnRight
@@ -107,7 +112,25 @@ const ElseClubPost = (props) => {
                   )}
                 </div>
                 {cmt.comment}
+                  {
+                  cmt.childComment.map((reply, idx) =>{
+                    return (
+                      <div>대댓글 {reply.comment}</div>
+                    )
+                  })
+
+
+                }
               </div>
+              {/* {
+                cmt.childComment.map((reply, idx) =>{
+                  return (
+                    <div>eee{reply}</div>
+                  )
+                })
+
+
+              } */}
               {replyComment === index ? (
                 <div className="InputComment">
                   <textarea
