@@ -6,6 +6,7 @@ import axios from "axios";
 const ElseClubPost = (props) => {
   const [reload, setreload] = useState(0);
   const [commentList, setCommentList] = useState([]);
+  const [inputRecomment, setInputRecomment] = useState("");
   const [inputComment, setInputComment] = useState("");
   const [replyComment, setReplyComment] = useState(-1);
 
@@ -25,19 +26,41 @@ const ElseClubPost = (props) => {
     setInputComment(e.target.value);
   };
 
-  const commentSubmitHandler = (param) => {
+    const inputRecommentHandler = (e) => {
+    console.log(e.target.value);
+    setInputRecomment(e.target.value);
+  };
+
+  const commentSubmitHandler = () => {
     setreload(reload + 1);
     axios
       .post("http://localhost:4000/post/comment/" + props.post._id, {
         comment: inputComment,
         postNum: props.post._id,
-        class: param
+        class : 0,
+        parentComment: "",
       })
       .then((res) => {
         console.log("post submit success");
         // setInputComment('');
       });
     setInputComment("");
+  };
+
+    const recommentSubmitHandler = (parent) => {
+    setreload(reload + 1);
+    axios
+      .post("http://localhost:4000/post/recomment/" + props.post._id, {
+        comment: inputRecomment,
+        postNum: props.post._id,
+        class : 1,
+        parentComment: parent,
+      })
+      .then((res) => {
+        console.log("post submit success");
+        // setInputComment('');
+      });
+    setInputRecomment("");
   };
 
   return (
@@ -93,12 +116,13 @@ const ElseClubPost = (props) => {
                 <div className="InputComment">
                   <textarea
                     placeholder={"댓글을 입력하세요."}
-                    value={inputComment}
-                    onChange={inputCommentHandler}
+                    value={inputRecomment}
+                    onChange={inputRecommentHandler}
                   />
                   <button
                     onClick={() => {
-                      commentSubmitHandler(1);
+                      console.log()
+                      recommentSubmitHandler(cmt._id);
                     }}
                   >
                     입력
@@ -121,7 +145,7 @@ const ElseClubPost = (props) => {
           />
           <button
             onClick={() => {
-              commentSubmitHandler(0);
+              commentSubmitHandler();
             }}
           >
             입력
