@@ -36,7 +36,7 @@ const ElseClubPost = (props) => {
         comment: inputComment,
         postNum: props.post._id,
         _class : 0,
-        parentComment: "",
+        // parentComment: "",
       })
       .then((res) => {
         console.log("post submit success");
