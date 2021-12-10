@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../style/MainClubs.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const MainClubs = (props) => {
   const [Club, setClub] = useState([]);
   const [Filter, setFilter] = useState(Club);
 
   useEffect(() => {
-    fetch("../dummy/mainclubrecruitlist.json")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setClub(result);
-          setFilter(result);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    axios.get("../../dummy/mainclubrecruitlist.json").then((res) => {
+      setClub(res.data);
+      setFilter(res.data);
+    });
   }, []);
 
   useEffect(() => {

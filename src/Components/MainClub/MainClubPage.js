@@ -5,6 +5,7 @@ import DetailClubPage from "../DetailClub/DetailClubPage";
 import "../style/ClubPage.scss";
 
 const MainClubPage = (props) => {
+  console.log(props);
   const [detailPage, setDetailPage] = useState(false);
 
   useEffect(() => {

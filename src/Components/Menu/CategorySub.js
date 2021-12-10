@@ -2,22 +2,16 @@ import React, { useState, useEffect } from "react";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
+import axios from "axios";
 
 const CategorySub = (props) => {
   const [ClubList, setClubList] = useState([]);
 
   //세부 category 불러오기
   useEffect(() => {
-    fetch("dummy/subclubrecruitlist.json")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setClubList(result);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    axios.get("../../dummy/clublist.json").then((res) => {
+      setClubList(res.data);
+    });
   }, []);
 
   const onclickCategory = (e) => {

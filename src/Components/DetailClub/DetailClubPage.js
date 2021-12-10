@@ -6,6 +6,7 @@ import DetailClubAll from "./All";
 import DetailClubCurrent from "./Current";
 import DetailClubQA from "./QA";
 import DetailClubIntro from "./Intro";
+import axios from "axios";
 // import { PinDropTwoTone } from "@material-ui/icons";
 
 const DetailClubPage = (props) => {
@@ -13,27 +14,17 @@ const DetailClubPage = (props) => {
   const [selectedClub, setSelectedClub] = useState([]);
 
   var url;
+
   if (props.status === 1) {
-    url = "../dummy/mainclubrecruitlist.json";
+    url = "../../dummy/mainclubrecruitlist.json";
   } else if (props.status === 2) {
-    url = "../dummy/subclubrecruitlist.json";
+    url = "../../dummy/subclubrecruitlist.json";
   }
 
-  console.log(url);
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-          setSelectedClub(result.filter((data) => data.label === props.name));
-          console.log(props.name);
-        },
-        (error) => {
-          console.log(error);
-          return;
-        }
-      );
+    axios.get(url).then((res) => {
+      setSelectedClub(res.data);
+    });
   }, [props.name, url]);
 
   var clubName = "";
