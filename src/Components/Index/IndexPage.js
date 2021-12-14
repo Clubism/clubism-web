@@ -40,16 +40,21 @@ const IndexPage = () => {
     );
   }, [recentList]);
 
-  console.log(showList);
-
   const onClickItem = (index) => {
     setSlideIndex(index.i);
   };
 
+  const slideChange = (event)=>{
+    if(event.target.childNodes[0].data===">")
+      setSlideIndex(slideIndex+1);
+    else if(event.target.childNodes[0].data==="<")
+      setSlideIndex(slideIndex-1);
+  }
+
   return (
     <Container>
       <SlideShow>
-        <Carousel
+        <StyledCarousel
           fullHeightHover={false}
           navButtonsProps={{
             style: {
@@ -59,36 +64,36 @@ const IndexPage = () => {
             }
           }}
           navButtonsAlwaysVisible={true}
-          animation="slide"
+          animation="fade"
           duration="500"
           autoPlay={false}
           cycleNavigation={false}
           indicators={false}
           index={slideIndex}
+          NavButton={({onClick, className, style, next, prev}) => {
+            return (
+                <Button onClick={slideChange} className={className} style={style}>
+                    {next && ">"}
+                    {prev && "<"}
+                </Button>
+            )
+        }}
         >
           {showList.map((item, i) => (
             <Card key={i}>
+              <Poster>{i}</Poster>
               <Text>
                 <Title>{item.name}</Title>
                 <Desc>{item.description}</Desc>
                 <Deadline>~ {item.deadline}</Deadline>
               </Text>
-              <Button>
+              <SlideButton>
                 <Detail>자세히 보기</Detail>
                 <Apply>지원하기</Apply>
-              </Button>
+              </SlideButton>
             </Card>
           ))}
-        </Carousel>
-        <Indicator>
-          {showList.map((item, i) => (
-            <Item key={i} onClick={() => onClickItem({ i })}>
-              [{item.category}]
-              <br />
-              {item.name}
-            </Item>
-          ))}
-        </Indicator>
+        </StyledCarousel>
       </SlideShow>
       {/* <div className="indexBar">
         <div className="indexBarTitle">모집중인 동아리</div>
@@ -103,30 +108,46 @@ const IndexPage = () => {
         <ClubRolling />
         <ClubList posts={posts} />
       </div> */}
+      <Indicator>
+        {showList.map((item, i) => (
+          <Item key={i} selected={slideIndex} value = {i} onClick={() => onClickItem({ i })}>
+            [{item.category}]
+            <br />
+            {item.name}
+          </Item>
+        ))}
+      </Indicator>
     </Container>
   );
 };
 
 export default IndexPage;
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 560px;
+  width: 100%;
+  position: relative;
+`;
+
 
 const SlideShow = styled.div`
   height: 560px;
   background-color: #023b6d;
 `;
 
+const StyledCarousel = styled(Carousel)`
+
+`
+
 const Card = styled.div`
-  background-color: white;
+  position: relative;
+  background-color: black;
   height: 560px;
   color: white;
-  background-color: black;
-  /* background-image: url("https://cdn.pixabay.com/photo/2015/02/25/07/39/church-648430_960_720.jpg"); */
-  background-size: cover;
 `;
 
 const Text = styled.div`
-  position: relative;
+  position: absolute;
   top: 100px;
   left: 200px;
 `;
@@ -171,15 +192,29 @@ const Apply = styled.button`
   float: left;
 `;
 
-const Button = styled.div`
-  position: relative;
-  top: 200px;
+const SlideButton = styled.div`
+  position: absolute;
+  top: 300px;
   left: 180px;
 `;
 
+const Button= styled.div`
+
+`
+
+const Poster=styled.div`
+  width: 100%;
+  height: 560px;
+  background-image:url("https://movie-phinf.pstatic.net/20211207_98/1638866898541o5n3F_JPEG/movie_image.jpg");
+  background-position: center;
+  background-size : cover;
+  background-color: black;
+  opacity: 0.5;
+`
 const Indicator = styled.div`
   position: absolute;
-  bottom: 20px;
+  z-index: 5003;
+  bottom: 30px;
   width: 100%;
   height: 80px;
   text-align: center;
@@ -197,4 +232,12 @@ const Item = styled.div`
     color: white;
     border-bottom: 4px solid white;
   }
+  ${(props) => {
+    if(props.selected===props.value){
+      return `
+      color: white;
+      border-bottom: 4px solid white;
+      `
+    }
+  }}
 `;
