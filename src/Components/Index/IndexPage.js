@@ -7,19 +7,14 @@ import { IoIosAdd } from "react-icons/io";
 import styled from "styled-components";
 import axios from "axios";
 import Carousel from "react-material-ui-carousel";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 
 const IndexPage = () => {
-  const [posts, setPosts] = useState([]);
   const [mainClubList, setmainClubList] = useState([]);
   const [subClubList, setSubClubList] = useState([]);
   const [recentList, setRecentList] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:4000/post/indexPost").then((res) => {
-      setPosts(res.data);
-    });
-  }, []);
+  const [showList, setShowList] = useState([]);
+  const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
     axios.get("../dummy/mainclubrecruitlist.json").then((res) => {
@@ -35,14 +30,22 @@ const IndexPage = () => {
   }, [mainClubList, subClubList]);
 
   useEffect(() => {
-    setRecentList(
-      recentList.sort(function(a, b) {
-        if (a.deadline >= b.deadline) return -1;
-        else return 1;
-      })
+    setShowList(
+      recentList
+        .sort(function(a, b) {
+          if (a.deadline >= b.deadline) return -1;
+          else return 1;
+        })
+        .slice(0, 6)
     );
-    console.log(recentList);
   }, [recentList]);
+
+  console.log(showList);
+
+  const onClickItem = (index) => {
+    setSlideIndex(index.i);
+  };
+
   return (
     <Container>
       <SlideShow>
@@ -50,22 +53,42 @@ const IndexPage = () => {
           fullHeightHover={false}
           navButtonsProps={{
             style: {
-              backgroundColor: "cornflowerblue",
-              borderRadius: 0
+              backgroundColor: "rgba(31,45,61,.4)",
+              borderRadius: 0,
+              color: "white"
             }
           }}
           navButtonsAlwaysVisible={true}
           animation="slide"
           duration="500"
           autoPlay={false}
+          cycleNavigation={false}
+          indicators={false}
+          index={slideIndex}
         >
-          {recentList.map((item, i) => (
-            <Card>
-              <Text>djksj</Text>
-              <Poster src="Posters/poster1.jpg" alt="poster" />
+          {showList.map((item, i) => (
+            <Card key={i}>
+              <Text>
+                <Title>{item.name}</Title>
+                <Desc>{item.description}</Desc>
+                <Deadline>~ {item.deadline}</Deadline>
+              </Text>
+              <Button>
+                <Detail>자세히 보기</Detail>
+                <Apply>지원하기</Apply>
+              </Button>
             </Card>
           ))}
         </Carousel>
+        <Indicator>
+          {showList.map((item, i) => (
+            <Item key={i} onClick={() => onClickItem({ i })}>
+              [{item.category}]
+              <br />
+              {item.name}
+            </Item>
+          ))}
+        </Indicator>
       </SlideShow>
       {/* <div className="indexBar">
         <div className="indexBarTitle">모집중인 동아리</div>
@@ -96,16 +119,82 @@ const SlideShow = styled.div`
 const Card = styled.div`
   background-color: white;
   height: 560px;
+  color: white;
+  background-color: black;
+  /* background-image: url("https://cdn.pixabay.com/photo/2015/02/25/07/39/church-648430_960_720.jpg"); */
+  background-size: cover;
 `;
 
 const Text = styled.div`
-  height: inherit;
-  width: 70%;
+  position: relative;
+  top: 100px;
+  left: 200px;
+`;
+
+const Title = styled.div`
+  font-family: "BebasNeue-Regular";
+  font-size: 40px;
+  font-weight: 600;
+`;
+
+const Desc = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+`;
+
+const Deadline = styled.div`
+  font-size: 15px;
+  font-weight: 600;
+`;
+
+const Detail = styled.button`
+  all: unset;
+  width: 120px;
+  height: 40px;
+  font-size: 15px;
+  background-color: #002c5e;
+  color: white;
+  text-align: center;
+  margin: 10px;
   float: left;
 `;
 
-const Poster = styled.img`
-  height: inherit;
-
+const Apply = styled.button`
+  all: unset;
+  width: 120px;
+  height: 40px;
+  font-size: 15px;
+  background-color: #002c5e;
+  color: white;
+  text-align: center;
+  margin: 10px;
   float: left;
+`;
+
+const Button = styled.div`
+  position: relative;
+  top: 200px;
+  left: 180px;
+`;
+
+const Indicator = styled.div`
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+`;
+
+const Item = styled.div`
+  text-align: left;
+  width: 13%;
+  height: 65px;
+  display: inline-block;
+  cursor: pointer;
+  color: grey;
+  border-bottom: 4px solid grey;
+  &:hover {
+    color: white;
+    border-bottom: 4px solid white;
+  }
 `;
