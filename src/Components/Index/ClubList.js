@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "../style/ClubList.scss";
+import axios from "axios";
+import styled from "styled-components";
 
 import * as actions from "../../redux/actions/post";
 
-const ClubList = ({ posts }) => {
+const ClubList = () => {
+  const [posts, setPosts] = useState([]);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/post/indexPost").then((res) => {
+      setPosts(res.data);
+    });
+  }, []);
+
   return (
-    <div className="ClubList">
+    <Container>
+      <Title>Title</Title>
       {posts.map((post, index) => (
         <Link
           key={index}
@@ -27,8 +37,18 @@ const ClubList = ({ posts }) => {
           </div>
         </Link>
       ))}
-    </div>
+    </Container>
   );
 };
 
 export default ClubList;
+
+const Container = styled.div`
+  width: 100%;
+`;
+
+const Title = styled.div`
+  height: 200px;
+  background-color: pink;
+  margin: 20px 0px;
+`;

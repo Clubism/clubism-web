@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../style/IndexPage.scss";
 import { Link } from "react-router-dom";
-import ClubRolling from "./ClubRolling";
 import ClubList from "./ClubList";
 import { IoIosAdd } from "react-icons/io";
 import styled from "styled-components";
 import axios from "axios";
 import Carousel from "react-material-ui-carousel";
-// import { Button } from "@mui/material";
 
 const IndexPage = () => {
   const [mainClubList, setmainClubList] = useState([]);
@@ -40,16 +38,23 @@ const IndexPage = () => {
     );
   }, [recentList]);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (slideIndex < 5) setSlideIndex(slideIndex + 1);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [slideIndex]);
+
   const onClickItem = (index) => {
     setSlideIndex(index.i);
   };
 
-  const slideChange = (event)=>{
-    if(event.target.childNodes[0].data===">")
-      setSlideIndex(slideIndex+1);
-    else if(event.target.childNodes[0].data==="<")
-      setSlideIndex(slideIndex-1);
-  }
+  const slideChange = (event) => {
+    if (event.target.childNodes[0].data === ">") setSlideIndex(slideIndex + 1);
+    else if (event.target.childNodes[0].data === "<")
+      setSlideIndex(slideIndex - 1);
+  };
 
   return (
     <Container>
@@ -70,14 +75,26 @@ const IndexPage = () => {
           cycleNavigation={false}
           indicators={false}
           index={slideIndex}
-          NavButton={({onClick, className, style, next, prev}) => {
+          NavButton={({ onClick, className, style, next, prev }) => {
             return (
-                <Button onClick={slideChange} className={className} style={style}>
-                    {next && ">"}
-                    {prev && "<"}
-                </Button>
-            )
-        }}
+              <ButtonPN
+                onClick={slideChange}
+                className={className}
+                style={{
+                  font: "20px Pretendard",
+                  width: "40px",
+                  height: "40px",
+                  backgroundColor: "rgba(31,45,61,.4)",
+                  textAlign: "center",
+                  margin: "0",
+                  lineHeight: "40px"
+                }}
+              >
+                {next && ">"}
+                {prev && "<"}
+              </ButtonPN>
+            );
+          }}
         >
           {showList.map((item, i) => (
             <Card key={i}>
@@ -95,22 +112,14 @@ const IndexPage = () => {
           ))}
         </StyledCarousel>
       </SlideShow>
-      {/* <div className="indexBar">
-        <div className="indexBarTitle">모집중인 동아리</div>
-        <Link to="/#">
-          <div className="viewMore">
-            <IoIosAdd />
-            더보기
-          </div>
-        </Link>
-      </div>
-      <div className="indexContainer">
-        <ClubRolling />
-        <ClubList posts={posts} />
-      </div> */}
       <Indicator>
         {showList.map((item, i) => (
-          <Item key={i} selected={slideIndex} value = {i} onClick={() => onClickItem({ i })}>
+          <Item
+            key={i}
+            selected={slideIndex}
+            value={i}
+            onClick={() => onClickItem({ i })}
+          >
             [{item.category}]
             <br />
             {item.name}
@@ -129,15 +138,12 @@ const Container = styled.div`
   position: relative;
 `;
 
-
 const SlideShow = styled.div`
   height: 560px;
   background-color: #023b6d;
 `;
 
-const StyledCarousel = styled(Carousel)`
-
-`
+const StyledCarousel = styled(Carousel)``;
 
 const Card = styled.div`
   position: relative;
@@ -198,19 +204,17 @@ const SlideButton = styled.div`
   left: 180px;
 `;
 
-const Button= styled.div`
+const ButtonPN = styled.div``;
 
-`
-
-const Poster=styled.div`
+const Poster = styled.div`
   width: 100%;
   height: 560px;
-  background-image:url("https://movie-phinf.pstatic.net/20211207_98/1638866898541o5n3F_JPEG/movie_image.jpg");
+  background-image: url("https://movie-phinf.pstatic.net/20211207_98/1638866898541o5n3F_JPEG/movie_image.jpg");
   background-position: center;
-  background-size : cover;
+  background-size: cover;
   background-color: black;
   opacity: 0.5;
-`
+`;
 const Indicator = styled.div`
   position: absolute;
   z-index: 5003;
@@ -226,18 +230,18 @@ const Item = styled.div`
   height: 65px;
   display: inline-block;
   cursor: pointer;
-  color: grey;
-  border-bottom: 4px solid grey;
+  color: rgba(31, 45, 61, 0.9);
+  border-bottom: 4px solid rgba(31, 45, 61, 0.9);
   &:hover {
     color: white;
     border-bottom: 4px solid white;
   }
   ${(props) => {
-    if(props.selected===props.value){
+    if (props.selected === props.value) {
       return `
       color: white;
       border-bottom: 4px solid white;
-      `
+      `;
     }
   }}
 `;
