@@ -19,9 +19,9 @@ const ClubList = () => {
 
   return (
     <Container>
-      <Title>Title</Title>
+      <Title>Title(쓸 문구 추천좀)</Title>
       {posts.map((post, index) => (
-        <Link
+        <CardWrap
           key={index}
           to={"elseClub/post/" + post._id}
           className="link"
@@ -29,13 +29,13 @@ const ClubList = () => {
             dispatch(actions.setPost(post._id));
           }}
         >
-          <div className="Posts" key={post._id}>
+          <Card className="Posts" key={post._id}>
             <div className="PostTitle">{post.title}</div>
             <div className="PostDate">
               <Moment format="YYYY/MM/DD">{post.date}</Moment>
             </div>
-          </div>
-        </Link>
+          </Card>
+        </CardWrap>
       ))}
     </Container>
   );
@@ -48,7 +48,26 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
+  width: 100%;
   height: 200px;
-  background-color: pink;
+  line-height: 200px;
+  background-color: #deedff;
   margin: 20px 0px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 40px;
+  font-weight: 600;
+`;
+
+const CardWrap = styled(Link)``;
+
+const Card = styled.div`
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid #eee;
+  border-radius: 20px;
+  padding: 20px 30px;
+  &:hover {
+    box-shadow: 0 30px 30px 2px #ccc;
+  }
 `;
