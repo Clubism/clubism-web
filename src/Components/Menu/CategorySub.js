@@ -221,7 +221,7 @@ export default CategorySub;
 const Container = styled.div`
   width: 100%;
   height: auto;
-  position: absolute;
+  position: fixed;
   top: 70px;
   left: 0px;
   right: 0;

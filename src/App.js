@@ -14,6 +14,7 @@ import SignUp from "./Pages/SignUp";
 import MyPage from "./Pages/MyPage";
 import Logout from "./Pages/Logout";
 import IndexTemplate from "./Components/Menu/IndexTemplate";
+import FooterTemplate from "./Components/Menu/FooterTemplate"
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/logout" component={Logout} exact />
         <Route component={Error404} />
       </Switch>
+      <FooterTemplate />
     </div>
   );
 }

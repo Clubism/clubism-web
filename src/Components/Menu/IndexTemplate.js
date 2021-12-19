@@ -119,7 +119,7 @@ export default IndexTemplate;
 const Container = styled.div`
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 100003;
   width: 100%;
   height: 70px;
   display: flex;
