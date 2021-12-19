@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
@@ -14,26 +15,26 @@ const CategoryMain = (props) => {
     });
   }, []);
 
-  const onClickCategory = (e) => {
-    if (e.target.innerText === "전체보기") window.location.replace("/mainclub");
-    else if (e.target.innerText === "봉사분과")
-      window.location.replace("/mainclub/service");
-    else if (e.target.innerText === "사회교양분과")
-      window.location.replace("/mainclub/social");
-    else if (e.target.innerText === "언행예술분과")
-      window.location.replace("/mainclub/art");
-    else if (e.target.innerText === "체육분과")
-      window.location.replace("/mainclub/pe");
-    else if (e.target.innerText === "학술분과")
-      window.location.replace("/mainclub/academic");
-    else if (e.target.innerText === "종교분과")
-      window.location.replace("/mainclub/religion");
-  };
+  // const onClickCategory = (e) => {
+  //   if (e.target.innerText === "전체보기") window.location.replace("/mainclub");
+  //   else if (e.target.innerText === "봉사분과")
+  //     window.location.replace("/mainclub/service");
+  //   else if (e.target.innerText === "사회교양분과")
+  //     window.location.replace("/mainclub/social");
+  //   else if (e.target.innerText === "언행예술분과")
+  //     window.location.replace("/mainclub/art");
+  //   else if (e.target.innerText === "체육분과")
+  //     window.location.replace("/mainclub/pe");
+  //   else if (e.target.innerText === "학술분과")
+  //     window.location.replace("/mainclub/academic");
+  //   else if (e.target.innerText === "종교분과")
+  //     window.location.replace("/mainclub/religion");
+  // };
 
-  const onClickList = (item, url) => {
-    // console.log(item);
-    window.location.replace("/mainclub/" + url + "/" + item.item.label);
-  };
+  // const onClickList = (item, url) => {
+  //   // console.log(item);
+  //   window.location.replace("/mainclub/" + url + "/" + item.item.label);
+  // };
 
   return (
     <div>
@@ -41,39 +42,41 @@ const CategoryMain = (props) => {
         <SubContainer>
           <Category>
             <CategoryTitle>
-              <CategoryItem onClick={onClickCategory}>전체보기</CategoryItem>
+              <CategoryLink to="/mainclub">
+                <CategoryItem onClick={props.close}>전체보기</CategoryItem>
+              </CategoryLink>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onClickCategory}>봉사분과</CategoryItem>
+              <CategoryLink to="/mainclub/service">
+                <CategoryItem onClick={props.close}>봉사분과</CategoryItem>
+              </CategoryLink>
               <List>
                 {ClubList.filter((data) => data.category === "봉사분과").map(
                   (item, index) => (
                     <ListTitle key={index}>
-                      <ListItem
-                        onClick={(e) => {
-                          onClickList({ item }, "service");
-                        }}
-                      >
+                      <CategoryLink to={{pathname: `/mainclub/service/${item.label}`}} onClick={props.close}>
+                      <ListItem>
                         {item.name}
                       </ListItem>
+                      </CategoryLink>
                     </ListTitle>
                   )
                 )}
               </List>
               <Empty />
               <CategoryTitle>
-                <CategoryItem onClick={onClickCategory}>종교분과</CategoryItem>
+                <CategoryLink to="/mainclub/religion">
+                  <CategoryItem onClick={props.close}>종교분과</CategoryItem>
+                </CategoryLink>
                 <List>
                   {ClubList.filter((data) => data.category === "종교분과").map(
                     (item, index) => (
                       <ListTitle key={index}>
-                        <ListItem
-                          onClick={(e) => {
-                            onClickList({ item }, "religion");
-                          }}
-                        >
+                        <CategoryLink to={{pathname: `/mainclub/religion/${item.label}`}} onClick={props.close}>
+                        <ListItem>
                           {item.name}
                         </ListItem>
+                        </CategoryLink>
                       </ListTitle>
                     )
                   )}
@@ -81,61 +84,61 @@ const CategoryMain = (props) => {
               </CategoryTitle>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onClickCategory}>
-                사회교양분과
-              </CategoryItem>
+              <CategoryLink to="/mainclub/social">
+                <CategoryItem onClick={props.close}>
+                  사회교양분과
+                </CategoryItem>
+              </CategoryLink>
               <List>
                 {ClubList.filter(
                   (data) => data.category === "사회교양분과"
                 ).map((item, index) => (
                   <ListTitle key={index}>
-                    <ListItem
-                      onClick={(e) => {
-                        onClickList({ item }, "social");
-                      }}
-                    >
+                    <CategoryLink to={{pathname: `/mainclub/social/${item.label}`}} onClick={props.close}>
+                    <ListItem>
                       {item.name}
                     </ListItem>
+                    </CategoryLink>
                   </ListTitle>
                 ))}
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onClickCategory}>
-                언행예술분과
-              </CategoryItem>
+              <CategoryLink to="/mainclub/art">
+                <CategoryItem onClick={props.close}>
+                  언행예술분과
+                </CategoryItem>
+              </CategoryLink>
               <List>
                 {ClubList.filter(
                   (data) => data.category === "언행예술분과"
                 ).map((item, index) => (
                   <ListTitle key={index}>
-                    <ListItem
-                      onClick={(e) => {
-                        onClickList({ item }, "art");
-                      }}
-                    >
+                    <CategoryLink to={{pathname: `/mainclub/art/${item.label}`}} onClick={props.close}>
+                    <ListItem>
                       {item.name}
                     </ListItem>
+                    </CategoryLink>
                   </ListTitle>
                 ))}
               </List>
             </CategoryTitle>
 
             <CategoryTitle>
-              <CategoryItem onClick={onClickCategory}>체육분과</CategoryItem>
+              <CategoryLink to="/mainclub/pe">
+                <CategoryItem onClick={props.close}>체육분과</CategoryItem>
+              </CategoryLink>
               <List>
                 {ClubList.filter((data) => data.category === "체육분과").map(
                   (item, index) => {
                     if (index < 12) {
                       return (
                         <ListTitle key={index}>
-                          <ListItem
-                            onClick={(e) => {
-                              onClickList({ item }, "pe");
-                            }}
-                          >
+                          <CategoryLink to={{pathname: `/mainclub/pe/${item.label}`}} onClick={props.close}>
+                          <ListItem>
                             {item.name}
                           </ListItem>
+                          </CategoryLink>
                         </ListTitle>
                       );
                     } else return "";
@@ -151,13 +154,11 @@ const CategoryMain = (props) => {
                     if (index > 12) {
                       return (
                         <ListTitle key={index}>
-                          <ListItem
-                            onClick={(e) => {
-                              onClickList({ item }, "pe");
-                            }}
-                          >
+                          <CategoryLink to={{pathname: `/mainclub/pe/${item.label}`}} onClick={props.close}>
+                          <ListItem>
                             {item.name}
                           </ListItem>
+                          </CategoryLink>
                         </ListTitle>
                       );
                     } else return "";
@@ -166,18 +167,18 @@ const CategoryMain = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onClickCategory}>학술분과</CategoryItem>
+              <CategoryLink to="/mainclub/academic">
+                <CategoryItem onClick={props.close}>학술분과</CategoryItem>
+              </CategoryLink>
               <List>
                 {ClubList.filter((data) => data.category === "학술분과").map(
                   (item, index) => (
                     <ListTitle key={index}>
-                      <ListItem
-                        onClick={(e) => {
-                          onClickList({ item }, "academic");
-                        }}
-                      >
+                      <CategoryLink to={{pathname: `/mainclub/academic/${item.label}`}} onClick={props.close}>
+                      <ListItem>
                         {item.name}
                       </ListItem>
+                      </CategoryLink>
                     </ListTitle>
                   )
                 )}
@@ -218,6 +219,10 @@ const Category = styled.div`
   margin: 10px auto;
 `;
 
+const CategoryLink = styled(Link)`
+  all: unset;
+`
+
 const CategoryTitle = styled.div`
   float: left;
   width: 170px;
@@ -254,9 +259,8 @@ const ListItem = styled.div`
 
 const CloseButton = styled.span`
   cursor: pointer;
-  position: absolute;
-  top: 25px;
-  right: 320px;
+  position: relative;
+  top: 18px;
 `;
 
 const Empty = styled.div`

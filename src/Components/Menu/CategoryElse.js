@@ -1,34 +1,53 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 
 const CategoryElse = (props) => {
-  const onclickCategory = (e) => {
-    if (e.target.innerText === "전체보기") window.location.replace("/elseclub");
-    else if (e.target.innerText === "스터디")
-      window.location.replace("/elseclub/study");
-    else if (e.target.innerText === "프로젝트")
-      window.location.replace("/elseclub/project");
-    else if (e.target.innerText === "구독")
-      window.location.replace("/elseclub/subscribe");
-  };
+  // const onclickCategory = (e) => {
+  //   if (e.target.innerText === "전체보기") window.location.replace("/elseclub");
+  //   else if (e.target.innerText === "스터디")
+  //     window.location.replace("/elseclub/study");
+  //   else if (e.target.innerText === "프로젝트")
+  //     window.location.replace("/elseclub/project");
+  //   else if (e.target.innerText === "구독")
+  //     window.location.replace("/elseclub/subscribe");
+  // };
+
   return (
     <div>
       <Container>
         <SubContainer>
           <Category>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>전체보기</CategoryItem>
+              <CategoryLink to="/elseclub" onClick={props.close}>
+              <CategoryItem >전체보기</CategoryItem>
+              </CategoryLink>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>스터디</CategoryItem>
+            <CategoryLink to="/elseclub/study"  onClick={props.close}>
+              <CategoryItem>스터디</CategoryItem>
+              </CategoryLink>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>프로젝트</CategoryItem>
+            <CategoryLink to="/elseclub/project"  onClick={props.close}>
+              <CategoryItem>프로젝트</CategoryItem>
+              </CategoryLink>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>구독</CategoryItem>
+            <CategoryLink to="/elseclub/subscribe"  onClick={props.close}>
+              <CategoryItem>구독</CategoryItem>
+              </CategoryLink>
+            </CategoryTitle>
+            <CategoryTitle>
+              <CategoryItem></CategoryItem>
+            </CategoryTitle>
+            <CategoryTitle>
+              <CategoryItem></CategoryItem>
+            </CategoryTitle>
+            <CategoryTitle>
+              <CategoryItem></CategoryItem>
             </CategoryTitle>
           </Category>
         </SubContainer>
@@ -65,6 +84,9 @@ const Category = styled.div`
   margin: 10px auto;
 `;
 
+const CategoryLink = styled(Link)`
+  all: unset;
+`
 const CategoryTitle = styled.div`
   float: left;
   width: 170px;
@@ -80,7 +102,6 @@ const CategoryItem = styled.div`
 
 const CloseButton = styled.span`
   cursor: pointer;
-  position: absolute;
-  top: 25px;
-  right: 320px;
+  position: relative;
+  top: 18px;
 `;

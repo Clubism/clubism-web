@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
+import {AiOutlinePlusSquare} from "react-icons/ai";
 import axios from "axios";
 
 const CategorySub = (props) => {
   const [ClubList, setClubList] = useState([]);
+  const [SubToggle, setSubToggle] = useState(false);
 
   //세부 category 불러오기
   useEffect(() => {
@@ -14,23 +17,23 @@ const CategorySub = (props) => {
     });
   }, []);
 
-  const onclickCategory = (e) => {
-    if (e.target.innerText === "전체보기") window.location.replace("/subclub");
-    else if (e.target.innerText === "국제인문학부")
-      window.location.replace("/subclub/liberalarts");
-    else if (e.target.innerText === "사회과학부")
-      window.location.replace("/subclub/sdoss");
-    else if (e.target.innerText === "경제학부")
-      window.location.replace("/subclub/econ");
-    else if (e.target.innerText === "공학부")
-      window.location.replace("/subclub/eng");
-    else if (e.target.innerText === "자연과학부")
-      window.location.replace("/subclub/science");
-    else if (e.target.innerText === "지식융합미디어학부")
-      window.location.replace("/subclub/smas");
-    else if (e.target.innerText === "경영학부")
-      window.location.replace("/subclub/sbs");
-  };
+  // const props.close = (e) => {
+  //   if (e.target.innerText === "전체보기") window.location.replace("/subclub");
+  //   else if (e.target.innerText === "국제인문학부")
+  //     window.location.replace("/subclub/liberalarts");
+  //   else if (e.target.innerText === "사회과학부")
+  //     window.location.replace("/subclub/sdoss");
+  //   else if (e.target.innerText === "경제학부")
+  //     window.location.replace("/subclub/econ");
+  //   else if (e.target.innerText === "공학부")
+  //     window.location.replace("/subclub/eng");
+  //   else if (e.target.innerText === "자연과학부")
+  //     window.location.replace("/subclub/science");
+  //   else if (e.target.innerText === "지식융합미디어학부")
+  //     window.location.replace("/subclub/smas");
+  //   else if (e.target.innerText === "경영학부")
+  //     window.location.replace("/subclub/sbs");
+  // };
 
   return (
     <div>
@@ -38,10 +41,15 @@ const CategorySub = (props) => {
         <SubContainer>
           <Category>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>전체보기</CategoryItem>
+            <CategoryLink to="/subclub">
+              <CategoryItem onClick={props.close}>전체보기
+              </CategoryItem>
+              </CategoryLink>
               <Empty />
               <CategoryTitle>
-                <CategoryItem onClick={onclickCategory}>경영학부</CategoryItem>
+              <CategoryLink to="/subclub/sbs">
+                <CategoryItem onClick={props.close}>경영학부</CategoryItem>
+                </CategoryLink>
                 <List>
                   <ListTitle>
                     <ListItem>경영학전공</ListItem>
@@ -57,9 +65,11 @@ const CategorySub = (props) => {
               </CategoryTitle>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>
+            <CategoryLink to="/subclub/liberalarts">
+              <CategoryItem onClick={props.close}>
                 국제인문학부
               </CategoryItem>
+              </CategoryLink>
               <List>
                 <ListTitle>
                   <ListItem>국어국문학전공</ListItem>
@@ -95,7 +105,9 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>사회과학부</CategoryItem>
+            <CategoryLink to="subclub/sdoss">
+              <CategoryItem onClick={props.close}>사회과학부</CategoryItem>
+              </CategoryLink>
               <List>
                 <ListTitle>
                   <ListItem>사회학전공</ListItem>
@@ -116,7 +128,9 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>경제학부</CategoryItem>
+            <CategoryLink to="/subclub/econ">
+              <CategoryItem onClick={props.close}>경제학부</CategoryItem>
+              </CategoryLink>
               <List>
                 <ListTitle>
                   <ListItem>경제학전공</ListItem>
@@ -131,7 +145,9 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>공학부</CategoryItem>
+            <CategoryLink to="/subclub/eng">
+              <CategoryItem onClick={props.close}>공학부</CategoryItem>
+              </CategoryLink>
               <List>
                 <ListTitle>
                   <ListItem>컴퓨터공학전공</ListItem>
@@ -155,7 +171,9 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>자연과학부</CategoryItem>
+            <CategoryLink to="/subclub/science">
+              <CategoryItem onClick={props.close}>자연과학부</CategoryItem>
+              </CategoryLink>
               <List>
                 <ListTitle>
                   <ListItem>수학전공</ListItem>
@@ -179,9 +197,11 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryItem onClick={onclickCategory}>
+            <CategoryLink to="/subclub/science">
+              <CategoryItem onClick={props.close}>
                 지식융합미디어학부
               </CategoryItem>
+              </CategoryLink>
               <List>
                 <ListTitle>
                   <ListItem>지식융합미디어학부</ListItem>
@@ -255,6 +275,10 @@ const CategoryItem = styled.div`
   cursor: pointer;
 `;
 
+const CategoryLink = styled(Link)`
+  all: unset;
+`
+
 const List = styled.div`
   list-style: none;
   width: 150px;
@@ -278,9 +302,8 @@ const ListItem = styled.div`
 
 const CloseButton = styled.span`
   cursor: pointer;
-  position: absolute;
-  top: 25px;
-  right: 320px;
+  position: relative;
+  top: 18px;
 `;
 
 const Empty = styled.div`

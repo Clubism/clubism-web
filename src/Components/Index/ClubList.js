@@ -22,6 +22,7 @@ const ClubList = () => {
     <Container>
       <Title>모집중인 소모임(여기 문구랑 디자인은 모르겠다^^)</Title>
       <Detail>총 {posts.length}개의 소모임이 모집중입니다. 지원해보세요^^</Detail>
+      <SubContainer>
       {posts.map((post, index) => {
         if(index<5)
         return (<CardLink
@@ -33,7 +34,7 @@ const ClubList = () => {
           }}
         >
           <CardWrap>
-          <Card className="Posts" key={post._id}>
+          <Card className="Posts" key={post._id} id="table">
             <CardCategory>[{post.category}]</CardCategory>
             <CardTitle>&nbsp;{post.title}</CardTitle>
             <div>{post.content.replace(/<\/?[^>]+(>|$)/g, "")}</div>
@@ -44,6 +45,7 @@ const ClubList = () => {
           </CardWrap>
         </CardLink>)
       })}
+      </SubContainer>
       <MoreClub><MoreClubLink  to="/elseClub">더보기</MoreClubLink></MoreClub>
     </Container>
   );
@@ -57,9 +59,9 @@ const Container = styled.div`
 
 const Title = styled.div`
   width: 100%;
-  height: 200px;
-  line-height: 200px;
-  background-color: #d4dbdb;
+  height: 150px;
+  line-height: 150px;
+  /* background-color: #FCE9C5; */
   margin: 20px 0px;
   text-align: center;
   vertical-align: middle;
@@ -74,8 +76,13 @@ const Detail = styled.div`
   padding: 0px 30px 5px 30px;
 `
 
-const CardLink = styled(Link)`
+const SubContainer=styled.div`
   width: 90%;
+  margin: 0 auto;
+`
+
+const CardLink = styled(Link)`
+
 `;
 
 const CardWrap = styled.div`
@@ -86,7 +93,7 @@ const CardWrap = styled.div`
 
 const Card = styled.div`
   display: block;
-  width: 90%;
+  width: 100%;
   height: 100px;
   border-bottom: 1px solid #eee;
   border-radius: 20px;
