@@ -25,8 +25,9 @@ const MainClubs = (props) => {
   }, [props.category, Club]);
 
   useEffect(() => {
-    if (Filter.length !== 0) setUrl(Filter[0].category);
-  }, [Filter]);
+    if (Filter.length !== 0 && props.category !== undefined)
+      setUrl(Filter[0].category);
+  }, [Filter, props.category]);
 
   return (
     <div>
@@ -36,32 +37,31 @@ const MainClubs = (props) => {
       </TitleWrap>
       <Container>
         {Filter.map((mainClub, index) => (
-          <div className="club" key={index}>
-            <Link
-              to={{
-                pathname: `/mainClub/${mainClub.value}/${mainClub.label}`
-              }}
-              className="LinkTp"
-            >
-              <div className="clubText">
-                <div className="category">{mainClub.category}</div>
-                <div className="name">{mainClub.name}</div>
-                <div className="description">{mainClub.description}</div>
-                <div className="deadline">
-                  {new Date() < new Date(mainClub.deadline)
-                    ? "D - " +
-                      (
-                        new Date(mainClub.deadline).getDate() -
-                        new Date().getDate()
-                      ).toString()
-                    : "마감"}
-                </div>
+          <Card
+            key={index}
+            to={{
+              pathname: `/mainClub/${mainClub.value}/${mainClub.label}`
+            }}
+          >
+            <SubContainer>
+              <Category>{mainClub.category}</Category>
+              <Name>{mainClub.name}</Name>
+              <div className="description">{mainClub.description}</div>
+              <div className="deadline">
+                {new Date() < new Date(mainClub.deadline)
+                  ? "D - " +
+                    (
+                      new Date(mainClub.deadline).getDate() -
+                      new Date().getDate()
+                    ).toString()
+                  : "마감"}
               </div>
-              <div className="clubImage">
-                <img src="" alt="poster" />
-              </div>
-            </Link>
-          </div>
+            </SubContainer>
+            <Poster
+              src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
+              alt="poster"
+            />
+          </Card>
         ))}
       </Container>
     </div>
@@ -98,4 +98,46 @@ const Title = styled.div`
 const Container = styled.div`
   width: 90%;
   margin 0 auto;
+  text-align: center;
+`;
+
+const Card = styled(Link)`
+  all: unset;
+  width: 25%;
+  height: 500px;
+  display: inline-block;
+  margin: 20px 15px;
+  padding: 20px 0px;
+  border-bottom: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 4px 12px 30px 6px rgb(0 0 0 / 9%);
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 4px 12px 30px 6px rgb(0 0 0 / 20%);
+  }
+`;
+
+const Poster = styled.img`
+  height: 300px;
+`;
+
+const SubContainer = styled.div`
+  position: relative;
+`;
+
+const Category = styled.div`
+  display: block;
+  width: auto;
+  height: 40px;
+  line-height: 40px;
+  background-color: #eeeeee;
+  border-radius: 30px;
+  padding: 0 20px;
+  margin: 0 20px;
+`;
+
+const Name = styled.div`
+  background-color: yellow;
+  display: block;
 `;
