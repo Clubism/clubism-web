@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
-import {AiOutlinePlusSquare} from "react-icons/ai";
-import axios from "axios";
+// import {AiOutlinePlusSquare} from "react-icons/ai";
+// import axios from "axios";
 
 const CategorySub = (props) => {
-  const [ClubList, setClubList] = useState([]);
-  const [SubToggle, setSubToggle] = useState(false);
+  // const [ClubList, setClubList] = useState([]);
+  // const [SubToggle, setSubToggle] = useState(false);
 
   //세부 category 불러오기
-  useEffect(() => {
-    axios.get("../../dummy/clublist.json").then((res) => {
-      setClubList(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("../../dummy/clublist.json").then((res) => {
+  //     setClubList(res.data);
+  //   });
+  // }, []);
 
   // const props.close = (e) => {
   //   if (e.target.innerText === "전체보기") window.location.replace("/subclub");
@@ -41,14 +41,13 @@ const CategorySub = (props) => {
         <SubContainer>
           <Category>
             <CategoryTitle>
-            <CategoryLink to="/subclub">
-              <CategoryItem onClick={props.close}>전체보기
-              </CategoryItem>
+              <CategoryLink to="/subclub">
+                <CategoryItem onClick={props.close}>전체보기</CategoryItem>
               </CategoryLink>
               <Empty />
               <CategoryTitle>
-              <CategoryLink to="/subclub/sbs">
-                <CategoryItem onClick={props.close}>경영학부</CategoryItem>
+                <CategoryLink to="/subclub/sbs">
+                  <CategoryItem onClick={props.close}>경영학부</CategoryItem>
                 </CategoryLink>
                 <List>
                   <ListTitle>
@@ -65,10 +64,8 @@ const CategorySub = (props) => {
               </CategoryTitle>
             </CategoryTitle>
             <CategoryTitle>
-            <CategoryLink to="/subclub/liberalarts">
-              <CategoryItem onClick={props.close}>
-                국제인문학부
-              </CategoryItem>
+              <CategoryLink to="/subclub/liberalarts">
+                <CategoryItem onClick={props.close}>국제인문학부</CategoryItem>
               </CategoryLink>
               <List>
                 <ListTitle>
@@ -105,8 +102,8 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-            <CategoryLink to="subclub/sdoss">
-              <CategoryItem onClick={props.close}>사회과학부</CategoryItem>
+              <CategoryLink to="subclub/sdoss">
+                <CategoryItem onClick={props.close}>사회과학부</CategoryItem>
               </CategoryLink>
               <List>
                 <ListTitle>
@@ -128,8 +125,8 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-            <CategoryLink to="/subclub/econ">
-              <CategoryItem onClick={props.close}>경제학부</CategoryItem>
+              <CategoryLink to="/subclub/econ">
+                <CategoryItem onClick={props.close}>경제학부</CategoryItem>
               </CategoryLink>
               <List>
                 <ListTitle>
@@ -145,8 +142,8 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-            <CategoryLink to="/subclub/eng">
-              <CategoryItem onClick={props.close}>공학부</CategoryItem>
+              <CategoryLink to="/subclub/eng">
+                <CategoryItem onClick={props.close}>공학부</CategoryItem>
               </CategoryLink>
               <List>
                 <ListTitle>
@@ -171,8 +168,8 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-            <CategoryLink to="/subclub/science">
-              <CategoryItem onClick={props.close}>자연과학부</CategoryItem>
+              <CategoryLink to="/subclub/science">
+                <CategoryItem onClick={props.close}>자연과학부</CategoryItem>
               </CategoryLink>
               <List>
                 <ListTitle>
@@ -197,10 +194,10 @@ const CategorySub = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-            <CategoryLink to="/subclub/science">
-              <CategoryItem onClick={props.close}>
-                지식융합미디어학부
-              </CategoryItem>
+              <CategoryLink to="/subclub/science">
+                <CategoryItem onClick={props.close}>
+                  지식융합미디어학부
+                </CategoryItem>
               </CategoryLink>
               <List>
                 <ListTitle>
@@ -277,7 +274,7 @@ const CategoryItem = styled.div`
 
 const CategoryLink = styled(Link)`
   all: unset;
-`
+`;
 
 const List = styled.div`
   list-style: none;

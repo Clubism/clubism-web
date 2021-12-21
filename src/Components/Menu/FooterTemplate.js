@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterTemplate = (props) => {
-
   return (
     <div>
       <Container>
@@ -15,6 +14,8 @@ const FooterTemplate = (props) => {
 export default FooterTemplate;
 
 const Container = styled.div`
+  position: absolute;
+  bottom: -300px;
   width: 100%;
   height: 200px;
   color: white;
@@ -28,9 +29,6 @@ const Title = styled.div`
   font-size: 40px;
   font-weight: 600;
   letter-spacing: 0.5px;
-`
+`;
 
-const Contact = styled.div`
-
-`
-
+const Contact = styled.div``;

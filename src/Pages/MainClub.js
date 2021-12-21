@@ -1,6 +1,7 @@
 import React from "react";
 import MainClubPage from "../Components/MainClub/MainClubPage";
-import "../Components/style/MainClub.scss";
+// import "../Components/style/MainClub.scss";
+import styled from "styled-components";
 
 const MainClub = (props) => {
   const { params } = props.match;
@@ -8,11 +9,16 @@ const MainClub = (props) => {
 
   return (
     <div>
-      <div className="mainClubContainer">
+      <MainClubContainer>
         <MainClubPage category={params.category} name={params.name} />
-      </div>
+      </MainClubContainer>
     </div>
   );
 };
 
 export default MainClub;
+
+const MainClubContainer = styled.div`
+  width: 100%;
+`;
+

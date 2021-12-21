@@ -14,39 +14,45 @@ const ClubList = () => {
   useEffect(() => {
     axios.get("http://localhost:4000/post/indexPost").then((res) => {
       setPosts(res.data);
-      console.log(posts)
     });
   }, []);
 
   return (
     <Container>
       <Title>모집중인 소모임(여기 문구랑 디자인은 모르겠다^^)</Title>
-      <Detail>총 {posts.length}개의 소모임이 모집중입니다. 지원해보세요^^</Detail>
+      <Detail>
+        총 {posts.length}개의 소모임이 모집중입니다. 지원해보세요^^
+      </Detail>
       <SubContainer>
-      {posts.map((post, index) => {
-        if(index<5)
-        return (<CardLink
-          key={index}
-          to={"elseClub/post/" + post._id}
-          className="link"
-          onClick={() => {
-            dispatch(actions.setPost(post._id));
-          }}
-        >
-          <CardWrap>
-          <Card className="Posts" key={post._id} id="table">
-            <CardCategory>[{post.category}]</CardCategory>
-            <CardTitle>&nbsp;{post.title}</CardTitle>
-            <div>{post.content.replace(/<\/?[^>]+(>|$)/g, "")}</div>
-            <CardDate>
-              <Moment format="YYYY/MM/DD">{post.date}</Moment>
-            </CardDate>
-          </Card>
-          </CardWrap>
-        </CardLink>)
-      })}
+        {posts.map((post, index) => {
+          if (index < 5)
+            return (
+              <CardLink
+                key={index}
+                to={"elseClub/post/" + post._id}
+                className="link"
+                onClick={() => {
+                  dispatch(actions.setPost(post._id));
+                }}
+              >
+                <CardWrap>
+                  <Card className="Posts" key={post._id} id="table">
+                    <CardCategory>[{post.category}]</CardCategory>
+                    <CardTitle>&nbsp;{post.title}</CardTitle>
+                    <div>{post.content.replace(/<\/?[^>]+(>|$)/g, "")}</div>
+                    <CardDate>
+                      <Moment format="YYYY/MM/DD">{post.date}</Moment>
+                    </CardDate>
+                  </Card>
+                </CardWrap>
+              </CardLink>
+            );
+          else return "";
+        })}
       </SubContainer>
-      <MoreClub><MoreClubLink  to="/elseClub">더보기</MoreClubLink></MoreClub>
+      <MoreClub>
+        <MoreClubLink to="/elseClub">더보기</MoreClubLink>
+      </MoreClub>
     </Container>
   );
 };
@@ -74,16 +80,14 @@ const Detail = styled.div`
   font-size: 18px;
   margin: 50px auto 0px auto;
   padding: 0px 30px 5px 30px;
-`
+`;
 
-const SubContainer=styled.div`
+const SubContainer = styled.div`
   width: 90%;
   margin: 0 auto;
-`
-
-const CardLink = styled(Link)`
-
 `;
+
+const CardLink = styled(Link)``;
 
 const CardWrap = styled.div`
   display: flex;
@@ -108,27 +112,26 @@ const CardCategory = styled.div`
   float: left;
   font-size: 20px;
   font-weight: 600;
-
-`
+`;
 
 const CardTitle = styled.div`
   display: block;
   font-size: 20px;
   font-weight: 600;
-`
+`;
 
 const CardDate = styled.div`
   display: block;
   font-size: 15px;
-`
+`;
 
 const MoreClub = styled.div`
   width: 100px;
   text-align: center;
   margin: 20px auto;
   cursor: pointer;
-  `
+`;
 
 const MoreClubLink = styled(Link)`
   all: unset;
-`
+`;

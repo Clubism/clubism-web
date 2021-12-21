@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../style/IndexPage.scss";
-import { Link } from "react-router-dom";
-import ClubList from "./ClubList";
-import { IoIosAdd } from "react-icons/io";
+// import { Link } from "react-router-dom";
+// import ClubList from "./ClubList";
+// import { IoIosAdd } from "react-icons/io";
 import styled from "styled-components";
 import axios from "axios";
 import Carousel from "react-material-ui-carousel";
