@@ -68,6 +68,7 @@ const CategoryItem = styled.div`
   line-height: 60px;
   float: left;
   text-align: center;
+  border-radius: 10px;
   cursor: pointer;
   ${(props) => {
     if (props.select === parseInt(props.index)) {

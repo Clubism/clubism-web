@@ -1,7 +1,7 @@
 import React from "react";
 import IndexPage from "../Components/Index/IndexPage";
 import ClubList from "../Components/Index/ClubList";
-import BookMark from "../Components/Index/BookMark"
+import BookMark from "../Components/Index/BookMark";
 
 const Index = ({ history }) => {
   return (
