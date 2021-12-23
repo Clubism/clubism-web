@@ -11,11 +11,11 @@ const ElseClubPage = () => {
   return (
     <div className="ElseClubPage">
       <Switch>
-        <Route path="/elseClub" exact>
-          <ElseClubList setPost={setPost} />
-        </Route>
         <Route path="/elseClub/posting" exact>
           <ElseClubPosting />
+        </Route>
+        <Route path="/elseClub/:category" exact>
+          <ElseClubList setPost={setPost} />
         </Route>
         <Route path="/elseClub/post/:id" exact>
           <ElseClubPost post={post} />

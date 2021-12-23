@@ -1,54 +1,50 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback } from "react";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import * as actions from "../../redux/actions/category";
 
 const CategoryElse = (props) => {
-  // const onclickCategory = (e) => {
-  //   if (e.target.innerText === "전체보기") window.location.replace("/elseclub");
-  //   else if (e.target.innerText === "스터디")
-  //     window.location.replace("/elseclub/study");
-  //   else if (e.target.innerText === "프로젝트")
-  //     window.location.replace("/elseclub/project");
-  //   else if (e.target.innerText === "구독")
-  //     window.location.replace("/elseclub/subscribe");
-  // };
+  const ElseClubCategories = [
+    {category: "전체보기", category_path:"/all"},
+    {category: "스터디", category_path:"/study"},
+    {category: "프로젝트", category_path:"/project"},
+    {category: "구독", category_path:"/subscribe"},
+  ];
+    const dispatch = useDispatch();
+
+  const setCategory = useCallback(
+    (data) => {
+      dispatch(actions.setCatetory(data));
+    },
+    [dispatch]
+  );
 
   return (
     <div>
       <Container>
         <SubContainer>
           <Category>
+
+        {ElseClubCategories.map((category, index) => {
+          return (
             <CategoryTitle>
-              <CategoryLink to="/elseclub" onClick={props.close}>
-              <CategoryItem >전체보기</CategoryItem>
-              </CategoryLink>
+              <CategoryItem>
+                <Link 
+                  style={{ textDecoration: 'none' }}
+                  to={"/elseClub"+category.category_path}
+                  onClick={(e)=>{
+                  // window.location.replace("/elseClub"+category.category_path);
+                  setCategory(category.category);
+                  }}>
+                {category.category}
+              </Link>
+                  </CategoryItem>
             </CategoryTitle>
-            <CategoryTitle>
-            <CategoryLink to="/elseclub/study"  onClick={props.close}>
-              <CategoryItem>스터디</CategoryItem>
-              </CategoryLink>
-            </CategoryTitle>
-            <CategoryTitle>
-            <CategoryLink to="/elseclub/project"  onClick={props.close}>
-              <CategoryItem>프로젝트</CategoryItem>
-              </CategoryLink>
-            </CategoryTitle>
-            <CategoryTitle>
-            <CategoryLink to="/elseclub/subscribe"  onClick={props.close}>
-              <CategoryItem>구독</CategoryItem>
-              </CategoryLink>
-            </CategoryTitle>
-            <CategoryTitle>
-              <CategoryItem></CategoryItem>
-            </CategoryTitle>
-            <CategoryTitle>
-              <CategoryItem></CategoryItem>
-            </CategoryTitle>
-            <CategoryTitle>
-              <CategoryItem></CategoryItem>
-            </CategoryTitle>
+                );}
+              )}
           </Category>
         </SubContainer>
         <CloseButton onClick={props.close}>
