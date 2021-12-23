@@ -8,12 +8,12 @@ import * as actions from "../../redux/actions/category";
 
 const CategoryElse = (props) => {
   const ElseClubCategories = [
-    {category: "전체보기", category_path:"/all"},
-    {category: "스터디", category_path:"/study"},
-    {category: "프로젝트", category_path:"/project"},
-    {category: "구독", category_path:"/subscribe"},
+    { category: "전체보기", category_path: "/all" },
+    { category: "스터디", category_path: "/study" },
+    { category: "프로젝트", category_path: "/project" },
+    { category: "구독", category_path: "/subscribe" }
   ];
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const setCategory = useCallback(
     (data) => {
@@ -27,24 +27,25 @@ const CategoryElse = (props) => {
       <Container>
         <SubContainer>
           <Category>
-
-        {ElseClubCategories.map((category, index) => {
-          return (
-            <CategoryTitle>
-              <CategoryItem>
-                <Link 
-                  style={{ textDecoration: 'none' }}
-                  to={"/elseClub"+category.category_path}
-                  onClick={(e)=>{
-                  // window.location.replace("/elseClub"+category.category_path);
-                  setCategory(category.category);
-                  }}>
-                {category.category}
-              </Link>
+            {ElseClubCategories.map((category, index) => {
+              return (
+                <CategoryTitle>
+                  <CategoryItem>
+                    <CategoryLink
+                      style={{ textDecoration: "none" }}
+                      to={"/elseClub" + category.category_path}
+                      onClick={(e) => {
+                        // window.location.replace("/elseClub"+category.category_path);
+                        props.close();
+                        setCategory(category.category);
+                      }}
+                    >
+                      {category.category}
+                    </CategoryLink>
                   </CategoryItem>
-            </CategoryTitle>
-                );}
-              )}
+                </CategoryTitle>
+              );
+            })}
           </Category>
         </SubContainer>
         <CloseButton onClick={props.close}>
@@ -82,7 +83,7 @@ const Category = styled.div`
 
 const CategoryLink = styled(Link)`
   all: unset;
-`
+`;
 const CategoryTitle = styled.div`
   float: left;
   width: 170px;
