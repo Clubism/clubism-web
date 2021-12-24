@@ -7,13 +7,21 @@ import axios from "axios";
 
 const CategoryMain = (props) => {
   const [ClubList, setClubList] = useState([]);
-
-  //세부 category 불러오기
+ 
+  useEffect(()=>{
+    axios.get('http://localhost:4000/mainClub/clubs')
+    .then(res=>{
+      console.log('load clubs success');
+      setClubList(res.data);
+    })
+  }, []);
+  /*
   useEffect(() => {
     axios.get("../../dummy/clublist.json").then((res) => {
       setClubList(res.data);
     });
   }, []);
+  */
 
   // const onClickCategory = (e) => {
   //   if (e.target.innerText === "전체보기") window.location.replace("/mainclub");

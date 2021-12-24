@@ -13,6 +13,8 @@ const MainClubs = (props) => {
   const [SearchKeyword, setSearchKeyword] = useState("");
   const [SearchFilter, setSearchFilter] = useState(Filter);
 
+  const [favorites, setFavorites] = useState([]);
+
   useEffect(() => {
     axios.get("../../dummy/mainclubrecruitlist.json").then((res) => {
       setClub(res.data);
@@ -45,13 +47,35 @@ const MainClubs = (props) => {
       );
   }, [SearchKeyword, Filter]);
 
+  // 2021/12/23 강진실
+  // 사용자 즐겿자기 동아리 불러옴
+  // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
+  useEffect(()=>{
+    const dbId = localStorage.getItem('user_db_id');
+    axios.get(`http://localhost:4000/auth/favorites/${dbId}`)
+    .then((res)=>{
+      console.log(res.data);
+      setFavorites(res.data);  
+    });
+  }, []);
+
   const searchClub = (e) => {
     if (e.key === "Enter") {
       setSearchKeyword(e.target.value);
     }
   };
 
-  console.log(Filter);
+  const saveFavorite = (clubName) => {
+    console.log('called');
+    const dbId = localStorage.getItem('user_db_id');
+    axios.post(`http://localhost:4000/auth/favorites/${dbId}`, {clubName : clubName})
+    .then((res)=>{
+
+      setFavorites(res.data);  
+    });
+  }
+
+  //console.log(Filter);
 
   return (
     <div>
@@ -78,8 +102,9 @@ const MainClubs = (props) => {
             <SubContainer>
               <Category>{mainClub.category}</Category>
               <Name>
-                {mainClub.name} <EmptyStar color="#fcca11" />
-                <Star color="#fcca11" />
+                {mainClub.name} 
+                {favorites.includes(mainClub.name) ? <Star color="#fcca11" onClick={()=>{saveFavorite(mainClub.name)}}/> : <EmptyStar color="#fcca11" />}
+                
               </Name>
               <Desc>" {mainClub.description} "</Desc>
               <Deadline>
