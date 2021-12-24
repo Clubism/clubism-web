@@ -5,7 +5,7 @@ import DetailClubPage from "../DetailClub/DetailClubPage";
 import "../style/ClubPage.scss";
 
 const MainClubPage = (props) => {
-  console.log(props);
+  console.log('MainClubPage props : ', props);
   const [detailPage, setDetailPage] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const MainClubPage = (props) => {
     else setDetailPage(true);
   }, [props.category, props.name]);
 
-  console.log(detailPage);
+  console.log('MainClubPage detailPage : ', detailPage);
   return (
     <div className="mainClubBox">
       {detailPage ? (

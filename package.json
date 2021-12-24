@@ -2,6 +2,7 @@
   "name": "clubism",
   "version": "0.1.0",
   "private": true,
+  "proxy" : "http://localhost:4000",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^29.2.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",

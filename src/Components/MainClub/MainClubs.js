@@ -16,7 +16,10 @@ const MainClubs = (props) => {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    axios.get("../../dummy/mainclubrecruitlist.json").then((res) => {
+    //axios.get("../../dummy/mainclubrecruitlist.json")
+    axios.get('http://localhost:4000/mainClub/recruitment')
+    .then((res) => {
+      console.log('recruitment load success');
       setClub(res.data);
       setFilter(res.data);
     });
@@ -28,13 +31,14 @@ const MainClubs = (props) => {
       setFilter(Club);
       setUrl("전체보기");
     } else {
-      setFilter(Club.filter((data) => data.value === props.category));
+      console.log('props.category : ', props.category);
+      setFilter(Club.filter((data) => data.clubId.value === props.category));
     }
   }, [props.category, Club]);
 
   useEffect(() => {
     if (Filter.length !== 0 && props.category !== undefined)
-      setUrl(Filter[0].category);
+      setUrl(Filter[0].clubId.category);
   }, [Filter, props.category]);
 
   useEffect(() => {
@@ -42,7 +46,7 @@ const MainClubs = (props) => {
     else
       setSearchFilter(
         Filter.filter((data) => {
-          return data.name.includes(SearchKeyword);
+          return data.clubId.name.includes(SearchKeyword);
         })
       );
   }, [SearchKeyword, Filter]);
@@ -76,7 +80,9 @@ const MainClubs = (props) => {
   }
 
   //console.log(Filter);
-
+  // 김채연에게
+  // recruitment list를 db에 연결하는 과정에서 name, value, label은 clubId.name 이런 식으로 접근해야 합니다!
+  // 당장 보이는 것들은 수정해놓긴 했는데 나중에 버그 생기면 clubId.을 붙여서 함 해보세용
   return (
     <div>
       <TitleWrap>
@@ -96,14 +102,14 @@ const MainClubs = (props) => {
           <Card
             key={index}
             to={{
-              pathname: `/mainClub/${mainClub.value}/${mainClub.label}`
+              pathname: `/mainClub/${mainClub.clubId.value}/${mainClub.clubId.label}`
             }}
           >
             <SubContainer>
-              <Category>{mainClub.category}</Category>
+              <Category>{mainClub.clubId.category}</Category>
               <Name>
-                {mainClub.name} 
-                {favorites.includes(mainClub.name) ? <Star color="#fcca11" onClick={()=>{saveFavorite(mainClub.name)}}/> : <EmptyStar color="#fcca11" />}
+                {mainClub.clubId.name} 
+                {favorites.includes(mainClub.clubId.name) ? <Star color="#fcca11" onClick={()=>{saveFavorite(mainClub.clubId.name)}}/> : <EmptyStar color="#fcca11" />}
                 
               </Name>
               <Desc>" {mainClub.description} "</Desc>
