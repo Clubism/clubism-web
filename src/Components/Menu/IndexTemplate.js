@@ -65,7 +65,7 @@ localStorage.getItem("user_id") !== null
       <Container>
         <Title>
           <TitleItem onClick={onClickTitle}>
-            LOGO club
+            club
             <TitleItem2>ism</TitleItem2>
           </TitleItem>
         </Title>
