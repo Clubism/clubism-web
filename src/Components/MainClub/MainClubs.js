@@ -117,8 +117,8 @@ const MainClubs = (props) => {
                 {new Date() < new Date(mainClub.deadline)
                   ? "D - " +
                     (
-                      new Date(mainClub.deadline).getDate() -
-                      new Date().getDate()
+                      Math.floor((new Date(mainClub.deadline) -
+                      new Date())/(24*3600*1000))
                     ).toString()
                   : "마감"}
               </Deadline>
@@ -182,7 +182,7 @@ const SearchInput = styled.input`
   color: black;
   font-size: 20px;
   margin 15px 0px 0px 15px;
-   ::placeholder,
+  ::placeholder,
   ::-webkit-input-placeholder {
     color: black;
   }

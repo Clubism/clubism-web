@@ -1,9 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../style/PrivateInfo.scss';
+import styled from 'styled-components';
+import axios from 'axios';
+import Form from "react-bootstrap/Form";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Button from "react-bootstrap/Button";
 
 const PrivateInfo = ()=> {
+  const [Info, setInfo] = useState({username : ''})
+
+  const onPrivateInfoSubmit = () => {
+
+  }
+
+  const onPrivateInfoChange = (e)=>{
+    setInfo({ ...Info, [e.target.name]: e.target.value });
+  }
+
   return (
-    <div className='PrivateInfo'>
+    <PrivateInfoContainer>
+      <form onSubmit={()=>onPrivateInfoSubmit}>
+      <PrivateInfoHeader>개인 정보 수정</PrivateInfoHeader>
+      <TextInput 
+        type="text"
+        name="text"
+        value={Info.username}
+        onChange={onPrivateInfoChange} />
+      </form>
+    </PrivateInfoContainer>
+   
+  );
+};
+
+/*
+<div className='PrivateInfo'>
       <form action="/mypage/edit" method="post">
         <div className='PrivateInfo-header'>
           <div className='title'>개인 정보 수정</div>
@@ -45,7 +75,27 @@ const PrivateInfo = ()=> {
         </div>
       </form>
     </div>
-  );
-};
+*/
+const PrivateInfoContainer = styled.div`
+`;
+
+const PrivateInfoHeader = styled.div`
+
+`;
+const TextInput = styled.input`
+  width: 300px;
+  padding: 10px;
+  margin: 0 5px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #d8e3e7;
+    font-style: italic;
+  }
+`;
 
 export default PrivateInfo;

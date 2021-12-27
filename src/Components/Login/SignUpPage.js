@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import axios from "axios";
+import styled from 'styled-components';
 
 const SignUpPage = () => {
   const [Info, setInfo] = useState({ username: "", id: "", password: "", password2 : "" });
@@ -132,7 +133,7 @@ const SignUpPage = () => {
             }}
           />
         </FloatingLabel>
-        <div className='pw-validation'>{pwValidation===true ? '비밀번호가 일치합니다' : '비밀번호가 일치하지 않습니다'}</div>
+        <PwVal color={pwValidation===true ? 'green' : '#E04C58'}>{pwValidation===true ? '비밀번호가 일치합니다' : '비밀번호가 일치하지 않습니다'}</PwVal>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
             className="login-label"
@@ -160,5 +161,12 @@ const SignUpPage = () => {
     </div>
   );
 };
+
+const PwVal = styled.div`
+  margin-top : -10px;
+  color : ${props=>props.color};
+  text-align : right;
+  font-size : 14px;
+`;
 
 export default SignUpPage;
