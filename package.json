@@ -2,7 +2,7 @@
   "name": "clubism",
   "version": "0.1.0",
   "private": true,
-  "proxy" : "http://localhost:4000",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^29.2.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
@@ -11,7 +11,7 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@mui/icons-material": "^5.2.1",
-    "@mui/material": "^5.2.3",
+    "@mui/material": "^5.2.5",
     "@mui/styles": "^5.2.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",

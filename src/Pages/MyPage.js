@@ -1,10 +1,14 @@
 import React from 'react';
 import MyPagePage from '../Components/MyPage/MyPagePage.js';
-
-const MainClub = ({ match }) => {
+import MyPageContent from '../Components/MyPage/MyPageContent'
+const MyPage = ({ match }) => {
+  const {params} = match;
+  console.log('My Page params : ', params.category);
   return (
-    <MyPagePage />
-  )
+    <>
+      {params.category === undefined ? <MyPagePage /> : <MyPageContent category={params.category} />}
+    </>
+  );
 }
 
-export default MainClub;
+export default MyPage;

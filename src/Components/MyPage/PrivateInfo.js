@@ -1,9 +1,50 @@
 import React from 'react';
-import '../style/PrivateInfo.scss';
+import styled from 'styled-components';
 
 const PrivateInfo = ()=> {
   return (
-    <div className='PrivateInfo'>
+    <PrivateInfoWrapper>
+      <PrivateInfoHeader>개인 정보 수정</PrivateInfoHeader>
+      <PrivateInfoContainer>
+        
+      </PrivateInfoContainer>
+      
+    </PrivateInfoWrapper>
+    
+  );
+};
+
+const PrivateInfoWrapper = styled.div`
+  display : flex;
+  width : 900px;
+  margin : auto;
+  margin-top : 100px;
+  
+  color : #333333;
+
+  //border : solid;
+`;
+
+const PrivateInfoHeader = styled.div`
+  height : 100px;
+  
+  width : 100%;
+  font-size : 24px;
+  font-weight : 600;
+  padding : 20px;
+
+  //border : solid;
+`;
+
+const PrivateInfoContainer = styled.div`
+  height : 800px;
+  display : flex;
+  
+`;
+
+
+/*
+<div className='PrivateInfo'>
       <form action="/mypage/edit" method="post">
         <div className='PrivateInfo-header'>
           <div className='title'>개인 정보 수정</div>
@@ -45,7 +86,6 @@ const PrivateInfo = ()=> {
         </div>
       </form>
     </div>
-  );
-};
+*/
 
 export default PrivateInfo;

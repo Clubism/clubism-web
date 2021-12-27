@@ -117,8 +117,8 @@ const MainClubs = (props) => {
                 {new Date() < new Date(mainClub.deadline)
                   ? "D - " +
                     (
-                      new Date(mainClub.deadline).getDate() -
-                      new Date().getDate()
+                      Math.floor((new Date(mainClub.deadline).getTime() -
+                      new Date().getTime())/(24*3600*1000))
                     ).toString()
                   : "마감"}
               </Deadline>
