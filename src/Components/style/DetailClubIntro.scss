@@ -1,5 +1,5 @@
 .IntroContainer {
-  height: 100%;
+  height: 600px;
   width: inherit;
   border: 1px solid rgb(190, 190, 190);
   display: flex;
@@ -8,12 +8,11 @@
 }
 .IntroPoster {
   border: 1px solid rgb(190, 190, 190);
-  width: 200px;
-  height: 280px;
-  margin: auto 20px;
+  height: 500px;
+  margin: 10px;
 }
 .IntroMain {
   border: 1px solid rgb(190, 190, 190);
-  width: calc(100% - 260px);
-  height: 280px;
+  width: calc(100% - 400px);
+  height: 500px;
 }

@@ -10,7 +10,14 @@ import axios from "axios";
 // import { PinDropTwoTone } from "@material-ui/icons";
 
 const DetailClubPage = (props) => {
-  console.log(props);
+  const [ClubList, setClubList] = useState([]);
+  useEffect(() => {
+    axios.get("../../dummy/clublist.json").then((res) => {
+      setClubList(res.data);
+    });
+  }, []);
+
+  // console.log(props);
   const [selectedClub, setSelectedClub] = useState([]);
 
   var url;
@@ -25,10 +32,14 @@ const DetailClubPage = (props) => {
     axios.get(url).then((res) => {
       setSelectedClub(res.data);
     });
+    // console.log(res.data);
+    // clubName = ClubList.find((data) => data.label === props.name).name;
   }, [props.name, url]);
 
   var clubName = "";
-  if (selectedClub.length !== 0) clubName = selectedClub[0].name;
+  clubName = props.name;
+
+  // if (selectedClub.length === 0) clubName = selectedClub[0].name;
 
   return (
     <div className="detail-container">
@@ -42,13 +53,13 @@ const DetailClubPage = (props) => {
             {/* <Sonnet /> */}
           </Tab>
           <Tab className="detail-tab" eventKey={2} title="동아리 소개">
-            <DetailClubIntro />
+            <DetailClubIntro category={props.category} name={props.name} />
           </Tab>
           <Tab className="detail-tab" eventKey={3} title="현재 모집 공고">
             <DetailClubCurrent />
           </Tab>
           <Tab className="detail-tab" eventKey={4} title="전체 모집 공고">
-            <DetailClubAll />
+            <DetailClubAll category={props.category} name={props.name} />
           </Tab>
           <Tab className="detail-tab" eventKey={5} title="Q&A">
             <DetailClubQA />

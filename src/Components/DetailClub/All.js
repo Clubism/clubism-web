@@ -2,24 +2,13 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import "../style/DetailClubAll.scss";
 
-const DetailClubAll = () => {
-  //   useEffect(
-  //     axios
-  //       .get("http://localhost:4000/mainClub/chance")
-  //       .then((res) => {
-  //         console.log(res);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       }),
-  //     []
-  //   );
+const DetailClubAll = (props) => {
   return (
     <div>
       <div className="MainContainer">
         <div className="PosterContainer">
           {/* data get from server */}
-          <div className="IndivPoster">zxcv</div>
+          <div className="IndivPoster">{props.name}</div>
           <div className="IndivPoster">asdf</div>
           <div className="IndivPoster">qwer</div>
         </div>
