@@ -1,91 +1,124 @@
-import React, {useState} from 'react';
-import MyPageContent from './MyPageContent';
+import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-const MyPagePage = (props)=> {
-  const [content, setContent] = useState(0);
-  const onMenuClick = (index)=>{
-    setContent(index);
-    console.log(content);
-  };
-  return (
+const MyPagePage = ()=>{
+  return(
     <MyPageContainer>
-      <MyPageCategoryContainer>
-          <MyPageCategory>
-          <PrivateInfo onClick={()=>onMenuClick(0)} color={content===0 ? '#013B6C' : '#a5a5a5'}>개인 정보 수정</PrivateInfo>
-          <FavKeywords onClick={()=>onMenuClick(1)} color={content===1 ? '#013B6C' : '#a5a5a5'}>관심 키워드 설정</FavKeywords>
-          <FavClubs onClick={()=>onMenuClick(2)} color={content===2 ? '#013B6C' : '#a5a5a5'}>관심 동아리 설정</FavClubs>
-          <FavStudies onClick={()=>onMenuClick(3)} color={content===3 ? '#013B6C' : '#a5a5a5'}>관심 스터디 설정</FavStudies>
-          <SignOut onClick={()=>onMenuClick(4)} color={content===4 ? '#013B6C' : '#a5a5a5'}>회원 탈퇴</SignOut>
-        </MyPageCategory>
-      </MyPageCategoryContainer>
-      <MyPageContentContainer>
-        <MyPageContent index={content}/>
-      </MyPageContentContainer>
-    </MyPageContainer> 
-  );
-};
+      <Card>
+        <CardHeader>개인 정보</CardHeader>
+        <CardContainer>
+          <AccountCircleIcon color="#999999" style={{fontSize : "48px"}} />
+          <UserName>강진실님</UserName>
+        </CardContainer>
+        <Button to="/mypage/privateInfo">수정</Button>
+      </Card>
 
-const MyPageContentContainer = styled.div`
-  width : 700px;
-  margin-top : 100px;
-`;
+      <Card>
+         <CardHeader>관심 키워드</CardHeader>
+         <CardContainer>
+         <CardDescription>관심 키워드를 수정할 수 있습니다.</CardDescription>
+         
+         </CardContainer>
+         <Button to="/mypage/favKeywords">수정</Button>
+      </Card>
+
+      <Card>
+         <CardHeader>관심 동아리</CardHeader>
+         <CardContainer>
+          <CardDescription>관심 동아리를 수정할 수 있습니다.</CardDescription>
+          
+         </CardContainer>
+         <Button to="/mypage/favClubs">수정</Button>
+      </Card>
+
+      <Card>
+         <CardHeader>관심 소모임</CardHeader>
+         <CardContainer>
+          <CardDescription>관심 소모임을 수정할 수 있습니다.</CardDescription>
+         
+         </CardContainer>
+          <Button to="/mypage/favStudies">수정</Button>
+      </Card>
+
+      <Card>
+         <CardHeader>회원 탈퇴</CardHeader>
+         <CardContainer>
+          <CardDescription>진짜로 떠나실 건가용? ㅠ.ㅠ</CardDescription>
+         
+         </CardContainer>
+          <Button to="/mypage/SignOut">탈퇴</Button>
+      </Card>
+    </MyPageContainer>
+  )
+}
 
 const MyPageContainer = styled.div`
   display : flex;
+  width : 900px;
+  margin : auto;
+  padding-top : 100px;
+  flex-wrap : wrap;
+  justify-content : space-betwteen;
 `;
-const MyPageCategoryContainer = styled.div`
-  width : 300px;
-  margin-left : 100px;
-  margin-top : 150px;
-  color : #A5A5A5;
-  font-size : 20px;
+
+const Card = styled.div`
+  width : 400px;
+  height : 250px;
+  margin : 20px;
+  border-radius : 2px;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  &:hover{ 
+    box-shadow: 0 14px 28px rgba(0,0,0,0.11), 0 10px 10px rgba(0,0,0,0.22);
+  }
+`;
+
+const CardHeader = styled.div`
+  display: inline-block;
+  height : 20%;
+  margin : auto;
+  padding : 20px;
+
+  font-size : 18px;
   font-weight : 600;
-`;
-const MyPageCategory = styled.div`
-  cursor : pointer;
-  text-align : left;
-  
-`;
-const PrivateInfo = styled.div`
-  margin-bottom: 20px;
-  &:hover {
-    color : #013B6C;
-  }
-  color : ${props => props.color}
+  color : #292929;
 `;
 
-const FavKeywords = styled.div`
-  margin-bottom: 20px;
-  &:hover {
-    color : #013B6C;
-  }
-  color : ${props => props.color}
+const CardContainer = styled.div`
+  height : 55%;
+  padding : 20px;
+
 `;
 
-const FavClubs = styled.div`
-  margin-bottom: 20px;
-  &:hover {
-    color : #013B6C;
-  }
-  color : ${props => props.color}
+const UserName = styled.div`
+  display : inline-block;
+  margin-left : 20px;
 `;
 
-const FavStudies = styled.div`
-  margin-bottom: 20px;
-  &:hover {
-    color : #013B6C;
+const Button = styled(Link)`
+  display : block;
+  text-decoration : none;
+  color : #fff;
+  border : none;
+  padding : 5px 25px;
+  border-radius : 3px;
+  background :#023B6D;
+  text-align : center;
+  width : 100px;
+  margin-left : 70%;
+
+
+  &:hover{
+    color : white;
   }
-  color : ${props => props.color}
 `;
 
-const SignOut = styled.div`
-  margin-bottom: 20px;
-  &:hover {
-    color : #013B6C;
-  }
-  color : ${props => props.color}
-`;
+const CardDescription = styled.div``;
+
 
 
 export default MyPagePage;

@@ -51,7 +51,7 @@ const ClubList = () => {
         })}
       </SubContainer>
       <MoreClub>
-        <MoreClubLink to="/elseClub">더보기</MoreClubLink>
+        <MoreClubLink to="/elseClub/all">더보기</MoreClubLink>
       </MoreClub>
     </Container>
   );

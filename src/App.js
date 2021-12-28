@@ -34,7 +34,8 @@ function App() {
         <Route path="/login" component={Login} exact />
         <Route path="/signup" component={SignUp} exact />
         <Route path="/mypage" component={MyPage} exact />
-        <Route path="/logout" component={Logout} exact />
+        <Route path="/mypage/:category" component={MyPage} exact />
+        <Route path="/logout" component={Logout} exact />= 
         <Route component={Error404} />
       </Switch>
       <FooterTemplate />

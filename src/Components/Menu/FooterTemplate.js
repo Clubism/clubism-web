@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
+import InstagramIcon from '@mui/icons-material/Instagram';
+import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 const FooterTemplate = (props) => {
   return (
     <div>
       <Container>
         <Title>CLUBISM</Title>
-        <Contact>Contact Us : About Team / Instagram / E-mail / ...</Contact>
+        <Contact>Contact Us : About Team / <InstagramIcon style={{fontSize : "16px"}}/>&nbsp;clubismm / &nbsp;
+        <MailOutlineOutlinedIcon style={{fontSize : "16px"}}/>&nbsp;mail@mail.com / ...</Contact>
       </Container>
     </div>
   );
@@ -22,6 +24,7 @@ const Container = styled.div`
   margin-top: 100px;
   padding: 50px 30px;
   background-color: #042847;
+  font-size : 14px;
 `;
 
 const Title = styled.div`

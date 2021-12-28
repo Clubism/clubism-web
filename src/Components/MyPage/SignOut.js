@@ -1,21 +1,45 @@
 import React from 'react';
-import '../style/SignOut.scss'
+import styled from 'styled-components';
+
 const SignOut = ()=> {
 
   return (
-  <div className='SignOut'>
-  <form action="/mypage/edit/SignOut" method="post">
-    <div className='SignOut-header'>
-      <div className='title'>회원 탈퇴</div>
-      <div className='update'>
-        <button type="submit">sign out</button>
-      </div>
-    </div>
-    <hr />
-    <div className='SignOut-content'>
-    </div>
-  </form>
-</div>);
+    <SignOutWrapper>
+      <SignOutHeader>회원 탈퇴</SignOutHeader>
+      <SignOutContainer>
+        
+      </SignOutContainer>
+      
+    </SignOutWrapper>
+    );
 };
+
+const SignOutWrapper = styled.div`
+  display : flex;
+  width : 900px;
+  margin : auto;
+  margin-top : 100px;
+  
+  color : #333333;
+
+  //border : solid;
+`;
+
+const SignOutHeader = styled.div`
+  height : 100px;
+  
+  width : 100%;
+  font-size : 24px;
+  font-weight : 600;
+  padding : 20px;
+
+  //border : solid;
+`;
+
+const SignOutContainer = styled.div`
+  height : 800px;
+  display : flex;
+  
+`;
 
 export default SignOut;
