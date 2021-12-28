@@ -1,56 +1,88 @@
 import React, { useState, useEffect } from "react";
-import "../style/MainClubs.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import styled from "styled-components";
+import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 
-const Clubs = (props) => {
-
+const MainClubs = (props) => {
   const [Club, setClub] = useState([]);
   const [Filter, setFilter] = useState(Club);
+  const [Url, setUrl] = useState("");
+  const [SearchKeyword, setSearchKeyword] = useState("");
+  const [SearchFilter, setSearchFilter] = useState(Filter);
+
   useEffect(() => {
-    fetch("dummy/mainclublist.json")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setClub(result);
-          setFilter(result);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    axios.get("../../dummy/mainclubrecruitlist.json").then((res) => {
+      setClub(res.data);
+      setFilter(res.data);
+    });
   }, []);
 
-  useEffect(
-    (data) => {
-      if (props.category === "전체보기") setFilter(Club);
-      else setFilter(Club.filter((data) => data.category === props.category));
-    },
-    [props.category, Club]
-  );
+  useEffect(() => {
+    setSearchKeyword("");
+    if (props.category === undefined) {
+      setFilter(Club);
+      setUrl("전체보기");
+    } else {
+      setFilter(Club.filter((data) => data.value === props.category));
+    }
+  }, [props.category, Club]);
+
+  useEffect(() => {
+    if (Filter.length !== 0 && props.category !== undefined)
+      setUrl(Filter[0].category);
+  }, [Filter, props.category]);
+
+  useEffect(() => {
+    if (SearchKeyword === "") setSearchFilter(Filter);
+    else
+      setSearchFilter(
+        Filter.filter((data) => {
+          return data.name.includes(SearchKeyword);
+        })
+      );
+  }, [SearchKeyword, Filter]);
+
+  const searchClub = (e) => {
+    if (e.key === "Enter") {
+      setSearchKeyword(e.target.value);
+    }
+  };
+
+  console.log(Filter);
 
   return (
-    <div className="clubContainer">
-      {Filter.map((mainClub, index) => (
-        <div
-          className="club"
-          key={index}
-          onClick={() => {
-            props.setDetailPage(true);
-            props.setSelectedClub(mainClub);
-            console.log(mainClub.label);
-          }}
-          // style={{ backgroundColor: "blue" }}
-        >
-          <Link
-            to={{ pathname: `/mainClub/${props.categoryvalue}/${mainClub.label}` }}
-            // style={{ backgroundColor: "pink" }}
-            className="LinkTp"
+    <div>
+      <TitleWrap>
+        <URL>홈 &gt; 중앙동아리 &gt; {Url}</URL>
+        <Title>{Url}</Title>
+      </TitleWrap>
+      <Container>
+        <Search>
+          <SearchIcon color="black" size="30px" />
+          <SearchInput
+            type="text"
+            placeholder="동아리 이름을 입력하세요"
+            onKeyDown={searchClub}
+          />
+        </Search>
+        {SearchFilter.map((mainClub, index) => (
+          <Card
+            key={index}
+            to={{
+              pathname: `/mainClub/${mainClub.value}/${mainClub.label}`
+            }}
           >
-            <div className="clubText">
-              <div className="category">{mainClub.category}</div>
-              <div className="name">{mainClub.name}</div>
-              <div className="description">{mainClub.description}</div>
-              <div className="deadline">
+            <SubContainer>
+              <Category>{mainClub.category}</Category>
+              <Name>
+                {mainClub.name} <EmptyStar color="#fcca11" />
+                <Star color="#fcca11" />
+              </Name>
+              <Desc>" {mainClub.description} "</Desc>
+              <Deadline>
                 {new Date() < new Date(mainClub.deadline)
                   ? "D - " +
                     (
@@ -58,16 +90,159 @@ const Clubs = (props) => {
                       new Date().getDate()
                     ).toString()
                   : "마감"}
-              </div>
-            </div>
-            <div className="clubImage">
-              <img src="" alt="poster" />
-            </div>
-          </Link>
-        </div>
-      ))}
+              </Deadline>
+            </SubContainer>
+            <Poster
+              src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
+              alt="poster"
+            />
+          </Card>
+        ))}
+      </Container>
     </div>
   );
 };
 
-export default Clubs;
+export default MainClubs;
+
+const TitleWrap = styled.div`
+  width: 100%;
+  height: 360px;
+  background-color: #333333;
+  margin-bottom: 50px;
+`;
+
+const URL = styled.div`
+  color: white;
+  position: relative;
+  top: 50px;
+  left: 170px;
+  font-size: 15px;
+  font-weight: 400;
+`;
+
+const Title = styled.div`
+  position: relative;
+  top: 110px;
+  color: white;
+  font-size: 56px;
+  font-weight: 700;
+  text-align: center;
+`;
+
+const Search = styled.div`
+  background-color: #eeeeee;
+  margin: 0 auto;
+  width: 70%;
+  height: 70px;
+  text-align: left;
+  padding: 0 25px;
+  border-radius: 25px;
+  margin-bottom: 50px;
+`;
+
+const SearchIcon = styled(AiOutlineSearch)`
+  margin-bottom: 10px;
+`;
+const SearchInput = styled.input`
+  all: unset;
+  width: 90%;
+  height: 40px;
+  color: black;
+  font-size: 20px;
+  margin 15px 0px 0px 15px;
+   ::placeholder,
+  ::-webkit-input-placeholder {
+    color: black;
+  }
+  :-ms-input-placeholder {
+     color: black;
+  }
+`;
+
+const Container = styled.div`
+  width: 90%;
+  margin 0 auto;
+  text-align: center;
+`;
+
+const Card = styled(Link)`
+  all: unset;
+  width: 25%;
+  overflow: hidden;
+  min-height: 100px;
+  height: auto;
+  display: inline-block;
+  margin: 20px 15px;
+  padding: 20px 0px 0px 0px;
+  border-bottom: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 4px 12px 30px 6px rgb(0 0 0 / 9%);
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 4px 12px 30px 6px rgb(0 0 0 / 20%);
+    color: black;
+    transform: translate(0, -5px);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+`;
+
+const Poster = styled.img`
+  width: 100%;
+  height: auto;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  left: 0;
+`;
+
+const SubContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 110px;
+`;
+
+const Category = styled.div`
+  display: inline-block;
+  float: left;
+  width: auto;
+  height: 30px;
+  line-height: 30px;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  padding: 0 15px;
+  margin: 0 20px;
+`;
+
+const Name = styled.div`
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  text-align: left;
+  font-size: 22px;
+  font-weight: 700;
+`;
+
+const Desc = styled.div`
+  display: block;
+  position: absolute;
+  top: 75px;
+  left: 25px;
+`;
+
+const Deadline = styled.div`
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 30px;
+`;
+
+const EmptyStar = styled(AiOutlineStar)`
+  margin-bottom: 4px;
+`;
+
+const Star = styled(AiFillStar)`
+  margin-bottom: 4px;
+`;

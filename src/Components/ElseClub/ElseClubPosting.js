@@ -57,6 +57,7 @@ const ElseClubPosting = () => {
       <Form
         onSubmit={(e) => {
           onPostSubmit(e);
+          window.location.replace("all");
         }}
       >
         <Form className="titleForm">

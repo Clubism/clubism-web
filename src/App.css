@@ -10,3 +10,8 @@
   font-family: "BebasNeue-Regular";
   src: url("./fonts/BebasNeue-Regular.ttf");
 }
+
+.App {
+  min-height: 900px;
+  position: relative;
+}

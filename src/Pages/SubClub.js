@@ -1,5 +1,4 @@
 import React from "react";
-import SubClubCategory from "../Components/SubClub/SubClubCategory";
 import SubClubPage from "../Components/SubClub/SubClubPage";
 import "../Components/style/SubClub.scss";
 
@@ -10,7 +9,6 @@ const SubClub = (props) => {
   return (
     <div>
       <div className="SubClubContainer">
-        <SubClubCategory category={params.category} name={params.name} />
         <SubClubPage category={params.category} name={params.name} />
       </div>
     </div>

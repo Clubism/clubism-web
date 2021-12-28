@@ -1,8 +1,7 @@
-import React from 'react';
-import MainClubCategoryTest from "../Components/MainClub/MainClubCategory_test";
-import MainClubPageTest from "../Components/MainClub/MainClubPage_test";
-import "../Components/style/MainClub.scss";
-
+import React from "react";
+import MainClubPage from "../Components/MainClub/MainClubPage";
+// import "../Components/style/MainClub.scss";
+import styled from "styled-components";
 
 const MainClub = (props) => {
   const { params } = props.match;
@@ -10,12 +9,16 @@ const MainClub = (props) => {
 
   return (
     <div>
-      <div className="mainClubContainer">
-        <MainClubCategoryTest category={params.category} name={params.name} />
-        <MainClubPageTest category={params.category} name={params.name} />
-      </div>
+      <MainClubContainer>
+        <MainClubPage category={params.category} name={params.name} />
+      </MainClubContainer>
     </div>
-  )
-}
+  );
+};
 
 export default MainClub;
+
+const MainClubContainer = styled.div`
+  width: 100%;
+`;
+
