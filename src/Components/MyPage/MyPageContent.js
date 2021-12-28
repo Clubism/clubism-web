@@ -4,14 +4,15 @@ import FavClubs from './FavClubs';
 import FavKeywords from './FavKeywords';
 import FavStudies from './FavStudies';
 import SignOut from './SignOut';
-const MyPageContent = ({index})=> {
-  if(index===0){
+
+const MyPageContent = ({category})=> {
+  if(category==='privateInfo'){
     return <PrivateInfo />;
-  } else if(index===1){
+  } else if(category==='favKeywords'){
     return <FavKeywords />;
-  } else if(index === 2){
+  } else if(category === 'favClubs'){
     return <FavClubs />
-  } else if(index===3){
+  } else if(category === 'favStudies'){
    return <FavStudies />
   } else{
     return <SignOut />

@@ -3,9 +3,14 @@ import "../style/LoginPage.scss";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
+import * as actions from "../../redux/actions/auth";
+
 const LoginPage = ({ history }) => {
+  const dispatch = useDispatch();
+
   const [LoginInfo, setLoginInfo] = useState({ id: "", password: "" });
 
   const onLoginChange = (e) => {
@@ -26,7 +31,10 @@ const LoginPage = ({ history }) => {
           alert("비밀번호를 확인해주세요");
         } else {
           localStorage.setItem("user_id", res.data.id);
-          history.push("/");
+          localStorage.setItem("user_db_id", res.data._id);
+          dispatch(actions.setAuth(true));
+          window.location.replace("/")
+
         }
       });
   };

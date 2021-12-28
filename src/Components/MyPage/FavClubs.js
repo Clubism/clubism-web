@@ -1,21 +1,45 @@
 import React from 'react';
-import '../style/FavClubs.scss'
+import styled from 'styled-components';
+
 const FavClubs = ()=> {
 
   return (
-  <div className='FavClubs'>
-  <form action="/mypage/edit/FavClubs" method="post">
-    <div className='FavClubs-header'>
-      <div className='title'>관심 동아리 설정</div>
-      <div className='update'>
-        <button type="submit">update</button>
-      </div>
-    </div>
-    <hr />
-    <div className='FavClubs-content'>
-    </div>
-  </form>
-</div>);
+    <FavClubsWrapper>
+      <FavClubsHeader>관심 동아리 수정</FavClubsHeader>
+      <FavClubsContainer>
+        
+      </FavClubsContainer>
+      
+    </FavClubsWrapper>
+    );
 };
+
+const FavClubsWrapper = styled.div`
+  display : flex;
+  width : 900px;
+  margin : auto;
+  margin-top : 100px;
+  
+  color : #333333;
+
+  //border : solid;
+`;
+
+const FavClubsHeader = styled.div`
+  height : 100px;
+  
+  width : 100%;
+  font-size : 24px;
+  font-weight : 600;
+  padding : 20px;
+
+  //border : solid;
+`;
+
+const FavClubsContainer = styled.div`
+  height : 800px;
+  display : flex;
+  
+`;
 
 export default FavClubs;

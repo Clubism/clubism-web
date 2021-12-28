@@ -56,7 +56,8 @@ const ClubList = (props) => {
     <div className="ElseClubList">
       {/* <div>{storeCategory}</div> */}
       <div className="ElseClubListTop">
-        <Link to="/elseClub/posting" className="Posting">
+        <Link to="/elseClub/posting"
+        className="Posting">
           글작성
         </Link>
         <input
@@ -97,6 +98,7 @@ const ClubList = (props) => {
               </div>
             </Link>
           );
+        else return "";
       })}
       <Paging
         page={Page}

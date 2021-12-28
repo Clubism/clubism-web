@@ -1,31 +1,42 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import CategoryMain from "./CategoryMain";
-import CategorySub from "./CategorySub"
+import CategorySub from "./CategorySub";
+import CategoryElse from "./CategoryElse";
+import {useSelector} from 'react-redux';
+
 // import Logout from "../Pages/Logout";
 
-const IndexTemplate = ({ children, history }) => {
+const IndexTemplate = () => {
   const isLoggedIn = useRef(false);
+  const history = useHistory();
   const [category1, setCategory1] = useState(false);
   const [category2, setCategory2] = useState(false);
   const [category3, setCategory3] = useState(false);
 
   //useEffect(()=>{
-  localStorage.getItem("user_id") !== undefined
+    
+   //}, []);
+
+  //isLoggedIn.current = useSelector(state => state.isLogegdIn);
+
+localStorage.getItem("user_id") !== null
     ? (isLoggedIn.current = true)
     : (isLoggedIn.current = false);
-  // }, []);
+  console.log('isLoggedIn : ', isLoggedIn.current);
 
-  isLoggedIn.current = false;
 
   const onClickLogout = () => {
     axios
-      .get("localhost:4000/auth/logout", { withCredentials: true })
+      .get("http://localhost:4000/auth/logout", { withCredentials: true })
       .then((res) => {
+        console.log('clicked');
         localStorage.clear();
-        history.push("/");
+        isLoggedIn.current = false;
+        //history.push("/");
+        window.location.replace("/")
       });
   };
 
@@ -34,8 +45,9 @@ const IndexTemplate = ({ children, history }) => {
     setCategory2(false);
     setCategory3(false);
     if (e.target.innerText === "중앙 동아리") setCategory1(!category1);
-    else if(e.target.innerText === "단과대 동아리 / 학회") setCategory2(!category2);
-    else if(e.target.innerText === "소모임") setCategory3(!category3);
+    else if (e.target.innerText === "단과대 동아리 / 학회")
+      setCategory2(!category2);
+    else if (e.target.innerText === "소모임") setCategory3(!category3);
   };
 
   const onClickClose = (e) => {
@@ -44,12 +56,16 @@ const IndexTemplate = ({ children, history }) => {
     setCategory3(false);
   };
 
+  const onClickTitle = (e) => {
+    window.location.replace("/");
+  };
+
   return (
     <div>
       <Container>
         <Title>
-          <TitleItem to="/">
-            LOGO club
+          <TitleItem onClick={onClickTitle}>
+            club
             <TitleItem2>ism</TitleItem2>
           </TitleItem>
         </Title>
@@ -59,11 +75,13 @@ const IndexTemplate = ({ children, history }) => {
             <MenuBar1 toggle={category1} />
           </MenuItem>
           <MenuItem>
-            <MenuItemLink  onClick={onClickCategory}>단과대 동아리 / 학회</MenuItemLink>
+            <MenuItemLink onClick={onClickCategory}>
+              단과대 동아리 / 학회
+            </MenuItemLink>
             <MenuBar2 toggle={category2} />
           </MenuItem>
           <MenuItem>
-            <MenuItemLink  onClick={onClickCategory}>소모임</MenuItemLink>
+            <MenuItemLink onClick={onClickCategory}>소모임</MenuItemLink>
             <MenuBar3 toggle={category3} />
           </MenuItem>
         </Menu>
@@ -91,14 +109,16 @@ const IndexTemplate = ({ children, history }) => {
             {/* </Link> */}
           </UserItem>
         </UserExist>
-        {/* {children} */}
       </Container>
       <Category1 toggle={category1}>
-        <CategoryMain close={onClickClose}></CategoryMain>
+        <CategoryMain close={onClickClose} />
       </Category1>
       <Category2 toggle={category2}>
-        <CategorySub close={onClickClose}></CategorySub>
+        <CategorySub close={onClickClose} />
       </Category2>
+      <Category3 toggle={category3}>
+        <CategoryElse close={onClickClose} />
+      </Category3>
     </div>
   );
 };
@@ -108,7 +128,7 @@ export default IndexTemplate;
 const Container = styled.div`
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 100003;
   width: 100%;
   height: 70px;
   display: flex;
@@ -124,14 +144,15 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  width: 35%;
+  width: 190px;
   height: inherit;
   float: left;
-  padding: 0 0 0 13%;
   display: table;
+  margin: 0 10% 0 11%;
+  cursor: pointer;
 `;
 
-const TitleItem = styled(Link)`
+const TitleItem = styled.div`
   text-decoration-line: none;
   font-family: "BebasNeue-Regular";
   font-size: 40px;
@@ -160,7 +181,7 @@ const MenuItem = styled.div`
   position: relative;
   height: inherit;
   float: left;
-  padding: 24px 20px;
+  padding: 24px 30px;
 `;
 
 const MenuItemLink = styled.div`
@@ -176,7 +197,6 @@ const UserExist = styled.div`
   color: blue;
   float: left;
   ${(props) => {
-    console.log(props);
     if (!props.toggle) {
       return `
         display: none;
@@ -190,7 +210,7 @@ const UserExist = styled.div`
 `;
 
 const UserNotExist = styled.div`
-  width: 30%;
+  width: 200px;
   height: inherit;
   color: blue;
   float: left;
@@ -251,7 +271,7 @@ const MenuBar1 = styled.span`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 110px;
+  width: 132px;
   height: 4px;
   background-color: #023b6d;
   display: ${(props) => (props.toggle ? "" : "none")};
@@ -261,7 +281,7 @@ const MenuBar2 = styled.span`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 170px;
+  width: 188px;
   height: 4px;
   background-color: #023b6d;
   display: ${(props) => (props.toggle ? "" : "none")};
@@ -271,9 +291,8 @@ const MenuBar3 = styled.span`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 80px;
+  width: 102px;
   height: 4px;
   background-color: #023b6d;
   display: ${(props) => (props.toggle ? "" : "none")};
 `;
-
