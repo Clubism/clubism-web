@@ -52,7 +52,11 @@ const ClubList = () => {
       </SubContainer>
       <MoreClub>
         <MoreClubLink to="/elseClub/all">더보기</MoreClubLink>
+<<<<<<< HEAD
       </MoreClub>s
+=======
+      </MoreClub>
+>>>>>>> f11a7c0cac459eb9323c563f8820978da6f4b4be
     </Container>
   );
 };

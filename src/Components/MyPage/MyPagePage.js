@@ -61,9 +61,6 @@ const MyPageContainer = styled.div`
   padding-top : 100px;
   flex-wrap : wrap;
   justify-content : space-betwteen;
-
-  
-;
 `;
 
 const Card = styled.div`
@@ -121,5 +118,7 @@ const Button = styled(Link)`
 `;
 
 const CardDescription = styled.div``;
+
+
 
 export default MyPagePage;

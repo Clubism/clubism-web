@@ -87,5 +87,4 @@ const PrivateInfoContainer = styled.div`
       </form>
     </div>
 */
-
 export default PrivateInfo;
