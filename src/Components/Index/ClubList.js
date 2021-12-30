@@ -51,8 +51,8 @@ const ClubList = () => {
         })}
       </SubContainer>
       <MoreClub>
-        <MoreClubLink to="/elseClub">더보기</MoreClubLink>
-      </MoreClub>
+        <MoreClubLink to="/elseClub/all">더보기</MoreClubLink>
+      </MoreClub>s
     </Container>
   );
 };
@@ -134,4 +134,5 @@ const MoreClub = styled.div`
 
 const MoreClubLink = styled(Link)`
   all: unset;
+  
 `;

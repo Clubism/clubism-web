@@ -181,7 +181,7 @@ const SearchInput = styled.input`
   height: 40px;
   color: black;
   font-size: 20px;
-  margin 15px 0px 0px 15px;
+  margin : 15px 0px 0px 15px;
    ::placeholder,
   ::-webkit-input-placeholder {
     color: black;
@@ -193,7 +193,7 @@ const SearchInput = styled.input`
 
 const Container = styled.div`
   width: 90%;
-  margin 0 auto;
+  margin : 0 auto;
   text-align: center;
 `;
 
