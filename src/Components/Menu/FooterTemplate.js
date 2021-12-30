@@ -17,7 +17,7 @@ export default FooterTemplate;
 
 const Container = styled.div`
   position: absolute;
-  bottom: -300px;
+  bottom: -350px;
   width: 100%;
   height: 200px;
   color: white;
