@@ -146,6 +146,7 @@ const TitleWrap = styled.div`
 const URL = styled.div`
   color: white;
   position: relative;
+  display : inline-block;
   top: 50px;
   left: 170px;
   font-size: 15px;

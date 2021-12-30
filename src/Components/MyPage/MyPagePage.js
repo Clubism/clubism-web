@@ -58,7 +58,7 @@ const MyPageContainer = styled.div`
   display : flex;
   width : 900px;
   margin : auto;
-  padding-top : 100px;
+  padding-top : 50px;
   flex-wrap : wrap;
   justify-content : space-betwteen;
 `;
