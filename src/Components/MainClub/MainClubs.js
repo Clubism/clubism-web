@@ -17,9 +17,8 @@ const MainClubs = (props) => {
 
   useEffect(() => {
     //axios.get("../../dummy/mainclubrecruitlist.json")
-    axios.get('http://localhost:4000/mainClub/recruitment')
-    .then((res) => {
-      console.log('recruitment load success');
+    axios.get("http://localhost:4000/mainClub/recruitment").then((res) => {
+      console.log("recruitment load success");
       setClub(res.data);
       setFilter(res.data);
     });
@@ -31,7 +30,7 @@ const MainClubs = (props) => {
       setFilter(Club);
       setUrl("전체보기");
     } else {
-      console.log('props.category : ', props.category);
+      console.log("props.category : ", props.category);
       setFilter(Club.filter((data) => data.clubId.value === props.category));
     }
   }, [props.category, Club]);
@@ -54,12 +53,11 @@ const MainClubs = (props) => {
   // 2021/12/23 강진실
   // 사용자 즐겿자기 동아리 불러옴
   // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
-  useEffect(()=>{
-    const dbId = localStorage.getItem('user_db_id');
-    axios.get(`http://localhost:4000/auth/favorites/${dbId}`)
-    .then((res)=>{
+  useEffect(() => {
+    const dbId = localStorage.getItem("user_db_id");
+    axios.get(`http://localhost:4000/auth/favorites/${dbId}`).then((res) => {
       console.log(res.data);
-      setFavorites(res.data);  
+      setFavorites(res.data);
     });
   }, []);
 
@@ -70,14 +68,16 @@ const MainClubs = (props) => {
   };
 
   const saveFavorite = (clubName) => {
-    console.log('called');
-    const dbId = localStorage.getItem('user_db_id');
-    axios.post(`http://localhost:4000/auth/favorites/${dbId}`, {clubName : clubName})
-    .then((res)=>{
-
-      setFavorites(res.data);  
-    });
-  }
+    console.log("called");
+    const dbId = localStorage.getItem("user_db_id");
+    axios
+      .post(`http://localhost:4000/auth/favorites/${dbId}`, {
+        clubName: clubName
+      })
+      .then((res) => {
+        setFavorites(res.data);
+      });
+  };
 
   //console.log(Filter);
   // 김채연에게
@@ -98,37 +98,52 @@ const MainClubs = (props) => {
             onKeyDown={searchClub}
           />
         </Search>
-        {SearchFilter.map((mainClub, index) => (
-          <Card
-            key={index}
-            to={{
-              pathname: `/mainClub/${mainClub.clubId.value}/${mainClub.clubId.label}`
-            }}
-          >
-            <SubContainer>
-              <Category>{mainClub.clubId.category}</Category>
-              <Name>
-                {mainClub.clubId.name} 
-                {favorites.includes(mainClub.clubId.name) ? <Star color="#fcca11" onClick={()=>{saveFavorite(mainClub.clubId.name)}}/> : <EmptyStar color="#fcca11" />}
-                
-              </Name>
-              <Desc>" {mainClub.description} "</Desc>
-              <Deadline>
-                {new Date() < new Date(mainClub.deadline)
-                  ? "D - " +
-                    (
-                      Math.floor((new Date(mainClub.deadline).getTime() -
-                      new Date().getTime())/(24*3600*1000))
-                    ).toString()
-                  : "마감"}
-              </Deadline>
-            </SubContainer>
-            <Poster
-              src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
-              alt="poster"
-            />
-          </Card>
-        ))}
+        {SearchFilter.length === 0 ? (
+          SearchFilter.map((mainClub, index) => (
+            <Card
+              key={index}
+              to={{
+                pathname: `/mainClub/${mainClub.clubId.value}/${
+                  mainClub.clubId.label
+                }`
+              }}
+            >
+              <SubContainer>
+                <Category>{mainClub.clubId.category}</Category>
+                <Name>
+                  {mainClub.clubId.name}
+                  {favorites.includes(mainClub.clubId.name) ? (
+                    <Star
+                      color="#fcca11"
+                      onClick={() => {
+                        saveFavorite(mainClub.clubId.name);
+                      }}
+                    />
+                  ) : (
+                    <EmptyStar color="#fcca11" />
+                  )}
+                </Name>
+                <Desc>" {mainClub.description} "</Desc>
+                <Deadline>
+                  {new Date() < new Date(mainClub.deadline)
+                    ? "D - " +
+                      Math.floor(
+                        (new Date(mainClub.deadline).getTime() -
+                          new Date().getTime()) /
+                          (24 * 3600 * 1000)
+                      ).toString()
+                    : "마감"}
+                </Deadline>
+              </SubContainer>
+              <Poster
+                src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
+                alt="poster"
+              />
+            </Card>
+          ))
+        ) : (
+          <div>wip</div>
+        )}
       </Container>
     </div>
   );
@@ -181,19 +196,19 @@ const SearchInput = styled.input`
   height: 40px;
   color: black;
   font-size: 20px;
-  margin 15px 0px 0px 15px;
+  margin: 15px 0px 0px 15px;
   ::placeholder,
   ::-webkit-input-placeholder {
     color: black;
   }
   :-ms-input-placeholder {
-     color: black;
+    color: black;
   }
 `;
 
 const Container = styled.div`
   width: 90%;
-  margin 0 auto;
+  margin: 0 auto;
   text-align: center;
 `;
 

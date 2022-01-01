@@ -10,25 +10,58 @@ import axios from "axios";
 // import { PinDropTwoTone } from "@material-ui/icons";
 
 const DetailClubPage = (props) => {
-  console.log(props);
-  const [selectedClub, setSelectedClub] = useState([]);
+  // console.log(props);
+  // const [selectedClub, setSelectedClub] = useState([]);
 
-  var url;
+  // var url;
 
-  if (props.status === 1) {
-    url = "../../dummy/mainclubrecruitlist.json";
-  } else if (props.status === 2) {
-    url = "../../dummy/subclubrecruitlist.json";
-  }
+  // if (props.status === 1) {
+  //   url = "../../dummy/mainclubrecruitlist.json";
+  // } else if (props.status === 2) {
+  //   url = "../../dummy/subclubrecruitlist.json";
+  // }
+
+  // useEffect(() => {
+  //   axios.get(url).then((res) => {
+  //     setSelectedClub(res.data);
+  //   });
+  // }, [props.name, url]);
+
+  // var clubName = "";
+  // var tmp = selectedClub.findIndex((data) => data.label === props.name);
+  // // console.log(tmp);
+  // if (tmp >= 0) clubName = selectedClub[tmp].name;
+  // else {
+  //   clubName = props.name;
+  // }
+  // console.log(selectedClub);
+  const [ClubList, setClubList] = useState([]);
+  const [readyFlag, setReadyFlag] = useState();
+  const [Url, setUrl] = useState("");
 
   useEffect(() => {
-    axios.get(url).then((res) => {
-      setSelectedClub(res.data);
+    axios.get("../../dummy/clublist.json").then((res) => {
+      setClubList(res.data);
+      setReadyFlag(true);
     });
-  }, [props.name, url]);
+  }, []);
 
-  var clubName = "";
-  if (selectedClub.length !== 0) clubName = selectedClub[0].name;
+  useEffect(() => {
+    console.log("here");
+    setSelectedClub();
+  }, [readyFlag]);
+
+  // var clubName = "";
+  console.log(window.location.pathname.split("/")[2]);
+  setUrl(window.location.pathname.split("/")[2]); //////////////////////////******************* */
+
+  const [clubName, setClubName] = useState("");
+  const setSelectedClub = async () => {
+    if (ClubList.length !== 0)
+      setClubName(
+        await ClubList.find((data) => data.label === props.name).name
+      );
+  };
 
   return (
     <div className="detail-container">
