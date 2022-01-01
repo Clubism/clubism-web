@@ -52,8 +52,8 @@ const DetailClubPage = (props) => {
   }, [readyFlag]);
 
   // var clubName = "";
-  console.log(window.location.pathname.split("/")[2]);
-  setUrl(window.location.pathname.split("/")[2]); //////////////////////////******************* */
+  console.log(window.location.pathname.split("/")[3]);
+  setUrl(window.location.pathname.split("/")[3]); //////////////////////////******************* */
 
   const [clubName, setClubName] = useState("");
   const setSelectedClub = async () => {
@@ -88,7 +88,7 @@ const DetailClubPage = (props) => {
           </Tab>
         </Tabs>
       ) : (
-        <div>none</div>
+        <div style={{ background: "black" }}>here!!!</div>
       )}
     </div>
   );
