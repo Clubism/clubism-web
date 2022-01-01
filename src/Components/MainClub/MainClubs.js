@@ -27,6 +27,7 @@ const MainClubs = (props) => {
   useEffect(() => {
     setSearchKeyword("");
     if (props.category === undefined) {
+      console.log("category : ", props.category);
       setFilter(Club);
       setUrl("전체보기");
     } else {
