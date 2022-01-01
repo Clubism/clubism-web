@@ -12,7 +12,7 @@
   {
     "category" : "국제인문학부",
     "name" : "사학",
-    "label" : "historiy"
+    "label" : "history"
   },
   {
     "category" : "국제인문학부",
@@ -127,16 +127,16 @@
   {
     "category" : "지식융합미디어학부",
     "name" : "미디어&엔터테인먼트",
-    "label" : ""
+    "label" : "scc"
   },
   {
     "category" : "지식융합미디어학부",
     "name" : "아트&테크놀로지",
-    "label" : ""
+    "label" : "creative"
   },
   {
     "category" : "지식융합미디어학부",
     "name" : "글로벌 한국학",
-    "label" : ""
+    "label" : "gks"
   }
 ]

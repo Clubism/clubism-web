@@ -51,6 +51,9 @@ const SubClubRecruitment = (props) => {
       description : description,
       clubName : clubName,
       deadline : date
+    }).then(()=>{
+      alert("제출이 완료됐습니다!");
+      
     })
   }
 

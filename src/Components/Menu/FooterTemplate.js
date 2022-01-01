@@ -7,7 +7,7 @@ const FooterTemplate = (props) => {
     <div>
       <Container>
         <Title>CLUBISM</Title>
-        <Contact>Contact Us : About Team / <InstagramIcon style={{fontSize : "16px"}}/>&nbsp;clubismm / &nbsp;
+        <Contact>Contact Us : About Team / <InstagramIcon style={{fontSize : "16px"}}/>&nbsp;clubism_official / &nbsp;
         <MailOutlineOutlinedIcon style={{fontSize : "16px"}}/>&nbsp;mail@mail.com / ...</Contact>
       </Container>
     </div>
