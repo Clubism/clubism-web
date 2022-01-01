@@ -19,21 +19,21 @@ const CategorySub = (props) => {
 
   
   // const props.close = (e) => {
-  //   if (e.target.innerText === "전체보기") window.location.replace("/subclub");
+  //   if (e.target.innerText === "전체보기") window.location.replace("/subClub");
   //   else if (e.target.innerText === "국제인문학부")
-  //     window.location.replace("/subclub/liberalarts");
+  //     window.location.replace("/subClub/liberalarts");
   //   else if (e.target.innerText === "사회과학부")
-  //     window.location.replace("/subclub/sdoss");
+  //     window.location.replace("/subClub/sdoss");
   //   else if (e.target.innerText === "경제학부")
-  //     window.location.replace("/subclub/econ");
+  //     window.location.replace("/subClub/econ");
   //   else if (e.target.innerText === "공학부")
-  //     window.location.replace("/subclub/eng");
+  //     window.location.replace("/subClub/eng");
   //   else if (e.target.innerText === "자연과학부")
-  //     window.location.replace("/subclub/science");
+  //     window.location.replace("/subClub/science");
   //   else if (e.target.innerText === "지식융합미디어학부")
-  //     window.location.replace("/subclub/smas");
+  //     window.location.replace("/subClub/smas");
   //   else if (e.target.innerText === "경영학부")
-  //     window.location.replace("/subclub/sbs");
+  //     window.location.replace("/subClub/sbs");
   // };
 
   // return (
@@ -42,12 +42,12 @@ const CategorySub = (props) => {
   //       <SubContainer>
   //         <Category>
   //           <CategoryTitle>
-  //             <CategoryLink to="/subclub">
+  //             <CategoryLink to="/subClub">
   //               <CategoryItem onClick={props.close}>전체보기</CategoryItem>
   //             </CategoryLink>
   //             <Empty />
   //             <CategoryTitle>
-  //               <CategoryLink to="/subclub/sbs">
+  //               <CategoryLink to="/subClub/sbs">
   //                 <CategoryItem onClick={props.close}>경영학부</CategoryItem>
   //               </CategoryLink>
   //               <List>
@@ -65,7 +65,7 @@ const CategorySub = (props) => {
   //             </CategoryTitle>
   //           </CategoryTitle>
   //           <CategoryTitle>
-  //             <CategoryLink to="/subclub/liberalarts">
+  //             <CategoryLink to="/subClub/liberalarts">
   //               <CategoryItem onClick={props.close}>국제인문학부</CategoryItem>
   //             </CategoryLink>
   //             <List>
@@ -105,7 +105,7 @@ const CategorySub = (props) => {
   //             </List>
   //           </CategoryTitle>
   //           <CategoryTitle>
-  //             <CategoryLink to="subclub/sdoss">
+  //             <CategoryLink to="subClub/sdoss">
   //               <CategoryItem onClick={props.close}>사회과학부</CategoryItem>
   //             </CategoryLink>
   //             <List>
@@ -128,7 +128,7 @@ const CategorySub = (props) => {
   //             </List>
   //           </CategoryTitle>
   //           <CategoryTitle>
-  //             <CategoryLink to="/subclub/econ">
+  //             <CategoryLink to="/subClub/econ">
   //               <CategoryItem onClick={props.close}>경제학부</CategoryItem>
   //             </CategoryLink>
   //             <List>
@@ -145,7 +145,7 @@ const CategorySub = (props) => {
   //             </List>
   //           </CategoryTitle>
   //           <CategoryTitle>
-  //             <CategoryLink to="/subclub/eng">
+  //             <CategoryLink to="/subClub/eng">
   //               <CategoryItem onClick={props.close}>공학부</CategoryItem>
   //             </CategoryLink>
   //             <List>
@@ -171,7 +171,7 @@ const CategorySub = (props) => {
   //             </List>
   //           </CategoryTitle>
   //           <CategoryTitle>
-  //             <CategoryLink to="/subclub/science">
+  //             <CategoryLink to="/subClub/science">
   //               <CategoryItem onClick={props.close}>자연과학부</CategoryItem>
   //             </CategoryLink>
   //             <List>
@@ -197,7 +197,7 @@ const CategorySub = (props) => {
   //             </List>
   //           </CategoryTitle>
   //           <CategoryTitle>
-  //             <CategoryLink to="/subclub/science">
+  //             <CategoryLink to="/subClub/science">
   //               <CategoryItem onClick={props.close}>
   //                 지식융합미디어학부
   //               </CategoryItem>
@@ -242,19 +242,19 @@ const CategorySub = (props) => {
         <SubContainer>
           <Category>
             <CategoryTitle>
-              <CategoryLink to="/subclub">
+              <CategoryLink to="/subClub">
                 <CategoryItem onClick={props.close}>전체보기</CategoryItem>
               </CategoryLink>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryLink to="/subclub/management">
+              <CategoryLink to="/subClub/management">
                 <CategoryItem onClick={props.close}>경영학부</CategoryItem>
               </CategoryLink>
               <List>
                 {ClubList.filter((data) => data.category === "경영학부").map(
                   (item, index) => (
                     <ListTitle key={index}>
-                      <CategoryLink to={{pathname: `/subclub/management/${item.label}`}} onClick={props.close}>
+                      <CategoryLink to={{pathname: `/subClub/management/${item.label}`}} onClick={props.close}>
                       <ListItem>
                         {item.name}
                       </ListItem>
@@ -265,7 +265,7 @@ const CategorySub = (props) => {
               </List>
               <Empty />
               <CategoryTitle>
-              <CategoryLink to="/subclub/economics">
+              <CategoryLink to="/subClub/economics">
                 <CategoryItem onClick={props.close}>
                   경제학부
                 </CategoryItem>
@@ -275,7 +275,7 @@ const CategorySub = (props) => {
                   (data) => data.category === "경제학부"
                 ).map((item, index) => (
                   <ListTitle key={index}>
-                    <CategoryLink to={{pathname: `/subclub/economics/${item.label}`}} onClick={props.close}>
+                    <CategoryLink to={{pathname: `/subClub/economics/${item.label}`}} onClick={props.close}>
                     <ListItem>
                       {item.name}
                     </ListItem>
@@ -286,7 +286,7 @@ const CategorySub = (props) => {
             </CategoryTitle>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryLink to="/subclub/social">
+              <CategoryLink to="/subClub/social">
                 <CategoryItem onClick={props.close}>
                   사회과학부
                 </CategoryItem>
@@ -296,7 +296,7 @@ const CategorySub = (props) => {
                   (data) => data.category === "사회과학부"
                 ).map((item, index) => (
                   <ListTitle key={index}>
-                    <CategoryLink to={{pathname: `/subclub/social/${item.label}`}} onClick={props.close}>
+                    <CategoryLink to={{pathname: `/subClub/social/${item.label}`}} onClick={props.close}>
                     <ListItem>
                       {item.name}
                     </ListItem>
@@ -307,14 +307,14 @@ const CategorySub = (props) => {
             </CategoryTitle>
 
             <CategoryTitle>
-                <CategoryLink to="/subclub/liberalarts">
+                <CategoryLink to="/subClub/liberalarts">
                   <CategoryItem onClick={props.close}>국제인문학부</CategoryItem>
                 </CategoryLink>
                 <List>
                   {ClubList.filter((data) => data.category === "국제인문학부").map(
                     (item, index) => (
                       <ListTitle key={index}>
-                        <CategoryLink to={{pathname: `/subclub/liberalarts/${item.label}`}} onClick={props.close}>
+                        <CategoryLink to={{pathname: `/subClub/liberalarts/${item.label}`}} onClick={props.close}>
                         <ListItem>
                           {item.name}
                         </ListItem>
@@ -326,7 +326,7 @@ const CategorySub = (props) => {
               </CategoryTitle>
 
             <CategoryTitle>
-              <CategoryLink to="/subclub/engineering">
+              <CategoryLink to="/subClub/engineering">
                 <CategoryItem onClick={props.close}>공학부</CategoryItem>
               </CategoryLink>
               <List>
@@ -335,7 +335,7 @@ const CategorySub = (props) => {
 
                       return (
                         <ListTitle key={index}>
-                          <CategoryLink to={{pathname: `/subclub/engineering/${item.label}`}} onClick={props.close}>
+                          <CategoryLink to={{pathname: `/subClub/engineering/${item.label}`}} onClick={props.close}>
                           <ListItem>
                             {item.name}
                           </ListItem>
@@ -349,7 +349,7 @@ const CategorySub = (props) => {
             </CategoryTitle>
 
             <CategoryTitle>
-              <CategoryLink to="/subclub/science">
+              <CategoryLink to="/subClub/science">
                 <CategoryItem onClick={props.close}>자연과학부</CategoryItem>
               </CategoryLink>
               <List>
@@ -357,7 +357,7 @@ const CategorySub = (props) => {
                   (item, index) => {
                       return (
                         <ListTitle key={index}>
-                          <CategoryLink to={{pathname: `/subclub/science/${item.label}`}} onClick={props.close}>
+                          <CategoryLink to={{pathname: `/subClub/science/${item.label}`}} onClick={props.close}>
                           <ListItem>
                             {item.name}
                           </ListItem>
@@ -370,14 +370,14 @@ const CategorySub = (props) => {
             </CategoryTitle>
 
             <CategoryTitle>
-              <CategoryLink to="/subclub/smas">
+              <CategoryLink to="/subClub/smas">
                 <CategoryItem onClick={props.close}>지식융합미디어학부</CategoryItem>
               </CategoryLink>
               <List>
                 {ClubList.filter((data) => data.category === "지식융합미디어학부").map(
                   (item, index) => (
                     <ListTitle key={index}>
-                      <CategoryLink to={{pathname: `/subclub/smas/${item.label}`}} onClick={props.close}>
+                      <CategoryLink to={{pathname: `/subClub/smas/${item.label}`}} onClick={props.close}>
                       <ListItem>
                         {item.name}
                       </ListItem>

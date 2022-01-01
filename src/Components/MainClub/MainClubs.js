@@ -22,17 +22,17 @@ const MainClubs = (props) => {
       console.log('recruitment load success');
       setClub(res.data);
       setFilter(res.data);
-
+      console.log("Club : ", Club);
     });
   }, []);
 
   useEffect(() => {
     setSearchKeyword("");
     if (props.category === undefined) {
+      console.log("category : ", props.category); 
       setFilter(Club);
       setUrl("전체보기");
     } else {
-
       setFilter(Club.filter((data) => data.clubId.value === props.category));
     }
   }, [props.category, Club]);

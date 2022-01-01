@@ -5,13 +5,13 @@ import styled from "styled-components";
 import CategoryMain from "./CategoryMain";
 import CategorySub from "./CategorySub";
 import CategoryElse from "./CategoryElse";
-import {useSelector} from 'react-redux';
+//import {useSelector} from 'react-redux';
 
 // import Logout from "../Pages/Logout";
 
 const IndexTemplate = () => {
   const isLoggedIn = useRef(false);
-  const history = useHistory();
+  //const history = useHistory();
   const [category1, setCategory1] = useState(false);
   const [category2, setCategory2] = useState(false);
   const [category3, setCategory3] = useState(false);
