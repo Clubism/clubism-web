@@ -22,7 +22,7 @@ const DetailClubIntro = () => {
             /> */}
             asdf
           </Carousel.Item>
-          <Carousel.Item>qwer</Carousel.Item>
+          <Carousel.Item>q마wer</Carousel.Item>
           <Carousel.Item>zxcv</Carousel.Item>
         </Carousel>
       </div>
