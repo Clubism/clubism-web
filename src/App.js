@@ -16,6 +16,8 @@ import Logout from "./Pages/Logout";
 import IndexTemplate from "./Components/Menu/IndexTemplate";
 import FooterTemplate from "./Components/Menu/FooterTemplate"
 
+import Recruitment from './Components/Recruitment/Recruitment';
+
 function App() {
   return (
     <div className="App">
@@ -26,6 +28,7 @@ function App() {
         <Route path="/mainClub/:category" component={MainClub} exact />
         <Route path="/mainClub/:category/:name" component={MainClub} exact />
         <Route path="/subClub" component={SubClub} exact />
+        <Route path="/recruitment" component={Recruitment} exact />
         <Route path="/subClub/:category" component={SubClub} exact />
         <Route path="/subClub/:category/:name" component={SubClub} exact />
         <Route path="/elseClub/:category" component={ElseClub} exact />
@@ -35,7 +38,7 @@ function App() {
         <Route path="/signup" component={SignUp} exact />
         <Route path="/mypage" component={MyPage} exact />
         <Route path="/mypage/:category" component={MyPage} exact />
-        <Route path="/logout" component={Logout} exact />= 
+        <Route path="/logout" component={Logout} exact /> 
         <Route component={Error404} />
       </Switch>
       <FooterTemplate />

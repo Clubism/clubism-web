@@ -134,4 +134,5 @@ const MoreClub = styled.div`
 
 const MoreClubLink = styled(Link)`
   all: unset;
+  
 `;

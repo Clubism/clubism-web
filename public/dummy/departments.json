@@ -1,0 +1,142 @@
+[
+  {
+    "category" : "경영학부",
+    "name" : "경영학",
+    "label" : "sbs"
+  }, 
+  {
+    "category" : "국제인문학부",
+    "name" : "국어국문학",
+    "label" : "korea"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "사학",
+    "label" : "historiy"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "철학",
+    "label" : "philosophy"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "종교학",
+    "label" : "religion"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "영미어문",
+    "label" : "english"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "미국문화",
+    "label" : "english2"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "유럽문화전공",
+    "label" : "eu"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "독일문화",
+    "label" : "china"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "프랑스문화",
+    "label" : "france"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "중국문화",
+    "label" : "china"
+  },
+  {
+    "category" : "국제인문학부",
+    "name" : "일본문화",
+    "label" : "japan"
+  },
+  {
+    "category" : "사회과학부",
+    "name" : "사회학",
+    "label" : "sociology"
+  },
+  {
+    "category" : "사회과학부",
+    "name" : "정치외교학",
+    "label" : "scc"
+  },
+  {
+    "category" : "사회과학부",
+    "name" : "심리학",
+    "label" : "psychology"
+  },
+  {
+    "category" : "경제학부",
+    "name" : "경제학",
+    "label" : "econ"
+  },
+  {
+    "category" : "공학부",
+    "name" : "컴퓨터공학",
+    "label" : "cs"
+  },
+  {
+    "category" : "공학부",
+    "name" : "전자공학",
+    "label" : "ee"
+  },
+  {
+    "category" : "공학부",
+    "name" : "화공생명공학",
+    "label" : "chemeng"
+  },
+  {
+    "category" : "공학부",
+    "name" : "기계공학",
+    "label" : "me"
+  },
+  {
+    "category" : "자연과학부",
+    "name" : "수학",
+    "label" : "math"
+  },
+  {
+    "category" : "자연과학부",
+    "name" : "물리학",
+    "label" : "physics"
+  },
+  {
+    "category" : "자연과학부",
+    "name" : "화학",
+    "label" : "chemistry"
+  },
+  {
+    "category" : "자연과학부",
+    "name" : "생명과학",
+    "label" : "lifescien"
+  },
+  {
+    "category" : "지식융합미디어학부",
+    "name" : "신문방송학",
+    "label" : "jas"
+  },
+  {
+    "category" : "지식융합미디어학부",
+    "name" : "미디어&엔터테인먼트",
+    "label" : ""
+  },
+  {
+    "category" : "지식융합미디어학부",
+    "name" : "아트&테크놀로지",
+    "label" : ""
+  },
+  {
+    "category" : "지식융합미디어학부",
+    "name" : "글로벌 한국학",
+    "label" : ""
+  }
+]
