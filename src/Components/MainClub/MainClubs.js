@@ -99,52 +99,48 @@ const MainClubs = (props) => {
             onKeyDown={searchClub}
           />
         </Search>
-        {SearchFilter.length === 0 ? (
-          SearchFilter.map((mainClub, index) => (
-            <Card
-              key={index}
-              to={{
-                pathname: `/mainClub/${mainClub.clubId.value}/${
-                  mainClub.clubId.label
-                }`
-              }}
-            >
-              <SubContainer>
-                <Category>{mainClub.clubId.category}</Category>
-                <Name>
-                  {mainClub.clubId.name}
-                  {favorites.includes(mainClub.clubId.name) ? (
-                    <Star
-                      color="#fcca11"
-                      onClick={() => {
-                        saveFavorite(mainClub.clubId.name);
-                      }}
-                    />
-                  ) : (
-                    <EmptyStar color="#fcca11" />
-                  )}
-                </Name>
-                <Desc>" {mainClub.description} "</Desc>
-                <Deadline>
-                  {new Date() < new Date(mainClub.deadline)
-                    ? "D - " +
-                      Math.floor(
-                        (new Date(mainClub.deadline).getTime() -
-                          new Date().getTime()) /
-                          (24 * 3600 * 1000)
-                      ).toString()
-                    : "마감"}
-                </Deadline>
-              </SubContainer>
-              <Poster
-                src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
-                alt="poster"
-              />
-            </Card>
-          ))
-        ) : (
-          <div>wip</div>
-        )}
+        {SearchFilter.map((mainClub, index) => (
+          <Card
+            key={index}
+            to={{
+              pathname: `/mainClub/${mainClub.clubId.value}/${
+                mainClub.clubId.label
+              }`
+            }}
+          >
+            <SubContainer>
+              <Category>{mainClub.clubId.category}</Category>
+              <Name>
+                {mainClub.clubId.name}
+                {favorites.includes(mainClub.clubId.name) ? (
+                  <Star
+                    color="#fcca11"
+                    onClick={() => {
+                      saveFavorite(mainClub.clubId.name);
+                    }}
+                  />
+                ) : (
+                  <EmptyStar color="#fcca11" />
+                )}
+              </Name>
+              <Desc>" {mainClub.description} "</Desc>
+              <Deadline>
+                {new Date() < new Date(mainClub.deadline)
+                  ? "D - " +
+                    Math.floor(
+                      (new Date(mainClub.deadline).getTime() -
+                        new Date().getTime()) /
+                        (24 * 3600 * 1000)
+                    ).toString()
+                  : "마감"}
+              </Deadline>
+            </SubContainer>
+            <Poster
+              src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
+              alt="poster"
+            />
+          </Card>
+        ))}
       </Container>
     </div>
   );
@@ -211,7 +207,6 @@ const SearchInput = styled.input`
 const Container = styled.div`
   width: 90%;
   margin: 0 auto;
-
   text-align: center;
 `;
 
