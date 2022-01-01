@@ -7,6 +7,7 @@ import DetailClubCurrent from "./Current";
 import DetailClubQA from "./QA";
 import DetailClubIntro from "./Intro";
 import axios from "axios";
+
 // import { PinDropTwoTone } from "@material-ui/icons";
 
 const DetailClubPage = (props) => {

@@ -30,7 +30,6 @@ const MainClubs = (props) => {
       setFilter(Club);
       setUrl("전체보기");
     } else {
-      console.log("props.category : ", props.category);
       setFilter(Club.filter((data) => data.clubId.value === props.category));
     }
   }, [props.category, Club]);
@@ -39,16 +38,20 @@ const MainClubs = (props) => {
     if (Filter.length !== 0 && props.category !== undefined)
       setUrl(Filter[0].clubId.category);
   }, [Filter, props.category]);
+  //}, []);
 
   useEffect(() => {
-    if (SearchKeyword === "") setSearchFilter(Filter);
-    else
+    if (SearchKeyword === "") {
+      console.log("called");
+      setSearchFilter(Filter);
+    } else
       setSearchFilter(
         Filter.filter((data) => {
           return data.clubId.name.includes(SearchKeyword);
         })
       );
   }, [SearchKeyword, Filter]);
+  //}, []);
 
   // 2021/12/23 강진실
   // 사용자 즐겿자기 동아리 불러옴
@@ -56,7 +59,6 @@ const MainClubs = (props) => {
   useEffect(() => {
     const dbId = localStorage.getItem("user_db_id");
     axios.get(`http://localhost:4000/auth/favorites/${dbId}`).then((res) => {
-      console.log(res.data);
       setFavorites(res.data);
     });
   }, []);
@@ -68,7 +70,6 @@ const MainClubs = (props) => {
   };
 
   const saveFavorite = (clubName) => {
-    console.log("called");
     const dbId = localStorage.getItem("user_db_id");
     axios
       .post(`http://localhost:4000/auth/favorites/${dbId}`, {
@@ -79,7 +80,7 @@ const MainClubs = (props) => {
       });
   };
 
-  //console.log(Filter);
+  console.log(SearchFilter);
   // 김채연에게
   // recruitment list를 db에 연결하는 과정에서 name, value, label은 clubId.name 이런 식으로 접근해야 합니다!
   // 당장 보이는 것들은 수정해놓긴 했는데 나중에 버그 생기면 clubId.을 붙여서 함 해보세용
@@ -161,6 +162,7 @@ const TitleWrap = styled.div`
 const URL = styled.div`
   color: white;
   position: relative;
+  display: inline-block;
   top: 50px;
   left: 170px;
   font-size: 15px;
@@ -196,9 +198,7 @@ const SearchInput = styled.input`
   height: 40px;
   color: black;
   font-size: 20px;
-
   margin: 15px 0px 0px 15px;
-
   ::placeholder,
   ::-webkit-input-placeholder {
     color: black;
