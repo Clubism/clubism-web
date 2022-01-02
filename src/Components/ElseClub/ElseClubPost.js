@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style/ElseClubPost.scss";
 import { BsArrowReturnRight } from "react-icons/bs";
 import axios from "axios";
+import moment from 'moment';
 
 const ElseClubPost = (props) => {
   const [reload, setreload] = useState(0);
@@ -67,7 +68,7 @@ const ElseClubPost = (props) => {
         <div className="ElseClubPost-sub">
           {props.post.category} | {props.post.writer}
         </div>
-        <div className="ElseClubPost-date">{props.post.date}</div>
+        <div className="ElseClubPost-date">{moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
         <hr />
         {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
         <div
