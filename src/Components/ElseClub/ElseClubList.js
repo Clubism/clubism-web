@@ -84,7 +84,7 @@ const ClubList = (props) => {
               to={"/elseClub/post/" + post.id}
               className="link"
               onClick={() => {
-                console.log(post._id);
+                console.log(post);
                 props.setPost(post);
               }}
               key={post._id}
