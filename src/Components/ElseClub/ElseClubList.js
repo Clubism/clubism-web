@@ -80,7 +80,7 @@ const ClubList = (props) => {
         if (index >= (Page - 1) * PageNum && index < Page * PageNum)
           return (
             <Link
-              to={"/elseClub/post/" + post._id}
+              to={"/elseClub/post/" + post.id}
               className="link"
               onClick={() => {
                 console.log(post._id);
