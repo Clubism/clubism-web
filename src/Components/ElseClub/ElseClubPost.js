@@ -113,25 +113,7 @@ const ElseClubPost = (props) => {
                   )}
                 </div>
                 {cmt.comment}
-                  {
-                  cmt.childComment.map((reply, idx) =>{
-                    return (
-                      <div>대댓글 {reply.comment}</div>
-                    )
-                  })
-
-
-                }
               </div>
-              {/* {
-                cmt.childComment.map((reply, idx) =>{
-                  return (
-                    <div>eee{reply}</div>
-                  )
-                })
-
-
-              } */}
               {replyComment === index ? (
                 <div className="InputComment">
                   <textarea
