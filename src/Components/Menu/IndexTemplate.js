@@ -96,7 +96,7 @@ localStorage.getItem("user_id") !== null
         </UserNotExist>
         <UserExist toggle={isLoggedIn.current}>
           <UserItem>
-            <UserItemLink to="/mypage">mypage&nbsp;</UserItemLink>
+            <UserItemLink to="/mypage">마이페이지&nbsp;</UserItemLink>
           </UserItem>
           <UserItemBar>|</UserItemBar>
           <UserItem
@@ -105,7 +105,7 @@ localStorage.getItem("user_id") !== null
             }}
           >
             {/* <Link className="logout link" to="/logout"> */}
-            <Logout>&nbsp;logout</Logout>
+            <Logout>&nbsp;로그아웃</Logout>
             {/* </Link> */}
           </UserItem>
         </UserExist>
@@ -251,7 +251,7 @@ const Logout = styled.span`
   text-decoration-line: none;
   color: #023b6d;
   font-size: 16px;
-  font-weight: 1000;
+  font-weight: 500;
   cursor: pointer;
 `;
 
