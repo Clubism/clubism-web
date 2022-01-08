@@ -4,6 +4,7 @@ import "../style/ElseClubList.scss";
 import { Link } from "react-router-dom";
 import Paging from "./Paging";
 import axios from "axios";
+import moment from 'moment';
 // import Moment from  'react-moment'
 
 const ClubList = (props) => {
@@ -80,10 +81,10 @@ const ClubList = (props) => {
         if (index >= (Page - 1) * PageNum && index < Page * PageNum)
           return (
             <Link
-              to={"/elseClub/post/" + post._id}
+              to={"/elseClub/post/" + post.id}
               className="link"
               onClick={() => {
-                console.log(post._id);
+                console.log(post);
                 props.setPost(post);
               }}
               key={post._id}
@@ -93,7 +94,7 @@ const ClubList = (props) => {
                 <div className="Title">
                   [{post.category}] {post.title}
                 </div>
-                <div>{post.date}</div>
+                <div>{moment(post.date).format('YYYY-MM-DD')}</div>
                 <div>{post.writer}</div>
               </div>
             </Link>
