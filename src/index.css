@@ -1,0 +1,33 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+html {
+  height: 100%;
+  margin: 0;
+}
+body {
+  padding-top: 70px;
+  margin: 0;
+  font-family: "Nanum Gothic", sans-serif;
+  color: #222222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+* {
+  font-family: "Pretendard";
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root {
+  height: 100%;
+}
+
+.link {
+  text-decoration: none;
+  color: #222222;
+}

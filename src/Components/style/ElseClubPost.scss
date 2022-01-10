@@ -1,0 +1,65 @@
+.ElseClubPostContainer {
+  width: 70%;
+  vertical-align: middle;
+  margin: 30px auto;
+  // margin: 30px;
+  overflow-y: scroll;
+}
+
+.ElseClubPost {
+  // border: 1px solid rgb(190, 190, 190);
+  margin: auto 20px;
+  border: 0;
+}
+
+.ElseClubPost-sub {
+  font-size: small;
+}
+
+.ElseClubPost-date {
+  font-size: small;
+  text-align: end;
+}
+
+.ElseClubPost-data {
+  border: 1px solid #ffffff;
+  margin: auto 20px;
+}
+
+.ElseClubComment {
+  border: 1px solid #ffffff;
+  border: 0;
+  .second {
+    padding: 0px 20px;
+  }
+  .cmtSmall {
+    font-size: small;
+    display: flex;
+    align-items: center;
+    .cmtDate {
+      color: #777777;
+    }
+  }
+}
+
+.InputComment {
+  // @if $type==0 {
+  //    background-color: 999999;
+  // }
+  // display: inline-block;
+  textarea {
+    width: 85%;
+    border: 1px solid #999999;
+    margin: 5px;
+    float: left;
+  }
+  button {
+    width: 50px;
+    height: 50px;
+    background-color: #999999;
+    color: #ffffff;
+    border: 1px solid #999999;
+    margin: 5px;
+    display: inline-block;
+  }
+}

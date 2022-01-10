@@ -1,0 +1,29 @@
+.ElseClubPosting {
+    // display: flex;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    margin: auto;
+}
+
+.dropdown{
+    margin: 10px 0px;
+}
+
+.submitBtn{
+    display:inline-block;
+    float:right;
+    margin: 10px 0px;
+}
+
+.titleForm{
+    margin: 20px 0px;
+}
+
+// .ck.ck-editor{
+//     max-width: 500px;
+// }
+
+.ck-editor__editable{
+    min-height: 400px;
+}
