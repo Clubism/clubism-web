@@ -34,7 +34,13 @@
 .State {
   background-color: #333333;
   color: #ffffff;
-  border-radius: 4px;
+  border-radius: 8px;
+  //padding : 3px 12px;
+  font-size : 12px;
+  height : 24px;
+  line-height : 24px;
+  width : 56px;
+  text-align: center;
 }
 
 .Posting {

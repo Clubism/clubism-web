@@ -25,6 +25,8 @@ const LoginPage = ({ history }) => {
         withCredentials: true
       })
       .then((res) => {
+        alert("login ");
+        console.log(res);
         if (res.data === "no such user") {
           alert("등록된 회원 정보가 없습니다");
         } else if (res.data === "wrong password") {

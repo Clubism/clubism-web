@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Paging from "./Paging";
 import axios from "axios";
 import moment from 'moment';
+import styled from 'styled-components';
+
 // import Moment from  'react-moment'
 
 const ClubList = (props) => {
@@ -97,6 +99,7 @@ const ClubList = (props) => {
                 <div>{moment(post.date).format('YYYY-MM-DD')}</div>
                 <div>{post.writer}</div>
               </div>
+              <Line />
             </Link>
           );
         else return "";
@@ -110,5 +113,10 @@ const ClubList = (props) => {
     </div>
   );
 };
+
+const Line = styled.hr`
+margin : 2px;
+color : #999999;
+`;
 
 export default ClubList;
