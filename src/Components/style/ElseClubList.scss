@@ -34,13 +34,13 @@
 .State {
   background-color: #333333;
   color: #ffffff;
-  border-radius: 8px;
-  //padding : 3px 12px;
+  border-radius: 16px;
   font-size : 12px;
   height : 24px;
   line-height : 24px;
   width : 56px;
   text-align: center;
+  cursor : default;
 }
 
 .Posting {
@@ -52,4 +52,13 @@
   position: relative;
   display: flex;
   float: left;
+  font-size : 12px;
+  text-decoration: none;
+  height : 24px;
+  line-height : 24px;
+  transition: background-color 0.2s;
+  &:hover{
+    background-color: #333333;
+    color : #fff;
+  }
 }

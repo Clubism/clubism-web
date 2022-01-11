@@ -66,7 +66,9 @@ const MainClubs = (props) => {
       setFavorites(res.data);
     });
   }, []);
-*/
+
+  */
+
   const searchClub = (e) => {
     if (e.key === "Enter") {
       setSearchKeyword(e.target.value);

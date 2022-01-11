@@ -60,6 +60,14 @@ localStorage.getItem("user_id") !== null
     window.location.replace("/");
   };
 
+  const onSilentRefresh = () => {
+    axios.post("http://localhost:4000/auth/silent-refresh");
+  };
+  /*
+  useEffect(() => {
+    onSilentRefresh();
+  }, []);
+*/
   return (
     <div>
       <Container>

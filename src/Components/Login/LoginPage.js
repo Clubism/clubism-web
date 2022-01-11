@@ -19,24 +19,27 @@ const LoginPage = ({ history }) => {
 
   const onLoginSubmit = (e) => {
     e.preventDefault();
-
+    console.log("called");
     axios
       .post("http://localhost:4000/auth/login", LoginInfo, {
         withCredentials: true
       })
       .then((res) => {
-        alert("login ");
+        console.log("login res below");
         console.log(res);
         if (res.data === "no such user") {
           alert("등록된 회원 정보가 없습니다");
         } else if (res.data === "wrong password") {
           alert("비밀번호를 확인해주세요");
         } else {
-          localStorage.setItem("user_id", res.data.id);
-          localStorage.setItem("user_db_id", res.data._id);
+          localStorage.setItem("user_id", res.data.user.id);
+          localStorage.setItem("user_db_id", res.data.user._id);
+          localStorage.setItem("token", res.data.token);
+          axios.defaults.headers.common["Authorization"] = `Bearer ${
+            res.data.token
+          }`;
           dispatch(actions.setAuth(true));
-          window.location.replace("/")
-
+          window.location.replace("/");
         }
       });
   };

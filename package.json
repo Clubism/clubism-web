@@ -1,8 +1,8 @@
 {
   "name": "clubism",
   "version": "0.1.0",
+  "proxy" : "http://localhost:4000/",
   "private": true,
-  "proxy": "http://localhost:4000",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^29.2.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
@@ -46,6 +46,7 @@
     "scoped-css-loader": "^1.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.3",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
