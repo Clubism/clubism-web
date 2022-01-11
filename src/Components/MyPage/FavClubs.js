@@ -6,13 +6,13 @@ import axios from "axios";
 
 const CustomChip = materialStyled(Chip)`
   border : none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow : 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   margin : 0px 10px;
   
 `;
 
 const FavClubs = () => {
-  const [Info, SetInfo] = useState({ favorite: [] });
+  //const [Info, SetInfo] = useState({ favorite: [] });
   const [FavClubs, SetFavClubs] = useState([]); 
   const dbId = localStorage.getItem("user_id");
 
@@ -20,21 +20,18 @@ const FavClubs = () => {
   useEffect(() => {
     console.log("called");
     axios.get(`http://localhost:4000/auth/checkId?id=${dbId}`).then((res) => {
-      SetInfo(res.data);
-
-      console.log(res.data.favorite);
+      //SetInfo(res.data);
       // 즐겨찾기 동아리만 따로 저장
       SetFavClubs(res.data.favorite);
     });
   }, []);
 
 
-  // 삭제된 동아리를 Delete 에 추가
+  // 삭제된 동아리는 없애기 
   const handleDelete = (f) => {
     if(FavClubs !== []){
       SetFavClubs(FavClubs.filter(club => club !== f));
     }
-    
   };
 
   return (
@@ -47,7 +44,7 @@ const FavClubs = () => {
           <MainClubContainer>
             {FavClubs.map((f) => {
               return (
-                <CustomChip key={f} label={f} variant="outlined" onDelete={handleDelete(f)} />
+                <CustomChip key={f} label={f} variant="outlined" onDelete={()=>{handleDelete(f)}} />
               );
             })}
           </MainClubContainer>
@@ -63,7 +60,11 @@ const FavClubs = () => {
 };
 
 const MainClubContainer = styled.div``;
-const MainClubHeader = styled.div``;
+const MainClubHeader = styled.div`
+  margin : 20px 0px;
+  font-size : 18px;
+  font-weight : bold;
+`;
 const MainClub = styled.div``;
 
 const FavClubsWrapper = styled.div`

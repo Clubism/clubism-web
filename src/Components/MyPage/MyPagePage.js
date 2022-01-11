@@ -4,6 +4,17 @@ import {Link} from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from "axios";
 
+/*
+<Card>
+         <CardHeader>관심 키워드</CardHeader>
+         <CardContainer>
+         <CardDescription>관심 키워드를 수정할 수 있습니다.</CardDescription>
+
+         </CardContainer>
+         <Button to="/mypage/favKeywords">수정</Button>
+      </Card>
+*/
+
 const MyPagePage = ()=>{
   const [Info, SetInfo] = useState({});
   const dbId = localStorage.getItem("user_id");
@@ -25,14 +36,7 @@ const MyPagePage = ()=>{
         <Button to="/mypage/privateInfo">수정</Button>
       </Card>
 
-      <Card>
-         <CardHeader>관심 키워드</CardHeader>
-         <CardContainer>
-         <CardDescription>관심 키워드를 수정할 수 있습니다.</CardDescription>
-         
-         </CardContainer>
-         <Button to="/mypage/favKeywords">수정</Button>
-      </Card>
+      
 
       <Card>
          <CardHeader>관심 동아리</CardHeader>

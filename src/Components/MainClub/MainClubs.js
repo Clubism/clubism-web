@@ -18,17 +18,17 @@ const MainClubs = (props) => {
   useEffect(() => {
     //axios.get("../../dummy/mainclubrecruitlist.json")
     axios.get("http://localhost:4000/mainClub/recruitment").then((res) => {
-      console.log("recruitment load success");
+      //console.log("recruitment load success");
       setClub(res.data);
       setFilter(res.data);
-      console.log("Club : ", Club);
+      //console.log("Club : ", Club);
     });
   }, []);
 
   useEffect(() => {
     setSearchKeyword("");
     if (props.category === undefined) {
-      console.log("category : ", props.category);
+      //console.log("category : ", props.category);
       setFilter(Club);
       setUrl("전체보기");
     } else {
@@ -44,7 +44,7 @@ const MainClubs = (props) => {
 
   useEffect(() => {
     if (SearchKeyword === "") {
-      console.log("called");
+      //console.log("called");
       setSearchFilter(Filter);
     } else
       setSearchFilter(
@@ -59,7 +59,7 @@ const MainClubs = (props) => {
   // 사용자 즐겿자기 동아리 불러옴
   // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
 
-  /*
+  
   useEffect(() => {
     const dbId = localStorage.getItem("user_db_id");
     axios.get(`http://localhost:4000/auth/favorites/${dbId}`).then((res) => {
@@ -67,7 +67,6 @@ const MainClubs = (props) => {
     });
   }, []);
 
-  */
 
   const searchClub = (e) => {
     if (e.key === "Enter") {
@@ -76,15 +75,17 @@ const MainClubs = (props) => {
   };
 
   const saveFavorite = (clubName) => {
-    alert("star click!!");
     const dbId = localStorage.getItem("user_db_id");
     axios
-      .post(`http://localhost:4000/auth/favorites/${dbId}`, {
-        clubName: clubName
-      })
-      .then((res) => {
-        setFavorites(res.data);
-      });
+    .post(`http://localhost:4000/auth/favorites/${dbId}`, {
+      clubName: clubName
+    })
+    .then((res) => {
+      setFavorites(res.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
   };
 
   console.log(SearchFilter);
@@ -123,7 +124,7 @@ const MainClubs = (props) => {
                 <Desc>{mainClub.description}</Desc>
                 <Deadline>
                   {new Date() < new Date(mainClub.deadline)
-                    ? "D - " +
+                    ? "D-" +
                       Math.floor(
                         (new Date(mainClub.deadline).getTime() -
                           new Date().getTime()) /
@@ -255,6 +256,7 @@ const Poster = styled.img`
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
   left: 0;
+  margin-top : 10px;
 `;
 
 const SubContainer = styled.div`
@@ -289,6 +291,7 @@ const Desc = styled.div`
   width: 100%;
   padding: 0px 20px;
   margin: 3px auto;
+  margin-bottom : 10px;
   text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
