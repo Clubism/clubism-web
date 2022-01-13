@@ -68,16 +68,18 @@ const SignUpPage = () => {
   const onButtonSubmit = (e) => {
     e.preventDefault();
 
-    // 이름 필드가 빈 경우
-    if (Info.username === "") {
+    if (success === false) {// 이메일 인증 실페
+      alert("서강대학교 메일 인증이 필요합니다"); return;
+    }
+    if (Info.username === "") { // 이름 필드가 빈 경우
       alert("이름을 입력해 주세요");
       return;
     }
-    if (Info.id === "") {
+    if (Info.id === "") { // id 필드가 빈 경우
       alert("id를 입력해 주세요");
       return;
     }
-    if (Info.password === "" || Info.password2 === "") {
+    if (Info.password === "" || Info.password2 === "") { // 비밀번호가 빈 경우
       alert("비밀번호를 입력해 주세요");
       return;
     }
@@ -86,37 +88,44 @@ const SignUpPage = () => {
       alert("비밀번호가 일치하지 않습니다");
       return;
     }
-    // id 중복 체크
-    axios
-      .get(`http://localhost:4000/auth/checkId?id=${Info.id}`)
-      .then((res) => {
-        if (res.data !== null) {
-          alert("이미 존재하는 id입니다");
-          return;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // 전공이 빈 경우
+    if(Info.major === ""){
+      alert("전공을 입력해 주세요");
+      return;
+    }
+    // 전공과 부전공이 같은 경우... 근데 이건 굳이 없어도 될 거 같기도?
+    if(Info.major === Info.submajor){
+      alert("부전공이 있는 경우에만 입력해 주세요");
+      return;
+    }
 
-    console.log(Info);
-    axios
-      .post("http://localhost:4000/auth/join", Info, {
-        withCredentials: true
-      })
-      .then(() => {
-        console.log("successs");
+    // id 중복 체크
+    axios.get(`http://localhost:4000/auth/checkId?id=${Info.id}`)
+    .then((res) => {
+      if (res.data !== null) {
+        alert("이미 존재하는 id입니다");
+        return;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+    // 회원 가입 시키고
+    axios.post("http://localhost:4000/auth/join", Info, {withCredentials: true})
+    .then(() => {
+      // 로그인 시킴
+      axios.post("http//localhost:4000/auth/login", {id : Info.id, password:Info.password})
+      .then((res)=>{
         setInfo({
-          username: "",
-          id: "",
-          password: "",
-          password2: ""
-        });
-        //e.target.username.value = ""
-      })
-      .catch((err) => {
-        console.log(err);
+          username: "", id: "", password: "", password2: "", favorites: [], 
+          major: "", subMajor: "", emailNotification: "", emailSogang: ""});
+        
       });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
   // 비밀번호 유효성 체크
   useEffect(() => {
@@ -300,14 +309,14 @@ const SignUpPage = () => {
         <FavClubs>즐겨찾기할 동아리도 추가해야 함....</FavClubs>
       </SignUpPageContainer>
       <SignUpPageFooter>
-        <Submit>확인</Submit>
+        <Submit>가입!</Submit>
       </SignUpPageFooter>
     </SignupPageWrapper>
   );
 };
 
 const FavClubs = styled.div`
-  width: 500px;
+  width: 450px;
   margin: auto;
   background: #000;
   color: #fff;
@@ -318,7 +327,7 @@ const Submit = styled.button`
   border-style: none;
   border-radius: 2px;
   padding: 12px 72px;
-  margin: 20px;
+  margin: 20px 0px;
   background-color: #013b6c;
   color: white;
   float: right;

@@ -29,8 +29,10 @@ const Emailverification = ({ open, setOpen, setSuccess, Info, setInfo }) => {
   // 사용자가 입력한 인증 번호
   const [userCode, setUserCode] = useState("");
 
-  // 인증번호 입력창을 띄울 지
-  const [showCode, setShowCode] = useState(false);
+  // 인증번호 유효 시간 설정
+  // 구현 할질 말지 고민 중... 만들면 복잡한데 굳이 없어도 될 거 같은디?
+  const [timeOut, setTimeOut] = useState(false);
+
 
   // 닫기 버튼 클릭 시
   const onCloseClick = () => {
@@ -40,11 +42,14 @@ const Emailverification = ({ open, setOpen, setSuccess, Info, setInfo }) => {
 
   // 인증번호 확인 버튼 클릭 시
   const onSubmitClick = () => {
-    if (serverCode === userCode) {
+    if (serverCode === parseInt(userCode)) {
       alert("인증이 완료되었습니다");
+
+      // 모달창은 닫고 인증 완료 플래그는 true로 세팅
       setOpen(false);
       setSuccess(true);
     } else {
+      // alert만 띄우고 모달 창은 유지
       alert("인증번호를 확인해 주세요");
     }
   };
@@ -56,11 +61,21 @@ const Emailverification = ({ open, setOpen, setSuccess, Info, setInfo }) => {
 
   // 메일 인증 버튼 클릭 시
   const onMailSubmit = () => {
+    // 이메일 유효성 검사
+    const { emailSogang } = Info;
+    console.log(emailSogang.slice(-13));
+    if (emailSogang.slice(-13) !== '@sogang.ac.kr') {
+      alert("이메일을 확인해 주세요");
+      return;
+    }
+
+    // 인증 코드 요청
     axios
       .post("http://localhost:4000/auth/emailVerification", {
         sendEmail: Info.emailSogang
       })
       .then((res) => {
+        alert("이메일 전송이 완료되었습니다");
         // 서버에서 받은 인증 번호 세팅
         setServerCode(res.data.code);
       })
@@ -76,7 +91,7 @@ const Emailverification = ({ open, setOpen, setSuccess, Info, setInfo }) => {
         <TextFieldContainer>
           <FormControl variant="standard">
             <CustomInputLabel>서강대학교 이메일</CustomInputLabel>
-            <CustomInput value={Info.emailSogang} onChange={onMailChange} />
+            <CustomInput type="email" value={Info.emailSogang} onChange={onMailChange} />
           </FormControl>
 
           <Button onClick={onMailSubmit}>전송</Button>
