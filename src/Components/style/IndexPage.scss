@@ -1,0 +1,23 @@
+.indexBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: cener;
+  margin: 1.5rem 2rem;
+  padding-top: 1.5rem;
+  font-size: 0.8rem;
+}
+
+.indexBarTitle {
+  background: rgb(53, 53, 53);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 12px;
+  //box-shadow: rgba(53, 53, 53, 0.6) 0px 3px 12px 0px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
+  //background: linear-gradient(45deg, #525252 0%, #3d3d3d 90%);
+}
+
+.viewMore {
+  display: flex;
+  align-items: center;
+}
