@@ -141,7 +141,7 @@ const SignUpPage = () => {
             dispatch(actions.setAuth(true));
             window.location.replace("/");
           });
-      }
+      });
   };
   // 비밀번호 유효성 체크
   useEffect(() => {
