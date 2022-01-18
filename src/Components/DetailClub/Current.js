@@ -4,17 +4,17 @@ import axios from "axios";
 
 const DetailClubCurrent = () => {
   var clubname = window.location.pathname.split("/")[3];
-  useEffect(() => {
-    // axios.get("http://localhost:4000/mainClub/clubRecruit").then((res) => {
-    //   console.log("asdf");
-    //   console.log(res);
-    // });
-    axios
-      .get(`http://localhost:4000/mainClub/clubRecruit/${clubname}`)
-      .then((res) => {
-        console.log(res);
-      });
-  }, []);
+  // useEffect(() => {
+  // axios.get("http://localhost:4000/mainClub/clubRecruit").then((res) => {
+  //   console.log("asdf");
+  //   console.log(res);
+  // });
+  //   axios
+  //     .get(`http://localhost:4000/mainClub/clubRecruit/${clubname}`)
+  //     .then((res) => {
+  //       console.log(res);
+  //     });
+  // }, []);
   return (
     <>
       <div className="CurrentContainer">
