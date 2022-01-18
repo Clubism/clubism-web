@@ -15,7 +15,10 @@ import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import EmailVerification from "./EmailVerification";
 import { useDispatch } from "react-redux";
 
-import * as actions from "../../redux/actions/auth";
+import * as authActions from "../../redux/actions/auth";
+import * as currentUserActions from "../../redux/actions/currentUser";
+
+import jwt from 'jsonwebtoken';
 
 // text field styling
 const CustomInput = materialStyled(Input)({
@@ -138,7 +141,10 @@ const SignUpPage = () => {
 
             // 항상 헤더에 토큰을 넣어 다니도록 세팅
        
-            dispatch(actions.setAuth(true));
+
+            const token = res.data.accessToken;
+            dispatch(currentUserActions.setCurrentUser(jwt.decode(token)));
+            dispatch(authActions.setAuth(true));
             window.location.replace("/");
           });
       });

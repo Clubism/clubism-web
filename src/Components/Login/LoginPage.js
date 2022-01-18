@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../style/LoginPage.scss";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -6,7 +6,10 @@ import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import axios from "../../Assets/axios";
 
-import * as actions from "../../redux/actions/auth";
+import * as authActions from "../../redux/actions/auth";
+import * as userActions from "../../redux/actions/currentUser";
+
+import jwt from 'jsonwebtoken';
 
 const LoginPage = ({ history }) => {
   const dispatch = useDispatch();
@@ -38,7 +41,11 @@ const LoginPage = ({ history }) => {
           localStorage.setItem("refreshToken", res.data.refershToken);
 
 
-          dispatch(actions.setAuth(true));
+          // test
+          const token = res.data.accessToken;
+          dispatch(userActions.setCurrentUser(jwt.decode(token)));
+
+          dispatch(authActions.setAuth(true));
           window.location.replace("/");
         }
       });

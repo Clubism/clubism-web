@@ -3,6 +3,11 @@ import "../style/ElseClubPost.scss";
 import { BsArrowReturnRight } from "react-icons/bs";
 import axios from "../../Assets/axios";
 import moment from 'moment';
+import { useSelector } from "react-redux";
+
+//test
+import jwt from 'jsonwebtoken';
+
 
 const ElseClubPost = (props) => {
   const [reload, setreload] = useState(0);
@@ -11,6 +16,10 @@ const ElseClubPost = (props) => {
   const [inputComment, setInputComment] = useState("");
   const [replyComment, setReplyComment] = useState(-1);
 
+  // const { currentUser: storeCurrentUser } = useSelector((state)=>state.currentUser);
+  const currentUser = useSelector((state)=>state.currentUser);
+
+
   useEffect(() => {
     axios
       .get("post/comment/" + props.post._id)
@@ -18,6 +27,11 @@ const ElseClubPost = (props) => {
         setCommentList(res.data);
         console.log("comment", res.data);
       });
+
+      //test
+      console.log("test token ", localStorage.getItem("accessToken"));
+      console.log("test token decode ", jwt.decode(localStorage.getItem("accessToken")));
+      console.log("test current user ", currentUser);
   }, [reload]);
 
   const inputCommentHandler = (e) => {
