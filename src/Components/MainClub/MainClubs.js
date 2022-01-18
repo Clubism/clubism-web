@@ -14,7 +14,7 @@ const MainClubs = (props) => {
 
 
   //상단 카테고리 URL
-  useEffect(() => {
+  useEffect(() => {  
     if (props.category === undefined) setUrl("전체보기")
     else if (props.category === "service")
       setUrl("봉사분과")
@@ -53,7 +53,7 @@ const MainClubs = (props) => {
         console.log("1");
         setClubList(tempClub);
         setSearchFilter(tempClub);
-        console.log("공고 추가된 클럽 리스트 : ", tempClub);
+        // console.log("공고 추가된 클럽리스트 : ", tempClub);
       } catch (err) {
         console.log(err);
       }
