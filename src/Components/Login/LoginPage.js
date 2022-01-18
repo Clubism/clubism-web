@@ -37,8 +37,6 @@ const LoginPage = ({ history }) => {
           localStorage.setItem("accessToken", res.data.accessToken);
           localStorage.setItem("refreshToken", res.data.refershToken);
 
-          axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.accessToken}`;
-
 
           dispatch(actions.setAuth(true));
           window.location.replace("/");

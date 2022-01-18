@@ -21,6 +21,7 @@ instance.interceptors.request.use((config) => {
 });
 
 // response를 받고 access token이 만료됐으면 refresh token을 보내서 다시 acccess token을 발급 받음
+/*
 instance.interceptors.response.use((res) => {
     return res;
   }, (err) => {
@@ -44,5 +45,5 @@ instance.interceptors.response.use((res) => {
     return Promise.reject(err);
   },
 );
-
+*/
 export default instance;
