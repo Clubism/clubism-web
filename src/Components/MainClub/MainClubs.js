@@ -7,88 +7,89 @@ import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 
 const MainClubs = (props) => {
-  const [Club, setClub] = useState([]);
-  const [Filter, setFilter] = useState(Club);
-  const [Url, setUrl] = useState("");
-  const [SearchKeyword, setSearchKeyword] = useState("");
-  const [SearchFilter, setSearchFilter] = useState(Filter);
-
+  const [ClubList, setClubList] = useState([]); //메인 동아리 리스트
+  const [Url, setUrl] = useState(""); //상단 url 나타내는 변수
+  const [SearchFilter, setSearchFilter] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
+  //상단 카테고리 URL
   useEffect(() => {
-    //axios.get("../../dummy/mainclubrecruitlist.json")
-    axios.get("mainClub/recruitment").then((res) => {
-      //console.log("recruitment load success");
-      setClub(res.data);
-      setFilter(res.data);
+    if (props.category === undefined) setUrl("전체보기");
+    else if (props.category === "service") setUrl("봉사분과");
+    else if (props.category === "social") setUrl("사회교양분과");
+    else if (props.category === "art") setUrl("언행예술분과");
+    else if (props.category === "pe") setUrl("체육분과");
+    else if (props.category === "academic") setUrl("학술분과");
+    else if (props.category === "religion") setUrl("종교분과");
+  }, [props.category]);
+
+  //메인동아리 리스트 불러와서 카테고리 필터걸기
+  useEffect(() => {
+    var tempClub;
+    axios.get("http://localhost:4000/mainClub/clubs").then((res) => {
+      if (props.category === undefined) tempClub = res.data;
+      else tempClub = res.data.filter((data) => data.value === props.category);
+      addRecruitment();
     });
-  }, []);
 
-  useEffect(() => {
-    setSearchKeyword("");
-    if (props.category === undefined) {
-      //console.log("category : ", props.category);
-      setFilter(Club);
-      setUrl("전체보기");
-    } else {
-      setFilter(Club.filter((data) => data.clubId.value === props.category));
-    }
-  }, [props.category, Club]);
+    //각 동아리 공고 불러와서 각각 추가
+    const addRecruitment = async () => {
+      try {
+        for (let x of tempClub) {
+          await axios
+            .get("http://localhost:4000/recruitment/" + x._id)
+            .then((res) => {
+              x.recruitment = res.data;
+              console.log("2");
+            });
+        }
+        console.log("1");
+        setClubList(tempClub);
+        setSearchFilter(tempClub);
+        // console.log("공고 추가된 클럽리스트 : ", tempClub);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  }, [props.category]);
 
-  useEffect(() => {
-    if (Filter.length !== 0 && props.category !== undefined)
-      setUrl(Filter[0].clubId.category);
-  }, [Filter, props.category]);
-  //}, []);
-
-  useEffect(() => {
-    if (SearchKeyword === "") {
-      //console.log("called");
-      setSearchFilter(Filter);
-    } else
-      setSearchFilter(
-        Filter.filter((data) => {
-          return data.clubId.name.includes(SearchKeyword);
-        })
-      );
-  }, [SearchKeyword, Filter]);
   //}, []);
 
   // 2021/12/23 강진실
   // 사용자 즐겿자기 동아리 불러옴
   // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
-
+  /*
   useEffect(() => {
     const dbId = localStorage.getItem("user_db_id");
     axios.get(`auth/favorites/${dbId}`).then((res) => {
       setFavorites(res.data);
     });
   }, []);
-
+*/
+  //동아리 검색 기능
   const searchClub = (e) => {
     if (e.key === "Enter") {
-      setSearchKeyword(e.target.value);
+      setSearchFilter(
+        ClubList.filter((data) => {
+          return data.clubId.name.includes(e.target.value);
+        })
+      );
     }
   };
 
+  //즐겨찾기 별
   const saveFavorite = (clubName) => {
-    const dbId = localStorage.getItem("user_db_id");
-    axios
-      .post(`auth/favorites/${dbId}`, {
-        clubName: clubName
-      })
-      .then((res) => {
-        setFavorites(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    alert("star click!!");
+    // const dbId = localStorage.getItem("user_db_id");
+    // axios
+    //   .post(`http://localhost:4000/auth/favorites/${dbId}`, {
+    //     clubName: clubName
+    //   })
+    //   .then((res) => {
+    //     setFavorites(res.data);
+    //   });
   };
 
-  console.log(SearchFilter);
-  // 김채연에게
-  // recruitment list를 db에 연결하는 과정에서 name, value, label은 clubId.name 이런 식으로 접근해야 합니다!
-  // 당장 보이는 것들은 수정해놓긴 했는데 나중에 버그 생기면 clubId.을 붙여서 함 해보세용
   return (
     <div>
       <TitleWrap>
@@ -104,26 +105,35 @@ const MainClubs = (props) => {
             onKeyDown={searchClub}
           />
         </Search>
+        {/* {console.log("SearchFilter : ",SearchFilter)} */}
         {SearchFilter.map((mainClub, index) => (
-          <CardWrap>
+          <CardWrap key={index}>
+            {/* {console.log(mainClub.recruitment)} */}
             <Card
-              key={index}
               to={{
-                pathname: `/mainClub/${mainClub.clubId.value}/${
-                  mainClub.clubId.label
-                }`
+                pathname: `/mainClub/${mainClub.value}/${mainClub.label}`
               }}
             >
               <SubContainer>
-                <Category>{mainClub.clubId.category}</Category>
+                <Category>{mainClub.category}</Category>
                 <br />
-                <Name>{mainClub.clubId.name}</Name>
-                <Desc>{mainClub.description}</Desc>
+                <Name>{mainClub.name}</Name>
+                <Desc>
+                  {mainClub.recruitment === undefined
+                    ? ""
+                    : mainClub.recruitment.length === 0
+                    ? "현재 모집중인 공고가 없습니다"
+                    : mainClub.recruitment[0].description}
+                </Desc>
                 <Deadline>
-                  {new Date() < new Date(mainClub.deadline)
-                    ? "D-" +
+                  {mainClub.recruitment === undefined
+                    ? ""
+                    : mainClub.recruitment.length === 0
+                    ? ""
+                    : new Date() < new Date(mainClub.recruitment[0].deadline)
+                    ? "D - " +
                       Math.floor(
-                        (new Date(mainClub.deadline).getTime() -
+                        (new Date(mainClub.recruitment[0].deadline).getTime() -
                           new Date().getTime()) /
                           (24 * 3600 * 1000)
                       ).toString()
@@ -137,10 +147,10 @@ const MainClubs = (props) => {
             </Card>
             <StarWrap
               onClick={() => {
-                saveFavorite(mainClub.clubId.name);
+                saveFavorite(mainClub.name);
               }}
             >
-              {favorites.includes(mainClub.clubId.name) ? (
+              {favorites.includes(mainClub.name) ? (
                 <Star color="#fcca11" size="25" />
               ) : (
                 <EmptyStar color="#fcca11" size="25" />
