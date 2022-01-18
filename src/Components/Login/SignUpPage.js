@@ -13,8 +13,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import EmailVerification from "./EmailVerification";
-// text field styling
+import { useDispatch } from "react-redux";
 
+import * as actions from "../../redux/actions/auth";
+
+// text field styling
 const CustomInput = materialStyled(Input)({
   "&.MuiInput-underline:after": {
     borderBottomColor: "#023B6D"
@@ -38,10 +41,12 @@ const CustomNativeSelect = materialStyled(NativeSelect)({
 });
 
 const SignUpPage = () => {
-  const [success, setSuccess] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [majors, setMajors] = useState([]);
-  const [Info, setInfo] = useState({
+  const dispatch = useDispatch();
+  const [pwValidation, setPwValidation] = useState(false); // 비밀번호 두개 서로 일치하는 지
+  const [success, setSuccess] = useState(false); // 서강대 이메일 인증 성공 했는지
+  const [modalOpen, setModalOpen] = useState(false); // 서강대 이메일 인증창 띄울 지
+  const [majors, setMajors] = useState([]); // 전공 option 쫘라락 띄울려고
+  const [Info, setInfo] = useState({ // 회원가입 폼 정보
     username: "",
     id: "",
     password: "",
@@ -53,19 +58,22 @@ const SignUpPage = () => {
     emailSogang: ""
   });
 
+  // 전공 option 쫘라락 띄우려고 전공 정보 받아옴
   useEffect(() => {
     axios_dummy.get("../../dummy/departments.json").then((res) => {
       setMajors(res.data);
     });
   }, []);
 
-  const [pwValidation, setPwValidation] = useState(false);
+  // 폼 state 바인딩
   const onInfoChange = (e) => {
     setInfo({
       ...Info,
       [e.target.name]: e.target.value
     });
   };
+
+  // 가입 버튼 클릭 시
   const onClickSubmit = (e) => {
     e.preventDefault();
 
@@ -91,60 +99,49 @@ const SignUpPage = () => {
     }
     // 비밀번호가 일치하지 않는 경우
     if (pwValidation === false) {
-      alert("비밀번호가 일치하지 않습니다");
-      return;
+      alert("비밀번호가 일치하지 않습니다"); return;
     }
     // 전공이 빈 경우
-    if (Info.major === "") {
-      alert("전공을 입력해 주세요");
-      return;
+    if(Info.major === ""){
+      alert("전공을 입력해 주세요"); return;
     }
     // 전공과 부전공이 같은 경우... 근데 이건 굳이 없어도 될 거 같기도?
-    if (Info.major === Info.submajor) {
-      alert("부전공이 있는 경우에만 입력해 주세요");
-      return;
+    if(Info.major === Info.submajor){
+      alert("부전공이 있는 경우에만 입력해 주세요"); return;
     }
 
     // id 중복 체크
-    axios
-      .get(`auth/checkId?id=${Info.id}`)
-      .then((res) => {
-        if (res.data !== null) {
-          alert("이미 존재하는 id입니다");
-          return;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.get(`auth/checkId?id=${Info.id}`)
+    .then((res) => {
+      if (res.data !== null) {
+        alert("이미 존재하는 id입니다"); return;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
     // 회원 가입 시키고
-    axios
-      .post("auth/join", Info, { withCredentials: true })
+    axios.post("auth/join", Info, { withCredentials: true })
       .then(() => {
         // 로그인 시킴
-        axios
-          .post("auth/login", {
-            id: Info.id,
-            password: Info.password
-          })
+        axios.post("auth/login", { id: Info.id, password: Info.password })
           .then((res) => {
             setInfo({
-              username: "",
-              id: "",
-              password: "",
-              password2: "",
-              favorites: [],
-              major: "",
-              subMajor: "",
-              emailNotification: "",
-              emailSogang: ""
+              username: "", id: "", password: "", password2: "", favorites: [],
+              major: "", subMajor: "", emailNotification: "", emailSogang: ""
             });
+            localStorage.setItem("user_id", res.data.user.id);
+            localStorage.setItem("user_db_id", res.data.user._id);
+            localStorage.setItem("accessToken", res.data.accessToken);
+            localStorage.setItem("refreshToken", res.data.refreshToken);
+
+            // 항상 헤더에 토큰을 넣어 다니도록 세팅
+       
+            dispatch(actions.setAuth(true));
+            window.location.replace("/");
           });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      }
   };
   // 비밀번호 유효성 체크
   useEffect(() => {
