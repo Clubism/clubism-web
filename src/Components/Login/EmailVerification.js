@@ -5,7 +5,8 @@ import FormControl from "@mui/material/FormControl";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
 import CloseIcon from "@mui/icons-material/Close";
-import axios from "axios";
+
+import axios from "../../Assets/axios";
 
 const CustomInput = materialStyled(Input)({
   "&.MuiInput-underline:after": {
@@ -71,7 +72,7 @@ const Emailverification = ({ open, setOpen, setSuccess, Info, setInfo }) => {
 
     // 인증 코드 요청
     axios
-      .post("http://localhost:4000/auth/emailVerification", {
+      .post("/auth/emailVerification", {
         sendEmail: Info.emailSogang
       })
       .then((res) => {

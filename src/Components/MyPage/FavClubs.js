@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Chip from '@mui/material/Chip';
 import materialStyled from '@mui/material/styles/styled';
-import axios from "axios";
+import axios from "../../Assets/axios";
 
 const CustomChip = materialStyled(Chip)`
   border : none;
@@ -19,7 +19,7 @@ const FavClubs = () => {
   // local storage에서 찾은 정보를 바탕으로 db에서 해당 사용자 정보를 찾아옴
   useEffect(() => {
     console.log("called");
-    axios.get(`http://localhost:4000/auth/checkId?id=${dbId}`).then((res) => {
+    axios.get(`auth/checkId?id=${dbId}`).then((res) => {
       //SetInfo(res.data);
       // 즐겨찾기 동아리만 따로 저장
       SetFavClubs(res.data.favorite);

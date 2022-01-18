@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import React, { useRef, useState} from "react";
+import axios from "../../Assets/axios";
+import { Link} from "react-router-dom";
 import styled from "styled-components";
 import CategoryMain from "./CategoryMain";
 import CategorySub from "./CategorySub";
@@ -30,7 +30,7 @@ localStorage.getItem("user_id") !== null
 
   const onClickLogout = () => {
     axios
-      .get("http://localhost:4000/auth/logout", { withCredentials: true })
+      .get("auth/logout", { withCredentials: true })
       .then((res) => {
         console.log('clicked');
         localStorage.clear();
@@ -60,9 +60,7 @@ localStorage.getItem("user_id") !== null
     window.location.replace("/");
   };
 
-  const onSilentRefresh = () => {
-    axios.post("http://localhost:4000/auth/silent-refresh");
-  };
+
   /*
   useEffect(() => {
     onSilentRefresh();

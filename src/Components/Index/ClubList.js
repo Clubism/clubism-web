@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axios from "axios";
+import axios from "../../Assets/axios";
 import styled from "styled-components";
 
 import * as actions from "../../redux/actions/post";
@@ -12,10 +12,14 @@ const ClubList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get("http://localhost:4000/post/indexPost").then((res) => {
+    axios.get("post/indexPost").then((res) => {
       setPosts(res.data);
     });
+
+   
   }, []);
+
+  
 
   return (
     <Container>

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
-import axios from "axios";
+import axios from "../../Assets/axios";
 
 const CategoryMain = (props) => {
   const [ClubList, setClubList] = useState([]);
  
   useEffect(()=>{
-    axios.get('http://localhost:4000/mainClub/clubs')
+    axios.get('mainClub/clubs')
     .then(res=>{
       console.log('load clubs success');
       setClubList(res.data);

@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axiosDummy from "axios";
+import axios from "../../Assets/axios";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
 const PrivateInfo = () => {
   // token 인증 받는 코드
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    axios
-      .post(
-        "http://localhost:4000/auth/test",
-        {},
-        {
-          headers: { Authorization: token }
-        }
-      )
-      .then((res) => {});
-  }, []);
 
+  /*
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    axios.post("http://localhost:4000/auth/test", {}, { headers: { authorization: token }}).then((res) => {});
+  }, []);
+*/
   var [majors, setMajors] = useState([]);
   const [Info, SetInfo] = useState({}); // Info : db에서 찾아온 user 정보
   const [Form, setForm] = useState({
@@ -35,14 +30,14 @@ const PrivateInfo = () => {
 
   // 전공 정보를 dummy에서 가져옴
   useEffect(() => {
-    axios.get("../../dummy/departments.json").then((res) => {
+    axiosDummy.get("../../dummy/departments.json").then((res) => {
       setMajors(res.data);
     });
   }, []);
 
   // local storage에서 찾은 정보를 바탕으로 db에서 해당 사용자 정보를 찾아옴
   useEffect(() => {
-    axios.get(`http://localhost:4000/auth/checkId?id=${dbId}`).then((res) => {
+    axios.get(`auth/checkId?id=${dbId}`).then((res) => {
       SetInfo(res.data);
     });
   }, [dbId]);
@@ -118,7 +113,7 @@ const PrivateInfo = () => {
 
         <InputContainer>
           <Label htmlFor="major">전공</Label>
-          <Input type="text" name="major" value={Info.major} disabled />
+          <Input type="text" name="major" value={Info.major || ""} disabled />
           <Line />
         </InputContainer>
 

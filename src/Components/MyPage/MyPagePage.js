@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import axios from "axios";
 
+import axios from "../../Assets/axios";
 /*
 <Card>
          <CardHeader>관심 키워드</CardHeader>
@@ -19,7 +19,7 @@ const MyPagePage = ()=>{
   const [Info, SetInfo] = useState({});
   const dbId = localStorage.getItem("user_id");
   useEffect(()=>{
-    axios.get(`http://localhost:4000/auth/checkId?id=${dbId}`)
+    axios.get(`auth/checkId?id=${dbId}`)
     .then((res)=>{
       SetInfo(res.data);
     });

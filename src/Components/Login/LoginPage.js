@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
-import axios from "axios";
+import axios from "../../Assets/axios";
 
 import * as actions from "../../redux/actions/auth";
 
@@ -21,7 +21,7 @@ const LoginPage = ({ history }) => {
     e.preventDefault();
     console.log("called");
     axios
-      .post("http://localhost:4000/auth/login", LoginInfo, {
+      .post("/auth/login", LoginInfo, {
         withCredentials: true
       })
       .then((res) => {
@@ -34,10 +34,12 @@ const LoginPage = ({ history }) => {
         } else {
           localStorage.setItem("user_id", res.data.user.id);
           localStorage.setItem("user_db_id", res.data.user._id);
-          localStorage.setItem("token", res.data.token);
-          axios.defaults.headers.common["Authorization"] = `Bearer ${
-            res.data.token
-          }`;
+          localStorage.setItem("accessToken", res.data.accessToken);
+          localStorage.setItem("refreshToken", res.data.refershToken);
+
+          axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.accessToken}`;
+
+
           dispatch(actions.setAuth(true));
           window.location.replace("/");
         }
@@ -53,7 +55,7 @@ const LoginPage = ({ history }) => {
           <Form.Label className="login-label">Email address</Form.Label>
           <Form.Control
             className="form-control"
-            type="email"
+            type="text"
             placeholder="Enter email"
             as="input"
             name="id"

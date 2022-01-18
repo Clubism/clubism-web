@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../style/LoginPage.scss";
-import axios from "axios";
+import axios_dummy from "axios";
+import axios from "../../Assets/axios";
 import styled from "styled-components";
 import materialStyled from "@mui/material/styles/styled";
 import FormControl from "@mui/material/FormControl";
@@ -53,7 +54,7 @@ const SignUpPage = () => {
   });
 
   useEffect(() => {
-    axios.get("../../dummy/departments.json").then((res) => {
+    axios_dummy.get("../../dummy/departments.json").then((res) => {
       setMajors(res.data);
     });
   }, []);
@@ -65,21 +66,26 @@ const SignUpPage = () => {
       [e.target.name]: e.target.value
     });
   };
-  const onButtonSubmit = (e) => {
+  const onClickSubmit = (e) => {
     e.preventDefault();
 
-    if (success === false) {// 이메일 인증 실페
-      alert("서강대학교 메일 인증이 필요합니다"); return;
+    if (success === false) {
+      // 이메일 인증 실페
+      alert("서강대학교 메일 인증이 필요합니다");
+      return;
     }
-    if (Info.username === "") { // 이름 필드가 빈 경우
+    if (Info.username === "") {
+      // 이름 필드가 빈 경우
       alert("이름을 입력해 주세요");
       return;
     }
-    if (Info.id === "") { // id 필드가 빈 경우
+    if (Info.id === "") {
+      // id 필드가 빈 경우
       alert("id를 입력해 주세요");
       return;
     }
-    if (Info.password === "" || Info.password2 === "") { // 비밀번호가 빈 경우
+    if (Info.password === "" || Info.password2 === "") {
+      // 비밀번호가 빈 경우
       alert("비밀번호를 입력해 주세요");
       return;
     }
@@ -89,43 +95,56 @@ const SignUpPage = () => {
       return;
     }
     // 전공이 빈 경우
-    if(Info.major === ""){
+    if (Info.major === "") {
       alert("전공을 입력해 주세요");
       return;
     }
     // 전공과 부전공이 같은 경우... 근데 이건 굳이 없어도 될 거 같기도?
-    if(Info.major === Info.submajor){
+    if (Info.major === Info.submajor) {
       alert("부전공이 있는 경우에만 입력해 주세요");
       return;
     }
 
     // id 중복 체크
-    axios.get(`http://localhost:4000/auth/checkId?id=${Info.id}`)
-    .then((res) => {
-      if (res.data !== null) {
-        alert("이미 존재하는 id입니다");
-        return;
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    axios
+      .get(`auth/checkId?id=${Info.id}`)
+      .then((res) => {
+        if (res.data !== null) {
+          alert("이미 존재하는 id입니다");
+          return;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     // 회원 가입 시키고
-    axios.post("http://localhost:4000/auth/join", Info, {withCredentials: true})
-    .then(() => {
-      // 로그인 시킴
-      axios.post("http//localhost:4000/auth/login", {id : Info.id, password:Info.password})
-      .then((res)=>{
-        setInfo({
-          username: "", id: "", password: "", password2: "", favorites: [], 
-          major: "", subMajor: "", emailNotification: "", emailSogang: ""});
-        
+    axios
+      .post("auth/join", Info, { withCredentials: true })
+      .then(() => {
+        // 로그인 시킴
+        axios
+          .post("auth/login", {
+            id: Info.id,
+            password: Info.password
+          })
+          .then((res) => {
+            setInfo({
+              username: "",
+              id: "",
+              password: "",
+              password2: "",
+              favorites: [],
+              major: "",
+              subMajor: "",
+              emailNotification: "",
+              emailSogang: ""
+            });
+          });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   };
   // 비밀번호 유효성 체크
   useEffect(() => {
@@ -249,7 +268,7 @@ const SignUpPage = () => {
                 return (
                   <option
                     name="major"
-                    value={m.label || ""}
+                    value={m.name || ""}
                     onChange={onInfoChange}
                   >
                     {m.name}
@@ -276,7 +295,7 @@ const SignUpPage = () => {
                 return (
                   <option
                     name="subMajor"
-                    value={m.label || ""}
+                    value={m.name || ""}
                     onChange={onInfoChange}
                   >
                     {m.name}
@@ -309,7 +328,7 @@ const SignUpPage = () => {
         <FavClubs>즐겨찾기할 동아리도 추가해야 함....</FavClubs>
       </SignUpPageContainer>
       <SignUpPageFooter>
-        <Submit>가입!</Submit>
+        <Submit onClick={onClickSubmit}>가입!</Submit>
       </SignUpPageFooter>
     </SignupPageWrapper>
   );

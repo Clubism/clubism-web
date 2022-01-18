@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../style/ElseClubPost.scss";
 import { BsArrowReturnRight } from "react-icons/bs";
-import axios from "axios";
+import axios from "../../Assets/axios";
 import moment from 'moment';
 
 const ElseClubPost = (props) => {
@@ -13,7 +13,7 @@ const ElseClubPost = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/post/comment/" + props.post._id)
+      .get("post/comment/" + props.post._id)
       .then((res) => {
         setCommentList(res.data);
         console.log("comment", res.data);
@@ -31,7 +31,7 @@ const ElseClubPost = (props) => {
   const commentSubmitHandler = () => {
     // setreload(reload + 1);
     axios
-      .post("http://localhost:4000/post/comment/" + props.post._id, {
+      .post("post/comment/" + props.post._id, {
         comment: inputComment,
         postNum: props.post._id,
         _class : 0,
@@ -47,7 +47,7 @@ const ElseClubPost = (props) => {
     const recommentSubmitHandler = (parent) => {
     // setreload(reload + 1);
     axios
-      .post("http://localhost:4000/post/comment/" + props.post._id, {
+      .post("post/comment/" + props.post._id, {
         comment: inputRecomment,
         postNum: props.post._id,
         _class : 1,

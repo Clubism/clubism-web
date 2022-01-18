@@ -4,7 +4,7 @@ import "../style/ElseClubPosting.scss";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { DropdownButton, Dropdown, Form } from "react-bootstrap";
-import axios from "axios";
+import axios from "../../Assets/axios";
 
 const ElseClubPosting = () => {
   const [title, setTitle] = useState("");
@@ -27,7 +27,7 @@ const ElseClubPosting = () => {
     }
 
     axios
-      .post("http://localhost:4000/post/submit", {
+      .post("post/submit", {
         title: title,
         content: content,
         category: localCategory

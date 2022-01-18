@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import axios from "axios";
+import axios from "../../Assets/axios";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
@@ -18,7 +18,7 @@ const SubClubs = (props) => {
 
   useEffect(() => {
     //axios.get("../../dummy/mainclubrecruitlist.json")
-    axios.get('http://localhost:4000/subClub/recruitment')
+    axios.get('subClub/recruitment')
     .then((res) => {
       console.log('subclub recruitment load success');
       setClub(res.data);
@@ -57,7 +57,7 @@ const SubClubs = (props) => {
   // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
   useEffect(()=>{
     const dbId = localStorage.getItem('user_db_id');
-    axios.get(`http://localhost:4000/auth/favorites/${dbId}`)
+    axios.get(`auth/favorites/${dbId}`)
     .then((res)=>{
       console.log(res.data);
       setFavorites(res.data);  
@@ -73,7 +73,7 @@ const SubClubs = (props) => {
   const saveFavorite = (clubName) => {
     console.log('called');
     const dbId = localStorage.getItem('user_db_id');
-    axios.post(`http://localhost:4000/auth/favorites/${dbId}`, {clubName : clubName})
+    axios.post(`auth/favorites/${dbId}`, {clubName : clubName})
     .then((res)=>{
 
       setFavorites(res.data);  

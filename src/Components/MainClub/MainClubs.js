@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../../Assets/axios";
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
@@ -17,7 +17,7 @@ const MainClubs = (props) => {
 
   useEffect(() => {
     //axios.get("../../dummy/mainclubrecruitlist.json")
-    axios.get("http://localhost:4000/mainClub/recruitment").then((res) => {
+    axios.get("mainClub/recruitment").then((res) => {
       //console.log("recruitment load success");
       setClub(res.data);
       setFilter(res.data);
@@ -62,7 +62,7 @@ const MainClubs = (props) => {
   
   useEffect(() => {
     const dbId = localStorage.getItem("user_db_id");
-    axios.get(`http://localhost:4000/auth/favorites/${dbId}`).then((res) => {
+    axios.get(`auth/favorites/${dbId}`).then((res) => {
       setFavorites(res.data);
     });
   }, []);
@@ -77,7 +77,7 @@ const MainClubs = (props) => {
   const saveFavorite = (clubName) => {
     const dbId = localStorage.getItem("user_db_id");
     axios
-    .post(`http://localhost:4000/auth/favorites/${dbId}`, {
+    .post(`auth/favorites/${dbId}`, {
       clubName: clubName
     })
     .then((res) => {

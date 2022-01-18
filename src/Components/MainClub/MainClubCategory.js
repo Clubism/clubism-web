@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../style/ClubCategory.scss";
-import axios from 'axios';
+import axios from "../../Assets/axios";
 // import {Link} from 'react-router-dom';
 // import List from '@material-ui/core/List'
 // import ListItem from '@material-ui/core/ListItem'
@@ -29,7 +29,7 @@ const MainClubCategory = (props) => {
         fetchURL = "../../"
 
     useEffect(() => {
-        axios.get('http://localhost:4000/mainclub/category')
+        axios.get('mainclub/category')
         //fetch(fetchURL + "dummy/maincategorylist.json")
         
             .then((res) =>{

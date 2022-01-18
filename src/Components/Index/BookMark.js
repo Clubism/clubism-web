@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import axios from "../../Assets/axios";
 import BookMarkContent from "./BookMarkComtenent";
 /*
 
@@ -15,7 +15,7 @@ const BookMark = () => {
   // 처음 페이지가 로드될 때 즐겨찾기를 불러옴
   useEffect(() => {
     const dbId = localStorage.getItem("user_db_id");
-    axios.get(`http://localhost:4000/auth/favorites/${dbId}`).then((res) => {
+    axios.get(`auth/favorites/${dbId}`).then((res) => {
       console.log(res.data);
       setMainClub(res.data);
     });

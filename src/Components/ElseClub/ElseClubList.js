@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import "../style/ElseClubList.scss";
 import { Link } from "react-router-dom";
 import Paging from "./Paging";
-import axios from "axios";
+import axios from "../../Assets/axios";
 import moment from 'moment';
 import styled from 'styled-components';
 
@@ -19,7 +19,7 @@ const ClubList = (props) => {
   const { category: storeCategory } = useSelector((state) => state.category);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/post").then((res) => {
+    axios.get("post").then((res) => {
       setPost(res.data);
       setFilter(res.data);
       console.log(res.data);
