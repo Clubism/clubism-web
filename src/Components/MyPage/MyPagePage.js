@@ -1,28 +1,42 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import axios from "../../Assets/axios";
+/*
+<Card>
+         <CardHeader>관심 키워드</CardHeader>
+         <CardContainer>
+         <CardDescription>관심 키워드를 수정할 수 있습니다.</CardDescription>
+
+         </CardContainer>
+         <Button to="/mypage/favKeywords">수정</Button>
+      </Card>
+*/
+
 const MyPagePage = ()=>{
+  const [Info, SetInfo] = useState({});
+  const dbId = localStorage.getItem("user_id");
+  useEffect(()=>{
+    axios.get(`auth/checkId?id=${dbId}`)
+    .then((res)=>{
+      SetInfo(res.data);
+    });
+  }, [dbId]);
+  
   return(
     <MyPageContainer>
       <Card>
         <CardHeader>개인 정보</CardHeader>
         <CardContainer>
           <AccountCircleIcon color="#999999" style={{fontSize : "48px"}} />
-          <UserName>강진실님</UserName>
+          <UserName>{Info.username}님</UserName>
         </CardContainer>
         <Button to="/mypage/privateInfo">수정</Button>
       </Card>
 
-      <Card>
-         <CardHeader>관심 키워드</CardHeader>
-         <CardContainer>
-         <CardDescription>관심 키워드를 수정할 수 있습니다.</CardDescription>
-         
-         </CardContainer>
-         <Button to="/mypage/favKeywords">수정</Button>
-      </Card>
+      
 
       <Card>
          <CardHeader>관심 동아리</CardHeader>

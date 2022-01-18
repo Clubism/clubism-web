@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import axios from "axios";
+import axios from "../../Assets/axios";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
@@ -18,7 +18,7 @@ const SubClubs = (props) => {
 
   useEffect(() => {
     //axios.get("../../dummy/mainclubrecruitlist.json")
-    axios.get('http://localhost:4000/subClub/recruitment')
+    axios.get('subClub/recruitment')
     .then((res) => {
       console.log('subclub recruitment load success');
       setClub(res.data);
@@ -57,7 +57,7 @@ const SubClubs = (props) => {
   // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
   useEffect(()=>{
     const dbId = localStorage.getItem('user_db_id');
-    axios.get(`http://localhost:4000/auth/favorites/${dbId}`)
+    axios.get(`auth/favorites/${dbId}`)
     .then((res)=>{
       console.log(res.data);
       setFavorites(res.data);  
@@ -73,7 +73,7 @@ const SubClubs = (props) => {
   const saveFavorite = (clubName) => {
     console.log('called');
     const dbId = localStorage.getItem('user_db_id');
-    axios.post(`http://localhost:4000/auth/favorites/${dbId}`, {clubName : clubName})
+    axios.post(`auth/favorites/${dbId}`, {clubName : clubName})
     .then((res)=>{
 
       setFavorites(res.data);  
@@ -278,55 +278,3 @@ const Star = styled(AiFillStar)`
 `;
 
 export default SubClubs;
-
-/*
-const SubClubs = (props) => {
-  const [Club, setClub] = useState([]);
-  const [Filter, setFilter] = useState(Club);
-
-  useEffect(() => {
-    axios.get("../dummy/subclubrecruitlist.json").then((res) => {
-      setClub(res.data);
-      setFilter(res.data);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (props.category === undefined) setFilter(Club);
-    else setFilter(Club.filter((data) => data.value === props.category));
-  }, [props.category, Club]);
-
-  console.log(Filter);
-  return (
-    <div className="clubContainer">
-      {Filter.map((subClub, index) => (
-        <div className="club" key={index}>
-          <Link
-            to={{ pathname: `/subClub/${subClub.value}/${subClub.label}` }}
-            className="LinkTp"
-          >
-            <div className="clubText">
-              <div className="category">{subClub.category}</div>
-              <div className="name">{subClub.name}</div>
-              <div className="description">{subClub.description}</div>
-              <div className="deadline">
-                {new Date() < new Date(subClub.deadline)
-                  ? "D - " +
-                    (
-                      new Date(subClub.deadline).getDate() -
-                      new Date().getDate()
-                    ).toString()
-                  : "마감"}
-              </div>
-            </div>
-            <div className="clubImage">
-              <img src="" alt="poster" />
-            </div>
-          </Link>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default SubClubs;*/

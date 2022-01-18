@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import React, { useRef, useState} from "react";
+import axios from "../../Assets/axios";
+import { Link} from "react-router-dom";
 import styled from "styled-components";
 import CategoryMain from "./CategoryMain";
 import CategorySub from "./CategorySub";
@@ -30,7 +30,7 @@ localStorage.getItem("user_id") !== null
 
   const onClickLogout = () => {
     axios
-      .get("http://localhost:4000/auth/logout", { withCredentials: true })
+      .get("auth/logout", { withCredentials: true })
       .then((res) => {
         console.log('clicked');
         localStorage.clear();
@@ -60,6 +60,12 @@ localStorage.getItem("user_id") !== null
     window.location.replace("/");
   };
 
+
+  /*
+  useEffect(() => {
+    onSilentRefresh();
+  }, []);
+*/
   return (
     <div>
       <Container>
@@ -96,7 +102,7 @@ localStorage.getItem("user_id") !== null
         </UserNotExist>
         <UserExist toggle={isLoggedIn.current}>
           <UserItem>
-            <UserItemLink to="/mypage">mypage&nbsp;</UserItemLink>
+            <UserItemLink to="/mypage">마이페이지&nbsp;</UserItemLink>
           </UserItem>
           <UserItemBar>|</UserItemBar>
           <UserItem
@@ -105,7 +111,7 @@ localStorage.getItem("user_id") !== null
             }}
           >
             {/* <Link className="logout link" to="/logout"> */}
-            <Logout>&nbsp;logout</Logout>
+            <Logout>&nbsp;로그아웃</Logout>
             {/* </Link> */}
           </UserItem>
         </UserExist>
@@ -251,7 +257,7 @@ const Logout = styled.span`
   text-decoration-line: none;
   color: #023b6d;
   font-size: 16px;
-  font-weight: 1000;
+  font-weight: 500;
   cursor: pointer;
 `;
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import axios from "../../Assets/axios";
 //import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -23,7 +23,7 @@ const SubClubRecruitment = (props) => {
   const [date, setDate] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/mainClub/clubs")
+    axios.get("mainClub/clubs")
     .then((res) => {
       setMainClub(res.data);
     });
@@ -33,7 +33,7 @@ const SubClubRecruitment = (props) => {
       setSubClubCategory(res.data);
     });
 
-    axios.get("http://localhost:4000/subClub/clubs")
+    axios.get("subClub/clubs")
     .then((res)=>{
       setSubClub(res.data);
     })
@@ -45,7 +45,7 @@ const SubClubRecruitment = (props) => {
 
 
   const onSubmitClick = ()=>{
-    axios.post("http://localhost:4000/recruitment/post", {
+    axios.post("recruitment/post", {
       type : type,
       club : club,
       description : description,
