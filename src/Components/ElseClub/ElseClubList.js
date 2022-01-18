@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 import "../style/ElseClubList.scss";
 import { Link } from "react-router-dom";
 import Paging from "./Paging";
-import axios from "axios";
+import axios from "../../Assets/axios";
+import moment from 'moment';
+import styled from 'styled-components';
+
 // import Moment from  'react-moment'
 
 const ClubList = (props) => {
@@ -16,7 +19,7 @@ const ClubList = (props) => {
   const { category: storeCategory } = useSelector((state) => state.category);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/post").then((res) => {
+    axios.get("post").then((res) => {
       setPost(res.data);
       setFilter(res.data);
       console.log(res.data);
@@ -80,10 +83,10 @@ const ClubList = (props) => {
         if (index >= (Page - 1) * PageNum && index < Page * PageNum)
           return (
             <Link
-              to={"/elseClub/post/" + post._id}
+              to={"/elseClub/post/" + post.id}
               className="link"
               onClick={() => {
-                console.log(post._id);
+                console.log(post);
                 props.setPost(post);
               }}
               key={post._id}
@@ -93,9 +96,10 @@ const ClubList = (props) => {
                 <div className="Title">
                   [{post.category}] {post.title}
                 </div>
-                <div>{post.date}</div>
+                <div>{moment(post.date).format('YYYY-MM-DD')}</div>
                 <div>{post.writer}</div>
               </div>
+              <Line />
             </Link>
           );
         else return "";
@@ -109,5 +113,10 @@ const ClubList = (props) => {
     </div>
   );
 };
+
+const Line = styled.hr`
+margin : 2px;
+color : #999999;
+`;
 
 export default ClubList;

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../style/ElseClubPost.scss";
 import { BsArrowReturnRight } from "react-icons/bs";
-import axios from "axios";
+import axios from "../../Assets/axios";
+import moment from 'moment';
 
 const ElseClubPost = (props) => {
   const [reload, setreload] = useState(0);
@@ -9,16 +10,14 @@ const ElseClubPost = (props) => {
   const [inputRecomment, setInputRecomment] = useState("");
   const [inputComment, setInputComment] = useState("");
   const [replyComment, setReplyComment] = useState(-1);
-//  const [showCommentList, setShowCommentList] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/post/comment/" + props.post._id)
+      .get("post/comment/" + props.post._id)
       .then((res) => {
         setCommentList(res.data);
         console.log("comment", res.data);
       });
-    // console.log("check");
   }, [reload]);
 
   const inputCommentHandler = (e) => {
@@ -30,9 +29,9 @@ const ElseClubPost = (props) => {
   };
 
   const commentSubmitHandler = () => {
-    setreload(reload + 1);
+    // setreload(reload + 1);
     axios
-      .post("http://localhost:4000/post/comment/" + props.post._id, {
+      .post("post/comment/" + props.post._id, {
         comment: inputComment,
         postNum: props.post._id,
         _class : 0,
@@ -40,14 +39,15 @@ const ElseClubPost = (props) => {
       })
       .then((res) => {
         console.log("post submit success");
+        setreload(reload + 1);
       });
     setInputComment("");
   };
 
     const recommentSubmitHandler = (parent) => {
-    setreload(reload + 1);
+    // setreload(reload + 1);
     axios
-      .post("http://localhost:4000/post/comment/" + props.post._id, {
+      .post("post/comment/" + props.post._id, {
         comment: inputRecomment,
         postNum: props.post._id,
         _class : 1,
@@ -55,6 +55,7 @@ const ElseClubPost = (props) => {
       })
       .then((res) => {
         console.log("post submit success");
+        setreload(reload + 1);
       });
     setInputRecomment("");
   };
@@ -67,7 +68,7 @@ const ElseClubPost = (props) => {
         <div className="ElseClubPost-sub">
           {props.post.category} | {props.post.writer}
         </div>
-        <div className="ElseClubPost-date">{props.post.date}</div>
+        <div className="ElseClubPost-date">{moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
         <hr />
         {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
         <div
@@ -94,7 +95,7 @@ const ElseClubPost = (props) => {
                     {/* {cmt.user} */}
                     </div>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div className="cmtDate">{cmt.date}</div>
+                  <div className="cmtDate">{moment(cmt.date).format('YYYY-MM-DD HH:mm:ss')}</div>
                   &nbsp;&nbsp;&nbsp;
 
                   {com === "first" ? (
@@ -112,25 +113,8 @@ const ElseClubPost = (props) => {
                   )}
                 </div>
                 {cmt.comment}
-                  {
-                  cmt.childComment.map((reply, idx) =>{
-                    return (
-                      <div>대댓글 {reply.comment}</div>
-                    )
-                  })
 
-
-                }
               </div>
-              {/* {
-                cmt.childComment.map((reply, idx) =>{
-                  return (
-                    <div>eee{reply}</div>
-                  )
-                })
-
-
-              } */}
               {replyComment === index ? (
                 <div className="InputComment">
                   <textarea

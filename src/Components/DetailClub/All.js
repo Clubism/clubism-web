@@ -8,11 +8,29 @@ const DetailClubAll = (props) => {
       <div className="MainContainer">
         <div className="PosterContainer">
           {/* data get from server */}
-          <div className="IndivPoster">{props.name}</div>
-          <div className="IndivPoster">asdf</div>
-          <div className="IndivPoster">qwer</div>
+          <div className="IndivPoster">
+            <img
+              src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
+              style={{ width: "250px", height: "350px" }}
+              alt="poster"
+            />
+          </div>
+          <div className="IndivPoster">
+            <img
+              src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
+              style={{ width: "250px", height: "350px" }}
+              alt="poster"
+            />
+          </div>
+          <div className="IndivPoster">
+            <img
+              src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
+              style={{ width: "250px", height: "350px" }}
+              alt="poster"
+            />
+          </div>
         </div>
-        <div className="StatisticContainer">
+        {/* <div className="StatisticContainer">
           <div className="IndivStat">
             <div className="IndivStat_Q">전체인원</div>
             <div className="IndivStat_A">00명</div>
@@ -37,7 +55,7 @@ const DetailClubAll = (props) => {
             <div className="IndivStat_Q">동아리방</div>
             <div className="IndivStat_A">엠마오관 B102</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

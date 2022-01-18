@@ -3,17 +3,25 @@ import { Link } from "react-router-dom";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
-import axios from "axios";
+import axios from "../../Assets/axios";
 
 const CategoryMain = (props) => {
   const [ClubList, setClubList] = useState([]);
-
-  //세부 category 불러오기
+ 
+  useEffect(()=>{
+    axios.get('mainClub/clubs')
+    .then(res=>{
+      console.log('load clubs success');
+      setClubList(res.data);
+    })
+  }, []);
+  /*
   useEffect(() => {
     axios.get("../../dummy/clublist.json").then((res) => {
       setClubList(res.data);
     });
   }, []);
+  */
 
   // const onClickCategory = (e) => {
   //   if (e.target.innerText === "전체보기") window.location.replace("/mainclub");
@@ -42,19 +50,19 @@ const CategoryMain = (props) => {
         <SubContainer>
           <Category>
             <CategoryTitle>
-              <CategoryLink to="/mainclub">
+              <CategoryLink to="/mainClub">
                 <CategoryItem onClick={props.close}>전체보기</CategoryItem>
               </CategoryLink>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryLink to="/mainclub/service">
+              <CategoryLink to="/mainClub/service">
                 <CategoryItem onClick={props.close}>봉사분과</CategoryItem>
               </CategoryLink>
               <List>
                 {ClubList.filter((data) => data.category === "봉사분과").map(
                   (item, index) => (
                     <ListTitle key={index}>
-                      <CategoryLink to={{pathname: `/mainclub/service/${item.label}`}} onClick={props.close}>
+                      <CategoryLink to={{pathname: `/mainClub/service/${item.label}`}} onClick={props.close}>
                       <ListItem>
                         {item.name}
                       </ListItem>
@@ -65,14 +73,14 @@ const CategoryMain = (props) => {
               </List>
               <Empty />
               <CategoryTitle>
-                <CategoryLink to="/mainclub/religion">
+                <CategoryLink to="/mainClub/religion">
                   <CategoryItem onClick={props.close}>종교분과</CategoryItem>
                 </CategoryLink>
                 <List>
                   {ClubList.filter((data) => data.category === "종교분과").map(
                     (item, index) => (
                       <ListTitle key={index}>
-                        <CategoryLink to={{pathname: `/mainclub/religion/${item.label}`}} onClick={props.close}>
+                        <CategoryLink to={{pathname: `/mainClub/religion/${item.label}`}} onClick={props.close}>
                         <ListItem>
                           {item.name}
                         </ListItem>
@@ -84,7 +92,7 @@ const CategoryMain = (props) => {
               </CategoryTitle>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryLink to="/mainclub/social">
+              <CategoryLink to="/mainClub/social">
                 <CategoryItem onClick={props.close}>
                   사회교양분과
                 </CategoryItem>
@@ -94,7 +102,7 @@ const CategoryMain = (props) => {
                   (data) => data.category === "사회교양분과"
                 ).map((item, index) => (
                   <ListTitle key={index}>
-                    <CategoryLink to={{pathname: `/mainclub/social/${item.label}`}} onClick={props.close}>
+                    <CategoryLink to={{pathname: `/mainClub/social/${item.label}`}} onClick={props.close}>
                     <ListItem>
                       {item.name}
                     </ListItem>
@@ -104,7 +112,7 @@ const CategoryMain = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryLink to="/mainclub/art">
+              <CategoryLink to="/mainClub/art">
                 <CategoryItem onClick={props.close}>
                   언행예술분과
                 </CategoryItem>
@@ -114,7 +122,7 @@ const CategoryMain = (props) => {
                   (data) => data.category === "언행예술분과"
                 ).map((item, index) => (
                   <ListTitle key={index}>
-                    <CategoryLink to={{pathname: `/mainclub/art/${item.label}`}} onClick={props.close}>
+                    <CategoryLink to={{pathname: `/mainClub/art/${item.label}`}} onClick={props.close}>
                     <ListItem>
                       {item.name}
                     </ListItem>
@@ -125,7 +133,7 @@ const CategoryMain = (props) => {
             </CategoryTitle>
 
             <CategoryTitle>
-              <CategoryLink to="/mainclub/pe">
+              <CategoryLink to="/mainClub/pe">
                 <CategoryItem onClick={props.close}>체육분과</CategoryItem>
               </CategoryLink>
               <List>
@@ -134,7 +142,7 @@ const CategoryMain = (props) => {
                     if (index < 12) {
                       return (
                         <ListTitle key={index}>
-                          <CategoryLink to={{pathname: `/mainclub/pe/${item.label}`}} onClick={props.close}>
+                          <CategoryLink to={{pathname: `/mainClub/pe/${item.label}`}} onClick={props.close}>
                           <ListItem>
                             {item.name}
                           </ListItem>
@@ -154,7 +162,7 @@ const CategoryMain = (props) => {
                     if (index > 12) {
                       return (
                         <ListTitle key={index}>
-                          <CategoryLink to={{pathname: `/mainclub/pe/${item.label}`}} onClick={props.close}>
+                          <CategoryLink to={{pathname: `/mainClub/pe/${item.label}`}} onClick={props.close}>
                           <ListItem>
                             {item.name}
                           </ListItem>
@@ -167,14 +175,14 @@ const CategoryMain = (props) => {
               </List>
             </CategoryTitle>
             <CategoryTitle>
-              <CategoryLink to="/mainclub/academic">
+              <CategoryLink to="/mainClub/academic">
                 <CategoryItem onClick={props.close}>학술분과</CategoryItem>
               </CategoryLink>
               <List>
                 {ClubList.filter((data) => data.category === "학술분과").map(
                   (item, index) => (
                     <ListTitle key={index}>
-                      <CategoryLink to={{pathname: `/mainclub/academic/${item.label}`}} onClick={props.close}>
+                      <CategoryLink to={{pathname: `/mainClub/academic/${item.label}`}} onClick={props.close}>
                       <ListItem>
                         {item.name}
                       </ListItem>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import MainClubs from "./MainClubs";
 // import DetailClubPage from "../DetailClub/DetailClubPage";
+// import DetailClubPage from "../DetailClub/DetailClubPage_tmp";
 import DetailClubPage from "../DetailClub/DetailClubPage";
 import "../style/ClubPage.scss";
+import { BrowserRouter } from "react-router-dom";
 
 const MainClubPage = (props) => {
-  console.log(props);
+  console.log("MainClubPage props : ", props);
   const [detailPage, setDetailPage] = useState(false);
 
   useEffect(() => {
@@ -15,15 +17,17 @@ const MainClubPage = (props) => {
     else setDetailPage(true);
   }, [props.category, props.name]);
 
-  console.log(detailPage);
+  console.log("MainClubPage detailPage : ", detailPage);
   return (
     <div className="mainClubBox">
       {detailPage ? (
-        <DetailClubPage
-          category={props.category}
-          name={props.name}
-          status={1}
-        />
+        <BrowserRouter>
+          <DetailClubPage
+            category={props.category}
+            name={props.name}
+            status={1}
+          />
+        </BrowserRouter>
       ) : (
         <MainClubs category={props.category} name={props.name} />
       )}

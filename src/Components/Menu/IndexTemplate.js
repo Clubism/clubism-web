@@ -1,33 +1,42 @@
-import React, { useRef, useState } from "react";
-import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import React, { useRef, useState} from "react";
+import axios from "../../Assets/axios";
+import { Link} from "react-router-dom";
 import styled from "styled-components";
 import CategoryMain from "./CategoryMain";
 import CategorySub from "./CategorySub";
 import CategoryElse from "./CategoryElse";
+//import {useSelector} from 'react-redux';
+
 // import Logout from "../Pages/Logout";
 
 const IndexTemplate = () => {
   const isLoggedIn = useRef(false);
-  const history = useHistory();
+  //const history = useHistory();
   const [category1, setCategory1] = useState(false);
   const [category2, setCategory2] = useState(false);
   const [category3, setCategory3] = useState(false);
 
   //useEffect(()=>{
-  localStorage.getItem("user_id") !== undefined
+    
+   //}, []);
+
+  //isLoggedIn.current = useSelector(state => state.isLogegdIn);
+
+localStorage.getItem("user_id") !== null
     ? (isLoggedIn.current = true)
     : (isLoggedIn.current = false);
-  // }, []);
+  console.log('isLoggedIn : ', isLoggedIn.current);
 
-  isLoggedIn.current = false;
 
   const onClickLogout = () => {
     axios
-      .get("localhost:4000/auth/logout", { withCredentials: true })
+      .get("auth/logout", { withCredentials: true })
       .then((res) => {
+        console.log('clicked');
         localStorage.clear();
-        history.push("/");
+        isLoggedIn.current = false;
+        //history.push("/");
+        window.location.replace("/")
       });
   };
 
@@ -51,12 +60,18 @@ const IndexTemplate = () => {
     window.location.replace("/");
   };
 
+
+  /*
+  useEffect(() => {
+    onSilentRefresh();
+  }, []);
+*/
   return (
     <div>
       <Container>
         <Title>
           <TitleItem onClick={onClickTitle}>
-            LOGO club
+            club
             <TitleItem2>ism</TitleItem2>
           </TitleItem>
         </Title>
@@ -87,7 +102,7 @@ const IndexTemplate = () => {
         </UserNotExist>
         <UserExist toggle={isLoggedIn.current}>
           <UserItem>
-            <UserItemLink to="/mypage">mypage&nbsp;</UserItemLink>
+            <UserItemLink to="/mypage">마이페이지&nbsp;</UserItemLink>
           </UserItem>
           <UserItemBar>|</UserItemBar>
           <UserItem
@@ -96,7 +111,7 @@ const IndexTemplate = () => {
             }}
           >
             {/* <Link className="logout link" to="/logout"> */}
-            <Logout>&nbsp;logout</Logout>
+            <Logout>&nbsp;로그아웃</Logout>
             {/* </Link> */}
           </UserItem>
         </UserExist>
@@ -242,7 +257,7 @@ const Logout = styled.span`
   text-decoration-line: none;
   color: #023b6d;
   font-size: 16px;
-  font-weight: 1000;
+  font-weight: 500;
   cursor: pointer;
 `;
 

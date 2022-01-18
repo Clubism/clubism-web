@@ -1,9 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "../../Assets/axios";
+import BookMarkContent from "./BookMarkComtenent";
+/*
 
+
+*/
 const BookMark = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
+  const [mainClub, setMainClub] = useState([]);
+  const [subClub, setSubClub] = useState([]);
+  const [elseClub, setElseClub] = useState([]);
 
+  // 처음 페이지가 로드될 때 즐겨찾기를 불러옴
+  useEffect(() => {
+    const dbId = localStorage.getItem("user_db_id");
+    axios.get(`auth/favorites/${dbId}`).then((res) => {
+      console.log(res.data);
+      setMainClub(res.data);
+    });
+  }, []);
+
+  // 카테고리 클릭 시
   const onClickCategory = (e) => {
     if (e === 0) setSelectedCategory(0);
     if (e === 1) setSelectedCategory(1);
@@ -43,7 +61,13 @@ const BookMark = () => {
         </CategoryItem>
       </Category>
       <List>
-        <ListItem>공고 불러오는거 만들어주세요^~^</ListItem>
+        <ListItem />
+        <BookMarkContent
+          type={selectedCategory}
+          mainClub={mainClub}
+          subClub={subClub}
+          elseClub={elseClub}
+        />
       </List>
     </Container>
   );

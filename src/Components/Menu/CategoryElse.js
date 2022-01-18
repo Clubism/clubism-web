@@ -13,6 +13,7 @@ const CategoryElse = (props) => {
     { category: "프로젝트", category_path: "/project" },
     { category: "구독", category_path: "/subscribe" }
   ];
+
   const dispatch = useDispatch();
 
   const setCategory = useCallback(
@@ -29,7 +30,7 @@ const CategoryElse = (props) => {
           <Category>
             {ElseClubCategories.map((category, index) => {
               return (
-                <CategoryTitle>
+                <CategoryTitle key={category.category}>
                   <CategoryItem>
                     <CategoryLink
                       style={{ textDecoration: "none" }}
