@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import axios from "../../Assets/axios";
@@ -55,14 +55,14 @@ const SubClubs = (props) => {
   // 2021/12/23 강진실
   // 사용자 즐겿자기 동아리 불러옴
   // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
-  // useEffect(()=>{
-  //   const dbId = localStorage.getItem('user_db_id');
-  //   axios.get(`http://localhost:4000/auth/favorites/${dbId}`)
-  //   .then((res)=>{
-  //     console.log(res.data);
-  //     setFavorites(res.data);  
-  //   });
-  // }, []);
+  useEffect(()=>{
+    const dbId = localStorage.getItem('user_db_id');
+    axios.get(`auth/favorites/${dbId}`)
+    .then((res)=>{
+      console.log(res.data);
+      setFavorites(res.data);  
+    });
+  }, []);
 
   const searchClub = (e) => {
     if (e.key === "Enter") {

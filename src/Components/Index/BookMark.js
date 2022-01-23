@@ -61,13 +61,13 @@ const BookMark = () => {
         </CategoryItem>
       </Category>
       <List>
-        <ListItem />
+        <ListItem />현재 등록된 즐겨찾기가 없습니당.
         <BookMarkContent
           type={selectedCategory}
           mainClub={mainClub}
           subClub={subClub}
           elseClub={elseClub}
-        />
+        ></BookMarkContent>
       </List>
     </Container>
   );

@@ -23,7 +23,7 @@ const ClubList = () => {
 
   return (
     <Container>
-      <Title>모집중인 소모임(여기 문구랑 디자인은 모르겠다^^)</Title>
+      <Title>모집중인 소모임</Title>
       <Detail>
         총 {posts.length}개의 소모임이 모집중입니다. 지원해보세요^^
       </Detail>

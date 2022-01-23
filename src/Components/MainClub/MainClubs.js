@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "../../Assets/axios";
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -11,6 +12,7 @@ const MainClubs = (props) => {
   const [Url, setUrl] = useState(""); //상단 url 나타내는 변수
   const [SearchFilter, setSearchFilter] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const currentUser = useSelector((state) => state.currentUser); 
 
   //상단 카테고리 URL
   useEffect(() => {
@@ -26,7 +28,7 @@ const MainClubs = (props) => {
   //메인동아리 리스트 불러와서 카테고리 필터걸기
   useEffect(() => {
     var tempClub;
-    axios.get("http://localhost:4000/mainClub/clubs").then((res) => {
+    axios.get("mainClub/clubs").then((res) => {
       if (props.category === undefined) tempClub = res.data;
       else tempClub = res.data.filter((data) => data.value === props.category);
       addRecruitment();
@@ -35,15 +37,11 @@ const MainClubs = (props) => {
     //각 동아리 공고 불러와서 각각 추가
     const addRecruitment = async () => {
       try {
-        for (let x of tempClub) {
           await axios
-            .get("http://localhost:4000/recruitment/" + x._id)
+            .get("mainClub/recruitment/recent")
             .then((res) => {
-              x.recruitment = res.data;
-              console.log("2");
+              console.log("res : ",res)
             });
-        }
-        console.log("1");
         setClubList(tempClub);
         setSearchFilter(tempClub);
         // console.log("공고 추가된 클럽리스트 : ", tempClub);
@@ -56,7 +54,7 @@ const MainClubs = (props) => {
   //}, []);
 
   // 2021/12/23 강진실
-  // 사용자 즐겿자기 동아리 불러옴
+  // 사용자 즐겨찾기 동아리 불러옴
   // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
   /*
   useEffect(() => {
