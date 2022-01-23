@@ -34,6 +34,7 @@ function App() {
         <Route path="/elseClub/:category" component={ElseClub} exact />
         <Route path="/elseClub/post/:id" component={ElseClub} exact />
         <Route path="/elseClub/posting" component={ElseClub} exact />
+        <Route path="/elseClub/updatePost/:id" component={ElseClub} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/signup" component={SignUp} exact />
         <Route path="/mypage" component={MyPage} exact />

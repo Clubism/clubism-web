@@ -4,6 +4,7 @@ import { BsArrowReturnRight } from "react-icons/bs";
 import axios from "../../Assets/axios";
 import moment from 'moment';
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 //test
 import jwt from 'jsonwebtoken';
@@ -27,11 +28,6 @@ const ElseClubPost = (props) => {
         setCommentList(res.data);
         console.log("comment", res.data);
       });
-
-      //test
-      console.log("test token ", localStorage.getItem("accessToken"));
-      console.log("test token decode ", jwt.decode(localStorage.getItem("accessToken")));
-      console.log("test current user ", currentUser);
   }, [reload]);
 
   const inputCommentHandler = (e) => {
@@ -83,6 +79,10 @@ const ElseClubPost = (props) => {
         <h4>{props.post.title}</h4>
         <div className="ElseClubPost-sub">
           {props.post.category} | {props.post.writer}
+        </div>
+        <div>{props.post.writer===currentUser.user.id ? 
+              <Link to={"/elseClub/updatePost/"+props.post.id} className="Posting"> 수정 </Link> 
+              : <div></div>}
         </div>
         <div className="ElseClubPost-date">{moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
         <hr />
