@@ -38,13 +38,18 @@ const DetailClubPage = () => {
     console.log("filechange!");
     var frm = new FormData();
     var photoFile = document.getElementById("poster");
-    // await frm.append("poster", photoFile.files[0]);
+    // frm.append("poster", photoFile.files[0]);
     frm.poster = photoFile.files[0];
     console.log(photoFile.files[0]);
     console.log(frm);
 
     axios
       .post(`http://localhost:4000/mainClub/clubinfo/${tmp}`, frm)
+      // axios({
+      //   method: "post",
+      //   url: `http://localhost:4000/mainClub/clubinfo/${tmp}`,
+      //   data: frm
+      // })
       .then((response) => {
         // 응답 처리
         console.log(response);
