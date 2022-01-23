@@ -13,7 +13,7 @@ const MainClubs = (props) => {
   const [SearchFilter, setSearchFilter] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
-  const currentUser = useSelector((state) => state.currentUser); 
+ const currentUser = useSelector((state)=>state.currentUser); 
   console.log(currentUser)
 
   //상단 카테고리 URL
@@ -34,6 +34,12 @@ const MainClubs = (props) => {
       if (props.category === undefined) tempClub = res.data;
       else tempClub = res.data.filter((data) => data.value === props.category);
       addRecruitment();
+    });
+
+    axios.get(`/auth/favorites/${currentUser.user._id}`)
+      .then((res) => {
+        console.log(res.data);
+          setFavorites(res.data);
     });
 
     //각 동아리 공고 불러와서 각각 추가
@@ -58,17 +64,6 @@ const MainClubs = (props) => {
     };
   }, [props.category]);
 
-  // 2021/12/23 강진실
-  // 사용자 즐겨찾기 동아리 불러옴
-  // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
-  /*
-  useEffect(() => {
-    const dbId = localStorage.getItem("user_db_id");
-    axios.get(`auth/favorites/${dbId}`).then((res) => {
-      setFavorites(res.data);
-    });
-  }, []);
-*/
   //동아리 검색 기능
   const searchClub = (e) => {
     if (e.key === "Enter") {
@@ -82,15 +77,20 @@ const MainClubs = (props) => {
 
   //즐겨찾기 별
   const saveFavorite = (clubId) => {
-    alert("star click!!");
-    console.log(clubId)
-    axios
-      .post(`/auth/favorites/${currentUser.user.exp}`, {
-        clubId: clubId
-      })
-      .then((res) => {
-        setFavorites(res.data);
-      });
+    var result = window.confirm("즐겨찾기에 추가하시겠습니까?");
+    console.log(result);
+    if (result) {
+      axios
+        .post(`/auth/favorites/${currentUser.user._id}`, {
+          clubId: clubId
+        })
+        .then((res) => {
+          setFavorites(res.data);
+        });
+      var tempFavorites = favorites;
+      tempFavorites.push(clubId);
+      setFavorites(tempFavorites);
+    }
   };
 
   return (
@@ -150,7 +150,7 @@ const MainClubs = (props) => {
                     saveFavorite(mainClub._id);
                   }}
                 >
-                  {favorites.includes(mainClub.name) ? (
+                  {favorites.includes(mainClub._id) ? (
                     <Star color="#fcca11" size="25" />
                   ) : (
                     <EmptyStar color="#fcca11" size="25" />

@@ -13,7 +13,7 @@ const BookmarkContent = ({ type, mainClub, subClub, elseclub }) => {
     case 0:
       return (
         <SubContainer>
-          {mainClub.map((post, index) => {
+          {/* {mainClub.map((post, index) => {
             return (
               <CardLink
                 key={index}
@@ -35,7 +35,7 @@ const BookmarkContent = ({ type, mainClub, subClub, elseclub }) => {
                 </CardWrap>
               </CardLink>
             );
-          })}
+          })} */}
         </SubContainer>
       );
     case 1: {
