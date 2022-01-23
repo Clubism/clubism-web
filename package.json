@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fetch": "^1.1.0",
+    "http-proxy-middleware": "2.0.1",
     "mime": "^1.6.0",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -35,6 +36,7 @@
     "sass": "^1.38.0",
     "scoped-css-loader": "^1.0.0",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

@@ -1,16 +1,16 @@
-import * as categoryActions from "../actions/category";
+import * as authActions from "../actions/auth";
 
 const initialStates = {
-  category: "전체보기"
+  isLoggeIn: false,
 };
 
 const reducers = (state = initialStates, action) => {
   const { type } = action;
   switch (type) {
-    case categoryActions.SET_CATEGORY: {
+    case authActions.SET_AUTH: {
       return {
         ...state,
-        category: action.category
+        isLoggedIn: action.isLoggedIn
       };
     }
     default: {

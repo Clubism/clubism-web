@@ -6,7 +6,7 @@ import DetailClubAll from "./All";
 import DetailClubCurrent from "./Current";
 import DetailClubQA from "./QA";
 import DetailClubIntro from "./Intro";
-import { PinDropTwoTone } from "@material-ui/icons";
+// import { PinDropTwoTone } from "@material-ui/icons";
 
 const DetailClubPageTest = (props) => {
   console.log(props);
@@ -38,7 +38,7 @@ const DetailClubPageTest = (props) => {
           return;
         }
       );
-  }, [props.name, fetchURL]);
+  }, [props.name, fetchURL, url]);
 
   var clubName = "";
   if (selectedClub.length !== 0) clubName = selectedClub[0].name;

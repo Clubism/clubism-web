@@ -14,20 +14,20 @@ const SignUpPage = () => {
   const onButtonSubmit = (e) => {
     e.preventDefault();
     console.log(Info);
-    axios.post("http://localhost:4000/auth/join", Info, {withCredentials : true})
-    .then(() => {
-      console.log("successs");
-      setInfo({ username: "", id: "", password: "" });
-      //e.target.username.value = ""
-    }).catch((err)=>{
-      console.log(err)
-    });
-
-    
+    axios
+      .post("http://localhost:4000/auth/join", Info, { withCredentials: true })
+      .then(() => {
+        console.log("successs");
+        setInfo({ username: "", id: "", password: "" });
+        //e.target.username.value = ""
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="login-container">
-      <Form onSubmit = {onButtonSubmit}>
+      <Form onSubmit={onButtonSubmit}>
         <h3 className="login-h3">Sign Up</h3>
         <FloatingLabel
           controlId="floatingInput"
@@ -36,7 +36,12 @@ const SignUpPage = () => {
           value={Info.username}
           onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="name" placeholder="sogang" as="input" name="username"/>
+          <Form.Control
+            type="name"
+            placeholder="sogang"
+            as="input"
+            name="username"
+          />
         </FloatingLabel>
 
         <FloatingLabel
@@ -46,7 +51,12 @@ const SignUpPage = () => {
           value={Info.id}
           onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="email" placeholder="sogang" as="input" name="id"/>
+          <Form.Control
+            type="email"
+            placeholder="sogang"
+            as="input"
+            name="id"
+          />
         </FloatingLabel>
 
         <FloatingLabel
@@ -56,7 +66,12 @@ const SignUpPage = () => {
           value={Info.password}
           onChange={(e) => onSignChange(e)}
         >
-          <Form.Control type="password" placeholder="sogang" as="input" name="password"/>
+          <Form.Control
+            type="password"
+            placeholder="sogang"
+            as="input"
+            name="password"
+          />
         </FloatingLabel>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -66,13 +81,20 @@ const SignUpPage = () => {
             label="Remember me"
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={(e)=>onButtonSubmit(e)}>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => onButtonSubmit(e)}
+        >
           Sign Up
         </Button>
+        <div style={{ backgroundColor: "blue" }} onClick={onButtonSubmit}>
+          check test
+        </div>
         <p className="forgot-password text-right">
-          Already registered?&nbsp;
+          Already registered&nbsp;
           <Link className="link" to="/login">
-            sign in
+            sign in?
           </Link>
         </p>
       </Form>
