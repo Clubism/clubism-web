@@ -12,7 +12,9 @@ const MainClubs = (props) => {
   const [Url, setUrl] = useState(""); //상단 url 나타내는 변수
   const [SearchFilter, setSearchFilter] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [loading, setLoading] = useState(true);
   const currentUser = useSelector((state) => state.currentUser); 
+  console.log(currentUser)
 
   //상단 카테고리 URL
   useEffect(() => {
@@ -40,18 +42,21 @@ const MainClubs = (props) => {
           await axios
             .get("mainClub/recruitment/recent")
             .then((res) => {
-              console.log("res : ",res)
+              res.data.forEach((x, index) => {
+                if (x.length > 0) {
+                  tempClub[index].recruitment = x[0];
+                }
+              });
             });
         setClubList(tempClub);
         setSearchFilter(tempClub);
-        // console.log("공고 추가된 클럽리스트 : ", tempClub);
+        setLoading(false)
+        console.log("tempClub : ",tempClub)
       } catch (err) {
         console.log(err);
       }
     };
   }, [props.category]);
-
-  //}, []);
 
   // 2021/12/23 강진실
   // 사용자 즐겨찾기 동아리 불러옴
@@ -69,23 +74,23 @@ const MainClubs = (props) => {
     if (e.key === "Enter") {
       setSearchFilter(
         ClubList.filter((data) => {
-          return data.clubId.name.includes(e.target.value);
+          return data.name.includes(e.target.value);
         })
       );
     }
   };
 
   //즐겨찾기 별
-  const saveFavorite = (clubName) => {
+  const saveFavorite = (clubId) => {
     alert("star click!!");
-    // const dbId = localStorage.getItem("user_db_id");
-    // axios
-    //   .post(`http://localhost:4000/auth/favorites/${dbId}`, {
-    //     clubName: clubName
-    //   })
-    //   .then((res) => {
-    //     setFavorites(res.data);
-    //   });
+    console.log(clubId)
+    axios
+      .post(`/auth/favorites/${currentUser.user.exp}`, {
+        clubId: clubId
+      })
+      .then((res) => {
+        setFavorites(res.data);
+      });
   };
 
   return (
@@ -103,59 +108,57 @@ const MainClubs = (props) => {
             onKeyDown={searchClub}
           />
         </Search>
-        {/* {console.log("SearchFilter : ",SearchFilter)} */}
-        {SearchFilter.map((mainClub, index) => (
-          <CardWrap key={index}>
-            {/* {console.log(mainClub.recruitment)} */}
-            <Card
-              to={{
-                pathname: `/mainClub/${mainClub.value}/${mainClub.label}`
-              }}
-            >
-              <SubContainer>
-                <Category>{mainClub.category}</Category>
-                <br />
-                <Name>{mainClub.name}</Name>
-                <Desc>
-                  {mainClub.recruitment === undefined
-                    ? ""
-                    : mainClub.recruitment.length === 0
-                    ? "현재 모집중인 공고가 없습니다"
-                    : mainClub.recruitment[0].description}
-                </Desc>
-                <Deadline>
-                  {mainClub.recruitment === undefined
-                    ? ""
-                    : mainClub.recruitment.length === 0
-                    ? ""
-                    : new Date() < new Date(mainClub.recruitment[0].deadline)
-                    ? "D - " +
-                      Math.floor(
-                        (new Date(mainClub.recruitment[0].deadline).getTime() -
-                          new Date().getTime()) /
-                          (24 * 3600 * 1000)
-                      ).toString()
-                    : "마감"}
-                </Deadline>
-              </SubContainer>
-              <Poster
-                src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
-                alt="poster"
-              />
-            </Card>
-            <StarWrap
-              onClick={() => {
-                saveFavorite(mainClub.name);
-              }}
-            >
-              {favorites.includes(mainClub.name) ? (
-                <Star color="#fcca11" size="25" />
-              ) : (
-                <EmptyStar color="#fcca11" size="25" />
-              )}
-            </StarWrap>
-          </CardWrap>
-        ))}
+        {
+          loading === true ?
+            <div>loading...</div>
+            : SearchFilter.map((mainClub, index) => (
+              <CardWrap key={index}>
+                <Card
+                  to={{
+                    pathname: `/mainClub/${mainClub.value}/${mainClub.label}`
+                  }}
+                >
+                  <SubContainer>
+                    <Category>{mainClub.category}</Category>
+                    <br />
+                    <Name>{mainClub.name}</Name>
+                    <Desc>
+                      {mainClub.recruitment === undefined
+                        ? "현재 모집중인 공고가 없습니다"
+                        : mainClub.recruitment.description}
+                    </Desc>
+                    <Deadline>
+                      {mainClub.recruitment === undefined
+                        ? ""
+                        : new Date() < new Date(mainClub.recruitment.deadline)
+                          ? "D - " +
+                          Math.floor(
+                            (new Date(mainClub.recruitment.deadline).getTime() -
+                              new Date().getTime()) /
+                            (24 * 3600 * 1000)
+                          ).toString()
+                          : "마감"}
+                    </Deadline>
+                  </SubContainer>
+                  <Poster
+                    src={require("../../Assets/Image/sgaem/sgaem_2019.png").default}
+                    alt="poster"
+                  />
+                </Card>
+                <StarWrap
+                  onClick={() => {
+                    saveFavorite(mainClub._id);
+                  }}
+                >
+                  {favorites.includes(mainClub.name) ? (
+                    <Star color="#fcca11" size="25" />
+                  ) : (
+                    <EmptyStar color="#fcca11" size="25" />
+                  )}
+                </StarWrap>
+              </CardWrap>
+            ))
+        }
       </Container>
     </div>
   );

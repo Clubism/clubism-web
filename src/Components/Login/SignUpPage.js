@@ -186,16 +186,16 @@ const SignUpPage = () => {
             setInfo={setInfo}
           />
         </TextFieldContainer>
-        <TextFieldContainer>
-          <FormControl variant="standard">
+        <TextFieldContainerStyle>
+          <FormControlStyle variant="standard">
             <CustomInputLabel htmlFor="username">닉네임</CustomInputLabel>
             <CustomInput
               id="username"
               onChange={onInfoChange}
               name="username"
             />
-          </FormControl>
-        </TextFieldContainer>
+          </FormControlStyle>
+        </TextFieldContainerStyle>
 
         <TextFieldContainer>
           <FormControl variant="standard">
@@ -396,5 +396,13 @@ const SignupPageWrapper = styled.div`
 
   //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
+
+const FormControlStyle = styled(FormControl)`
+
+`
+
+const TextFieldContainerStyle = styled(TextFieldContainer)`
+  width: 450px;
+`
 
 export default SignUpPage;
