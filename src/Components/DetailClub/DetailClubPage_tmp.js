@@ -43,8 +43,7 @@ const DetailClubPage = () => {
     console.log(photoFile.files[0]);
     console.log(frm);
 
-    axios
-      .post(`http://localhost:4000/mainClub/clubinfo/${tmp}`, frm)
+    axios.post(`http://localhost:4000/mainClub/clubinfo/${tmp}`, frm)
       // axios({
       //   method: "post",
       //   url: `http://localhost:4000/mainClub/clubinfo/${tmp}`,
