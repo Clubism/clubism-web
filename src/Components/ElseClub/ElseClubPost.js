@@ -48,6 +48,7 @@ const ElseClubPost = (props) => {
       .post("post/comment/" + props.post._id, {
         comment: inputComment,
         postNum: props.post._id,
+        writer: currentUser.user.id,
         _class : 0,
         // parentComment: "",
       })
@@ -64,6 +65,7 @@ const ElseClubPost = (props) => {
       .post("post/comment/" + props.post._id, {
         comment: inputRecomment,
         postNum: props.post._id,
+        writer: currentUser.user.id,
         _class : 1,
         parentComment: parent,
       })
@@ -105,8 +107,8 @@ const ElseClubPost = (props) => {
               <div className={com}>
                 <div className="cmtSmall">
                   <div className="cmtUser">
-                    user
-                    {/* {cmt.user} */}
+                    {/* user */}
+                    {cmt.writer}
                     </div>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <div className="cmtDate">{moment(cmt.date).format('YYYY-MM-DD HH:mm:ss')}</div>

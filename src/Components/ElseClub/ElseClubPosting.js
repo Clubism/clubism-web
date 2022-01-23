@@ -12,6 +12,7 @@ const ElseClubPosting = () => {
   const [localCategory, setLocalCategory] = useState("");
 
   const { category: storeCategory } = useSelector((state) => state.category);
+  const currentUser = useSelector((state)=>state.currentUser);
 
   useEffect(() => {
     if (storeCategory === "전체보기") setLocalCategory("선택");
@@ -30,11 +31,14 @@ const ElseClubPosting = () => {
       .post("post/submit", {
         title: title,
         content: content,
-        category: localCategory
+        category: localCategory,
+        writer: currentUser.user.id
       })
       .then((res) => {
         console.log("post submit success");
       });
+
+    window.location.replace("all");
   };
 
   // console.log(category);
@@ -57,7 +61,6 @@ const ElseClubPosting = () => {
       <Form
         onSubmit={(e) => {
           onPostSubmit(e);
-          window.location.replace("all");
         }}
       >
         <Form className="titleForm">
