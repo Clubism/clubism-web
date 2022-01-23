@@ -1,0 +1,27 @@
+.MainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.PosterContainer {
+  height: 400px;
+  background-color: skyblue;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+.IndivPoster {
+  height: calc(250px * 1.4);
+  width: 250px;
+  background-color: greenyellow;
+  margin: 10px 10px;
+}
+
+.StatisticContainer {
+  height: 160px;
+  background-color: pink;
+  display: flex;
+  // display: none;
+  flex-direction: row;
+}

@@ -3,7 +3,14 @@ import { useSelector } from "react-redux";
 import "../style/ElseClubList.scss";
 import { Link } from "react-router-dom";
 import Paging from "./Paging";
+<<<<<<< HEAD
 import axios from "axios";
+=======
+import axios from "../../Assets/axios";
+import moment from 'moment';
+import styled from 'styled-components';
+
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
 // import Moment from  'react-moment'
 
 const ClubList = (props) => {
@@ -16,7 +23,11 @@ const ClubList = (props) => {
   const { category: storeCategory } = useSelector((state) => state.category);
 
   useEffect(() => {
+<<<<<<< HEAD
     axios.get("http://localhost:4000/post").then((res) => {
+=======
+    axios.get("post").then((res) => {
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
       setPost(res.data);
       setFilter(res.data);
       console.log(res.data);
@@ -56,7 +67,8 @@ const ClubList = (props) => {
     <div className="ElseClubList">
       {/* <div>{storeCategory}</div> */}
       <div className="ElseClubListTop">
-        <Link to="/elseClub/posting" className="Posting">
+        <Link to="/elseClub/posting"
+        className="Posting">
           글작성
         </Link>
         <input
@@ -79,10 +91,14 @@ const ClubList = (props) => {
         if (index >= (Page - 1) * PageNum && index < Page * PageNum)
           return (
             <Link
+<<<<<<< HEAD
               to={"/elseClub/post/" + post._id}
+=======
+              to={"/elseClub/post/" + post.id}
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
               className="link"
               onClick={() => {
-                console.log(post._id);
+                console.log(post);
                 props.setPost(post);
               }}
               key={post._id}
@@ -92,11 +108,17 @@ const ClubList = (props) => {
                 <div className="Title">
                   [{post.category}] {post.title}
                 </div>
+<<<<<<< HEAD
                 <div>{post.date}</div>
+=======
+                <div>{moment(post.date).format('YYYY-MM-DD')}</div>
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
                 <div>{post.writer}</div>
               </div>
+              <Line />
             </Link>
           );
+        else return "";
       })}
       <Paging
         page={Page}
@@ -107,5 +129,10 @@ const ClubList = (props) => {
     </div>
   );
 };
+
+const Line = styled.hr`
+margin : 2px;
+color : #999999;
+`;
 
 export default ClubList;

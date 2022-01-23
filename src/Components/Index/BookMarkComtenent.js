@@ -1,35 +1,19 @@
-import React, { useEffect, useState } from "react";
-import Moment from "react-moment";
+import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axios from "../../Assets/axios";
-import styled from "styled-components";
-
+import Moment from "react-moment";
 import * as actions from "../../redux/actions/post";
 
-const ClubList = () => {
-  const [posts, setPosts] = useState([]);
+const BookmarkContent = ({ type, mainClub, subClub, elseclub }) => {
   const dispatch = useDispatch();
+  console.log("mainClub :", mainClub);
 
-  useEffect(() => {
-    axios.get("post/indexPost").then((res) => {
-      setPosts(res.data);
-    });
-
-   
-  }, []);
-
-  
-
-  return (
-    <Container>
-      <Title>모집중인 소모임(여기 문구랑 디자인은 모르겠다^^)</Title>
-      <Detail>
-        총 {posts.length}개의 소모임이 모집중입니다. 지원해보세요^^
-      </Detail>
-      <SubContainer>
-        {posts.map((post, index) => {
-          if (index < 5)
+  switch (type) {
+    case 0:
+      return (
+        <SubContainer>
+          {mainClub.map((post, index) => {
             return (
               <CardLink
                 key={index}
@@ -43,7 +27,7 @@ const ClubList = () => {
                   <Card className="Posts" key={post._id} id="table">
                     <CardCategory>[{post.category}]</CardCategory>
                     <CardTitle>&nbsp;{post.title}</CardTitle>
-                    <div>{post.content.replace(/<\/?[^>]+(>|$)/g, "")}</div>
+
                     <CardDate>
                       <Moment format="YYYY/MM/DD">{post.date}</Moment>
                     </CardDate>
@@ -51,40 +35,20 @@ const ClubList = () => {
                 </CardWrap>
               </CardLink>
             );
-          else return "";
-        })}
-      </SubContainer>
-      <MoreClub>
-        <MoreClubLink to="/elseClub/all">더보기</MoreClubLink>
-      </MoreClub>
-    </Container>
-  );
+          })}
+        </SubContainer>
+      );
+    case 1: {
+      return <></>;
+    }
+    case 2: {
+      return <></>;
+    }
+    default: {
+      return <></>;
+    }
+  }
 };
-
-export default ClubList;
-
-const Container = styled.div`
-  width: 100%;
-`;
-
-const Title = styled.div`
-  width: 100%;
-  height: 150px;
-  line-height: 150px;
-  /* background-color: #FCE9C5; */
-  margin: 20px 0px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 40px;
-  font-weight: 800;
-`;
-
-const Detail = styled.div`
-  width: 90%;
-  font-size: 18px;
-  margin: 50px auto 0px auto;
-  padding: 0px 30px 5px 30px;
-`;
 
 const SubContainer = styled.div`
   width: 90%;
@@ -129,14 +93,4 @@ const CardDate = styled.div`
   font-size: 15px;
 `;
 
-const MoreClub = styled.div`
-  width: 100px;
-  text-align: center;
-  margin: 20px auto;
-  cursor: pointer;
-`;
-
-const MoreClubLink = styled(Link)`
-  all: unset;
-  
-`;
+export default BookmarkContent;

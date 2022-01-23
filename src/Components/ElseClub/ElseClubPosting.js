@@ -4,7 +4,11 @@ import "../style/ElseClubPosting.scss";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { DropdownButton, Dropdown, Form } from "react-bootstrap";
+<<<<<<< HEAD
 import axios from "axios";
+=======
+import axios from "../../Assets/axios";
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
 
 const ElseClubPosting = () => {
   const [title, setTitle] = useState("");
@@ -27,7 +31,11 @@ const ElseClubPosting = () => {
     }
 
     axios
+<<<<<<< HEAD
       .post("http://localhost:4000/post/submit", {
+=======
+      .post("post/submit", {
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
         title: title,
         content: content,
         category: localCategory
@@ -57,6 +65,10 @@ const ElseClubPosting = () => {
       <Form
         onSubmit={(e) => {
           onPostSubmit(e);
+<<<<<<< HEAD
+=======
+          window.location.replace("all");
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
         }}
       >
         <Form className="titleForm">

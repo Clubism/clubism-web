@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "../style/ElseClubPost.scss";
 import { BsArrowReturnRight } from "react-icons/bs";
+<<<<<<< HEAD
 import axios from "axios";
+=======
+import axios from "../../Assets/axios";
+import moment from 'moment';
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
 
 const ElseClubPost = (props) => {
   const [reload, setreload] = useState(0);
   const [commentList, setCommentList] = useState([]);
+  const [inputRecomment, setInputRecomment] = useState("");
   const [inputComment, setInputComment] = useState("");
   const [replyComment, setReplyComment] = useState(-1);
 
   useEffect(() => {
     axios
+<<<<<<< HEAD
       .get("http://localhost:4000/post/comment/" + props.post._id)
       .then((res) => {
         setCommentList(res.data);
@@ -39,7 +46,56 @@ const ElseClubPost = (props) => {
       });
     setInputComment("");
   };
+=======
+      .get("post/comment/" + props.post._id)
+      .then((res) => {
+        setCommentList(res.data);
+        console.log("comment", res.data);
+      });
+  }, [reload]);
 
+  const inputCommentHandler = (e) => {
+    setInputComment(e.target.value);
+  };
+
+    const inputRecommentHandler = (e) => {
+    setInputRecomment(e.target.value);
+  };
+
+  const commentSubmitHandler = () => {
+    // setreload(reload + 1);
+    axios
+      .post("post/comment/" + props.post._id, {
+        comment: inputComment,
+        postNum: props.post._id,
+        _class : 0,
+        // parentComment: "",
+      })
+      .then((res) => {
+        console.log("post submit success");
+        setreload(reload + 1);
+      });
+    setInputComment("");
+  };
+
+    const recommentSubmitHandler = (parent) => {
+    // setreload(reload + 1);
+    axios
+      .post("post/comment/" + props.post._id, {
+        comment: inputRecomment,
+        postNum: props.post._id,
+        _class : 1,
+        parentComment: parent,
+      })
+      .then((res) => {
+        console.log("post submit success");
+        setreload(reload + 1);
+      });
+    setInputRecomment("");
+  };
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
+
+  
   return (
     <div className="ElseClubPostContainer">
       <div className="ElseClubPost">
@@ -47,7 +103,7 @@ const ElseClubPost = (props) => {
         <div className="ElseClubPost-sub">
           {props.post.category} | {props.post.writer}
         </div>
-        <div className="ElseClubPost-date">{props.post.date}</div>
+        <div className="ElseClubPost-date">{moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
         <hr />
         {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
         <div
@@ -62,22 +118,26 @@ const ElseClubPost = (props) => {
 
         {commentList.map((cmt, index) => {
           let com = "first";
-          if (cmt.class === 1) com = "second";
+          if (cmt._class === 1) com = "second";
 
           return (
             <div className="ElseClubComment" key={cmt.id}>
               <hr />
               <div className={com}>
                 <div className="cmtSmall">
-                  <div className="cmtUser">{cmt.user}</div>
+                  <div className="cmtUser">
+                    user
+                    {/* {cmt.user} */}
+                    </div>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div className="cmtDate">{cmt.date}</div>
+                  <div className="cmtDate">{moment(cmt.date).format('YYYY-MM-DD HH:mm:ss')}</div>
                   &nbsp;&nbsp;&nbsp;
+
                   {com === "first" ? (
                     <div>
                       <BsArrowReturnRight
                         onClick={() => {
-                          console.log("click");
+                          // console.log("click");
                           if (replyComment === index) setReplyComment(-1);
                           else setReplyComment(index);
                         }}
@@ -88,17 +148,25 @@ const ElseClubPost = (props) => {
                   )}
                 </div>
                 {cmt.comment}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
               </div>
               {replyComment === index ? (
                 <div className="InputComment">
                   <textarea
                     placeholder={"댓글을 입력하세요."}
-                    value={inputComment}
-                    onChange={inputCommentHandler}
+                    value={inputRecomment}
+                    onChange={inputRecommentHandler}
                   />
                   <button
                     onClick={() => {
+<<<<<<< HEAD
                       commentSubmitHandler(1);
+=======
+                      recommentSubmitHandler(cmt._id);
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
                     }}
                   >
                     입력
@@ -121,7 +189,11 @@ const ElseClubPost = (props) => {
           />
           <button
             onClick={() => {
+<<<<<<< HEAD
               commentSubmitHandler(0);
+=======
+              commentSubmitHandler();
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
             }}
           >
             입력

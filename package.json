@@ -1,12 +1,19 @@
 {
   "name": "clubism",
   "version": "0.1.0",
+  "proxy": "http://localhost:4000/",
   "private": true,
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^29.2.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@mui/icons-material": "^5.2.1",
+    "@mui/lab": "^5.0.0-alpha.62",
+    "@mui/material": "^5.2.5",
+    "@mui/styles": "^5.2.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -15,8 +22,13 @@
     "bootstrap": "^5.1.0",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
+    "date-fns": "^2.28.0",
     "express": "^4.17.1",
     "fetch": "^1.1.0",
+<<<<<<< HEAD
+=======
+    "form-data": "^3.0.1",
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
     "http-proxy-middleware": "2.0.1",
     "mime": "^1.6.0",
     "moment": "^2.29.1",
@@ -26,17 +38,22 @@
     "react-icons": "^4.3.1",
     "react-import-folder": "^1.0.3",
     "react-js-pagination": "^3.0.3",
+    "react-material-ui-carousel": "^3.1.1",
     "react-minimal-side-navigation": "1.9.2",
     "react-moment": "^1.1.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "react-slick": "^0.28.1",
     "redux": "^4.1.2",
     "sass": "^1.38.0",
     "scoped-css-loader": "^1.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.3",
+<<<<<<< HEAD
+=======
+    "uuid": "^8.3.2",
+>>>>>>> 309377e6fd503e78f3542c12371cdcb013501c4b
     "web-vitals": "^1.1.2"
   },
   "scripts": {

@@ -3,7 +3,7 @@
     "id": 1,
     "category": "봉사분과",
     "value": "service",
-    "name": "서강챈스",
+    "name": "CHANCE",
     "label": "chance",
     "description": "서강 챈스 12기 모집",
     "deadline": "2021-09-10"
@@ -31,7 +31,7 @@
     "category": "종교분과",
     "value": "religion",
     "name": "네비게이토 선교회",
-    "label": "navigato",
+    "label": "navi",
     "description": "네비게이토 모집",
     "deadline": "2021-09-03"
   },
@@ -40,7 +40,7 @@
     "category": "체육분과",
     "value": "pe",
     "name": "농우회",
-    "label": "nongwoohwi",
+    "label": "basmania",
     "description": "농우회 12기 모집",
     "deadline": "2021-09-11"
   },
