@@ -20,6 +20,9 @@ const ElseClubPost = (props) => {
   // const { currentUser: storeCurrentUser } = useSelector((state)=>state.currentUser);
   const currentUser = useSelector((state)=>state.currentUser);
 
+  useEffect(()=>{
+    console.log("currentUser test", currentUser);
+  }, [])
 
   useEffect(() => {
     axios
@@ -80,11 +83,12 @@ const ElseClubPost = (props) => {
         <div className="ElseClubPost-sub">
           {props.post.category} | {props.post.writer}
         </div>
-        <div>{props.post.writer===currentUser.user.id ? 
+        <div >{props.post.writer===currentUser.user.id ? 
               <Link to={"/elseClub/updatePost/"+props.post.id} className="Posting"> 수정 </Link> 
               : <div></div>}
         </div>
-        <div className="ElseClubPost-date">{moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
+        <div className="ElseClubPost-date">
+          {moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
         <hr />
         {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
         <div

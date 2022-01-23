@@ -40,6 +40,7 @@ const LoginPage = ({ history }) => {
           localStorage.setItem("accessToken", res.data.accessToken);
           localStorage.setItem("refreshToken", res.data.refershToken);
 
+          console.log(res.data);
 
           // test
           const token = res.data.accessToken;
