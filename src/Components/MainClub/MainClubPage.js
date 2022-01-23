@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MainClubs from "./MainClubs";
+import DetailClubPage from "../DetailClub/DetailClubPage_tmp";
 // import DetailClubPage from "../DetailClub/DetailClubPage";
-// import DetailClubPage from "../DetailClub/DetailClubPage_tmp";
-import DetailClubPage from "../DetailClub/DetailClubPage";
 import "../style/ClubPage.scss";
 import { BrowserRouter } from "react-router-dom";
 

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 import axios from "../../Assets/axios";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 
-
 const SubClubs = (props) => {
- const [Club, setClub] = useState([]);
+  const [Club, setClub] = useState([]);
   const [Filter, setFilter] = useState(Club);
   const [Url, setUrl] = useState("");
   const [SearchKeyword, setSearchKeyword] = useState("");
@@ -18,9 +17,8 @@ const SubClubs = (props) => {
 
   useEffect(() => {
     //axios.get("../../dummy/mainclubrecruitlist.json")
-    axios.get('subClub/recruitment')
-    .then((res) => {
-      console.log('subclub recruitment load success');
+    axios.get("subClub/recruitment").then((res) => {
+      console.log("subclub recruitment load success");
       setClub(res.data);
       setFilter(res.data);
     });
@@ -32,7 +30,7 @@ const SubClubs = (props) => {
       setFilter(Club);
       setUrl("전체보기");
     } else {
-      console.log('props.category : ', props.category);
+      console.log("props.category : ", props.category);
       setFilter(Club.filter((data) => data.clubId.value === props.category));
     }
   }, [props.category, Club]);
@@ -55,25 +53,14 @@ const SubClubs = (props) => {
   // 2021/12/23 강진실
   // 사용자 즐겿자기 동아리 불러옴
   // redux와 연동해서 로그인 했을 때만 요청할 수 있도록 해야 함.(아직 구현 X)
-<<<<<<< HEAD
-  useEffect(()=>{
-    const dbId = localStorage.getItem('user_db_id');
-    axios.get(`auth/favorites/${dbId}`)
-    .then((res)=>{
-      console.log(res.data);
-      setFavorites(res.data);  
-    });
-  }, []);
-=======
   // useEffect(()=>{
   //   const dbId = localStorage.getItem('user_db_id');
   //   axios.get(`http://localhost:4000/auth/favorites/${dbId}`)
   //   .then((res)=>{
   //     console.log(res.data);
-  //     setFavorites(res.data);  
+  //     setFavorites(res.data);
   //   });
   // }, []);
->>>>>>> 25a964c31707aa7cf0a8e667e970bbae19631d67
 
   const searchClub = (e) => {
     if (e.key === "Enter") {
@@ -82,14 +69,12 @@ const SubClubs = (props) => {
   };
 
   const saveFavorite = (clubName) => {
-    console.log('called');
-    const dbId = localStorage.getItem('user_db_id');
-    axios.post(`auth/favorites/${dbId}`, {clubName : clubName})
-    .then((res)=>{
-
-      setFavorites(res.data);  
+    console.log("called");
+    const dbId = localStorage.getItem("user_db_id");
+    axios.post(`auth/favorites/${dbId}`, { clubName: clubName }).then((res) => {
+      setFavorites(res.data);
     });
-  }
+  };
 
   //console.log(Filter);
   // 김채연에게
@@ -114,23 +99,34 @@ const SubClubs = (props) => {
           <Card
             key={index}
             to={{
-              pathname: `/subClub/${subClub.clubId.value}/${subClub.clubId.label}`
+              pathname: `/subClub/${subClub.clubId.value}/${
+                subClub.clubId.label
+              }`
             }}
           >
             <SubContainer>
               <Category>{subClub.clubId.category}</Category>
               <Name>
-                {subClub.clubId.name} 
-                {favorites.includes(subClub.clubId.name) ? <Star color="#fcca11" onClick={()=>{saveFavorite(subClub.clubId.name)}}/> : <EmptyStar color="#fcca11" />}
-                
+                {subClub.clubId.name}
+                {favorites.includes(subClub.clubId.name) ? (
+                  <Star
+                    color="#fcca11"
+                    onClick={() => {
+                      saveFavorite(subClub.clubId.name);
+                    }}
+                  />
+                ) : (
+                  <EmptyStar color="#fcca11" />
+                )}
               </Name>
               <Desc>" {subClub.description} "</Desc>
               <Deadline>
                 {new Date() < new Date(subClub.deadline)
                   ? "D - " +
-                    (
-                      Math.floor((new Date(subClub.deadline).getTime() -
-                      new Date().getTime())/(24*3600*1000))
+                    Math.floor(
+                      (new Date(subClub.deadline).getTime() -
+                        new Date().getTime()) /
+                        (24 * 3600 * 1000)
                     ).toString()
                   : "마감"}
               </Deadline>
@@ -191,19 +187,19 @@ const SearchInput = styled.input`
   height: 40px;
   color: black;
   font-size: 20px;
-  margin : 15px 0px 0px 15px;
-   ::placeholder,
+  margin: 15px 0px 0px 15px;
+  ::placeholder,
   ::-webkit-input-placeholder {
     color: black;
   }
   :-ms-input-placeholder {
-     color: black;
+    color: black;
   }
 `;
 
 const Container = styled.div`
   width: 90%;
-  margin : 0 auto;
+  margin: 0 auto;
   text-align: center;
 `;
 
