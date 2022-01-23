@@ -40,7 +40,6 @@ const LoginPage = ({ history }) => {
           localStorage.setItem("accessToken", res.data.accessToken);
           localStorage.setItem("refreshToken", res.data.refershToken);
 
-
           // test
           const token = res.data.accessToken;
           dispatch(userActions.setCurrentUser(jwt.decode(token)));

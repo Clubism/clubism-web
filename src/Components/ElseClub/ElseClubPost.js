@@ -5,6 +5,7 @@ import axios from "../../Assets/axios";
 import moment from 'moment';
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 //test
 import jwt from 'jsonwebtoken';
@@ -20,6 +21,9 @@ const ElseClubPost = (props) => {
   // const { currentUser: storeCurrentUser } = useSelector((state)=>state.currentUser);
   const currentUser = useSelector((state)=>state.currentUser);
 
+  // useEffect(()=>{
+  //   console.log("currentUser test", currentUser);
+  // }, [])
 
   useEffect(() => {
     axios
@@ -72,6 +76,20 @@ const ElseClubPost = (props) => {
     setInputRecomment("");
   };
 
+   const deletePost = () => {
+     if(window.confirm("게시글을 삭제하시겠습니까?")){
+        //게시글 삭제 정보 전송
+        axios
+        .post("post/deletePost/"+props.post.id, {
+        })
+        .then((res) => {
+            console.log("post submit success");
+        });
+
+        window.location.replace("/elseClub/all");
+    }
+
+  };
   
   return (
     <div className="ElseClubPostContainer">
@@ -80,11 +98,15 @@ const ElseClubPost = (props) => {
         <div className="ElseClubPost-sub">
           {props.post.category} | {props.post.writer}
         </div>
-        <div>{props.post.writer===currentUser.user.id ? 
-              <Link to={"/elseClub/updatePost/"+props.post.id} className="Posting"> 수정 </Link> 
+        <div >{props.post.writer===currentUser.user.id ? 
+              <div>
+                <Link to={"/elseClub/updatePost/"+props.post.id} className="Posting"> 수정 </Link> 
+                <Button onClick={deletePost}> 삭제 </Button>
+              </div>
               : <div></div>}
         </div>
-        <div className="ElseClubPost-date">{moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
+        <div className="ElseClubPost-date">
+          {moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
         <hr />
         {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
         <div

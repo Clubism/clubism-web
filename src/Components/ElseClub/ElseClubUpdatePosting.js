@@ -15,6 +15,8 @@ const ElseClubPosting = (props) => {
 
   useEffect(() => {
     setLocalCategory(props.post.category);
+    setTitle(props.post.title);
+    setContent(props.post.content);
     console.log("update", props.post);
   }, []);
 
