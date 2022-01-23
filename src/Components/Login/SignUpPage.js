@@ -143,7 +143,7 @@ const SignUpPage = () => {
        
 
             const token = res.data.accessToken;
-            dispatch(currentUserActions.setCurrentUser(jwt.verify(token)));
+            dispatch(currentUserActions.setCurrentUser(jwt.decode(token)));
             dispatch(authActions.setAuth(true));
             window.location.replace("/");
           });

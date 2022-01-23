@@ -13,6 +13,7 @@ import jwt from 'jsonwebtoken';
 
 const LoginPage = ({ history }) => {
   const dispatch = useDispatch();
+  const SECRET_KEY = process.env.JWT_SECRET;
 
   const [LoginInfo, setLoginInfo] = useState({ id: "", password: "" });
 
@@ -42,7 +43,7 @@ const LoginPage = ({ history }) => {
 
           // test
           const token = res.data.accessToken;
-          dispatch(userActions.setCurrentUser(jwt.decode(token)));
+          dispatch(userActions.setCurrentUser(jwt.verify(token), SECRET_KEY));
 
           dispatch(authActions.setAuth(true));
           window.location.replace("/");

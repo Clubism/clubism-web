@@ -21,9 +21,9 @@ const ElseClubPost = (props) => {
   // const { currentUser: storeCurrentUser } = useSelector((state)=>state.currentUser);
   const currentUser = useSelector((state)=>state.currentUser);
 
-  // useEffect(()=>{
-  //   console.log("currentUser test", currentUser);
-  // }, [])
+  useEffect(()=>{
+    console.log("currentUser test", currentUser);
+  }, [])
 
   useEffect(() => {
     axios
