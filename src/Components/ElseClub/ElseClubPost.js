@@ -5,7 +5,8 @@ import axios from "../../Assets/axios";
 import moment from 'moment';
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+//import Button from "react-bootstrap/Button";
+import styled from 'styled-components';
 
 //test
 import jwt from 'jsonwebtoken';
@@ -92,92 +93,96 @@ const ElseClubPost = (props) => {
   };
   
   return (
-    <div className="ElseClubPostContainer">
-      <div className="ElseClubPost">
+    <ElseClubWrapper>
+      <ElseClubPostContainer>
         <h4>{props.post.title}</h4>
-        <div className="ElseClubPost-sub">
-          {props.post.category} | {props.post.writer}
-        </div>
-        <div >{props.post.writer===currentUser.user.id ? 
-              <div>
-                <Link to={"/elseClub/updatePost/"+props.post.id} className="Posting"> 수정 </Link> 
+        <ElseClubPostSub>
+          <Container1>
+            {props.post.category} | {props.post.writer}
+          </Container1>
+          <Container2>
+            {props.post.writer === currentUser.user.id ?
+              <EditContainer>
+                <Link to={"/elseClub/updatePost/" + props.post.id}><Button style={{'margin-right' : '10px'}}>수정</Button></Link>
                 <Button onClick={deletePost}> 삭제 </Button>
-              </div>
+              </EditContainer>
               : <div></div>}
-        </div>
-        <div className="ElseClubPost-date">
-          {moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
-        <hr />
-        {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
-        <div
-          className="ElseClubPost-data"
-          dangerouslySetInnerHTML={{ __html: props.post.content }}
-        />
-        <br />
-        <br />
-        <hr />
+          </Container2>
 
-        <h5>댓글 {commentList.length} 개</h5>
+          
+        </ElseClubPostSub>
+          
+          <ElseClubPostDate>
+            {moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}
+          </ElseClubPostDate>
+          <hr />
+          {/* <div className="ElseClubPost-data">{props.post.content}</div> */}
+          <div
+            className="ElseClubPost-data"
+            dangerouslySetInnerHTML={{ __html: props.post.content }}
+          />
+          <br />
+          <br />
+          <hr />
 
-        {commentList.map((cmt, index) => {
-          let com = "first";
-          if (cmt._class === 1) com = "second";
+          <h5>댓글 {commentList.length} 개</h5>
 
-          return (
-            <div className="ElseClubComment" key={cmt.id}>
-              <hr />
-              <div className={com}>
-                <div className="cmtSmall">
-                  <div className="cmtUser">
-                    {/* user */}
-                    {cmt.writer}
-                    </div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div className="cmtDate">{moment(cmt.date).format('YYYY-MM-DD HH:mm:ss')}</div>
-                  &nbsp;&nbsp;&nbsp;
+          {commentList.map((cmt, index)=>{
+            let com = "first";
+            if (cmt._class === 1) com = "second";
 
-                  {com === "first" ? (
-                    <div>
-                      <BsArrowReturnRight
-                        onClick={() => {
+            return (
+              <ElseClubComment key={cmt.id}>
+                <hr />
+                   <div className={com}>
+                    <div className="cmtSmall">
+                      <div className="cmtUser">
+                        {/* user */}
+                        {cmt.writer}
+                      </div>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <div className="cmtDate">{moment(cmt.date).format('YYYY-MM-DD HH:mm:ss')}</div>
+                      &nbsp;&nbsp;&nbsp;
+
+                      {com === "first" ? (
+                        <div>
+                          <BsArrowReturnRight
+                            onClick={() => {
                           // console.log("click");
-                          if (replyComment === index) setReplyComment(-1);
-                          else setReplyComment(index);
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <div />
-                  )}
+                              if (replyComment === index) setReplyComment(-1);
+                              else setReplyComment(index);
+                            }}
+                          />
+                        </div>
+                      ) : (
+                        <div />
+                    )}
+                  </div>
+                  {cmt.comment}
                 </div>
-                {cmt.comment}
-
-              </div>
-              {replyComment === index ? (
-                <div className="InputComment">
-                  <textarea
-                    placeholder={"댓글을 입력하세요."}
-                    value={inputRecomment}
-                    onChange={inputRecommentHandler}
-                  />
-                  <button
-                    onClick={() => {
-                      recommentSubmitHandler(cmt._id);
-                    }}
-                  >
-                    입력
-                  </button>
-                </div>
-              ) : (
-                <div />
-              )}
-            </div>
-          );
-        })}
-
+                {replyComment === index ? (
+                  <InputComment>
+                    <textarea
+                      placeholder={"댓글을 입력하세요."}
+                      value={inputRecomment}
+                      onChange={inputRecommentHandler}
+                    />
+                    <button
+                      onClick={() => {
+                        recommentSubmitHandler(cmt._id);
+                      }}
+                    >
+                      입력
+                    </button>
+                  </InputComment>
+                ) : (
+                  <div />
+                )}
+              </ElseClubComment>
+            )
+          })}
         <br />
-
-        <div className="InputComment">
+        <InputComment>
           <textarea
             placeholder={"댓글을 입력하세요."}
             value={inputComment}
@@ -190,9 +195,94 @@ const ElseClubPost = (props) => {
           >
             입력
           </button>
-        </div>
-      </div>
-    </div>
+        </InputComment>
+      </ElseClubPostContainer>
+    </ElseClubWrapper>
   );
 };
 export default ElseClubPost;
+
+const Container1 = styled.div`
+  font-size : small;
+  display: inline-block;
+  vertical-align: center;
+`;
+
+const Container2 = styled.div`
+  display : inline-block;
+  font-size : small;
+`;
+
+const EditContainer = styled.div`
+  display : inline-block;
+`;
+
+const Button = styled.div`
+  //width : 100px;
+  //height : 30px;
+  display : inline-block;
+  text-align: center;
+  padding : 4px 12px;
+  border-radius : 8px;
+  background-color : black;
+  color : white;
+`;
+
+const ElseClubWrapper = styled.div`
+  width: 70%;
+  vertical-align: middle;
+  margin: 30px auto;
+  overflow-y: scroll;
+`;
+
+const ElseClubPostContainer = styled.div`
+  margin: auto 20px;
+  border: 0;
+`;
+
+const ElseClubPostSub = styled.div`
+  display : flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom : 10px;
+`;
+
+const ElseClubPostDate = styled.div`
+  font-size: small;
+  text-align: end;
+`;
+
+
+const ElseClubComment = styled.div`
+ border: 1px solid #ffffff;
+  border: 0;
+  .second {
+    padding: 0px 20px;
+  }
+  .cmtSmall {
+    font-size: small;
+    display: flex;
+    align-items: center;
+    .cmtDate {
+      color: #777777;
+    }
+  }
+`;
+
+const InputComment = styled.div`
+  textarea {
+      width: 85%;
+      border: 1px solid #999999;
+      margin: 5px;
+      float: left;
+    }
+    button {
+      width: 50px;
+      height: 50px;
+      background-color: #999999;
+      color: #ffffff;
+      border: 1px solid #999999;
+      margin: 5px;
+      display: inline-block;
+    }
+`;
