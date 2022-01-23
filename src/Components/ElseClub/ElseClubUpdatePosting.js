@@ -6,42 +6,39 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { DropdownButton, Dropdown, Form } from "react-bootstrap";
 import axios from "../../Assets/axios";
 
-const ElseClubPosting = () => {
+const ElseClubPosting = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [localCategory, setLocalCategory] = useState("");
-
-  const { category: storeCategory } = useSelector((state) => state.category);
+//   const { category: storeCategory } = useSelector((state) => state.category);
   const currentUser = useSelector((state)=>state.currentUser);
 
   useEffect(() => {
-    if (storeCategory === "전체보기") setLocalCategory("선택");
-    else setLocalCategory(storeCategory);
-  }, [storeCategory]);
+    setLocalCategory(props.post.category);
+    console.log("update", props.post);
+  }, []);
 
   const onPostSubmit = (e) => {
     e.preventDefault();
+    if(window.confirm("게시글을 수정하시겠습니까?")){
+        console.log("test", title, content, localCategory);
+        
+        //게시글 수정 정보 전송
+        axios
+        .post("post/updatePost/"+props.post.id, {
+            title: title,
+            content: content,
+            category: localCategory,
+            writer: currentUser.user.id
+        })
+        .then((res) => {
+            console.log("post submit success");
+        });
 
-    if (localCategory === "선택") {
-      alert("카테고리를 선택해 주세요");
-      return;
+        window.location.replace("/elseClub/all");
     }
-
-    axios
-      .post("post/submit", {
-        title: title,
-        content: content,
-        category: localCategory,
-        writer: currentUser.user.id
-      })
-      .then((res) => {
-        console.log("post submit success");
-      });
-
-    window.location.replace("all");
   };
 
-  // console.log(category);
 
   return (
     <div className="ElseClubPosting">
@@ -58,6 +55,7 @@ const ElseClubPosting = () => {
         <Dropdown.Item eventKey="프로젝트">프로젝트</Dropdown.Item>
         <Dropdown.Item eventKey="구독">구독</Dropdown.Item>
       </DropdownButton>
+      
       <Form
         onSubmit={(e) => {
           onPostSubmit(e);
@@ -66,6 +64,7 @@ const ElseClubPosting = () => {
         <Form className="titleForm">
           <Form.Control
             type="title"
+            defaultValue={props.post.title}
             placeholder="제목을 입력하세요."
             as="input"
             onChange={(e) => {
@@ -75,22 +74,18 @@ const ElseClubPosting = () => {
         </Form>
         <CKEditor
           editor={ClassicEditor}
-          // data="<p>Hello from CKEditor 5!</p>"
           onReady={(editor) => {
-            // You can store the "editor" and use when it is needed.
             console.log("Editor is ready to use!", editor);
           }}
           onChange={(event, editor) => {
             const data = editor.getData();
             setContent(data);
-            //console.log( { event, editor, data } );
           }}
           onBlur={(event, editor) => {
-            //console.log( 'Blur.', editor );
           }}
           onFocus={(event, editor) => {
-            //console.log( 'Focus.', editor );
           }}
+          data = {props.post.content}
         />
         <input className="submitBtn" type="submit" value="작성" />
       </Form>

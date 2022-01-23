@@ -3,6 +3,12 @@ import "../style/ElseClubPost.scss";
 import { BsArrowReturnRight } from "react-icons/bs";
 import axios from "../../Assets/axios";
 import moment from 'moment';
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+//test
+import jwt from 'jsonwebtoken';
+
 
 const ElseClubPost = (props) => {
   const [reload, setreload] = useState(0);
@@ -10,6 +16,10 @@ const ElseClubPost = (props) => {
   const [inputRecomment, setInputRecomment] = useState("");
   const [inputComment, setInputComment] = useState("");
   const [replyComment, setReplyComment] = useState(-1);
+
+  // const { currentUser: storeCurrentUser } = useSelector((state)=>state.currentUser);
+  const currentUser = useSelector((state)=>state.currentUser);
+
 
   useEffect(() => {
     axios
@@ -34,6 +44,7 @@ const ElseClubPost = (props) => {
       .post("post/comment/" + props.post._id, {
         comment: inputComment,
         postNum: props.post._id,
+        writer: currentUser.user.id,
         _class : 0,
         // parentComment: "",
       })
@@ -50,6 +61,7 @@ const ElseClubPost = (props) => {
       .post("post/comment/" + props.post._id, {
         comment: inputRecomment,
         postNum: props.post._id,
+        writer: currentUser.user.id,
         _class : 1,
         parentComment: parent,
       })
@@ -67,6 +79,10 @@ const ElseClubPost = (props) => {
         <h4>{props.post.title}</h4>
         <div className="ElseClubPost-sub">
           {props.post.category} | {props.post.writer}
+        </div>
+        <div>{props.post.writer===currentUser.user.id ? 
+              <Link to={"/elseClub/updatePost/"+props.post.id} className="Posting"> 수정 </Link> 
+              : <div></div>}
         </div>
         <div className="ElseClubPost-date">{moment(props.post.date).format('YYYY-MM-DD HH:mm:ss')}</div>
         <hr />
@@ -91,8 +107,8 @@ const ElseClubPost = (props) => {
               <div className={com}>
                 <div className="cmtSmall">
                   <div className="cmtUser">
-                    user
-                    {/* {cmt.user} */}
+                    {/* user */}
+                    {cmt.writer}
                     </div>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <div className="cmtDate">{moment(cmt.date).format('YYYY-MM-DD HH:mm:ss')}</div>

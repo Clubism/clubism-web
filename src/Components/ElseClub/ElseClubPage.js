@@ -3,6 +3,7 @@ import "../style/ElseClubPage.scss";
 import ElseClubList from "./ElseClubList";
 import ElseClubPosting from "./ElseClubPosting";
 import ElseClubPost from "./ElseClubPost";
+import ElseClubUpdatePosting from "./ElseClubUpdatePosting";
 import { Route, Switch } from "react-router-dom";
 
 const ElseClubPage = () => {
@@ -19,6 +20,9 @@ const ElseClubPage = () => {
         </Route>
         <Route path="/elseClub/post/:id" exact>
           <ElseClubPost post={post} />
+        </Route>
+        <Route path="/elseClub/updatePost/:id" exact>
+          <ElseClubUpdatePosting post={post} />
         </Route>
       </Switch>
     </div>

@@ -16,12 +16,12 @@ const CategoryElse = (props) => {
 
   const dispatch = useDispatch();
 
-  const setCategory = useCallback(
-    (data) => {
-      dispatch(actions.setCatetory(data));
-    },
-    [dispatch]
-  );
+  // const setCategory = useCallback(
+  //   (data) => {
+  //     dispatch(actions.setCatetory(data));
+  //   },
+  //   [dispatch]
+  // );
 
   return (
     <div>
@@ -38,7 +38,8 @@ const CategoryElse = (props) => {
                       onClick={(e) => {
                         // window.location.replace("/elseClub"+category.category_path);
                         props.close();
-                        setCategory(category.category);
+                        // setCategory(category.category);
+                        dispatch(actions.setCatetory(category.category));
                       }}
                     >
                       {category.category}
